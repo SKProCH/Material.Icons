@@ -5,6 +5,15 @@
         <LangVersion>latest</LangVersion>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Material.Icons</Title>
+        <Authors>SKProCH</Authors>
+        <Description>Parsed icons set from materialdesignicons.com</Description>
+        <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <PackageTags>material icons material-design google-material</PackageTags>
     </PropertyGroup>
     
 
