@@ -1,0 +1,40 @@
+﻿<#@ template language="C#" hostspecific="true" #>
+<#@ output extension=".cs"#>
+<#@ assembly name="$(TargetPath)"#>
+<#@ assembly name="netstandard, Version=2.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51" #>
+using System;
+using System.Collections.Generic;
+using Newtonsoft.Json;
+
+namespace Material.Icons
+{
+    /// ******************************************
+    /// This code is auto generated. Do not amend.
+    /// ******************************************
+<#
+    var materialIcons = MaterialIconsMetaTools.GetIcons();
+#>
+
+    public static class MaterialIconDataFactory
+    {
+        public static IDictionary<MaterialIconKind, string> DataSetCreate() => new Dictionary<MaterialIconKind, string> {
+<#
+    foreach (var icon in materialIcons) {
+#>
+            {MaterialIconKind.<#= icon.Name #>, "<#= icon.Data #>"},
+<#
+    }
+#>
+        };
+
+        public static IDictionary<MaterialIconKind, MaterialIcon> InstanceSetCreate() => new Dictionary<MaterialIconKind, MaterialIcon> {
+<#
+    foreach (var icon in materialIcons) {
+#>
+            {MaterialIconKind.<#= icon.Name #>, <#= MaterialIconsMetaTools.SerializeIcon(icon) #>},
+<#
+    }
+#>
+        };
+    }
+}
