@@ -6,20 +6,20 @@ using System.Windows.Controls;
 using System.Windows.Media;
 
 namespace Material.Icons.WPF {
-    public class PackIcon : Control {
+    public class MaterialIcon : Control {
         private static readonly Lazy<IDictionary<MaterialIconKind, string>> _dataIndex = new(MaterialIconDataFactory.DataSetCreate);
 
-        static PackIcon() {
-            DefaultStyleKeyProperty.OverrideMetadata(typeof(PackIcon), new FrameworkPropertyMetadata(typeof(PackIcon)));
+        static MaterialIcon() {
+            DefaultStyleKeyProperty.OverrideMetadata(typeof(MaterialIcon), new FrameworkPropertyMetadata(typeof(MaterialIcon)));
         }
 
         public static readonly DependencyProperty KindProperty
-            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(PackIcon),
+            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
                 new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
 
         private static void KindPropertyChangedCallback(DependencyObject dependencyObject,
                                                         DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
-            => ((PackIcon) dependencyObject).UpdateData();
+            => ((MaterialIcon) dependencyObject).UpdateData();
 
         /// <summary>
         /// Gets or sets the icon to display.
@@ -30,7 +30,7 @@ namespace Material.Icons.WPF {
         }
 
         private static readonly DependencyPropertyKey DataPropertyKey
-            = DependencyProperty.RegisterReadOnly(nameof(Data), typeof(string), typeof(PackIcon), new PropertyMetadata(""));
+            = DependencyProperty.RegisterReadOnly(nameof(Data), typeof(string), typeof(MaterialIcon), new PropertyMetadata(""));
 
         // ReSharper disable once StaticMemberInGenericType
         public static readonly DependencyProperty DataProperty = DataPropertyKey.DependencyProperty;
