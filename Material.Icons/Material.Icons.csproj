@@ -1,10 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>latest</LangVersion>
-        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Material.Icons</Title>
         <Authors>SKProCH</Authors>
@@ -14,36 +10,27 @@
         <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
+        <RootNamespace>Material.Icons</RootNamespace>
     </PropertyGroup>
-    
-
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
-      <PackageReference Include="ObjectDumper.NET" Version="3.0.20251.2-pre" />
     </ItemGroup>
 
-    <ItemGroup>
-      <None Update="MaterialIconKind.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>MaterialIconKind.cs</LastGenOutput>
-      </None>
-      <None Update="MaterialIconDataFactory.tt">
-        <Generator>TextTemplatingFileGenerator</Generator>
-        <LastGenOutput>MaterialIconDataFactory.cs</LastGenOutput>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <Compile Update="MaterialIconKind.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>MaterialIconKind.tt</DependentUpon>
-      </Compile>
-      <Compile Update="MaterialIconDataFactory.cs">
-        <AutoGen>True</AutoGen>
-        <DesignTime>True</DesignTime>
-        <DependentUpon>MaterialIconDataFactory.tt</DependentUpon>
-      </Compile>
-    </ItemGroup>
-
+    <Target Name="GenerateIcons" BeforeTargets="BeforeBuild">
+        <ItemGroup>
+            <Compile Remove="**\Generated\*.cs" />
+        </ItemGroup>
+        
+        <Exec Command="dotnet run --configuration Release --project Material.Icons.Gen\Material.Icons.Gen.csproj" WorkingDirectory="$(SolutionDir)" />
+        
+        <Copy SourceFiles="$(SolutionDir)MaterialIconDataFactory.cs" DestinationFiles="$(SolutionDir)Material.Icons\Generated\MaterialIconDataFactory.cs" />
+        <Delete Files="$(SolutionDir)MaterialIconDataFactory.cs" />
+        
+        <Copy SourceFiles="$(SolutionDir)MaterialIconKind.cs" DestinationFiles="$(SolutionDir)Material.Icons\Generated\MaterialIconKind.cs" />
+        <Delete Files="$(SolutionDir)MaterialIconKind.cs" />
+        
+        <ItemGroup>
+            <Compile Include="**\Generated\*.cs" />
+        </ItemGroup>
+    </Target>
 </Project>
