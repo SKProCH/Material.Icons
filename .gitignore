@@ -80,6 +80,7 @@ StyleCopReport.xml
 *_h.h
 *.ilk
 *.meta
+!*.Meta/
 *.obj
 *.iobj
 *.pch
@@ -365,3 +366,4 @@ MigrationBackup/
 # End of https://www.toptal.com/developers/gitignore/api/csharp
 /.idea/.idea.YandexMusicResolver/.idea/
 /.idea/.idea.Material.Icons/.idea/
+/Material.Icons.Meta.dll

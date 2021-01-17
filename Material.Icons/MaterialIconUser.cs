@@ -4,9 +4,9 @@ namespace Material.Icons {
     public class MaterialIconUser
     {
         [JsonProperty("id")]
-        public string Id { get; internal set; }
+        public string Id { get; set; }
 
         [JsonProperty("name")]
-        public string Name { get; internal set; }
+        public string Name { get; set; }
     }
 }
