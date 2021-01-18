@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Globalization;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Primitives;
-using Avalonia.Data.Converters;
-using Avalonia.Media;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIcon : TemplatedControl {
@@ -34,7 +31,6 @@ namespace Material.Icons.Avalonia {
         /// <summary>
         /// Gets the icon path data for the current <see cref="Kind"/>.
         /// </summary>
-        [TypeConverter(typeof(GeometryConverter))]
         public string? Data {
             get => _data;
             private set => SetAndRaise(DataProperty, ref _data, value);
@@ -49,16 +45,6 @@ namespace Material.Icons.Avalonia {
             string? data = null;
             _dataIndex.Value?.TryGetValue(Kind, out data);
             Data = data;
-        }
-    }
-
-    public class GeometryConverter : IValueConverter {
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture) {
-            return Geometry.Parse(value.ToString());
-        }
-
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture) {
-            throw new NotSupportedException();
         }
     }
 }
