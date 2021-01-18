@@ -2,13 +2,13 @@
 using Avalonia.Markup.Xaml;
 
 namespace Material.Icons.Avalonia {
-    public class MaterialIconExtension : MarkupExtension {
-        public MaterialIconExtension() { }
-        public MaterialIconExtension(MaterialIconKind kind) {
+    public class MaterialIconExt : MarkupExtension {
+        public MaterialIconExt() { }
+        public MaterialIconExt(MaterialIconKind kind) {
             Kind = kind;
         }
 
-        public MaterialIconExtension(MaterialIconKind kind, double? size) {
+        public MaterialIconExt(MaterialIconKind kind, double? size) {
             Kind = kind;
             Size = size;
         }
