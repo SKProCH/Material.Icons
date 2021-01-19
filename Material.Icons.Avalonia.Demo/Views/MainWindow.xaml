@@ -1,0 +1,83 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:Material.Icons.Avalonia.Demo.ViewModels;assembly=Material.Icons.Avalonia.Demo"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:demo="clr-namespace:Material.Icons.Avalonia.Demo"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Material.Icons.Avalonia.Demo.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Material.Icons.Avalonia.Demo">
+
+    <Window.Resources>
+        <demo:StringJoinConverter x:Key="StringJoinConverter" />
+    </Window.Resources>
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+    <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="*, Auto">
+        <!-- <ListBox Grid.ColumnSpan="3"  -->
+        <!--          VirtualizationMode="Simple" -->
+        <!--          Items="{Binding Kinds}" -->
+        <!--          SelectedItem="{Binding Group}" -->
+        <!--          ScrollViewer.HorizontalScrollBarVisibility="Disabled"> -->
+        <!--     <ListBox.ItemTemplate> -->
+        <!--         <DataTemplate DataType="demo:PackIconKindGroup"> -->
+        <!--             <DockPanel -->
+        <!--                 ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}" -->
+        <!--                 Width="64" -->
+        <!--                 Height="64" -->
+        <!--                 Background="Transparent"> -->
+        <!--                 <TextBlock -->
+        <!--                     Text="{Binding Kind}" -->
+        <!--                     DockPanel.Dock="Bottom" -->
+        <!--                     HorizontalAlignment="Center" /> -->
+        <!-- -->
+        <!--                 <avalonia:MaterialIcon -->
+        <!--                     Kind="{Binding Kind}" -->
+        <!--                     VerticalAlignment="Center" -->
+        <!--                     HorizontalAlignment="Center" -->
+        <!--                     Width="32" -->
+        <!--                     Height="32" /> -->
+        <!--             </DockPanel> -->
+        <!--         </DataTemplate> -->
+        <!--     </ListBox.ItemTemplate> -->
+        <!--     <ListBox.ItemsPanel> -->
+        <!--         <ItemsPanelTemplate> -->
+        <!--             <WrapLayout /> -->
+        <!--         </ItemsPanelTemplate> -->
+        <!--     </ListBox.ItemsPanel> -->
+        <!-- </ListBox> -->
+                       <!-- SelectedItem="{Binding Group}" -->
+        <ItemsRepeater Grid.ColumnSpan="3" 
+                       Items="{Binding Kinds}"
+                       ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+            <ItemsRepeater.Layout>
+                <WrapLayout></WrapLayout>
+            </ItemsRepeater.Layout>
+            <ItemsRepeater.ItemTemplate>
+                <DataTemplate DataType="demo:PackIconKindGroup">
+                    <DockPanel
+                        ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
+                        Width="64"
+                        Height="64"
+                        Background="Transparent">
+                        <TextBlock
+                            Text="{Binding Kind}"
+                            DockPanel.Dock="Bottom"
+                            HorizontalAlignment="Center" />
+
+                        <avalonia:MaterialIcon
+                            Kind="{Binding Kind}"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center"
+                            Width="32"
+                            Height="32" />
+                    </DockPanel>
+                </DataTemplate>
+            </ItemsRepeater.ItemTemplate>
+        </ItemsRepeater>
+        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SearchText}"></TextBox>
+    </Grid>
+</Window>

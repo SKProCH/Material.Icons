@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Data;
-using Material.Icons.WPF.Demo.Annotations;
 
 namespace Material.Icons.WPF.Demo {
     public class MainViewModel : INotifyPropertyChanged {
