@@ -19,7 +19,7 @@ namespace Material.Icons.Avalonia {
         /// Gets or sets the icon to display.
         /// </summary>
         public MaterialIconKind Kind {
-            get => GetValue(KindProperty);
+            get => (MaterialIconKind) GetValue(KindProperty);
             set => SetValue(KindProperty, value);
         }
 
