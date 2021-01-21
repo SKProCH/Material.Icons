@@ -15,10 +15,11 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-    - name: Restore dependencies
-      run: dotnet restore
-    - name: Build
-      run: dotnet build --no-restore
+    - name: Build and Pack
+      run: |
+        dotnet pack Material.Icons
+        dotnet pack Material.Icons.WPF
+        dotnet pack Material.Icons.Avalonia
     - name: Publish to Nuget
       run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish to GitHub Packages
