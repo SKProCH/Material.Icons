@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Material.Icons.WPF.Demo", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Material.Icons.Avalonia", "Material.Icons.Avalonia\Material.Icons.Avalonia.csproj", "{2ADB644F-F6BC-4571-BE11-70F00D1B22D9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Material.Icons.Avalonia.Demo", "Material.Icons.Avalonia.Demo\Material.Icons.Avalonia.Demo.csproj", "{C3B83A70-2783-4BC2-A15F-2FF680CDFF65}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{2ADB644F-F6BC-4571-BE11-70F00D1B22D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ADB644F-F6BC-4571-BE11-70F00D1B22D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ADB644F-F6BC-4571-BE11-70F00D1B22D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3B83A70-2783-4BC2-A15F-2FF680CDFF65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3B83A70-2783-4BC2-A15F-2FF680CDFF65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3B83A70-2783-4BC2-A15F-2FF680CDFF65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3B83A70-2783-4BC2-A15F-2FF680CDFF65}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
