@@ -25,6 +25,7 @@
             <Compile Remove="**\Generated\*.cs" />
         </ItemGroup>
         
+        <Message Text="$(SolutionDir)" />
         <Exec Command="dotnet run --configuration Release --project Material.Icons.Gen\Material.Icons.Gen.csproj" WorkingDirectory="$(SolutionDir)" />
         
         <Copy SourceFiles="$(SolutionDir)MaterialIconDataFactory.cs" DestinationFiles="$(SolutionDir)Material.Icons\Generated\MaterialIconDataFactory.cs" />
