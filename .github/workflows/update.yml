@@ -24,17 +24,17 @@ jobs:
       - name: Read version
         if: ${{steps.state.outputs.diff}} != ''
         id: getversion
-        run: echo '::set-output name=version::'$(cat Material.Icons/VERSION)
+        run: echo '::set-output name=version::'$(grep '(?<=<Version>).*(?=<\/Version>)' Material.Icons/Material.Icons.csproj -P -o)
       - name: Upgrade version
         if: ${{steps.state.outputs.diff}} != ''
         id: bsv
         uses: jessicalostinspace/bump-semantic-version-action@v1.0.1
         with:
-          semantic-version: ${{ steps.getversion.outputs.version }}
+          semantic-version: ${{steps.getversion.outputs.version}}
           version-type: 'PATCH'
       - name: Write version
         if: ${{steps.state.outputs.diff}} != ''
-        run: echo "${{steps.bsv.outputs.bumped-semantic-version}}" > Material.Icons/VERSION
+        run: sed -i 's/<Version>${{steps.getversion.outputs.version}}/<Version>${{steps.bsv.outputs.bumped-semantic-version}}/' Material.Icons/Material.Icons.csproj
       - name: Commit and push
         if: ${{steps.state.outputs.diff}} != ''
         uses: actions-js/push@master
