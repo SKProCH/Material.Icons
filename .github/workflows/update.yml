@@ -21,11 +21,11 @@ jobs:
           dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj
       - name: Check if there changes
         id: state
-        run: echo '::set-output name=diff::$(git diff-index HEAD --)'
+        run: echo '::set-output name=diff::'$(git diff-index HEAD --)
       - name: Read version
         if: ${{steps.state.outputs.diff}} != ''
         id: getversion
-        run: echo '::set-output name=version::$(cat Material.Icons/VERSION)'
+        run: echo '::set-output name=version::'$(cat Material.Icons/VERSION)
       - name: Upgrade version
         if: ${{steps.state.outputs.diff}} != ''
         id: bsv
