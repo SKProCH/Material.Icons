@@ -1,0 +1,41 @@
+﻿name: Icons update
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: 3.1.x
+      - name: Run generator project
+        run: |
+          dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj
+      - name: Check if there changes
+        id: state
+        run: echo '::set-output name=diff::$(git diff-index HEAD --)'
+      - name: Read version
+        if: ${{steps.state.outputs.diff}} != ''
+        id: getversion
+        run: echo '::set-output name=version::$(cat Material.Icons/VERSION)'
+      - name: Upgrade version
+        if: ${{steps.state.outputs.diff}} != ''
+        id: bsv
+        uses: jessicalostinspace/bump-semantic-version-action@v1.0.1
+        with:
+          semantic-version: ${{ steps.getversion.outputs.version }}
+          version-type: 'PATCH'
+      - name: Write version
+        if: ${{steps.state.outputs.diff}} != ''
+        run: echo "${{steps.bsv.outputs.bumped-semantic-version}}" > Material.Icons/VERSION'
+      - name: Commit and push
+        if: ${{steps.state.outputs.diff}} != ''
+        uses: actions-js/push@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}

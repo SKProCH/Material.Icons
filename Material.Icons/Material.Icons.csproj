@@ -37,4 +37,13 @@
             <Compile Include="**\Generated\*.cs" />
         </ItemGroup>
     </Target>
+
+    <Target Name="PreparePackageVersionFromFile" BeforeTargets="GenerateNuspec">
+        <ReadLinesFromFile File="VERSION">
+            <Output TaskParameter="Lines" ItemName="VersionLines" />
+        </ReadLinesFromFile>
+        <PropertyGroup>
+            <Version>@(VersionLines, '%0a')</Version>
+        </PropertyGroup>
+    </Target>
 </Project>
