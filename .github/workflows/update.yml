@@ -35,9 +35,11 @@ jobs:
           version-type: 'PATCH'
       - name: Write version
         if: ${{steps.state.outputs.diff}} != ''
-        run: echo "${{steps.bsv.outputs.bumped-semantic-version}}" > Material.Icons/VERSION'
+        run: echo "${{steps.bsv.outputs.bumped-semantic-version}}" > Material.Icons/VERSION
       - name: Commit and push
         if: ${{steps.state.outputs.diff}} != ''
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: autoIconsUpdate
+          message: 'Icons collection update'
