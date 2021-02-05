@@ -6,6 +6,10 @@ using Avalonia.Controls;
 using Avalonia.Controls.Templates;
 using Material.Icons.Avalonia.Demo.ViewModels;
 
+#pragma warning disable 8600
+#pragma warning disable 8602
+#pragma warning disable 8603
+
 namespace Material.Icons.Avalonia.Demo {
     public class ViewLocator : IDataTemplate {
         public bool SupportsRecycling => false;

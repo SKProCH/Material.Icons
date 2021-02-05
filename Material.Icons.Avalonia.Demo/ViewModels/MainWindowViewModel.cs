@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reactive.Linq;
 using System.Reactive.Subjects;
 using System.Text;
 using System.Threading.Tasks;
 using Avalonia.Controls;
+using DynamicData.Binding;
+using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;
 
 namespace Material.Icons.Avalonia.Demo.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
         private readonly Lazy<IEnumerable<PackIconKindGroup>> _packIconKinds;
-        private IEnumerable<PackIconKindGroup> _kinds;
+        private IEnumerable<PackIconKindGroup>? _kinds;
+        private PackIconKindGroup? _group;
+        private string? _searchText;
 
         public MainWindowViewModel() {
             _packIconKinds = new Lazy<IEnumerable<PackIconKindGroup>>(() =>
@@ -20,14 +25,15 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
                     .OrderBy(x => x.Kind)
                     .ToList());
 
-            SearchText.Subscribe(DoSearch);
+            this.WhenValueChanged(model => model.SearchText).Subscribe(DoSearch);
+            CopyText = this.WhenValueChanged(model => model.Group).Where(group => group != null).Select(group => $"<avalonia:PackIcon Kind=\"{group.Kind}\"/>");
         }
 
-        private async void DoSearch(string obj) {
-            var text = obj as string;
+        private async void DoSearch(string text) {
             if (string.IsNullOrWhiteSpace(text))
                 Kinds = _packIconKinds.Value;
             else {
+                Kinds = new List<PackIconKindGroup>();
                 Kinds = await Task.Run(() =>
                     _packIconKinds.Value
                                   .Where(x => x.Aliases.Any(a => a.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0))
@@ -40,8 +46,16 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _kinds, value);
         }
 
-        public PackIconKindGroup Group { get; set; }
+        public PackIconKindGroup? Group {
+            get => _group;
+            set => this.RaiseAndSetIfChanged(ref _group, value);
+        }
 
-        public Subject<string> SearchText { get; set; } = new Subject<string>();
+        public string? SearchText {
+            get => _searchText;
+            set => this.RaiseAndSetIfChanged(ref _searchText, value);
+        }
+
+        public IObservable<string> CopyText { get; set; }
     }
 }

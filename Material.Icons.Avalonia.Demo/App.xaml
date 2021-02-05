@@ -3,12 +3,12 @@
              xmlns:local="clr-namespace:Material.Icons.Avalonia.Demo"
              x:Class="Material.Icons.Avalonia.Demo.App">
     <Application.DataTemplates>
-        <local:ViewLocator/>
+        <local:ViewLocator />
     </Application.DataTemplates>
 
     <Application.Styles>
-        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml"/>
-        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml"/>
-        <StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml"></StyleInclude>
+        <StyleInclude Source="avares://Avalonia.Themes.Default/DefaultTheme.xaml" />
+        <StyleInclude Source="avares://Avalonia.Themes.Default/Accents/BaseLight.xaml" />
+        <StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml" />
     </Application.Styles>
 </Application>

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Material.Icons.Avalonia.Demo {
+namespace Material.Icons.Avalonia.Demo.Models {
     public class PackIconKindGroup {
         public PackIconKindGroup(IEnumerable<string> kinds) {
             if (kinds is null) throw new ArgumentNullException(nameof(kinds));
