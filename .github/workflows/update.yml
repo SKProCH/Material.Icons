@@ -1,4 +1,4 @@
-﻿name: Icons update
+﻿name: Icons collection update
 
 on:
   schedule:
@@ -17,8 +17,7 @@ jobs:
         with:
           dotnet-version: 3.1.x
       - name: Run generator project
-        run: |
-          dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj
+        run: dotnet build Material.Icons
       - name: Check if there changes
         id: state
         run: echo '::set-output name=diff::'$(git diff-index HEAD --)
