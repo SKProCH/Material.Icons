@@ -3,8 +3,6 @@
 on:
   schedule:
     - cron: '0 0,12 * * *'
-  push:
-    branches: [ autoIconsUpdate ]
 
 jobs:
   build:
@@ -40,5 +38,4 @@ jobs:
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: autoIconsUpdate
           message: 'Icons collection update'
