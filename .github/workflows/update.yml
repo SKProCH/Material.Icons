@@ -21,9 +21,7 @@ jobs:
         run: dotnet build Material.Icons
       - name: Check if there changes
         id: state
-        run: |
-          [[ -v $(git status -s) ]]
-          echo '::set-output name=diff::'$(echo $?)
+        run: echo '::set-output name=diff::'$([[ -n $(git status -s) ]] ; echo $?)
       - name: Read version
         if: steps.state.outputs.diff == 0
         id: getversion
