@@ -1,8 +1,9 @@
-﻿name: Icons collection update
+name: Icons collection update
 
 on:
   schedule:
     - cron: '0 0,12 * * *'
+  workflow_dispatch:
 
 jobs:
   build:
