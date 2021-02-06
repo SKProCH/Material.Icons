@@ -37,5 +37,5 @@ jobs:
         if: ${{steps.state.outputs.diff}} != ''
         uses: actions-js/push@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
           message: 'Icons collection update'
