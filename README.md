@@ -33,23 +33,4 @@ The `Foreground` property controls the color of the icon.
 
 
 ## Avalonia
-#### Getting started
-Install [Material.Icons.Avalonia nuget package](https://www.nuget.org/packages/Material.Icons.Avalonia/):
-```
-dotnet add package Material.Icons.Avalonia
-```
-Include styles in `App.xaml`
-```
-<Application ...>
-  <Application.Styles>
-    ...
-    <StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml"></StyleInclude>
-  </Application.Styles>
-</Application>
-```
-#### Using
-Use `MaterialIcon` control:
-```
-<avalonia:MaterialIcon Kind="Abacus"></avalonia:MaterialIcon>
-```
-The `Foreground` property controls the color of the icon.
+Material.Icons.Avalonia, avalonia demo app and docs moved to AvaloniaUtils organization: [new repository](https://github.com/AvaloniaUtils/Material.Icons.Avalonia).
