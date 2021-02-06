@@ -10,6 +10,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+        with:
+          persist-credentials: false
       - name: Setup .NET
         uses: actions/setup-dotnet@v1
         with:
@@ -18,23 +20,25 @@ jobs:
         run: dotnet build Material.Icons
       - name: Check if there changes
         id: state
-        run: echo '::set-output name=diff::'$(git diff-index HEAD --)
+        run: |
+          [[ -v $(git status -s) ]]
+          echo '::set-output name=diff::'$(echo $?)
       - name: Read version
-        if: ${{steps.state.outputs.diff}} != ''
+        if: steps.state.outputs.diff == 0
         id: getversion
         run: echo '::set-output name=version::'$(grep '(?<=<Version>).*(?=<\/Version>)' Material.Icons/Material.Icons.csproj -P -o)
       - name: Upgrade version
-        if: ${{steps.state.outputs.diff}} != ''
+        if: steps.state.outputs.diff == 0
         id: bsv
         uses: jessicalostinspace/bump-semantic-version-action@v1.0.1
         with:
           semantic-version: ${{steps.getversion.outputs.version}}
           version-type: 'PATCH'
       - name: Write version
-        if: ${{steps.state.outputs.diff}} != ''
+        if: steps.state.outputs.diff == 0
         run: sed -i 's/<Version>${{steps.getversion.outputs.version}}/<Version>${{steps.bsv.outputs.bumped-semantic-version}}/' Material.Icons/Material.Icons.csproj
       - name: Commit and push
-        if: ${{steps.state.outputs.diff}} != ''
+        if: steps.state.outputs.diff == 0
         uses: actions-js/push@master
         with:
           github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
