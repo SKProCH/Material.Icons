@@ -21,15 +21,11 @@ jobs:
         dotnet pack Material.Icons
         dotnet build Material.Icons.WPF
         dotnet pack Material.Icons.WPF
-        dotnet build Material.Icons.Avalonia
-        dotnet pack Material.Icons.Avalonia
     - name: Publish to Nuget
       run: |
         dotnet nuget push "Material.Icons\bin\Debug\*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
         dotnet nuget push "Material.Icons.WPF\bin\Debug\*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        dotnet nuget push "Material.Icons.Avalonia\bin\Debug\*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish to GitHub Packages
       run: |
         dotnet nuget push "Material.Icons\bin\Debug\*.nupkg" --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
         dotnet nuget push "Material.Icons.WPF\bin\Debug\*.nupkg" --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
-        dotnet nuget push "Material.Icons.Avalonia\bin\Debug\*.nupkg" --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
