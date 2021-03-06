@@ -2788,6 +2788,7 @@ namespace Material.Icons {
         CircleSlice7,
         CircleSlice8,
         CircleSmall,
+        Dot=CircleSmall,
         CircularSaw,
         City,
         LocationCity=City,
