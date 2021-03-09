@@ -8086,6 +8086,8 @@ namespace Material.Icons {
         PrinterPreview=PrinterEye,
         PrinterView=PrinterEye,
         PrinterOff,
+        PrinterOffOutline,
+        PrinterOutline,
         PrinterPos,
         PrinterPointOfSale=PrinterPos,
         PrinterSearch,
