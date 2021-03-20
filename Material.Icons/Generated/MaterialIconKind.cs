@@ -4575,6 +4575,7 @@ namespace Material.Icons {
         Flag,
         AssistantPhoto=Flag,
         FlagCheckered,
+        Goal=FlagCheckered,
         FlagMinus,
         FlagMinusOutline,
         FlagOutline,
