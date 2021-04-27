@@ -7132,6 +7132,7 @@ namespace Material.Icons {
         Notebook,
         Journal=Notebook,
         Planner=Notebook,
+        Diary=Notebook,
         NotebookCheck,
         NotebookCheckOutline,
         NotebookEdit,
