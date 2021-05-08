@@ -9263,6 +9263,8 @@ namespace Material.Icons {
         StickerPlusOutline,
         StickerRemove,
         StickerRemoveOutline,
+        StickerText,
+        StickerTextOutline,
         Stocking,
         Stomach,
         Stop,
