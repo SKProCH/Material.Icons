@@ -132,6 +132,7 @@ namespace Material.Icons {
         PersonConvert=AccountConvert,
         AccountConvertOutline,
         AccountCowboyHat,
+        Rancher=AccountCowboyHat,
         AccountDetails,
         UserDetails=AccountDetails,
         PersonDetails=AccountDetails,
