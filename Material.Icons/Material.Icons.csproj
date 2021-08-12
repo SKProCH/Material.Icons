@@ -11,7 +11,7 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.0.16</Version>
+        <Version>1.0.17</Version>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
