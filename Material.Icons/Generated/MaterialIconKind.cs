@@ -3876,6 +3876,7 @@ namespace Material.Icons {
         CrossOutline,
         ReligionChristianOutline=CrossOutline,
         ChristianityOutline=CrossOutline,
+        Crowd,
         Crown,
         CrownCircle,
         Checkers=CrownCircle,
