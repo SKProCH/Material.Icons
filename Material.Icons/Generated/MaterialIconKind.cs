@@ -2496,6 +2496,7 @@ namespace Material.Icons {
         CarBrakeTemperature,
         CarBrakeWornLinings,
         CarChildSeat,
+        CarClock,
         CarClutch,
         CarCog,
         CarConnected,
