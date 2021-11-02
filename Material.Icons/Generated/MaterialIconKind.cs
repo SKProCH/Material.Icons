@@ -7952,6 +7952,7 @@ namespace Material.Icons {
         Shot=Needle,
         Drug=Needle,
         Immunization=Needle,
+        NeedleOff,
         Netflix,
         Network,
         NetworkOff,
