@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net6.0</TargetFramework>
+    <RootNamespace></RootNamespace>
+    <NoWarn>CS0649;CS0169</NoWarn>
+    <NukeRootDirectory>..</NukeRootDirectory>
+    <NukeScriptDirectory>..</NukeScriptDirectory>
+    <NukeTelemetryVersion>1</NukeTelemetryVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Nuke.Common" Version="5.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Material.Icons\ExtensionMethods.cs">
+      <Link>Meta\ExtensionMethods.cs</Link>
+    </Compile>
+    <Compile Include="..\Material.Icons\MaterialIconDataFactory.cs">
+      <Link>Meta\MaterialIconDataFactory.cs</Link>
+    </Compile>
+    <Compile Include="..\Material.Icons\MaterialIconInfo.cs">
+      <Link>Meta\MaterialIconInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\Material.Icons\MaterialIconUser.cs">
+      <Link>Meta\MaterialIconUser.cs</Link>
+    </Compile>
+    <Compile Include="..\Material.Icons\MetaMaterialIcons.cs">
+      <Link>Meta\MetaMaterialIcons.cs</Link>
+    </Compile>
+  </ItemGroup>
+
+</Project>
