@@ -12,31 +12,9 @@
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
         <Version>1.0.66</Version>
+        <LangVersion>10</LangVersion>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
     </ItemGroup>
-
-    <PropertyGroup>
-        <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">../</SolutionDir>
-    </PropertyGroup>
-
-    <Target Name="GenerateIcons" BeforeTargets="BeforeBuild">
-        <ItemGroup>
-            <Compile Remove="**/Generated/*.cs" />
-        </ItemGroup>
-        
-        <Message Text="$(SolutionDir)" />
-        <Exec Command="dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj" WorkingDirectory="$(SolutionDir)" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconDataFactory.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconDataFactory.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconDataFactory.cs" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconKind.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconKind.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconKind.cs" />
-        
-        <ItemGroup>
-            <Compile Include="**/Generated/*.cs" />
-        </ItemGroup>
-    </Target>
 </Project>
