@@ -2219,6 +2219,7 @@ namespace Material.Icons {
         Brush,
         Paintbrush=Brush,
         BrushOff,
+        BrushOutline,
         BrushVariant,
         Bucket,
         BucketOutline,
