@@ -6924,6 +6924,7 @@ namespace Material.Icons {
         LessThanOrEqual,
         Library,
         LocalLibrary=Library,
+        LibraryOutline,
         LibraryShelves,
         License,
         Prize=License,
