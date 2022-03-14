@@ -4298,6 +4298,8 @@ namespace Material.Icons {
         Directions,
         DirectionsFork,
         Disc,
+        CdRom=Disc,
+        Dvd=Disc,
         DiscAlert,
         DiscFull=DiscAlert,
         DiscWarning=DiscAlert,
