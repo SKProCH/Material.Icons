@@ -15,8 +15,6 @@ jobs:
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 3.1.x
-    - name: Setup MSBuild Path
-      uses: warrenbuckley/Setup-MSBuild@v1
     - name: Build and Pack
       run: |
         dotnet build Material.Icons
