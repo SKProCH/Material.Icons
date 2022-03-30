@@ -7168,6 +7168,7 @@ namespace Material.Icons {
         Lecturn,
         Dais=Lecturn,
         Rostrum=Lecturn,
+        Lectern=Lecturn,
         LedOff,
         LedOn,
         LedOutline,
