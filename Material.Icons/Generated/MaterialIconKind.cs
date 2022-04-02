@@ -3304,6 +3304,7 @@ namespace Material.Icons {
         Chip,
         IntegratedCircuit=Chip,
         Church,
+        ChurchOutline,
         Cigar,
         CigarOff,
         Circle,
