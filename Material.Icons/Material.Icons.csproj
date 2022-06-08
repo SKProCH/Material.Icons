@@ -19,6 +19,8 @@
 
     <PropertyGroup>
         <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">../</SolutionDir>
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
 
     <Target Name="GenerateIcons" BeforeTargets="BeforeBuild">
