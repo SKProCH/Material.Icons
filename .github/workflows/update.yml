@@ -33,9 +33,12 @@ jobs:
         with:
           semantic-version: ${{steps.getversion.outputs.version}}
           version-type: 'PATCH'
-      - name: Write version
+      - name: Set release version
         if: steps.state.outputs.diff == 0
         run: sed -i 's/<Version>${{steps.getversion.outputs.version}}/<Version>${{steps.bsv.outputs.bumped-semantic-version}}/' Material.Icons/Material.Icons.csproj
+      - name: Set release note
+        if: steps.state.outputs.diff == 0
+        run: sed -i 's/<PackageReleaseNotes>.*<\/PackageReleaseNotes>/<PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at ${{date}}<\/PackageReleaseNotes>/' Material.Icons/Material.Icons.csproj
       - name: Commit and push
         if: steps.state.outputs.diff == 0
         uses: actions-js/push@master
