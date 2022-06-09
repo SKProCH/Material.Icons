@@ -16,6 +16,8 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <Version>1.1.0</Version>
+    <PackageReleaseNotes>- Add strong signing to assembly</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
