@@ -11,7 +11,7 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.1.13</Version>
+        <Version>1.1.14</Version>
         <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at $(date)</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
