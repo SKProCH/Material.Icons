@@ -16,8 +16,8 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>1.1.0</Version>
-    <PackageReleaseNotes>- Add strong signing to assembly</PackageReleaseNotes>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>- Remove hard coded Width, Height, HorizontalAlignment and VerticalAlignment from default wpf style</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

@@ -48,8 +48,6 @@
 
                         <wpf:MaterialIcon
                             Kind="{Binding Kind}"
-                            VerticalAlignment="Center"
-                            HorizontalAlignment="Center"
                             Width="32"
                             Height="32" />
                     </DockPanel>
