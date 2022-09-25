@@ -6,13 +6,6 @@
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Models\" />
-        <Compile Update="**\*.xaml.cs">
-            <DependentUpon>%(Filename)</DependentUpon>
-        </Compile>
-        <AvaloniaResource Include="**\*.xaml">
-            <SubType>Designer</SubType>
-        </AvaloniaResource>
-        <AvaloniaResource Include="Assets\**" />
     </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-preview1" />

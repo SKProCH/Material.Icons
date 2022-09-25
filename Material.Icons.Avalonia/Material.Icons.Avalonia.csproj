@@ -11,17 +11,11 @@
         <PackageLicenseUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/blob/master/LICENSE</PackageLicenseUrl>
         <RepositoryUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia.git</RepositoryUrl>
         <RepositoryType>Git</RepositoryType>
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
         <PackageTags>material icons material-design google-material avalonia</PackageTags>
         <PackageVersion>1.2.0</PackageVersion>
     </PropertyGroup>
-    <ItemGroup>
-        <Compile Update="**\*.xaml.cs">
-            <DependentUpon>%(Filename)</DependentUpon>
-        </Compile>
-        <AvaloniaResource Include="**\*.xaml">
-            <SubType>Designer</SubType>
-        </AvaloniaResource>
-    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
         <PackageReference Include="Material.Icons" Version="1.1.10" />
