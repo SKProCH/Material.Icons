@@ -11,7 +11,7 @@ All information about icons is stored in text form and is automatically generate
 ## Meta library
 #### Getting started
 Install [Material.Icons nuget package](https://www.nuget.org/packages/Material.Icons/):
-```
+```shell
 dotnet add package Material.Icons
 ```
 [![icons-nuget](https://img.shields.io/nuget/v/Material.Icons?label=Material.Icons&style=flat-square)][icons-nuget]
@@ -26,7 +26,7 @@ We can access icons meta info by using `MaterialIconDataFactory.InstanceSetCreat
 ## WPF
 #### Getting started
 Install [Material.Icons.WPF nuget package](https://www.nuget.org/packages/Material.Icons.WPF/):
-```
+```shell
 dotnet add package Material.Icons.WPF
 ```
 [![wpf-nuget](https://img.shields.io/nuget/v/Material.Icons.WPF?label=Material.Icons.WPF&style=flat-square)][wpf-nuget]
@@ -47,7 +47,7 @@ The `Foreground` property controls the color of the icon.
 ## Material.Icons.Avalonia
 #### Getting started
 1. Install [Material.Icons.Avalonia nuget package](https://www.nuget.org/packages/Material.Icons.Avalonia/):
-    ```
+    ```shell
     dotnet add package Material.Icons.Avalonia
     ```
    [![avalonia-nuget](https://img.shields.io/nuget/v/Material.Icons.Avalonia?label=Material.Icons.Avalonia&style=flat-square)][avalonia-nuget]
