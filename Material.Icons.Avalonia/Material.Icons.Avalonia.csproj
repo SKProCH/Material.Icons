@@ -18,6 +18,8 @@
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
-        <PackageReference Include="Material.Icons" Version="1.1.10" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
     </ItemGroup>
 </Project>
