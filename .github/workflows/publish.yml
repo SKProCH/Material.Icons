@@ -17,15 +17,13 @@ jobs:
         dotnet-version: 3.1.x
     - name: Build and Pack
       run: |
-        dotnet build Material.Icons
         dotnet pack Material.Icons
-        dotnet build Material.Icons.WPF
         dotnet pack Material.Icons.WPF
+        dotnet pack Material.Icons.Avalonia'
+    - run: shopt -s globstar
     - name: Publish to Nuget
       run: |
-        dotnet nuget push "Material.Icons\bin\Debug\*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-        dotnet nuget push "Material.Icons.WPF\bin\Debug\*.nupkg" --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
+        dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish to GitHub Packages
       run: |
-        dotnet nuget push "Material.Icons\bin\Debug\*.nupkg" --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
-        dotnet nuget push "Material.Icons.WPF\bin\Debug\*.nupkg" --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
+        dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
