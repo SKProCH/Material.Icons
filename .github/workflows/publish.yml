@@ -17,9 +17,9 @@ jobs:
         dotnet-version: 3.1.x
     - name: Build and Pack
       run: |
-        dotnet pack Material.Icons
-        dotnet pack Material.Icons.WPF
-        dotnet pack Material.Icons.Avalonia
+        dotnet build Material.Icons
+        dotnet build Material.Icons.WPF
+        dotnet build Material.Icons.Avalonia
     - run: shopt -s globstar
     - name: Publish to Nuget
       run: |
