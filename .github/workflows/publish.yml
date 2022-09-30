@@ -19,7 +19,7 @@ jobs:
       run: |
         dotnet pack Material.Icons
         dotnet pack Material.Icons.WPF
-        dotnet pack Material.Icons.Avalonia'
+        dotnet pack Material.Icons.Avalonia
     - run: shopt -s globstar
     - name: Publish to Nuget
       run: |
