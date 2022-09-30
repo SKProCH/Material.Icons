@@ -20,7 +20,6 @@ jobs:
         dotnet build Material.Icons
         dotnet build Material.Icons.WPF
         dotnet build Material.Icons.Avalonia
-    - run: shopt -s globstar
     - name: Publish to Nuget
       run: |
         dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
