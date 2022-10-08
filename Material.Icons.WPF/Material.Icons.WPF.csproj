@@ -14,6 +14,10 @@
     <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>material icons material-design google-material wpf</PackageTags>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <Version>1.2.0</Version>
+    <PackageReleaseNotes>- Remove hard coded Width, Height, HorizontalAlignment and VerticalAlignment from default wpf style</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>

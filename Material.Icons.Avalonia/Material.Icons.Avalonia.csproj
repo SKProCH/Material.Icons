@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>9</LangVersion>
+        <Nullable>enable</Nullable>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <Title>Material.Icons.Avalonia</Title>
+        <Authors>SKProCH</Authors>
+        <Description>Avalonia control for display material icons from Material.Icons</Description>
+        <PackageProjectUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/</PackageProjectUrl>
+        <PackageLicenseUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/blob/master/LICENSE</PackageLicenseUrl>
+        <RepositoryUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia.git</RepositoryUrl>
+        <RepositoryType>Git</RepositoryType>
+        <SignAssembly>True</SignAssembly>
+        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+        <PackageTags>material icons material-design google-material avalonia</PackageTags>
+        <PackageVersion>1.2.0</PackageVersion>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
+    </ItemGroup>
+</Project>
