@@ -2285,7 +2285,6 @@ namespace Material.Icons {
         StanleyKnife=BoxCutter,
         BoxCutterOff,
         BoxingGlove,
-        BoxLightDownHeavyUpHorizontal,
         BoxShadow,
         Braille,
         TouchReading=Braille,
