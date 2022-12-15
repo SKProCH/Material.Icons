@@ -9673,6 +9673,7 @@ namespace Material.Icons {
         Play,
         PlayArrow=Play,
         PlayBox,
+        PlayBoxEditOutline,
         PlayBoxLock,
         PlayBoxLockOpen,
         PlayBoxLockOpenOutline,
