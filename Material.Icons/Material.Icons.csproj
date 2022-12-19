@@ -11,8 +11,8 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.1.24</Version>
-        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Mon Dec 19 00:40:40 UTC 2022</PackageReleaseNotes>
+        <Version>1.1.25</Version>
+        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Mon Dec 19 12:16:21 UTC 2022</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />

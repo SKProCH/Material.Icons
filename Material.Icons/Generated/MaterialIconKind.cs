@@ -9184,6 +9184,7 @@ namespace Material.Icons {
         StopOutline=OctagonOutline,
         Octagram,
         OctagramOutline,
+        OctagramPlusOutline,
         Octahedron,
         OctahedronOff,
         Odnoklassniki,
