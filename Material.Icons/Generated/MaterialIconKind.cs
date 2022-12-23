@@ -11395,6 +11395,7 @@ namespace Material.Icons {
         EmoticonStar=StarFace,
         StarFourPoints,
         StarFourPointsOutline,
+        StarFourPointsSmall,
         StarHalf,
         FavoriteHalf=StarHalf,
         StarHalfFull,
