@@ -1518,7 +1518,6 @@ namespace Material.Icons {
         Wand=AutoFix,
         AutoFixHigh=AutoFix,
         AutoMode,
-        Automation=AutoMode,
         Autorenew,
         ClockwiseArrows=Autorenew,
         CircularArrows=Autorenew,
