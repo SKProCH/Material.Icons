@@ -15,7 +15,7 @@
         <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Fri Dec 30 00:44:23 UTC 2022</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Text.Json" Version="7.0.1" />
     </ItemGroup>
 
     <PropertyGroup>

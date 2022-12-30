@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Material.Icons {
     public class MaterialIconInfo {
@@ -8,26 +8,26 @@ namespace Material.Icons {
 
         public List<string> Aliases { get; set; }
 
-        [JsonProperty("id")]
+        [JsonPropertyName("id")]
         public string Id { get; set; }
 
-        [JsonProperty("name")]
+        [JsonPropertyName("name")]
         private string SourceName {
             set => Name = value?.Underscore().Pascalize();
         }
 
-        [JsonProperty("aliases")]
+        [JsonPropertyName("aliases")]
         private List<string> SourceAliases {
             set => Aliases = value.Select(s => s.Underscore().Pascalize()).ToList();
         }
 
-        [JsonProperty("data")]
+        [JsonPropertyName("data")]
         public string Data { get; set; }
 
-        [JsonProperty("user")]
+        [JsonPropertyName("user")]
         public MaterialIconUser User { get; set; }
 
-        [JsonProperty("commentCount")]
+        [JsonPropertyName("commentCount")]
         public long CommentCount { get; set; }
     }
 }

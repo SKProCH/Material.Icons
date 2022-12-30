@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
-using Newtonsoft.Json;
+using System.Text.Json.Serialization;
 
 namespace Material.Icons {
     internal class MetaMaterialIcons
     {
-        [JsonProperty("icons")]
+        [JsonPropertyName("icons")]
         public List<MaterialIconInfo> Icons { get; set; }
     }
 }
