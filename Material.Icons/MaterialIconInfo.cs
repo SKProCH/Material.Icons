@@ -1,33 +1,29 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json.Serialization;
 
 namespace Material.Icons {
     public class MaterialIconInfo {
-        public string Name { get; set; }
+        private string _name;
+        private List<string> _aliases;
+        
+        public string Name
+        {
+            get => _name;
+            set => _name = value?.Underscore().Pascalize();
+        }
 
-        public List<string> Aliases { get; set; }
-
-        [JsonPropertyName("id")]
+        public List<string> Aliases
+        {
+            get => _aliases;
+            set => _aliases = value.Select(s => s.Underscore().Pascalize()).ToList();
+        }
+        
         public string Id { get; set; }
-
-        [JsonPropertyName("name")]
-        private string SourceName {
-            set => Name = value?.Underscore().Pascalize();
-        }
-
-        [JsonPropertyName("aliases")]
-        private List<string> SourceAliases {
-            set => Aliases = value.Select(s => s.Underscore().Pascalize()).ToList();
-        }
-
-        [JsonPropertyName("data")]
+        
         public string Data { get; set; }
-
-        [JsonPropertyName("user")]
+        
         public MaterialIconUser User { get; set; }
-
-        [JsonPropertyName("commentCount")]
+        
         public long CommentCount { get; set; }
     }
 }
