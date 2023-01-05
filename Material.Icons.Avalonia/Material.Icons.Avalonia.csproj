@@ -14,10 +14,11 @@
         <SignAssembly>True</SignAssembly>
         <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
         <PackageTags>material icons material-design google-material avalonia</PackageTags>
-        <PackageVersion>1.2.0</PackageVersion>
+        <PackageVersion>1.2.1</PackageVersion>
+        <PackageReleaseNotes>Removed Newtonsoft.Json dependency</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.0-preview4" />
+        <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
