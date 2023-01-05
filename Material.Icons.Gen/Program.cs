@@ -40,7 +40,7 @@ namespace Material.Icons.Gen {
         public static void GenerateDataFactory(List<MaterialIconInfo> materialIconInfos) {
             var stringBuilder = new StringBuilder();
 
-            stringBuilder.AppendLine("using System;\nusing System.Collections.Generic;\nusing Newtonsoft.Json;\nusing Material.Icons;");
+            stringBuilder.AppendLine("using System;\nusing System.Collections.Generic;\nusing Material.Icons;");
             stringBuilder.AppendLine(
                 "namespace Material.Icons\n{\n    /// ******************************************\n    /// This code is auto generated. Do not amend.\n    /// ******************************************");
             stringBuilder.AppendLine(
@@ -51,13 +51,19 @@ namespace Material.Icons.Gen {
             }
 
             stringBuilder.AppendLine(
-                "         };\n\n        public static IDictionary<MaterialIconKind, MaterialIconInfo> InstanceSetCreate() => new Dictionary<MaterialIconKind, MaterialIconInfo> {");
+                "         };\n\n");
 
+            // Start InstanceSetCreate
+            stringBuilder.AppendLine(
+                "        public static IDictionary<MaterialIconKind, MaterialIconInfo> InstanceSetCreate() => new Dictionary<MaterialIconKind, MaterialIconInfo> {");
             foreach (var info in materialIconInfos) {
                 stringBuilder.AppendLine($"            {{MaterialIconKind.{info.Name}, {MaterialIconsMetaTools.SerializeIcon(info)}}},");
             }
 
-            stringBuilder.AppendLine("\n        };\n    }\n}");
+            stringBuilder.AppendLine("\n        };\n");
+            // End InstanceSetCreate
+            
+            stringBuilder.AppendLine("    }\n}");
 
             File.Delete("MaterialIconDataFactory.cs");
             File.WriteAllText("MaterialIconDataFactory.cs", stringBuilder.ToString());

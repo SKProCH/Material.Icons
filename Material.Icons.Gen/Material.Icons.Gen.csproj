@@ -2,27 +2,24 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net7.0</TargetFramework>
         <LangVersion>8</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
-      <Compile Include="..\Material.Icons\ExtensionMethods.cs">
-        <Link>Linked\ExtensionMethods.cs</Link>
-      </Compile>
-      <Compile Include="..\Material.Icons\MaterialIconInfo.cs">
-        <Link>Linked\MaterialIconInfo.cs</Link>
-      </Compile>
-      <Compile Include="..\Material.Icons\MaterialIconUser.cs">
-        <Link>Linked\MaterialIconUser.cs</Link>
-      </Compile>
-      <Compile Include="..\Material.Icons\MetaMaterialIcons.cs">
-        <Link>Linked\MetaMaterialIcons.cs</Link>
-      </Compile>
+        <Compile Include="..\Material.Icons\ExtensionMethods.cs">
+            <Link>Linked\ExtensionMethods.cs</Link>
+        </Compile>
+        <Compile Include="..\Material.Icons\MaterialIconInfo.cs">
+            <Link>Linked\MaterialIconInfo.cs</Link>
+        </Compile>
+        <Compile Include="..\Material.Icons\MaterialIconUser.cs">
+            <Link>Linked\MaterialIconUser.cs</Link>
+        </Compile>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+      <PackageReference Include="System.Text.Json" Version="7.0.1" />
     </ItemGroup>
 
 </Project>
