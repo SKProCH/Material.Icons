@@ -1,6 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>10</LangVersion>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Material.Icons</Title>
         <Authors>SKProCH</Authors>
@@ -20,23 +21,4 @@
         <SignAssembly>True</SignAssembly>
         <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
-
-    <Target Name="GenerateIcons" BeforeTargets="BeforeBuild">
-        <ItemGroup>
-            <Compile Remove="**/Generated/*.cs" />
-        </ItemGroup>
-        
-        <Message Text="$(SolutionDir)" />
-        <Exec Command="dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj" WorkingDirectory="$(SolutionDir)" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconDataFactory.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconDataFactory.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconDataFactory.cs" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconKind.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconKind.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconKind.cs" />
-        
-        <ItemGroup>
-            <Compile Include="**/Generated/*.cs" />
-        </ItemGroup>
-    </Target>
 </Project>

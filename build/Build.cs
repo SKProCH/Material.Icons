@@ -9,6 +9,7 @@ using Nuke.Common.Execution;
 using Nuke.Common.Git;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
+using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [CheckBuildProjectConfigurations]
@@ -52,11 +53,17 @@ class Build : NukeBuild {
     Target UpdateIcons => _ => _
         .Executes(async () =>
         {
-            var metaJson = await MaterialIconDataFactory.DownloadMetaJsonAsync();
-            var iconInfos = MaterialIconDataFactory.ParseMeta(metaJson).ToList();
-            
-            var destinationPath = Path.Combine(Solution.Directory!.ToString(), "Material.Icons", "Generated");
+            Log.Information("Downloading icons meta information");
+            var iconsEnumerable = await MaterialIconsMetaTools.GetIcons();
+            var iconInfos = iconsEnumerable.ToList();
+
+            var destinationPath = Solution.Directory / "Material.Icons" / "Generated";
+            Log.Information("Writing icons meta information to {DestinationPath}", destinationPath);
+
+            Log.Information("Writing kinds enum");
             File.WriteAllText(Path.Combine(destinationPath, "MaterialIconKind.cs"), GenerateIconKinds(iconInfos));
+
+            Log.Information("Writing data factory");
             File.WriteAllText(Path.Combine(destinationPath, "MaterialIconDataFactory.cs"), GenerateDataFactory(iconInfos));
         })
         .Triggers(Compile);
@@ -95,7 +102,6 @@ class Build : NukeBuild {
         stringBuilder.AppendLine("using System;");
         stringBuilder.AppendLine("using System.Collections.Generic;");
         stringBuilder.AppendLine("using System.Collections.ObjectModel;");
-        stringBuilder.AppendLine("using Newtonsoft.Json;");
         stringBuilder.AppendLine("using Material.Icons;");
         stringBuilder.AppendLine("");
         stringBuilder.AppendLine("namespace Material.Icons;");
