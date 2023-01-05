@@ -1,35 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+using System.Net.Http;
+using System.Text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-namespace Material.Icons {
-    public static partial class MaterialIconDataFactory {
-        public const string IconsMetaUrl = "https://materialdesignicons.com/api/package/38EF63D0-4744-11E4-B3CF-842B2B6CFE1B";
-        /// <summary>
-        /// Download actual info from materialdesignicons.com
-        /// </summary>
-        /// <returns>Json with data</returns>
-        public static async Task<string> DownloadMetaJsonAsync() {
-            var response = await WebRequest.CreateHttp(new Uri(IconsMetaUrl)).GetResponseAsync();
-            using var streamReader = new StreamReader(response.GetResponseStream()!);
-            return await streamReader.ReadToEndAsync();
-        }
-
-        /// <summary>
-        /// Parses meta json from materialdesignicons.com
-        /// </summary>
-        /// <example>
-        /// MaterialIconDataFactory.ParseMeta(await MaterialIconDataFactory.DownloadMetaJsonAsync());
-        /// </example>
-        /// <param name="metaJson">Input json</param>
-        /// <returns>Collection of icons</returns>
-        public static IEnumerable<MaterialIconInfo> ParseMeta(string metaJson) {
-            var icons = JsonConvert.DeserializeObject<MetaMaterialIcons>(metaJson).Icons;
+namespace Material.Icons.Gen {
+    public static class MaterialIconsMetaTools {
+        public static IEnumerable<MaterialIconInfo> GetIcons() {
+            using var webClient = new HttpClient();
+            var dataString = webClient.GetStringAsync("https://materialdesignicons.com/api/package/38EF63D0-4744-11E4-B3CF-842B2B6CFE1B").Result;
+            var data = JsonSerializer.Deserialize<MetaMaterialIcons>(dataString, new JsonSerializerOptions
+            {
+                PropertyNameCaseInsensitive = true
+            });
+            var icons = data.Icons;
             var iconsByName = new Dictionary<string, MaterialIconInfo>(StringComparer.OrdinalIgnoreCase);
             foreach (var icon in icons.Where(icon => !iconsByName.ContainsKey(icon.Name))) {
                 iconsByName.Add(icon.Name, icon);
@@ -55,6 +42,26 @@ namespace Material.Icons {
             static bool IsValidIdentifier(string identifier) {
                 return identifier?.Length > 0 && (char.IsLetter(identifier[0]) || identifier[0] == '_');
             }
+        }
+
+        public static string SerializeIcon(MaterialIconInfo iconInfo) {
+            var builder = new StringBuilder("new MaterialIconInfo { ");
+
+            builder.Append($"Name = \"{iconInfo.Name}\", ");
+            builder.Append($"Id = \"{iconInfo.Id}\", ");
+            builder.Append($"Data = \"{iconInfo.Data}\", ");
+
+            builder.Append("Aliases = new List<string> { ");
+            foreach (var iconAlias in iconInfo.Aliases) {
+                builder.Append($"\"{iconAlias}\", ");
+            }
+
+            builder.Append(" }, ");
+
+            builder.Append($"User = new MaterialIconUser {{ Id = \"{iconInfo.User.Id}\", Name = \"{iconInfo.User.Name}\" }}");
+
+            builder.Append(" }");
+            return builder.ToString();
         }
     }
 }
