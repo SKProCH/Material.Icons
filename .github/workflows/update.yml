@@ -14,9 +14,9 @@ jobs:
         with:
           persist-credentials: false
       - name: Setup .NET
-        uses: actions/setup-dotnet@v1
+        uses: actions/setup-dotnet@v3
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: 7
       - name: Run generator project
         run: dotnet build Material.Icons
       - name: Check if there changes
