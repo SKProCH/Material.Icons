@@ -11,8 +11,8 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.1.32</Version>
-        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Wed Jan  4 00:44:29 UTC 2023</PackageReleaseNotes>
+        <Version>1.1.33</Version>
+        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Fri Jan 13 00:46:35 UTC 2023</PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup>
