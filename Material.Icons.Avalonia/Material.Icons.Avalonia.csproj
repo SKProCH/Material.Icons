@@ -14,9 +14,17 @@
         <SignAssembly>True</SignAssembly>
         <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
         <PackageTags>material icons material-design google-material avalonia</PackageTags>
-        <PackageVersion>1.2.1</PackageVersion>
-        <PackageReleaseNotes>Removed Newtonsoft.Json dependency</PackageReleaseNotes>
+        <PackageVersion>1.2.2</PackageVersion>
+        <PackageReleaseNotes>Fixes no precompiled xaml for styles</PackageReleaseNotes>
     </PropertyGroup>
+    <ItemGroup>
+        <Compile Update="**\*.xaml.cs">
+            <DependentUpon>%(Filename)</DependentUpon>
+        </Compile>
+        <AvaloniaResource Include="**\*.xaml">
+            <SubType>Designer</SubType>
+        </AvaloniaResource>
+    </ItemGroup>
     <ItemGroup>
         <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
     </ItemGroup>
