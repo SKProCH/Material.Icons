@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-        xmlns:demo="clr-namespace:Material.Icons.Avalonia.Demo"
         xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
         xmlns:models="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
         xmlns:models1="clr-namespace:Material.Icons.Avalonia.Demo.Models"
@@ -28,8 +27,8 @@
     <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="*, Auto">
         <ScrollViewer Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Disabled">
-            <ItemsRepeater Items="{Binding Kinds}"
-                           HorizontalAlignment="Center">
+          <ItemsRepeater Items="{Binding Kinds}"
+                         HorizontalAlignment="Center">
                 <ItemsRepeater.Layout>
                     <UniformGridLayout />
                 </ItemsRepeater.Layout>
@@ -48,7 +47,7 @@
                                         DockPanel.Dock="Bottom"
                                         FontSize="10"
                                         HorizontalAlignment="Center" />
-
+            
                                     <avalonia:MaterialIcon
                                         Kind="{Binding Kind}"
                                         VerticalAlignment="Center"
