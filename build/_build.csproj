@@ -14,16 +14,4 @@
     <PackageReference Include="Nuke.Common" Version="6.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Compile Include="..\Material.Icons\ExtensionMethods.cs">
-      <Link>Meta\ExtensionMethods.cs</Link>
-    </Compile>
-    <Compile Include="..\Material.Icons\MaterialIconInfo.cs">
-      <Link>Meta\MaterialIconInfo.cs</Link>
-    </Compile>
-    <Compile Include="..\Material.Icons\MaterialIconUser.cs">
-      <Link>Meta\MaterialIconUser.cs</Link>
-    </Compile>
-  </ItemGroup>
-
 </Project>

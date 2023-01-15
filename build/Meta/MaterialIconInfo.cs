@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Material.Icons {
+namespace Meta {
     public class MaterialIconInfo {
         private string _name;
         private List<string> _aliases;

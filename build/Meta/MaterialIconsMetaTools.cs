@@ -4,7 +4,8 @@ using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
-using Material.Icons;
+namespace Meta; 
+
 public static class MaterialIconsMetaTools {
     static readonly HttpClient HttpClient = new();
     const string MaterialIconsFetchApi = "https://materialdesignicons.com/api/package/38EF63D0-4744-11E4-B3CF-842B2B6CFE1B";

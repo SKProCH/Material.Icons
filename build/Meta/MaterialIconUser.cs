@@ -1,6 +1,6 @@
 ﻿
 
-namespace Material.Icons {
+namespace Meta {
     public class MaterialIconUser
     {
         public string Id { get; set; }

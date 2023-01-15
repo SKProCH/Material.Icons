@@ -1,6 +1,6 @@
 ﻿using System.Text.RegularExpressions;
 
-namespace Material.Icons {
+namespace Meta {
     internal static class ExtensionMethods {
         /// <summary>
         /// Separates the input words with underscore
