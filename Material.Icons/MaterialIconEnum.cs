@@ -3,7 +3,7 @@ namespace Material.Icons;
 /// This code is auto generated. Do not amend.
 /// ******************************************
 /// <summary>
-/// List of available icons.
+/// List of available icon kinds
 /// </summary>
 /// <remarks>
 /// All icons sourced from Material Design Icons Font - https://materialdesignicons.com/ - in accordance of 
