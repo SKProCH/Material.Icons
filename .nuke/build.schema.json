@@ -74,6 +74,7 @@
             "enum": [
               "Clean",
               "Compile",
+              "GhIfNeededBumpVersionAndCommit",
               "Restore",
               "UpdateIcons"
             ]
@@ -91,6 +92,7 @@
             "enum": [
               "Clean",
               "Compile",
+              "GhIfNeededBumpVersionAndCommit",
               "Restore",
               "UpdateIcons"
             ]

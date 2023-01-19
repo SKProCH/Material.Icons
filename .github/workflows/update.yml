@@ -13,36 +13,11 @@ jobs:
       - uses: actions/checkout@v2
         with:
           persist-credentials: false
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7
       - name: Run generator project
-        run: dotnet build Material.Icons
-      - name: Check if there changes
-        id: state
-        run: echo '::set-output name=diff::'$([[ -n $(git status -s) ]] ; echo $?)
-      - name: Read version
-        if: steps.state.outputs.diff == 0
-        id: getversion
-        run: echo '::set-output name=version::'$(grep '(?<=<Version>).*(?=<\/Version>)' Material.Icons/Material.Icons.csproj -P -o)
-      - name: Upgrade version
-        if: steps.state.outputs.diff == 0
-        id: bsv
-        uses: jessicalostinspace/bump-semantic-version-action@v1.0.1
-        with:
-          semantic-version: ${{steps.getversion.outputs.version}}
-          version-type: 'PATCH'
-      - name: Set release version
-        if: steps.state.outputs.diff == 0
-        run: sed -i 's/<Version>${{steps.getversion.outputs.version}}/<Version>${{steps.bsv.outputs.bumped-semantic-version}}/' Material.Icons/Material.Icons.csproj
-      - name: Set release note
-        if: steps.state.outputs.diff == 0
-        run: sed -i "s/<PackageReleaseNotes>.*<\/PackageReleaseNotes>/<PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at $(date)<\/PackageReleaseNotes>/" Material.Icons/Material.Icons.csproj
-      - name: Commit and push
-        if: steps.state.outputs.diff == 0
+        run: nuke GhUpdateIconsWorkflow
+      - name: Push changes (if any)
         uses: actions-js/push@master
         with:
-          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
-          message: 'Icons collection update'
-          branch: 'master'
+            github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+            message: 'Icons collection update ✨'
+            branch: 'master'            
