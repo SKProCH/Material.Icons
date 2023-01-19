@@ -20,6 +20,7 @@ public class SwitchRegularStringGenerator {
         stringBuilder.AppendLine("using System;");
         stringBuilder.AppendLine("using System.Collections.Generic;");
         stringBuilder.AppendLine("using System.Collections.ObjectModel;");
+        stringBuilder.AppendLine("using System.Runtime.CompilerServices;");
         stringBuilder.AppendLine("using Material.Icons;");
         stringBuilder.AppendLine("");
         stringBuilder.AppendLine("namespace Material.Icons;");
@@ -27,6 +28,7 @@ public class SwitchRegularStringGenerator {
         stringBuilder.AppendLine("/// This code is auto generated. Do not amend.");
         stringBuilder.AppendLine("/// ******************************************");
         stringBuilder.AppendLine("public partial class MaterialIconDataProvider {");
+        stringBuilder.AppendLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
         stringBuilder.AppendLine("    public virtual partial string ProvideData(MaterialIconKind kind) {");
         stringBuilder.AppendLine("        return kind switch {");
 
