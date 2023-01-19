@@ -12,8 +12,13 @@
         <RepositoryType>Git</RepositoryType>
         <PackageTags>material icons material-design google-material</PackageTags>
         <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.1.33</Version>
-        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Fri Jan 13 00:46:35 UTC 2023</PackageReleaseNotes>
+        <Version>2.0.0-preview1</Version>
+        <PackageReleaseNotes>
+- Reimplement API of resolving icons paths
+- Instead of dictionary use switch for resolving icons paths (lookup perfomance identical, but no need to initialize dictionary)
+- Current API allows to create another ways of resolving icons paths (in theory)
+- Migrate all build processes to nuke
+        </PackageReleaseNotes>
     </PropertyGroup>
 
     <PropertyGroup>
