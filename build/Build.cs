@@ -77,7 +77,7 @@ partial class Build : NukeBuild {
 
             MaterialIconKindEnumGenerator.Write(destinationPath, iconInfos);
             MaterialIconDataDeclarationGenerator.Write(destinationPath);
-            Switch8uStringsGenerator.Write(destinationPath, iconInfos);
+            SwitchRegularStringGenerator.Write(destinationPath, iconInfos);
         })
         .Triggers(Compile);
 

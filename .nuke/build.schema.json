@@ -72,13 +72,17 @@
           "items": {
             "type": "string",
             "enum": [
-              "Clean",
               "Compile",
-              "GhIfNeededBumpVersionAndCommit",
+              "GhBumpVersionIfNeeded",
+              "GhUpdateIconsWorkflow",
               "Restore",
               "UpdateIcons"
             ]
           }
+        },
+        "SkipWpfCompilation": {
+          "type": "boolean",
+          "description": "Should we skip compilation of WPF projects. In non windows systems this is enabled by default"
         },
         "Solution": {
           "type": "string",
@@ -90,9 +94,9 @@
           "items": {
             "type": "string",
             "enum": [
-              "Clean",
               "Compile",
-              "GhIfNeededBumpVersionAndCommit",
+              "GhBumpVersionIfNeeded",
+              "GhUpdateIconsWorkflow",
               "Restore",
               "UpdateIcons"
             ]

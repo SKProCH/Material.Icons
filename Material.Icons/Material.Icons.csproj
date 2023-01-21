@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <LangVersion>11</LangVersion>
-        <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <Title>Material.Icons</Title>
         <Authors>SKProCH</Authors>
@@ -26,8 +26,4 @@
         <SignAssembly>True</SignAssembly>
         <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     </PropertyGroup>
-
-    <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
-      <PackageReference Include="System.Memory" Version="4.5.5" />
-    </ItemGroup>
 </Project>
