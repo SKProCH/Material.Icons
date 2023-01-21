@@ -3,17 +3,17 @@ using System.Windows.Markup;
 
 namespace Material.Icons.WPF {
     [MarkupExtensionReturnType(typeof(MaterialIcon))]
-    public class PackIconExtension : MarkupExtension
+    public class MaterialIconExt : MarkupExtension
     {
-        public PackIconExtension()
+        public MaterialIconExt()
         { }
 
-        public PackIconExtension(MaterialIconKind kind)
+        public MaterialIconExt(MaterialIconKind kind)
         {
             Kind = kind;
         }
 
-        public PackIconExtension(MaterialIconKind kind, double size)
+        public MaterialIconExt(MaterialIconKind kind, double size)
         {
             Kind = kind;
             Size = size;
