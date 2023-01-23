@@ -7,8 +7,6 @@ using System.Windows.Media;
 
 namespace Material.Icons.WPF {
     public class MaterialIcon : Control {
-        private static readonly Lazy<IDictionary<MaterialIconKind, string>> _dataIndex = new(MaterialIconDataFactory.DataSetCreate);
-
         static MaterialIcon() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MaterialIcon), new FrameworkPropertyMetadata(typeof(MaterialIcon)));
         }
@@ -50,9 +48,7 @@ namespace Material.Icons.WPF {
         }
 
         private void UpdateData() {
-            string? data = null;
-            _dataIndex.Value?.TryGetValue(Kind, out data);
-            Data = data;
+            Data = MaterialIconDataProvider.GetData(Kind);
         }
     }
 }

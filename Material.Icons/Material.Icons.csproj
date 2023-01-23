@@ -1,42 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>Material.Icons</Title>
-        <Authors>SKProCH</Authors>
-        <Description>Parsed icons set from materialdesignicons.com</Description>
-        <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-        <PackageTags>material icons material-design google-material</PackageTags>
-        <RootNamespace>Material.Icons</RootNamespace>
-        <Version>1.1.35</Version>
-        <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Sat Jan 21 12:35:18 UTC 2023</PackageReleaseNotes>
-    </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>11</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Material.Icons</Title>
+    <Authors>SKProCH</Authors>
+    <Description>Parsed icons set from materialdesignicons.com</Description>
+    <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>material icons material-design google-material</PackageTags>
+    <RootNamespace>Material.Icons</RootNamespace>
+    <Version>2.0.0-preview1</Version>
+    <PackageReleaseNotes>
+- Reimplement API of resolving icons paths
+- Instead of dictionary use switch for resolving icons paths (lookup perfomance identical, but no need to initialize dictionary)
+- Current API allows to create another ways of resolving icons paths (in theory)
+- Migrate all build processes to nuke
+    </PackageReleaseNotes>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">../</SolutionDir>
-        <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    </PropertyGroup>
-
-    <Target Name="GenerateIcons" BeforeTargets="BeforeBuild">
-        <ItemGroup>
-            <Compile Remove="**/Generated/*.cs" />
-        </ItemGroup>
-        
-        <Message Text="$(SolutionDir)" />
-        <Exec Command="dotnet run --configuration Release --project Material.Icons.Gen/Material.Icons.Gen.csproj" WorkingDirectory="$(SolutionDir)" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconDataFactory.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconDataFactory.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconDataFactory.cs" />
-        
-        <Copy SourceFiles="$(SolutionDir)MaterialIconKind.cs" DestinationFiles="$(SolutionDir)Material.Icons/Generated/MaterialIconKind.cs" />
-        <Delete Files="$(SolutionDir)MaterialIconKind.cs" />
-        
-        <ItemGroup>
-            <Compile Include="**/Generated/*.cs" />
-        </ItemGroup>
-    </Target>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>

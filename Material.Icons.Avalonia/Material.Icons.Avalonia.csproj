@@ -1,34 +1,39 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <LangVersion>9</LangVersion>
-        <Nullable>enable</Nullable>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>Material.Icons.Avalonia</Title>
-        <Authors>SKProCH</Authors>
-        <Description>Avalonia control for display material icons from Material.Icons</Description>
-        <PackageProjectUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/blob/master/LICENSE</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia.git</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-        <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-        <PackageTags>material icons material-design google-material avalonia</PackageTags>
-        <PackageVersion>1.2.2</PackageVersion>
-        <PackageReleaseNotes>Fixes no precompiled xaml for styles</PackageReleaseNotes>
-    </PropertyGroup>
-    <ItemGroup>
-        <Compile Update="**\*.xaml.cs">
-            <DependentUpon>%(Filename)</DependentUpon>
-        </Compile>
-        <AvaloniaResource Include="**\*.xaml">
-            <SubType>Designer</SubType>
-        </AvaloniaResource>
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
-    </ItemGroup>
-    <ItemGroup>
-        <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
-    </ItemGroup>
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Material.Icons.Avalonia</Title>
+    <Authors>SKProCH</Authors>
+    <Description>Avalonia control for display material icons from Material.Icons</Description>
+    <PackageProjectUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <PackageTags>material icons material-design google-material avalonia</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageVersion>2.0.0-preview1</PackageVersion>
+    <PackageReleaseNotes>- Migrate to new API of resolving icons paths</PackageReleaseNotes>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <Compile Update="**\*.xaml.cs">
+      <DependentUpon>%(Filename)</DependentUpon>
+    </Compile>
+    <AvaloniaResource Include="**\*.xaml">
+      <SubType>Designer</SubType>
+    </AvaloniaResource>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.0.0-preview1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
+  </ItemGroup>
 </Project>

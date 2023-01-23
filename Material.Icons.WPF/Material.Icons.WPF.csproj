@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <UseWPF>true</UseWPF>
-    <TargetFrameworks>net461;netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net461;netcoreapp3.1;net6.0-windows;net7.0-windows</TargetFrameworks>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -10,15 +10,20 @@
     <Authors>SKProCH</Authors>
     <Description>WPF control for display material icons from Material.Icons</Description>
     <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>1.2.0</Version>
-    <PackageReleaseNotes>- Remove hard coded Width, Height, HorizontalAlignment and VerticalAlignment from default wpf style</PackageReleaseNotes>
+    <Version>2.0.0-preview1</Version>
+    <PackageReleaseNotes>- Migrate to new API of resolving icons paths</PackageReleaseNotes>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
