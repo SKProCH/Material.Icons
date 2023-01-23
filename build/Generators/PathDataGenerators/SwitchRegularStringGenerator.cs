@@ -8,13 +8,13 @@ using Serilog;
 namespace Generators.PathDataGenerators; 
 
 public class SwitchRegularStringGenerator {
-    public static void Write(AbsolutePath destinationPath, IEnumerable<MaterialIconInfo> iconInfos) {
+    public static void Write(AbsolutePath destinationPath, IEnumerable<IconInfo> iconInfos) {
         var path = destinationPath / "MaterialIconDataProvider.PathData.cs";
         Log.Information("Writing enum data to {Path}", path);
         File.WriteAllText(path, GenerateIconKinds(iconInfos));
     }
 
-    private static string GenerateIconKinds(IEnumerable<MaterialIconInfo> materialIconInfos) {
+    private static string GenerateIconKinds(IEnumerable<IconInfo> materialIconInfos) {
         var stringBuilder = new StringBuilder();
 
         stringBuilder.AppendLine("using System;");
@@ -42,6 +42,6 @@ public class SwitchRegularStringGenerator {
 
         return stringBuilder.ToString();
     }
-    static string GetSwitchLine(MaterialIconInfo materialIcon) =>
+    static string GetSwitchLine(IconInfo materialIcon) =>
         $"MaterialIconKind.{materialIcon.Name} => \"{materialIcon.Data}\"";
 }
