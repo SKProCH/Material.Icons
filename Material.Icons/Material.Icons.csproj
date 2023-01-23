@@ -7,7 +7,7 @@
     <Authors>SKProCH</Authors>
     <Description>Parsed icons set from materialdesignicons.com</Description>
     <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <SignAssembly>True</SignAssembly>

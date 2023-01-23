@@ -17,9 +17,9 @@ jobs:
         dotnet-version: 7
     - name: Build and Pack
       run: |
-        dotnet build Material.Icons
-        dotnet build Material.Icons.WPF
-        dotnet build Material.Icons.Avalonia
+        dotnet build Material.Icons -c Release
+        dotnet build Material.Icons.WPF -c Release
+        dotnet build Material.Icons.Avalonia -c Release
     - name: Publish to Nuget
       run: |
         dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
