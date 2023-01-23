@@ -48,22 +48,10 @@ partial class Build : NukeBuild {
     Target Compile => _ => _
         .DependsOn(Restore)
         .Executes(() => {
-            if (Environment.OSVersion.Platform == PlatformID.Win32NT && !SkipWpfCompilation) {
-                Log.Information("Due to running on Windows and SkipWpfCompilation=False, we will compile the whole solution");
-                ExecuteBuildFor(Solution);
-            }
-            else {
-                ExecuteBuildFor("Material.Icons");
-                ExecuteBuildFor("Material.Icons.Avalonia");
-                ExecuteBuildFor("Material.Icons.Avalonia.Demo");
-            }
-            
-            void ExecuteBuildFor(string projectFile) {
-                DotNetBuild(s => s
-                    .SetProjectFile(projectFile)
-                    .SetConfiguration(Configuration)
-                    .EnableNoRestore());
-            }
+            DotNetBuild(s => s
+                .SetProjectFile(Solution)
+                .SetConfiguration(Configuration)
+                .EnableNoRestore());
         });
 
     Target UpdateIcons => _ => _
