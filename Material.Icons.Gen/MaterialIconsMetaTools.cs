@@ -11,7 +11,7 @@ namespace Material.Icons.Gen {
     public static class MaterialIconsMetaTools {
         public static IEnumerable<MaterialIconInfo> GetIcons() {
             using var webClient = new HttpClient();
-            var dataString = webClient.GetStringAsync("https://materialdesignicons.com/api/package/38EF63D0-4744-11E4-B3CF-842B2B6CFE1B").Result;
+            var dataString = webClient.GetStringAsync("https://dev.materialdesignicons.com/api/package/38EF63D0-4744-11E4-B3CF-842B2B6CFE1B").Result;
             var data = JsonSerializer.Deserialize<MetaMaterialIcons>(dataString, new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
