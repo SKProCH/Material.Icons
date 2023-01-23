@@ -85,9 +85,12 @@ partial class Build : NukeBuild {
         .Executes(() => {
             var project = Solution.GetProject("Material.Icons").GetMSBuildProject();
 
-            var version = Version.Parse(project.GetProperty("Version").EvaluatedValue);
+            var versionString = project.GetProperty("Version").EvaluatedValue;
+            var versionParts = versionString.Split('-');
+            var version = Version.Parse(versionParts[0]);
             var newVersion = new Version(version.Major, version.Minor, version.Build + 1);
-            project.SetProperty("Version", newVersion.ToString());
+            var newVersionString = string.Join('-', versionParts.Skip(1).Prepend(newVersion.ToString()));
+            project.SetProperty("Version", newVersionString);
 
             var currentTime = DateTime.UtcNow.ToString("R", CultureInfo.InvariantCulture);
             var newReleaseNotes = $"- Icons set updated according to materialdesignicons.com at {currentTime}{Environment.NewLine}"
