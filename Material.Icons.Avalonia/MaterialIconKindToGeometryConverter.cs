@@ -7,7 +7,7 @@ using Avalonia.Media;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconKindToGeometryConverter : IValueConverter {
-        public virtual object Convert(object? value, Type targetType, object? parameter, CultureInfo culture) {
+        public object Convert(object? value, Type targetType, object? parameter, CultureInfo culture) {
             if (value is MaterialIconKind kind) {
                 return Geometry.Parse(MaterialIconDataProvider.GetData(kind));
             }
