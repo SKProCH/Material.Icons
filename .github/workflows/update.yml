@@ -14,7 +14,7 @@ jobs:
         with:
           persist-credentials: false
       - name: Run generator project
-        run: nuke GhUpdateIconsWorkflow
+        run: ./build.sh GhUpdateIconsWorkflow
       - name: Push changes (if any)
         uses: actions-js/push@master
         with:
