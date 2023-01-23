@@ -1,29 +1,30 @@
 <Project Sdk="Microsoft.NET.Sdk">
-    <PropertyGroup>
-        <LangVersion>11</LangVersion>
-        <TargetFramework>netstandard2.0</TargetFramework>
-        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Title>Material.Icons</Title>
-        <Authors>SKProCH</Authors>
-        <Description>Parsed icons set from materialdesignicons.com</Description>
-        <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
-        <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
-        <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
-        <RepositoryType>Git</RepositoryType>
-        <PackageTags>material icons material-design google-material</PackageTags>
-        <RootNamespace>Material.Icons</RootNamespace>
-        <Version>2.0.0-preview1</Version>
-        <PackageReleaseNotes>
+  <PropertyGroup>
+    <LangVersion>11</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>Material.Icons</Title>
+    <Authors>SKProCH</Authors>
+    <Description>Parsed icons set from materialdesignicons.com</Description>
+    <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
+    <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>material icons material-design google-material</PackageTags>
+    <RootNamespace>Material.Icons</RootNamespace>
+    <Version>2.0.0-preview1</Version>
+    <PackageReleaseNotes>
 - Reimplement API of resolving icons paths
 - Instead of dictionary use switch for resolving icons paths (lookup perfomance identical, but no need to initialize dictionary)
 - Current API allows to create another ways of resolving icons paths (in theory)
 - Migrate all build processes to nuke
-        </PackageReleaseNotes>
-    </PropertyGroup>
+    </PackageReleaseNotes>
+  </PropertyGroup>
 
-    <PropertyGroup>
-        <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">../</SolutionDir>
-        <SignAssembly>True</SignAssembly>
-        <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    </PropertyGroup>
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 </Project>

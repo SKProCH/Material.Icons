@@ -11,6 +11,7 @@
     <Description>WPF control for display material icons from Material.Icons</Description>
     <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/SKProCH/Material.Icons/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <PackageTags>material icons material-design google-material wpf</PackageTags>
@@ -19,6 +20,10 @@
     <Version>2.0.0-preview1</Version>
     <PackageReleaseNotes>- Migrate to new API of resolving icons paths</PackageReleaseNotes>
   </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
