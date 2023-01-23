@@ -16,6 +16,7 @@ using Nuke.Common.Git;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.Git;
+using Nuke.Common.Utilities.Collections;
 using Serilog;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 // ReSharper disable InconsistentNaming
@@ -41,17 +42,23 @@ partial class Build : NukeBuild {
 
     Target Restore => _ => _
         .Executes(() => {
-            DotNetRestore(s => s
-                .SetProjectFile(Solution));
+            GetBuildTargets().ForEach(ExecuteRestoreFor);
+            void ExecuteRestoreFor(string projectFile) {
+                DotNetRestore(s => s
+                    .SetProjectFile(projectFile));
+            }
         });
 
     Target Compile => _ => _
         .DependsOn(Restore)
         .Executes(() => {
-            DotNetBuild(s => s
-                .SetProjectFile(Solution)
-                .SetConfiguration(Configuration)
-                .EnableNoRestore());
+            GetBuildTargets().ForEach(ExecuteBuildFor);
+            void ExecuteBuildFor(string projectFile) {
+                DotNetBuild(s => s
+                    .SetProjectFile(projectFile)
+                    .SetConfiguration(Configuration)
+                    .EnableNoRestore());
+            }
         });
 
     Target UpdateIcons => _ => _
