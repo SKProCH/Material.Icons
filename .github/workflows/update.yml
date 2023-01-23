@@ -21,7 +21,7 @@ jobs:
                 ~/.nuget/packages
             key: ${{ runner.os }}-${{ hashFiles('**/global.json', '**/*.csproj') }}
       - name: Run generator project
-        run: chmod +x build.sh && ./build.sh GhUpdateIconsWorkflow
+        run: ./build.sh GhUpdateIconsWorkflow
       - name: Push changes (if any)
         uses: actions-js/push@master
         with:
