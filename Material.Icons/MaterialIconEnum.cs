@@ -12787,6 +12787,7 @@ public enum MaterialIconKind {
     ViewGallery,
     ViewGalleryOutline,
     ViewGrid,
+    ViewGridCompact,
     ViewGridOutline,
     ViewGridPlus,
     ViewGridAdd=ViewGridPlus,
