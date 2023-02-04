@@ -12354,6 +12354,7 @@ public enum MaterialIconKind {
     Tortoise,
     Toslink,
     OpticalAudio=Toslink,
+    TouchTextOutline,
     Tournament,
     Bracket=Tournament,
     TowerBeach,
