@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Markup.Xaml.MarkupExtensions;
+using Avalonia.Markup.Xaml.Styling;
 using Avalonia.Styling;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconStyles : AvaloniaObject, IStyle, IResourceProvider {
-        private readonly ResourceInclude _materialIconResources = new() { Source = new Uri("avares://Material.Icons.Avalonia/MaterialIcon.axaml") };
+        private readonly ResourceInclude _materialIconResources = new(default(Uri?)) { Source = new Uri("avares://Material.Icons.Avalonia/MaterialIcon.axaml") };
         /// <inheritdoc />
-        public bool TryGetResource(object key, out object? value) {
-            return _materialIconResources.Loaded.TryGetResource(key, out value);
+        public bool TryGetResource(object key, ThemeVariant? theme, out object? value) {
+            return _materialIconResources.Loaded.TryGetResource(key, theme, out value);
         }
 
         /// <inheritdoc />

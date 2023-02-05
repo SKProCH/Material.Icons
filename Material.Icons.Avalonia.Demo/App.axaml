@@ -3,13 +3,14 @@
              xmlns:local="clr-namespace:Material.Icons.Avalonia.Demo"
              xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
              xmlns:controls="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
-             x:Class="Material.Icons.Avalonia.Demo.App">
+             x:Class="Material.Icons.Avalonia.Demo.App"
+             RequestedThemeVariant="Dark">
   <Application.DataTemplates>
     <local:ViewLocator />
   </Application.DataTemplates>
 
   <Application.Styles>
-    <SimpleTheme Mode="Dark" />
+    <SimpleTheme />
     <avalonia:MaterialIconStyles />
     <Style Selector="controls|SelectionWrapper">
       <Setter Property="Template">
