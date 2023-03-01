@@ -9,6 +9,7 @@ using Generators;
 using Generators.PathDataGenerators;
 using Meta;
 using Microsoft.Build.Evaluation;
+using NuGet.Versioning;
 using Nuke.Common;
 using Nuke.Common.CI;
 using Nuke.Common.Execution;
@@ -86,11 +87,8 @@ partial class Build : NukeBuild {
             var project = Solution.GetProject("Material.Icons").GetMSBuildProject();
 
             var versionString = project.GetProperty("Version").EvaluatedValue;
-            var versionParts = versionString.Split('-');
-            var version = Version.Parse(versionParts[0]);
-            var newVersion = new Version(version.Major, version.Minor, version.Build + 1);
-            var newVersionString = string.Join('-', versionParts.Skip(1).Prepend(newVersion.ToString()));
-            project.SetProperty("Version", newVersionString);
+            var newVersion = NuGetVersion.Parse(versionString).BumpLastVersion();
+            project.SetProperty("Version", newVersion.ToString());
 
             var currentTime = DateTime.UtcNow.ToString("R", CultureInfo.InvariantCulture);
             var newReleaseNotes = $"- Icons set updated according to materialdesignicons.com at {currentTime}{Environment.NewLine}"
