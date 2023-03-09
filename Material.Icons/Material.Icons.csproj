@@ -15,8 +15,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>material icons material-design google-material</PackageTags>
     <RootNamespace>Material.Icons</RootNamespace>
-    <Version>2.0.0-preview1.2</Version>
-    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 02 Mar 2023 00:54:00 GMT
+    <Version>2.0.0-preview1.3</Version>
+    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 09 Mar 2023 12:19:09 GMT
 Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
   </PropertyGroup>
 
