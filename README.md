@@ -26,13 +26,22 @@ This project consists of 3 parts:
     ```
    [![avalonia-nuget](https://img.shields.io/nuget/v/Material.Icons.Avalonia?label=Material.Icons.Avalonia&style=flat-square)][avalonia-nuget]
    [![avalonia-nuget](https://img.shields.io/nuget/dt/Material.Icons.Avalonia?color=blue&label=Downloads&style=flat-square)][avalonia-nuget]
-2. Include styles in `App.xaml`
+2. Include styles in `App.xaml` (for `2.0.0` version and higher):
     ```xaml
     <Application xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia" 
                  ...>
       <Application.Styles>
         ...
         <materialIcons:MaterialIconStyles />
+      </Application.Styles>
+    </Application>
+    ```
+    For `1.*.*`:
+    ```xaml
+    <Application ...>
+      <Application.Styles>
+        ...
+        <StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml" />
       </Application.Styles>
     </Application>
     ```
