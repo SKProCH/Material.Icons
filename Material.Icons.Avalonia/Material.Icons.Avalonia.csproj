@@ -15,7 +15,7 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageVersion>2.0.0-preview3</PackageVersion>
+    <PackageVersion>2.0.0</PackageVersion>
     <PackageReleaseNotes>
       - Migrate to new API of resolving icons paths
       - Change KindProperty to styled property
