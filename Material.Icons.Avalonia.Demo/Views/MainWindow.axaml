@@ -27,7 +27,7 @@
     <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="*, Auto">
         <ScrollViewer Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Disabled">
-          <ItemsRepeater Items="{Binding Kinds}"
+          <ItemsRepeater ItemsSource="{Binding Kinds}"
                          HorizontalAlignment="Center">
                 <ItemsRepeater.Layout>
                     <UniformGridLayout />
