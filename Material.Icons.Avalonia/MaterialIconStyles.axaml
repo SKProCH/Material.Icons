@@ -1,0 +1,12 @@
+<icons:MaterialIconStyles xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:icons="clr-namespace:Material.Icons.Avalonia"
+                          x:Class="Material.Icons.Avalonia.MaterialIconStyles">
+  <icons:MaterialIconStyles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Material.Icons.Avalonia/MaterialIcon.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </icons:MaterialIconStyles.Resources>
+</icons:MaterialIconStyles>

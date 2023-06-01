@@ -15,26 +15,18 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageVersion>2.0.0</PackageVersion>
+    <PackageVersion>2.0.1</PackageVersion>
     <PackageReleaseNotes>
-      - Migrate to new API of resolving icons paths
-      - Change KindProperty to styled property
-      - Support for Avalonia 11.0.0-preview6
+      - Support for Avalonia 11.0.0-rc1.1
     </PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
-    <Compile Update="**\*.xaml.cs">
-      <DependentUpon>%(Filename)</DependentUpon>
-    </Compile>
-    <AvaloniaResource Include="**\*.xaml">
-      <SubType>Designer</SubType>
-    </AvaloniaResource>
     <None Include="../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="11.0.0-preview6" />
+    <PackageReference Include="Avalonia" Version="11.0.0-rc1.1" />
   </ItemGroup>
 
   <ItemGroup>

@@ -8,10 +8,5 @@ namespace Material.Icons.Avalonia.Demo.Views {
         public MainWindow() {
             InitializeComponent();
         }
-
-        private void InitializeComponent() {
-            AvaloniaXamlLoader.Load(this);
-            DevTools.Attach(this, KeyGesture.Parse("F12"));
-        }
     }
 }
