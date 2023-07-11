@@ -2883,6 +2883,7 @@ public enum MaterialIconKind {
     CarOutline,
     CarParkingLights,
     CarPickup,
+    TruckPickup=CarPickup,
     Carrot,
     CarSearch,
     CarFind=CarSearch,
