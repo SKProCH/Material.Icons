@@ -45,21 +45,58 @@ This project consists of 3 parts:
       </Application.Styles>
     </Application>
     ```
-#### Using
-Add `Material.Icons.Avalonia` namespace to the root element of your file (your IDE can suggest it or do it automatically):
-```
-xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
-```
-Use `MaterialIcon` control:
-```xaml
-<materialIcons:MaterialIcon Kind="Abacus" />
-```
-The `Foreground` property controls the color of the icon.  
-Also, there is `MaterialIconExt` which allows you to use is as the markup extension:
-```xaml
-<Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
+
+## Avalonia FuncUI (F#)
+#### Getting started
+1. Install [Material.Icons.Avalonia nuget package](https://www.nuget.org/packages/Material.Icons.Avalonia/):
+    ```shell
+    dotnet add package Material.Icons.Avalonia
+    ```
+   [![avalonia-nuget](https://img.shields.io/nuget/v/Material.Icons.Avalonia?label=Material.Icons.Avalonia&style=flat-square)][avalonia-nuget]
+   [![avalonia-nuget](https://img.shields.io/nuget/dt/Material.Icons.Avalonia?color=blue&label=Downloads&style=flat-square)][avalonia-nuget]
+2. Import styles in Application (or if you use XAML check instructions for plain Avalonia)
+
+```fsharp
+type App() =
+    inherit Application()
+
+    override this.Initialize() =
+        ..
+        this.Styles.Add(MaterialIconStyles(null))
+        ..
 ```
 
+3. Create bindings for Material Icon
+
+```fsharp
+namespace Avalonia.FuncUI.DSL
+
+[<AutoOpen>]
+module MaterialIcon =
+    open Material.Icons
+    open Material.Icons.Avalonia
+    open Avalonia.FuncUI.Types
+    open Avalonia.FuncUI.Builder
+
+    let create (attrs: IAttr<MaterialIcon> list): IView<MaterialIcon> =
+        ViewBuilder.Create<MaterialIcon>(attrs)
+
+    type MaterialIcon with
+
+        static member kind<'t when 't :> MaterialIcon>(value: MaterialIconKind) : IAttr<'t> =
+            AttrBuilder<'t>.CreateProperty<MaterialIconKind>(MaterialIcon.KindProperty, value, ValueNone)
+```
+4. Use
+
+```fsharp
+Button.create [
+     Button.content (
+         MaterialIcon.create [
+             MaterialIcon.kind MaterialIconKind.Export
+        ]
+    )
+]
+```
 
 ## WPF
 #### Getting started
