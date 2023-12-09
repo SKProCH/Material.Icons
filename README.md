@@ -130,6 +130,32 @@ dotnet add package Material.Icons
 Icon types stored in `Material.Icons.MaterialIconKind` enum.  
 We can resolve an icon path by using `Material.Icons.MaterialIconDataProvider.GetData()`.  
 
+#### Adding your own icons
+Currently, there is no way to add your own icons, as icons are enum and cannot be modified.  
+But you can override some existing icons to use your own data: 
+```csharp
+public class CustomIconProvider : MaterialIconDataProvider
+{
+    public override string ProvideData(MaterialIconKind kind)
+    {
+        return kind switch
+        {
+            MaterialIconKind.TrophyVariant => "some SVG code",
+            _ => base.ProvideData(kind)
+        };
+    }
+}
+
+// When your application starts (e.g. in the Main method) replace MaterialIconDataProvider with your own
+public static int Main(string[] args)
+{
+    MaterialIconDataProvider.Instance = new CustomIconProvider(); // Settings custom provider
+
+    // Application startup code
+    // return BuildAvaloniaApp().StartWithClassicDesktopLifetime(args);
+}
+```
+
 ## FAQ
 #### How to change icon color?
 - Change `Foreground` property.

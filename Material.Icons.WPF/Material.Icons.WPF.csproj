@@ -18,8 +18,8 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>2.0.0</Version>
-    <PackageReleaseNotes>- Migrate to new API of resolving icons paths</PackageReleaseNotes>
+    <Version>2.1.0</Version>
+    <PackageReleaseNotes>- Allows to override some icons data</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>

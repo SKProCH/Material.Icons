@@ -15,9 +15,9 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageVersion>2.0.1</PackageVersion>
+    <PackageVersion>2.1.0</PackageVersion>
     <PackageReleaseNotes>
-      - Support for Avalonia 11.0.0-rc1.1
+      - Allows to override some icons data
     </PackageReleaseNotes>
   </PropertyGroup>
   
