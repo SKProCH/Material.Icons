@@ -22,7 +22,7 @@ public class MaterialIconDataDeclarationGenerator {
         stringBuilder.AppendLine("/// Allows retrieving data for icons");
         stringBuilder.AppendLine("/// </summary>");
         stringBuilder.AppendLine("public partial class MaterialIconDataProvider {");
-        stringBuilder.AppendLine("    private static MaterialIconDataProvider? _instance;");
+        stringBuilder.AppendLine("    private static MaterialIconDataProvider _instance = new();");
         stringBuilder.AppendLine("");
         stringBuilder.AppendLine("    /// <summary>");
         stringBuilder.AppendLine("    /// Gets or sets the singleton instance of this provider");

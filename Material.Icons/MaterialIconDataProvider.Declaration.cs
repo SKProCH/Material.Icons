@@ -9,7 +9,7 @@ namespace Material.Icons;
 /// Allows retrieving data for icons
 /// </summary>
 public partial class MaterialIconDataProvider {
-    private static MaterialIconDataProvider? _instance;
+    private static MaterialIconDataProvider _instance = new();
 
     /// <summary>
     /// Gets or sets the singleton instance of this provider
