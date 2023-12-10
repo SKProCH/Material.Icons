@@ -45,6 +45,20 @@ This project consists of 3 parts:
       </Application.Styles>
     </Application>
     ```
+#### Using
+Add `Material.Icons.Avalonia` namespace to the root element of your file (your IDE can suggest it or do it automatically):
+```
+xmlns:materialIcons="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+```
+Use `MaterialIcon` control:
+```xaml
+<materialIcons:MaterialIcon Kind="Abacus" />
+```
+The `Foreground` property controls the color of the icon.  
+Also, there is `MaterialIconExt` which allows you to use is as the markup extension:
+```xaml
+<Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
+```
 
 ## Avalonia FuncUI (F#)
 #### Getting started
