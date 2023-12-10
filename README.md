@@ -173,6 +173,9 @@ public static int Main(string[] args)
 ## FAQ
 #### How to change icon color?
 - Change `Foreground` property.
+#### How to change size?
+- If you are using `MaterialIcon` control - use `Width` or/and `Height` properties.
+- If you are using `MaterialIconExt` - use `Size` property.
 #### How to update icons?
 - You can manually set `Material.Icons` package version in your project file.
 #### What about versioning policy?
