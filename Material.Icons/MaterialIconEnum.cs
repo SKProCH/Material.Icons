@@ -12603,6 +12603,7 @@ public enum MaterialIconKind {
     TooltipUser=TooltipAccount,
     TooltipPerson=TooltipAccount,
     AccountLocation=TooltipAccount,
+    TooltipAccountOutline,
     TooltipCellphone,
     TooltipCheck,
     TooltipCheckOutline,
