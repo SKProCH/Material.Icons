@@ -1,6 +1,7 @@
 [icons-nuget]: https://www.nuget.org/packages/Material.Icons/
 [wpf-nuget]: https://www.nuget.org/packages/Material.Icons.WPF/
 [avalonia-nuget]: https://www.nuget.org/packages/Material.Icons.Avalonia/
+[uno]: https://github.com/CastelloBrancoTecnologia/Material.Icons.UNO/
 
 # Material.Icons
 Parsed icons set from [materialdesignicons.com](https://materialdesignicons.com/) and display control implementations for different GUI frameworks.  
@@ -12,11 +13,14 @@ Parsed icons set from [materialdesignicons.com](https://materialdesignicons.com/
 ## Structure
 This project consists of 3 parts:
 - [![](https://img.shields.io/nuget/dt/Material.Icons?label=Material.Icons&style=flat-square)](#meta) contains info about the icons
-- [![](https://img.shields.io/nuget/dt/Material.Icons.Avalonia?color=blue&label=Material.Icons.Avalonia&style=flat-square)](#avalonia) contains controls for **AvaloniaUI**
-- [![](https://img.shields.io/nuget/dt/Material.Icons.WPF?color=blue&label=Material.Icons.WPF&style=flat-square)](#wpf) contains controls for **WPF**
+- [![](https://img.shields.io/nuget/dt/Material.Icons.Avalonia?color=teal&label=Material.Icons.Avalonia&style=flat-square)](#avalonia) contains controls for **AvaloniaUI**
+- [![](https://img.shields.io/nuget/dt/Material.Icons.WPF?color=teal&label=Material.Icons.WPF&style=flat-square)](#wpf) contains controls for **WPF**
 
 
 - [FAQ](#faq) - frequently asked questions
+
+### Community maintained
+- [![](https://img.shields.io/nuget/dt/Material.Icons.UNO?color=blue&label=Material.Icons.UNO&style=flat-square)][uno] contains controls for **WinUI/UNO** (separate [repository][uno])
 
 ## Avalonia
 #### Getting started
@@ -33,15 +37,6 @@ This project consists of 3 parts:
       <Application.Styles>
         ...
         <materialIcons:MaterialIconStyles />
-      </Application.Styles>
-    </Application>
-    ```
-    For `1.*.*`:
-    ```xaml
-    <Application ...>
-      <Application.Styles>
-        ...
-        <StyleInclude Source="avares://Material.Icons.Avalonia/App.xaml" />
       </Application.Styles>
     </Application>
     ```
