@@ -84,18 +84,29 @@ partial class Build : NukeBuild {
         .OnlyWhenDynamic(() => !GitTasks.GitHasCleanWorkingCopy())
         .DependsOn(Compile)
         .Executes(() => {
-            var project = Solution.GetProject("Material.Icons").GetMSBuildProject();
+            var mainProject = Solution.GetProject("Material.Icons").GetMSBuildProject();
+            var projects = new List<Microsoft.Build.Evaluation.Project>
+            {
+                mainProject,
+                Solution.GetProject("Material.Icons.Avalonia").GetMSBuildProject(),
+                Solution.GetProject("Material.Icons.WPF").GetMSBuildProject()
+            };
 
-            var versionString = project.GetProperty("Version").EvaluatedValue;
+            var versionString = mainProject.GetProperty("Version").EvaluatedValue;
             var newVersion = NuGetVersion.Parse(versionString).BumpLastVersion();
-            project.SetProperty("Version", newVersion.ToString());
 
-            var currentTime = DateTime.UtcNow.ToString("R", CultureInfo.InvariantCulture);
-            var newReleaseNotes = $"- Icons set updated according to materialdesignicons.com at {currentTime}{Environment.NewLine}"
-                                + "Check out changes at https://pictogrammers.com/library/mdi/history/";
-            project.SetProperty("PackageReleaseNotes", newReleaseNotes);
+            foreach(var project in projects)
+            {
+                project.SetProperty("Version", newVersion.ToString());
+               
+                var currentTime = DateTime.UtcNow.ToString("R", CultureInfo.InvariantCulture);
+                var newReleaseNotes = $"- Icons set updated according to materialdesignicons.com at {currentTime}{Environment.NewLine}"
+                                    + "Check out changes at https://pictogrammers.com/library/mdi/history/";
+                project.SetProperty("PackageReleaseNotes", newReleaseNotes);
+               
+                project.Save();
+            }
 
-            project.Save();
             Log.Information("Bumped Material.Icon property to {NewVersion}", newVersion);
         });
 }
