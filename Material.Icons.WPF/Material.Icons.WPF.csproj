@@ -18,12 +18,13 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>2.1.0</Version>
-    <PackageReleaseNotes>- Allows to override some icons data</PackageReleaseNotes>
+    <Version>2.1.9</Version>
+    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 04 Apr 2024 12:16:53 GMT
+Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath="\"/>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
 
   <ItemGroup>

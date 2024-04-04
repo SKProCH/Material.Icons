@@ -3472,6 +3472,7 @@ public enum MaterialIconKind {
     ChevronUpBoxOutline,
     ChevronUpCircle,
     ChevronUpCircleOutline,
+    Chicken,
     ChiliAlert,
     ChiliAlertOutline,
     ChiliHot,
