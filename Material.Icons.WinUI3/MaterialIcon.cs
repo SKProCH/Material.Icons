@@ -33,7 +33,7 @@ public partial class MaterialIcon : Control {
     /// </summary>
     public Geometry? Data {
         get => (Geometry?)GetValue(DataProperty);
-        set => SetValue(DataProperty, value);
+        private set => SetValue(DataProperty, value);
     }
 
     protected override void OnApplyTemplate() {
