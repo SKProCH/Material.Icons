@@ -12,7 +12,6 @@
     <UseWinUI>true</UseWinUI>
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
-    <EnableMsixTooling>true</EnableMsixTooling>
   </PropertyGroup>
 
   <!-- Workaround, see https://github.com/microsoft/WindowsAppSDK/issues/4696 -->
