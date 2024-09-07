@@ -15,14 +15,21 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 7
+    - name: Setup Windows SDK
+      uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
+      with:
+        sdk-version: 22621
     - name: Build and Pack
       run: |
-        dotnet build Material.Icons -c Release
-        dotnet build Material.Icons.WPF -c Release
-        dotnet build Material.Icons.Avalonia -c Release
+        dotnet build Material.Icons -c Release /p:Platform="Any CPU"
+        dotnet build Material.Icons.WPF -c Release /p:Platform="Any CPU"
+        dotnet build Material.Icons.Avalonia -c Release /p:Platform="Any CPU"
+        dotnet build Material.Icons.WinUI -c Release /p:Platform="Any CPU"
     - name: Publish to Nuget
+      if: github.event_name != 'pull_request'
       run: |
         dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
     - name: Publish to GitHub Packages
+      if: github.event_name != 'pull_request'
       run: |
         dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
