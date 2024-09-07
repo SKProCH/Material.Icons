@@ -15,10 +15,10 @@ jobs:
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 8.0.401
-    - name: Setup Windows SDK
+    - name: Setup Windows SDK 10.0.18362.0
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
       with:
-        sdk-version: 22621
+        sdk-version: 18362
     - name: Build and Pack
       run: |
         dotnet build Material.Icons -c Release /p:Platform="Any CPU"
