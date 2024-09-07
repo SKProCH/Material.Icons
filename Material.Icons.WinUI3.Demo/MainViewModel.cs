@@ -36,6 +36,7 @@ public class MainViewModel : INotifyPropertyChanged {
             .Connect()
             .Filter(_kindsFilterSubject
                 .Throttle(TimeSpan.FromMilliseconds(500)))
+            .Sort(SortExpressionComparer<PackIconKindGroup>.Ascending(p => p.DisplayName))
             .ObserveOn(scheduler)
             .Bind(_kinds)
             .Subscribe();
