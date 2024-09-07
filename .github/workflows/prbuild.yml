@@ -24,4 +24,4 @@ jobs:
         dotnet build Material.Icons -c Release /p:Platform="Any CPU"
         dotnet build Material.Icons.WPF -c Release /p:Platform="Any CPU"
         dotnet build Material.Icons.Avalonia -c Release /p:Platform="Any CPU"
-        dotnet build Material.Icons.WinUI -c Release /p:Platform="Any CPU"
+        dotnet build Material.Icons.WinUI3 -c Release /p:Platform="Any CPU"
