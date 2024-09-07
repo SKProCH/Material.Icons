@@ -4,7 +4,7 @@ using Microsoft.UI.Xaml.Markup;
 namespace Material.Icons.WinUI3;
 
 [MarkupExtensionReturnType(ReturnType = typeof(MaterialIcon))]
-public class MaterialIconExt : MarkupExtension {
+public partial class MaterialIconExt : MarkupExtension {
     public MaterialIconExt() { }
 
     public MaterialIconExt(MaterialIconKind kind) {
