@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:maui="clr-namespace:Material.Icons.Maui"
+             x:Class="Material.Icons.Maui.MaterialIcon"
+             BackgroundColor="Transparent"
+             Foreground="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}">
+  <Grid>
+    <Path
+      Fill="{Binding Source={RelativeSource AncestorType={x:Type maui:MaterialIcon}}, Path=Foreground}"
+      Data="{Binding Source={RelativeSource AncestorType={x:Type maui:MaterialIcon}}, Path=Data}"
+      HorizontalOptions="Center"
+      Aspect="Uniform" />
+  </Grid>
+</ContentView>
