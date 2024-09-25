@@ -1,4 +1,6 @@
-﻿namespace Material.Icons.Maui.Demo;
+﻿using ReactiveUI;
+
+namespace Material.Icons.Maui.Demo;
 
 public partial class MainPage {
     public MainPage(MainViewModel viewModel) {
@@ -7,5 +9,13 @@ public partial class MainPage {
         BindingContext = viewModel;
 
         InitializeComponent();
+
+        this.WhenActivated(d => {
+            this.BindCommand(
+                ViewModel,
+                vm => vm.ShowDetails,
+                v => v.ShowDetails,
+                vm => vm.Group);
+        });
     }
 }

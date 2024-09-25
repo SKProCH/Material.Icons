@@ -1,4 +1,5 @@
-﻿using System.Reactive.Linq;
+﻿using System.Reactive;
+using System.Reactive.Linq;
 
 using DynamicData.Binding;
 using DynamicData;
@@ -9,7 +10,8 @@ using ReactiveUI.SourceGenerators;
 namespace Material.Icons.Maui.Demo;
 
 public partial class MainViewModel : ReactiveObject {
-    private readonly SourceList<PackIconKindGroup> _kindsSource = new();
+    [Reactive]
+    private SourceList<PackIconKindGroup> _kindsSource = new();
 
     [Reactive]
     private ObservableCollectionExtended<PackIconKindGroup> _kinds = new();
@@ -34,6 +36,8 @@ public partial class MainViewModel : ReactiveObject {
                 select new PackIconKindGroup(g.Select(x => x.Name)))
             .OrderBy(x => x.DisplayName));
 
+        Group = _kindsSource.Items.FirstOrDefault();
+
         var kindsFilter = this.WhenAnyValue(x => x.SearchText)
             .Select(text => string.IsNullOrEmpty(text)
                 ? CreateUnfilteredFilter()
@@ -51,7 +55,23 @@ public partial class MainViewModel : ReactiveObject {
         _copyTextHelper = this.WhenAnyValue(x => x.Group)
             .Select(value => value is null ? null : $"<wpf:MaterialIcon Kind=\"{value.Kind}\" />")
             .ToProperty(this, x => x.CopyText);
+
+        DetailsViewModel = new DetailsViewModel() {
+            Icons = _kinds,
+            SelectedIcon = Group,
+        };
+
+        DetailsViewModel.WhenAnyValue(x => x.SelectedIcon)
+            .Subscribe(item => Group = item);
+
+        var canShowDetails = this.WhenAnyValue(x => x.Group)
+            .Select(value => value is not null);
+        ShowDetails = ReactiveCommand.CreateFromTask<PackIconKindGroup>(ShowDetailsAsync, canShowDetails);
     }
+
+    public DetailsViewModel DetailsViewModel { get; }
+
+    public ReactiveCommand<PackIconKindGroup, Unit> ShowDetails { get; }
 
     private static Func<PackIconKindGroup, bool> CreateUnfilteredFilter() {
         return _ => true;
@@ -59,5 +79,12 @@ public partial class MainViewModel : ReactiveObject {
     
     private static Func<PackIconKindGroup, bool> CreateTextFilter(string searchText) {
         return kindGroup => kindGroup.Names.Any(a => a.Contains(searchText, StringComparison.CurrentCultureIgnoreCase));
+    }
+
+    private async Task ShowDetailsAsync(PackIconKindGroup icon, CancellationToken cancellationToken) {
+        DetailsViewModel.SelectedIcon = icon;
+        await Shell.Current.GoToAsync("Details", new Dictionary<string, object> {
+            { "ViewModel", DetailsViewModel },
+        });
     }
 }
