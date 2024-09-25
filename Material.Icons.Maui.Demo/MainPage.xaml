@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<maui:ReactiveContentPage
+  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  x:TypeArguments="demo:MainViewModel"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:material="http://schemas.skproch/material/icons/2024"
+  xmlns:maui="clr-namespace:ReactiveUI.Maui;assembly=ReactiveUI.Maui"
+  xmlns:demo="clr-namespace:Material.Icons.Maui.Demo"
+  x:Class="Material.Icons.Maui.Demo.MainPage"
+  x:DataType="demo:MainViewModel">
+  
+  <Grid>
+    <Button x:Name="ShowDetails" Text="Details"/>
+    <!--
+    <CollectionView
+      ItemsSource="{Binding Kinds}"
+      SelectionMode="Single">
+      
+      <CollectionView.ItemsLayout>
+        <GridItemsLayout Orientation="Vertical" Span="12" />
+      </CollectionView.ItemsLayout>
+      
+      <CollectionView.ItemTemplate>
+        <DataTemplate x:DataType="demo:PackIconKindGroup">
+          <Grid
+            WidthRequest="64" HeightRequest="64"
+            HorizontalOptions="Center"
+            RowDefinitions="32,32"
+            Background="Transparent">
+
+            <material:MaterialIcon
+              Margin="2"
+              Grid.Row="0"
+              Kind="{Binding Kind}" />
+
+            <Label
+              Grid.Row="1"
+              Text="{Binding DisplayName}"
+              MaxLines="1"
+              LineBreakMode="TailTruncation"
+              HorizontalTextAlignment="Center"
+              VerticalOptions="Center" />
+
+          </Grid>
+        </DataTemplate>
+      </CollectionView.ItemTemplate>
+    </CollectionView>
+    -->
+    <!-- <Path Grid.Row="1" Fill="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}" Data="M17 14V17H14V19H17V22H19V19H22V17H19V14M12 2A2 2 0 0 0 10 4A2 2 0 0 0 10 4.29C7.12 5.14 5 7.82 5 11V17L3 19V20H12.35A6 6 0 0 1 12 18A6 6 0 0 1 18 12A6 6 0 0 1 19 12.09V11C19 7.82 16.88 5.14 14 4.29A2 2 0 0 0 14 4A2 2 0 0 0 12 2M10 21A2 2 0 0 0 12 23A2 2 0 0 0 13.65 22.13A6 6 0 0 1 12.81 21Z" /> -->
+    <!-- <Path Grid.Row="1" Fill="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}" Data="M12 2a2 2 0 0 0-2 2 2 2 0 0 0 0 .29" /> -->
+
+    <!--
+    <Path Grid.Row="1" Fill="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}">
+      <Path.Data>
+        M 12 2
+          A 2 2 0 0 0 10 4
+          A 2 2 0 0 0 10 4.29
+      </Path.Data>
+    </Path>
+    -->
+    <!--
+    <Path Grid.Row="1" Fill="{AppThemeBinding Dark={StaticResource White}, Light={StaticResource Black}}">
+      <Path.Data>
+        M17 14V17H14V19H17V22H19V19H22V17H19V14
+        M12 2A2 2 0 0 0 10 4A2 2 0 0 0 10 4.29C7.12 5.14 5 7.82 5 11V17L3 19V20H12.35A6 6 0 0 1 12 18A6 6 0 0 1 18 12A6 6 0 0 1 19 12.09V11C19 7.82 16.88 5.14 14 4.29A2 2 0 0 0 14 4A2 2 0 0 0 12 2
+        M10 21A2 2 0 0 0 12 23A2 2 0 0 0 13.65 22.13A6 6 0 0 1 12.81 21Z
+      </Path.Data>
+    </Path>
+    -->
+  </Grid>
+
+</maui:ReactiveContentPage>
