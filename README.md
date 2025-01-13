@@ -53,6 +53,7 @@ The `Foreground` property controls the color of the icon.
 Also, there is `MaterialIconExt` which allows you to use is as the markup extension:
 ```xaml
 <Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
+<Button Content="{materialIcons:MaterialIconExt Kind=Play, }" />
 ```
 
 ## Avalonia FuncUI (F#)

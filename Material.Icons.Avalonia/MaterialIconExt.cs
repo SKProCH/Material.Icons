@@ -1,5 +1,6 @@
 ﻿using System;
-using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 
 namespace Material.Icons.Avalonia {
@@ -19,17 +20,44 @@ namespace Material.Icons.Avalonia {
 
         [ConstructorArgument("size")]
         public double? Size { get; set; }
+
+        [ConstructorArgument("spacing")]
+        public double Spacing { get; set; } = 5;
+
+        [ConstructorArgument("orientation")]
+        public Orientation Orientation { get; set; } = Orientation.Horizontal;
+
+        [ConstructorArgument("text")]
+        public string? Text { get; set; }
+
+        [ConstructorArgument("textfirst")]
+        public bool TextFirst { get; set; } = false;
         
         public override object ProvideValue(IServiceProvider serviceProvider) {
-            var result = new MaterialIcon { Kind = Kind };
-
-            if (Size.HasValue)
-            {
-                result.Height = Size.Value;
-                result.Width = Size.Value;
+            var icon = new MaterialIcon { Kind = Kind };
+            if (Size.HasValue) {
+                icon.Height = Size.Value;
+                icon.Width = Size.Value;
             }
 
-            return result;
+            if (string.IsNullOrWhiteSpace(Text)) return icon;
+
+            var textBlock = new TextBlock {
+                Text = Text,
+                HorizontalAlignment = HorizontalAlignment.Center,
+                VerticalAlignment = VerticalAlignment.Center,
+            };
+
+            if (Size.HasValue) textBlock.FontSize = Size.Value;
+
+            return new StackPanel {
+                Orientation = Orientation,
+                Spacing = Spacing,
+                Children = {
+                    TextFirst ? textBlock : icon,
+                    TextFirst ? icon : textBlock
+                }
+            };
         }
     }
 }
