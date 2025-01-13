@@ -30,9 +30,12 @@ namespace Material.Icons.Avalonia {
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
-        [ConstructorArgument("textfirst")]
+        [ConstructorArgument("textFirst")]
         public bool TextFirst { get; set; } = false;
-        
+
+        [ConstructorArgument("isTextSelectable")]
+        public bool IsTextSelectable { get; set; } = false;
+
         public override object ProvideValue(IServiceProvider serviceProvider) {
             var icon = new MaterialIcon { Kind = Kind };
             if (Size.HasValue) {
@@ -42,7 +45,13 @@ namespace Material.Icons.Avalonia {
 
             if (string.IsNullOrWhiteSpace(Text)) return icon;
 
-            var textBlock = new TextBlock {
+            var textBlock = IsTextSelectable ?
+                new SelectableTextBlock {
+                    Text = Text,
+                    HorizontalAlignment = HorizontalAlignment.Center,
+                    VerticalAlignment = VerticalAlignment.Center,
+                }
+                : new TextBlock {
                 Text = Text,
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,

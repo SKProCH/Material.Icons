@@ -36,7 +36,7 @@ namespace Material.Icons.WPF {
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
-        [ConstructorArgument("textfirst")]
+        [ConstructorArgument("textFirst")]
         public bool TextFirst { get; set; } = false;
 
         public override object ProvideValue(IServiceProvider serviceProvider)
@@ -46,10 +46,10 @@ namespace Material.Icons.WPF {
                 icon.Height = Size.Value;
                 icon.Width = Size.Value;
             }
-
+            
             if (string.IsNullOrWhiteSpace(Text))
                 return icon;
-
+            
             var textBlock = new TextBlock {
                 Text = Text,
                 HorizontalAlignment = HorizontalAlignment.Center,
