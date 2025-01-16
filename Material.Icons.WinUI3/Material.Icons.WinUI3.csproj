@@ -18,33 +18,27 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>2.1.10</Version>
+    <Version>2.1.11</Version>
     <PackageReleaseNotes>
       - Icons set updated according to materialdesignicons.com at Thu, 20 Jun 2024 12:18:52 GMT
       Check out changes at https://pictogrammers.com/library/mdi/history/
     </PackageReleaseNotes>
     <EnableMsixTooling>true</EnableMsixTooling>
-  </PropertyGroup>
 
-  <!-- Workaround, see https://github.com/microsoft/WindowsAppSDK/issues/4696 -->
-  <ItemGroup Condition="'$(NETCoreSdkVersion)' == '8.0.401'">
-    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
-  </ItemGroup>
-
-  <PropertyGroup Condition="'$(NETCoreSdkVersion)' == '8.0.401'">
     <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="../README.md" Pack="true" PackagePath="\" />
+    <None Include="../README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
-      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007"/>
+    <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1"/>
+    <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1"/>
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
+    <ProjectReference Include="..\Material.Icons\Material.Icons.csproj"/>
   </ItemGroup>
 </Project>

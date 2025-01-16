@@ -17,7 +17,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 20 Jun 2024 12:18:52 GMT
 Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
-    <Version>2.1.10</Version>
+    <Version>2.1.11</Version>
   </PropertyGroup>
   
   <ItemGroup>

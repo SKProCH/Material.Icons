@@ -89,7 +89,8 @@ partial class Build : NukeBuild {
             {
                 mainProject,
                 Solution.GetProject("Material.Icons.Avalonia").GetMSBuildProject(),
-                Solution.GetProject("Material.Icons.WPF").GetMSBuildProject()
+                Solution.GetProject("Material.Icons.WPF").GetMSBuildProject(),
+                Solution.GetProject("Material.Icons.WinUI3").GetMSBuildProject()
             };
 
             var versionString = mainProject.GetProperty("Version").EvaluatedValue;
