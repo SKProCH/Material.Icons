@@ -15,7 +15,7 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 20 Jun 2024 12:18:52 GMT
+    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Thu, 16 Jan 2025 21:42:34 GMT
 Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
     <Version>2.1.11</Version>
   </PropertyGroup>
