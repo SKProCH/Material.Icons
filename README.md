@@ -54,6 +54,10 @@ Also, there is `MaterialIconExt` which allows you to use is as the markup extens
 ```xaml
 <Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
 ```
+Or with a text:
+```xaml
+<Button Content="{materialIcons:MaterialIconExt Kind=Play, Text=Play}" />
+```
 
 ## Avalonia FuncUI (F#)
 #### Getting started
