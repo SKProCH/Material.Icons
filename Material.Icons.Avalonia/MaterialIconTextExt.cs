@@ -20,7 +20,7 @@ namespace Material.Icons.Avalonia
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
-        [ConstructorArgument("textfirst")]
+        [ConstructorArgument("textFirst")]
         public bool TextFirst { get; set; } = false;
 
         [ConstructorArgument("isTextSelectable")]

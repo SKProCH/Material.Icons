@@ -21,7 +21,7 @@ namespace Material.Icons.WPF
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
-        [ConstructorArgument("textfirst")]
+        [ConstructorArgument("textFirst")]
         public bool TextFirst { get; set; } = false;
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
