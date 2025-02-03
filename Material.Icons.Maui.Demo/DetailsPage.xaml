@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<maui:ReactiveContentPage
+  x:TypeArguments="demo:DetailsViewModel" xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  xmlns:maui="using:ReactiveUI.Maui"
+  xmlns:demo="using:Material.Icons.Maui.Demo"
+  xmlns:material="http://schemas.skproch/material/icons/2024"
+  xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+  x:Class="Material.Icons.Maui.Demo.DetailsPage"
+  x:DataType="demo:DetailsViewModel">
+  <CarouselView
+    ItemsSource="{Binding Icons}"
+    CurrentItem="{Binding SelectedIcon}">
+    <CarouselView.ItemTemplate>
+      <DataTemplate x:DataType="demo:PackIconKindGroup">
+        <toolkit:DockLayout Background="Transparent">
+
+          <Label
+            toolkit:DockLayout.DockPosition="Bottom"
+            Text="{Binding DisplayName}"
+            MaxLines="1"
+            LineBreakMode="TailTruncation"
+            HorizontalTextAlignment="Center"
+            Margin="5"
+            VerticalOptions="Center" />
+
+          <material:MaterialIcon
+            Margin="2"
+            Kind="{Binding Kind}" />
+
+        </toolkit:DockLayout>
+      </DataTemplate>
+    </CarouselView.ItemTemplate>
+  </CarouselView>
+</maui:ReactiveContentPage>
