@@ -12,19 +12,19 @@ namespace Material.Icons.Avalonia
         public MaterialIconTextExt(MaterialIconKind kind, double? size) : base(kind, size) { }
 
         [ConstructorArgument("spacing")]
-        public double? Spacing { get; set; } = 5;
+        public double? Spacing { get; set; }
 
         [ConstructorArgument("orientation")]
-        public Orientation? Orientation { get; set; } = global::Avalonia.Layout.Orientation.Horizontal;
+        public Orientation? Orientation { get; set; }
 
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
         [ConstructorArgument("textFirst")]
-        public bool? TextFirst { get; set; } = false;
+        public bool? TextFirst { get; set; }
 
         [ConstructorArgument("isTextSelectable")]
-        public bool? IsTextSelectable { get; set; } = false;
+        public bool? IsTextSelectable { get; set; }
         
         public override object ProvideValue(IServiceProvider serviceProvider) {
             if (string.IsNullOrWhiteSpace(Text)) return (Control)base.ProvideValue(serviceProvider);
