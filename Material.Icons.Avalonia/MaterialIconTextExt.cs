@@ -27,7 +27,8 @@ namespace Material.Icons.Avalonia
         public bool? IsTextSelectable { get; set; }
         
         public override object ProvideValue(IServiceProvider serviceProvider) {
-            if (string.IsNullOrWhiteSpace(Text)) return (Control)base.ProvideValue(serviceProvider);
+            if (string.IsNullOrWhiteSpace(Text))
+                return base.ProvideValue(serviceProvider);
             var result = new MaterialIconText();
             if (Spacing.HasValue) result.Spacing = Spacing.Value;
             if (Orientation.HasValue) result.Orientation = Orientation.Value;
