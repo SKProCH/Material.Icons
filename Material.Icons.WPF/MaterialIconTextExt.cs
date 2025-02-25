@@ -13,52 +13,34 @@ namespace Material.Icons.WPF
         public MaterialIconTextExt(MaterialIconKind kind, double size) : base(kind, size) { }
 
         [ConstructorArgument("spacing")]
-        public double Spacing { get; set; } = 5;
+        public double? Spacing { get; set; }
 
         [ConstructorArgument("orientation")]
-        public Orientation Orientation { get; set; } = Orientation.Horizontal;
+        public Orientation? Orientation { get; set; }
 
         [ConstructorArgument("text")]
         public string? Text { get; set; }
 
         [ConstructorArgument("textFirst")]
-        public bool TextFirst { get; set; } = false;
+        public bool? TextFirst { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
-            var icon = (Control)base.ProvideValue(serviceProvider);
-            
             if (string.IsNullOrWhiteSpace(Text))
-                return icon;
-            
-            var textBlock = new TextBlock {
-                Text = Text,
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-            };
+                return base.ProvideValue(serviceProvider);
 
-            if (Size.HasValue)
-                textBlock.FontSize = Size.Value;
-
-            if (Spacing > 0) {
-                if (TextFirst) {
-                    textBlock.Margin = Orientation == Orientation.Horizontal 
-                        ? new Thickness(0, 0, Spacing, 0) 
-                        : new Thickness(0, 0, 0, Spacing);
-                }
-                else {
-                    textBlock.Margin = Orientation == Orientation.Horizontal 
-                        ? new Thickness(Spacing, 0, 0, 0) 
-                        : new Thickness(0, Spacing, 0, 0);
-                }
+            var result = new MaterialIconText();
+            if (Spacing.HasValue)
+                result.Spacing = Spacing.Value;
+            if (Orientation.HasValue)
+                result.Orientation = Orientation.Value;
+            if (TextFirst.HasValue)
+                result.TextFirst = TextFirst.Value;
+            if (Size.HasValue) {
+                result.IconSize = Size.Value;
+                result.FontSize = Size.Value;
             }
-
-            return new StackPanel {
-                Orientation = Orientation,
-                Children = {
-                    TextFirst ? textBlock : icon,
-                    TextFirst ? icon : textBlock
-                }
-            };
+            result.Text = Text;
+            return result;
         }
     }
 }

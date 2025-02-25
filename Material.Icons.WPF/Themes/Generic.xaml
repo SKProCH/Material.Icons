@@ -22,4 +22,57 @@
             </Setter.Value>
         </Setter>
     </Style>
+    <Style TargetType="{x:Type local:MaterialIconText}">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="FlowDirection" Value="LeftToRight" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
+                    <StackPanel Orientation="{TemplateBinding Orientation}">
+                        <local:MaterialIcon Kind="{TemplateBinding Kind}"
+                                            Width="{TemplateBinding IconSize}"
+                                            Height="{TemplateBinding IconSize}"/>
+                        <TextBlock Text="{TemplateBinding Text}">
+                            <TextBlock.Margin>
+                                <MultiBinding>
+                                    <MultiBinding.Converter>
+                                        <local:SpacingAsMarginConverter/>
+                                    </MultiBinding.Converter>
+                                    <TemplateBinding Property="Spacing"/>
+                                    <TemplateBinding Property="Orientation"/>
+                                </MultiBinding>
+                            </TextBlock.Margin>
+                        </TextBlock>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Style.Triggers>
+            <DataTrigger Binding="{TemplateBinding TextFirst}" Value="True">
+              <Setter Property="Spacing" Value="5"/>
+              <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
+                            <StackPanel Orientation="{TemplateBinding Orientation}">
+                                <TextBlock Text="{TemplateBinding Text}"/>
+                                <local:MaterialIcon Kind="{TemplateBinding Kind}"
+                                                    Width="{TemplateBinding IconSize}"
+                                                    Height="{TemplateBinding IconSize}">
+                                    <local:MaterialIcon.Margin>
+                                        <MultiBinding>
+                                            <MultiBinding.Converter>
+                                                <local:SpacingAsMarginConverter/>
+                                            </MultiBinding.Converter>
+                                            <TemplateBinding Property="Spacing"/>
+                                            <TemplateBinding Property="Orientation"/>
+                                        </MultiBinding>
+                                    </local:MaterialIcon.Margin>
+                                </local:MaterialIcon>
+                            </StackPanel>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
 </ResourceDictionary>
