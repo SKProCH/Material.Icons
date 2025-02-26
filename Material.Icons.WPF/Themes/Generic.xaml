@@ -38,8 +38,8 @@
                                     <MultiBinding.Converter>
                                         <local:SpacingAsMarginConverter/>
                                     </MultiBinding.Converter>
-                                    <TemplateBinding Property="Spacing"/>
-                                    <TemplateBinding Property="Orientation"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Spacing"/>
+                                    <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Orientation"/>
                                 </MultiBinding>
                             </TextBlock.Margin>
                         </TextBlock>
@@ -48,9 +48,9 @@
             </Setter.Value>
         </Setter>
         <Style.Triggers>
-            <DataTrigger Binding="{TemplateBinding TextFirst}" Value="True">
-              <Setter Property="Spacing" Value="5"/>
-              <Setter Property="Template">
+            <Trigger Property="TextFirst" Value="True">
+                <Setter Property="Spacing" Value="5"/>
+                <Setter Property="Template">
                     <Setter.Value>
                         <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
                             <StackPanel Orientation="{TemplateBinding Orientation}">
@@ -63,8 +63,8 @@
                                             <MultiBinding.Converter>
                                                 <local:SpacingAsMarginConverter/>
                                             </MultiBinding.Converter>
-                                            <TemplateBinding Property="Spacing"/>
-                                            <TemplateBinding Property="Orientation"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Spacing"/>
+                                            <Binding RelativeSource="{RelativeSource TemplatedParent}" Path="Orientation"/>
                                         </MultiBinding>
                                     </local:MaterialIcon.Margin>
                                 </local:MaterialIcon>
@@ -72,7 +72,7 @@
                         </ControlTemplate>
                     </Setter.Value>
                 </Setter>
-            </DataTrigger>
+            </Trigger>
         </Style.Triggers>
     </Style>
 </ResourceDictionary>
