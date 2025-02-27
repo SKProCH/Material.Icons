@@ -23,4 +23,23 @@
       </Setter.Value>
     </Setter>
   </Style>
+
+  <Style TargetType="local:MaterialIconText">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FlowDirection" Value="LeftToRight" />
+    <Setter Property="Spacing" Value="5" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:MaterialIconText">
+          <StackPanel Orientation="{TemplateBinding Orientation}"
+                      Spacing="{TemplateBinding Spacing}">
+            <local:MaterialIcon Kind="{TemplateBinding Kind}"
+                                Width="{TemplateBinding IconSize}"
+                                Height="{TemplateBinding IconSize}"/>
+            <TextBlock Text="{TemplateBinding Text}"/>
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
 </ResourceDictionary>
