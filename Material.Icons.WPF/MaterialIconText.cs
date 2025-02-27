@@ -2,7 +2,7 @@ using System.Windows;
 using System.Windows.Controls;
 
 namespace Material.Icons.WPF {
-    internal sealed class MaterialIconText : MaterialIcon {
+    public class MaterialIconText : MaterialIcon {
         static MaterialIconText() {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MaterialIconText), new FrameworkPropertyMetadata(typeof(MaterialIconText)));
         }
