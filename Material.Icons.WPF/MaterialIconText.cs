@@ -10,11 +10,11 @@ namespace Material.Icons.WPF {
         public static readonly DependencyProperty SpacingProperty = DependencyProperty.Register(
             nameof(Spacing), typeof(double), typeof(MaterialIconText), new PropertyMetadata(default(double)));
 
-        public static readonly DependencyProperty OrientationProperty = DependencyProperty.Register(
-            nameof(Orientation), typeof(Orientation), typeof(MaterialIconText), new PropertyMetadata(default(Orientation)));
+        public static readonly DependencyProperty OrientationProperty =
+            StackPanel.OrientationProperty.AddOwner(typeof(MaterialIconText));
 
-        public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
-            nameof(Text), typeof(string), typeof(MaterialIconText), new PropertyMetadata(default(string?)));
+        public static readonly DependencyProperty TextProperty =
+                TextBlock.TextProperty.AddOwner(typeof(MaterialIconText));
 
         public static readonly DependencyProperty TextFirstProperty = DependencyProperty.Register(
             nameof(TextFirst), typeof(bool), typeof(MaterialIconText), new PropertyMetadata(default(bool)));
