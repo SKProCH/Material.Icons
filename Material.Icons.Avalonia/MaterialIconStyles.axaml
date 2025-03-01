@@ -6,6 +6,7 @@
     <ResourceDictionary>
       <ResourceDictionary.MergedDictionaries>
         <ResourceInclude Source="avares://Material.Icons.Avalonia/MaterialIcon.axaml" />
+        <ResourceInclude Source="avares://Material.Icons.Avalonia/MaterialIconText.axaml" />
       </ResourceDictionary.MergedDictionaries>
     </ResourceDictionary>
   </icons:MaterialIconStyles.Resources>

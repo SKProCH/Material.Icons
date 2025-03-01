@@ -1,0 +1,58 @@
+<ResourceDictionary xmlns="https://github.com/avaloniaui"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia">
+  <Design.PreviewWith>
+    <StackPanel Spacing="10" Margin="10">
+      <avalonia:MaterialIconText Kind="Mountain" Text="Icon with text!"/>
+      <avalonia:MaterialIconText Kind="Mountain" TextFirst="True" Text="with text first"/>
+      <avalonia:MaterialIconText Kind="Mountain" IsTextSelectable="True" Text="or selectable"/>
+      <avalonia:MaterialIconText Kind="Mountain" TextFirst="True" IsTextSelectable="True" Text="or both"/>
+      <Button Content="{avalonia:MaterialIconTextExt Kind=Mountain, Text=and via extension}"/>
+    </StackPanel>
+  </Design.PreviewWith>
+
+  <ControlTheme x:Key="{x:Type avalonia:MaterialIconText}" TargetType="avalonia:MaterialIconText">
+    <Setter Property="Spacing" Value="5"/>
+    <Setter Property="Orientation" Value="Horizontal"/>
+    <Setter Property="IconSize" Value="16"/>
+    <Setter Property="Template">
+      <ControlTemplate>
+        <StackPanel Orientation="{TemplateBinding Orientation}"
+                    Spacing="{TemplateBinding Spacing}">
+          <avalonia:MaterialIcon Name="LeftIcon"
+                                 Kind="{TemplateBinding Kind}"
+                                 Width="{TemplateBinding IconSize}"
+                                 Height="{TemplateBinding IconSize}"/>
+          <TextBlock Text="{TemplateBinding Text}"
+                     HorizontalAlignment="Center"
+                     VerticalAlignment="Center"/>
+          <SelectableTextBlock Text="{TemplateBinding Text}"
+                               IsVisible="False"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+          <avalonia:MaterialIcon Name="RightIcon"
+                                 Kind="{TemplateBinding Kind}"
+                                 Width="{TemplateBinding IconSize}"
+                                 Height="{TemplateBinding IconSize}"
+                                 IsVisible="False"/>
+        </StackPanel>
+      </ControlTemplate>
+    </Setter>
+    <Style Selector="^[TextFirst=True]">
+      <Style Selector="^ /template/ avalonia|MaterialIcon#LeftIcon">
+        <Setter Property="IsVisible" Value="False"/>
+      </Style>
+      <Style Selector="^ /template/ avalonia|MaterialIcon#RightIcon">
+        <Setter Property="IsVisible" Value="True"/>
+      </Style>
+    </Style>
+    <Style Selector="^[IsTextSelectable=True]">
+      <Style Selector="^ /template/ TextBlock">
+        <Setter Property="IsVisible" Value="False"/>
+      </Style>
+      <Style Selector="^ /template/ SelectableTextBlock">
+        <Setter Property="IsVisible" Value="True"/>
+      </Style>
+    </Style>
+  </ControlTheme>
+</ResourceDictionary>

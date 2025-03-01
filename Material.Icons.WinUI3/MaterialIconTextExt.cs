@@ -9,34 +9,25 @@ public partial class MaterialIconTextExt : MaterialIconExt {
 
     public MaterialIconTextExt(MaterialIconKind kind, double size) : base(kind, size) { }
 
-    public double Spacing { get; set; } = 5;
+    public double? Spacing { get; set; }
 
-    public Orientation Orientation { get; set; } = Orientation.Horizontal;
+    public Orientation? Orientation { get; set; }
 
     public string? Text { get; set; }
 
-    public bool TextFirst { get; set; } = false;
+    public bool? TextFirst { get; set; }
 
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
-        var icon = (Control)base.ProvideValue(serviceProvider);
-
-        if (string.IsNullOrWhiteSpace(Text)) return icon;
-
-        var textBlock = new TextBlock {
-            Text = Text,
-            HorizontalAlignment = HorizontalAlignment.Center,
-            VerticalAlignment = VerticalAlignment.Center,
-        };
-
-        if (Size.HasValue) textBlock.FontSize = Size.Value;
-
-        return new StackPanel {
-            Orientation = Orientation,
-            Spacing = Spacing,
-            Children = {
-                TextFirst ? textBlock : icon,
-                TextFirst ? icon : textBlock
-            }
-        };
+        if (string.IsNullOrWhiteSpace(Text))
+            return base.ProvideValue(serviceProvider);
+        var result = new MaterialIconText();
+        if (Spacing.HasValue)
+            result.Spacing = Spacing.Value;
+        if (Orientation.HasValue)
+            result.Orientation = Orientation.Value;
+        if (TextFirst.HasValue)
+            result.TextFirst = TextFirst.Value;
+        result.Text = Text;
+        return result;
     }
 }
