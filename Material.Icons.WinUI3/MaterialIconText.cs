@@ -5,13 +5,13 @@ namespace Material.Icons.WinUI3;
 
 public partial class MaterialIconText : MaterialIcon {
     public static readonly DependencyProperty SpacingProperty =
-        StackPanel.SpacingProperty.AddOwner(typeof(MaterialIconText));
+        DependencyProperty.Register(nameof(Spacing), typeof(double), typeof(MaterialIconText), new PropertyMetadata(double.NaN));
 
     public static readonly DependencyProperty OrientationProperty =
-        StackPanel.OrientationProperty.AddOwner(typeof(MaterialIconText));
+        DependencyProperty.Register(nameof(Orientation), typeof(Orientation), typeof(MaterialIconText), new PropertyMetadata(Orientation.Horizontal));
 
     public static readonly DependencyProperty TextProperty =
-        TextBlock.TextProperty.AddOwner(typeof(MaterialIconText));
+        DependencyProperty.Register(nameof(Text), typeof(string), typeof(MaterialIconText), new PropertyMetadata(null));
 
     public static readonly DependencyProperty TextFirstProperty =
         DependencyProperty.Register(nameof(TextFirst), typeof(bool), typeof(MaterialIconText), new PropertyMetadata(default(bool)));
