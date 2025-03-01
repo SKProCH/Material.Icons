@@ -15,7 +15,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>material icons material-design google-material</PackageTags>
     <RootNamespace>Material.Icons</RootNamespace>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
     <PackageReleaseNotes>- Add text support for extensions. Thanks, @sn4k3</PackageReleaseNotes>
   </PropertyGroup>
 

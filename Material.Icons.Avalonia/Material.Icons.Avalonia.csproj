@@ -16,7 +16,7 @@
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageReleaseNotes>- Add text support for extensions. Thanks, @sn4k3</PackageReleaseNotes>
-    <Version>2.2.0</Version>
+    <Version>2.3.0</Version>
   </PropertyGroup>
   
   <ItemGroup>
