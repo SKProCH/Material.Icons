@@ -15,6 +15,7 @@ This project consists of 3 parts:
 - [![](https://img.shields.io/nuget/dt/Material.Icons?label=Material.Icons&style=flat-square)](#meta) contains info about the icons
 - [![](https://img.shields.io/nuget/dt/Material.Icons.Avalonia?color=teal&label=Material.Icons.Avalonia&style=flat-square)](#avalonia) contains controls for **AvaloniaUI**
 - [![](https://img.shields.io/nuget/dt/Material.Icons.WPF?color=teal&label=Material.Icons.WPF&style=flat-square)](#wpf) contains controls for **WPF**
+- [![](https://img.shields.io/nuget/dt/Material.Icons.WinUI3?color=teal&label=Material.Icons.WinUI3&style=flat-square)](#winui3) contains controls for **WinUI3**
 
 
 - [FAQ](#faq) - frequently asked questions
@@ -130,6 +131,28 @@ Also, there is `MaterialIconExt` which allows you to use is as the markup extens
 <Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
 ```
 
+## WinUI3
+#### Getting started
+Install [Material.Icons.WinUI3 nuget package](https://www.nuget.org/packages/Material.Icons.WinUI3/):
+```shell
+dotnet add package Material.Icons.WinUI3
+```
+[![winui3-nuget](https://img.shields.io/nuget/v/Material.Icons.WinUI3?label=Material.Icons.WinUI3&style=flat-square)](https://www.nuget.org/packages/Material.Icons.WinUI3/)
+[![winui3-nuget](https://img.shields.io/nuget/dt/Material.Icons.WinUI3?color=blue&label=Downloads&style=flat-square)](https://www.nuget.org/packages/Material.Icons.WinUI3/)
+#### Using
+Add `Material.Icons.WinUI3` namespace to the root element of your file (your IDE can suggest it or do it automatically):
+```
+xmlns:materialIcons="using:Material.Icons.WinUI3"
+```
+Use `MaterialIcon` control:
+```xaml
+<materialIcons:MaterialIcon Kind="Abacus" />
+```
+The `Foreground` property controls the color of the icon.  
+Also, there is `MaterialIconExt` which allows you to use is as the markup extension:
+```xaml
+<Button Content="{materialIcons:MaterialIconExt Kind=Abacus}" />
+```
 
 ## Meta
 #### Getting started
