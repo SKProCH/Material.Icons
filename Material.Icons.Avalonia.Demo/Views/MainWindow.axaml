@@ -20,12 +20,73 @@
         <Style Selector="models|SelectionWrapper:selectednow > Border">
             <Setter Property="Background" Value="Gray" />
         </Style>
+        <Style Selector="Border.sample">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Gray" />
+        </Style>
+        <Style Selector="TextBlock.header">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0 0 0 5" />
+        </Style>
     </Window.Styles>
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="*, Auto">
-        <ScrollViewer Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
+    <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="Auto, *, Auto">
+        <!-- Samples Section -->
+        <Expander Grid.Row="0" Grid.ColumnSpan="3" Header="Icon Usage Examples" IsExpanded="True">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Different ways to use Material Icons" HorizontalAlignment="Center" 
+                           Margin="0 5 0 10" FontSize="16" FontWeight="Bold"/>
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!-- Sample 1: Basic MaterialIcon control -->
+                    <Border Classes="sample">
+                        <StackPanel>
+                            <TextBlock Classes="header" Text="Basic MaterialIcon control"/>
+                            <avalonia:MaterialIcon Kind="Star" Width="32" Height="32"/>
+                            <SelectableTextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" 
+                                       FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 2: MaterialIcon with custom color -->
+                    <Border Classes="sample">
+                        <StackPanel>
+                            <TextBlock Classes="header" Text="MaterialIcon with custom color"/>
+                            <avalonia:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
+                            <SelectableTextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" 
+                                                 FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 3: MaterialIconExt markup extension -->
+                    <Border Classes="sample">
+                        <StackPanel>
+                            <TextBlock Classes="header" Text="MaterialIconExt markup extension"/>
+                            <Button Content="{avalonia:MaterialIconExt Kind=Play}" Width="40" Height="40"/>
+                            <SelectableTextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" 
+                                                 FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 4: MaterialIconTextExt markup extension -->
+                    <Border Classes="sample">
+                        <StackPanel>
+                            <TextBlock Classes="header" Text="MaterialIconTextExt markup extension"/>
+                            <Button Content="{avalonia:MaterialIconTextExt Kind=Play, Text=Play}" Width="100" Height="40"/>
+                            <SelectableTextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" 
+                                                 FontFamily="Consolas" Margin="0 5 0 0" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+        </Expander>
+        
+        <!-- Original content -->
+        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
                       HorizontalScrollBarVisibility="Disabled">
           <ItemsRepeater ItemsSource="{Binding Kinds}"
                          HorizontalAlignment="Center">
@@ -61,7 +122,7 @@
                 </ItemsRepeater.ItemTemplate>
             </ItemsRepeater>
         </ScrollViewer>
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SearchText}" Watermark="Search" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CopyText^}" IsReadOnly="True" />
+        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding SearchText}" Watermark="Search" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CopyText^}" IsReadOnly="True" />
     </Grid>
 </Window>

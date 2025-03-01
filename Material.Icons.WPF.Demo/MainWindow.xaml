@@ -11,8 +11,69 @@
         Title="Material.Icons.WPF.Demo" Height="450" Width="800" d:DataContext="{d:DesignInstance local:MainViewModel}">
     <Window.Resources>
         <local:StringJoinConverter x:Key="StringJoinConverter" Separator="{x:Static system:Environment.NewLine}" />
+        <Style x:Key="SampleBorderStyle" TargetType="Border">
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="Gray" />
+        </Style>
+        <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0 0 0 5" />
+        </Style>
     </Window.Resources>
     <DockPanel>
+        <!-- Samples Section -->
+        <Expander DockPanel.Dock="Top" Header="Icon Usage Examples" IsExpanded="True">
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Different ways to use Material Icons in WPF" HorizontalAlignment="Center" 
+                           Margin="0 5 0 10" FontSize="16" FontWeight="Bold"/>
+                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <!-- Sample 1: Basic MaterialIcon control -->
+                    <Border Style="{StaticResource SampleBorderStyle}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Basic MaterialIcon control"/>
+                            <wpf:MaterialIcon Kind="Star" Width="32" Height="32"/>
+                            <TextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" 
+                                       FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 2: MaterialIcon with custom color -->
+                    <Border Style="{StaticResource SampleBorderStyle}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIcon with custom color"/>
+                            <wpf:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
+                            <TextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" 
+                                       FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 3: MaterialIconExt markup extension -->
+                    <Border Style="{StaticResource SampleBorderStyle}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconExt markup extension"/>
+                            <Button Content="{wpf:MaterialIconExt Kind=Play}" Width="40" Height="40"/>
+                            <TextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" 
+                                       FontFamily="Consolas" Margin="0 5 0 0"/>
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Sample 4: MaterialIconTextExt markup extension -->
+                    <Border Style="{StaticResource SampleBorderStyle}">
+                        <StackPanel>
+                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconTextExt markup extension"/>
+                            <Button Content="{wpf:MaterialIconTextExt Kind=Play, Text=Play}" Width="100" Height="40"/>
+                            <TextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" 
+                                      FontFamily="Consolas" Margin="0 5 0 0" TextWrapping="Wrap"/>
+                        </StackPanel>
+                    </Border>
+                </WrapPanel>
+            </StackPanel>
+        </Expander>
+
+        <!-- Original content -->
         <Grid DockPanel.Dock="Bottom">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition />
