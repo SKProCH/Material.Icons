@@ -8,7 +8,7 @@
         xmlns:models="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
         xmlns:models1="clr-namespace:Material.Icons.Avalonia.Demo.Models"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        Width="800" Height="500"
+        Width="1000" Height="700"
         x:Class="Material.Icons.Avalonia.Demo.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Material.Icons.Avalonia.Demo">
@@ -18,111 +18,190 @@
     </Window.Resources>
     <Window.Styles>
         <Style Selector="models|SelectionWrapper:selectednow > Border">
-            <Setter Property="Background" Value="Gray" />
+            <Setter Property="Background" Value="{DynamicResource SystemListLowColor}" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="BorderThickness" Value="2" />
         </Style>
         <Style Selector="Border.sample">
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Padding" Value="10" />
-            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="CornerRadius" Value="4" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemBaseMediumLowColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAltLowColor}" />
+        </Style>
+        <Style Selector="Border.sample:pointerover">
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemAccentColor}" />
+            <Setter Property="Background" Value="{DynamicResource SystemAccentColorLight3}" />
         </Style>
         <Style Selector="TextBlock.header">
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Margin" Value="0 0 0 5" />
+            <Setter Property="Margin" Value="0 0 0 4" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style Selector="TextBox.code">
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="Background" Value="{DynamicResource SystemAltLowColor}" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="{DynamicResource SystemBaseMediumLowColor}" />
+            <Setter Property="Padding" Value="4 2" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0 4 0 0" />
         </Style>
     </Window.Styles>
     <Design.DataContext>
         <vm:MainWindowViewModel />
     </Design.DataContext>
-    <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="Auto, *, Auto">
-        <!-- Samples Section -->
-        <Expander Grid.Row="0" Grid.ColumnSpan="3" Header="Icon Usage Examples" IsExpanded="True">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Different ways to use Material Icons" HorizontalAlignment="Center" 
-                           Margin="0 5 0 10" FontSize="16" FontWeight="Bold"/>
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <!-- Sample 1: Basic MaterialIcon control -->
-                    <Border Classes="sample">
-                        <StackPanel>
-                            <TextBlock Classes="header" Text="Basic MaterialIcon control"/>
-                            <avalonia:MaterialIcon Kind="Star" Width="32" Height="32"/>
-                            <SelectableTextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" 
-                                       FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 2: MaterialIcon with custom color -->
-                    <Border Classes="sample">
-                        <StackPanel>
-                            <TextBlock Classes="header" Text="MaterialIcon with custom color"/>
-                            <avalonia:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
-                            <SelectableTextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" 
-                                                 FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 3: MaterialIconExt markup extension -->
-                    <Border Classes="sample">
-                        <StackPanel>
-                            <TextBlock Classes="header" Text="MaterialIconExt markup extension"/>
-                            <Button Content="{avalonia:MaterialIconExt Kind=Play}" Width="40" Height="40"/>
-                            <SelectableTextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" 
-                                                 FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 4: MaterialIconTextExt markup extension -->
-                    <Border Classes="sample">
-                        <StackPanel>
-                            <TextBlock Classes="header" Text="MaterialIconTextExt markup extension"/>
-                            <Button Content="{avalonia:MaterialIconTextExt Kind=Play, Text=Play}" Width="100" Height="40"/>
-                            <SelectableTextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" 
-                                                 FontFamily="Consolas" Margin="0 5 0 0" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Border>
-                </WrapPanel>
-            </StackPanel>
-        </Expander>
-        
-        <!-- Original content -->
-        <ScrollViewer Grid.Row="1" Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Disabled">
-          <ItemsRepeater ItemsSource="{Binding Kinds}"
-                         HorizontalAlignment="Center">
-                <ItemsRepeater.Layout>
-                    <UniformGridLayout />
-                </ItemsRepeater.Layout>
-                <ItemsRepeater.ItemTemplate>
-                    <DataTemplate DataType="models1:PackIconKindGroup">
-                        <models:SelectionWrapper DataSource="{Binding .}"
-                                                 CurrentSelected="{Binding $parent[ItemsRepeater].DataContext.Group, Mode=TwoWay}">
-                            <Border Name="MainBorder">
-                                <DockPanel Margin="2"
-                                           ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
-                                           Width="64"
-                                           Height="64"
-                                           Background="Transparent">
-                                    <TextBlock
-                                        Text="{Binding Kind}"
-                                        DockPanel.Dock="Bottom"
-                                        FontSize="10"
-                                        HorizontalAlignment="Center" />
+    <Grid>
+        <!-- Main content area -->
+        <Grid ColumnDefinitions="*,320">
+            <!-- Icons area with search -->
+            <Grid Grid.Column="0" RowDefinitions="Auto,*" Background="{DynamicResource SystemAltHighColor}">
+                <!-- Search bar -->
+                <Border Grid.Row="0" 
+                        Background="{DynamicResource SystemChromeLowColor}" 
+                        BorderBrush="{DynamicResource SystemBaseMediumLowColor}" 
+                        BorderThickness="0 0 0 1" 
+                        Padding="8 4">
+                    <TextBox Watermark="Search icons..." 
+                             Text="{Binding SearchText}" 
+                             VerticalAlignment="Center" 
+                             Margin="0" Padding="6 4"/>
+                </Border>
+                
+                <!-- Icons grid -->
+                <ScrollViewer Grid.Row="1" 
+                              VerticalScrollBarVisibility="Auto" 
+                              HorizontalScrollBarVisibility="Disabled">
+                    <ItemsRepeater ItemsSource="{Binding Kinds}" 
+                                   HorizontalAlignment="Center" 
+                                   Margin="4">
+                        <ItemsRepeater.Layout>
+                            <UniformGridLayout MinItemWidth="72" MinItemHeight="72" MinRowSpacing="2" MinColumnSpacing="2" />
+                        </ItemsRepeater.Layout>
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate DataType="models1:PackIconKindGroup">
+                                <models:SelectionWrapper DataSource="{Binding .}"
+                                                        CurrentSelected="{Binding $parent[ItemsRepeater].DataContext.Group, Mode=TwoWay}">
+                                    <Border Name="MainBorder" 
+                                            CornerRadius="2" 
+                                            Background="{DynamicResource SystemChromeLowColor}" 
+                                            BorderThickness="0" 
+                                            Width="72" Height="72" 
+                                            Margin="2">
+                                        <DockPanel
+                                            ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
+                                            Background="Transparent">
+                                            <TextBlock
+                                                Text="{Binding Kind}"
+                                                DockPanel.Dock="Bottom"
+                                                FontSize="10"
+                                                TextTrimming="CharacterEllipsis"
+                                                HorizontalAlignment="Center"
+                                                TextAlignment="Center"
+                                                Padding="2"
+                                                Margin="0 2 0 0" />
+                
+                                            <avalonia:MaterialIcon
+                                                Kind="{Binding Kind}"
+                                                VerticalAlignment="Center"
+                                                HorizontalAlignment="Center"
+                                                Width="36"
+                                                Height="36"
+                                                Margin="0 4 0 0" />
+                                        </DockPanel>
+                                    </Border>
+                                </models:SelectionWrapper>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
+                </ScrollViewer>
+            </Grid>
             
-                                    <avalonia:MaterialIcon
-                                        Kind="{Binding Kind}"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Width="32"
-                                        Height="32" />
-                                </DockPanel>
+            <!-- Sidebar with examples and info -->
+            <Border Grid.Column="1" 
+                    Background="{DynamicResource SystemChromeLowColor}" 
+                    BorderBrush="{DynamicResource SystemBaseMediumLowColor}" 
+                    BorderThickness="1 0 0 0">
+                <DockPanel>
+                    <!-- Header -->
+                    <Border DockPanel.Dock="Top" 
+                            Background="{DynamicResource SystemListMediumColor}" 
+                            Padding="10 6">
+                        <TextBlock Text="Icon Usage Examples" 
+                                   FontWeight="SemiBold" 
+                                   FontSize="14" />
+                    </Border>
+                    
+                    <!-- Selected icon info -->
+                    <Border DockPanel.Dock="Top" 
+                            BorderBrush="{DynamicResource SystemBaseMediumLowColor}" 
+                            BorderThickness="0 0 0 1" 
+                            Padding="10 6" 
+                            Background="{DynamicResource SystemAltHighColor}">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Group.Kind, StringFormat=Selected: {0}}" 
+                                       FontWeight="SemiBold" 
+                                       FontSize="13" />
+                            <TextBox Text="{Binding CopyText}" 
+                                     Background="{DynamicResource SystemAltLowColor}" 
+                                     BorderThickness="1" 
+                                     BorderBrush="{DynamicResource SystemBaseMediumLowColor}" 
+                                     Margin="0 4 0 0" 
+                                     IsReadOnly="True" 
+                                     Padding="6 4" />
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Examples -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" 
+                                  HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="6 4">
+                            <!-- Sample 1: Basic MaterialIcon control -->
+                            <Border Classes="sample">
+                                <StackPanel>
+                                    <TextBlock Classes="header" Text="Basic MaterialIcon control"/>
+                                    <avalonia:MaterialIcon Kind="Star" Width="32" Height="32"/>
+                                    <TextBox Classes="code" Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" />
+                                </StackPanel>
                             </Border>
-                        </models:SelectionWrapper>
-                    </DataTemplate>
-                </ItemsRepeater.ItemTemplate>
-            </ItemsRepeater>
-        </ScrollViewer>
-        <TextBox Grid.Row="2" Grid.Column="0" Text="{Binding SearchText}" Watermark="Search" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding CopyText^}" IsReadOnly="True" />
+                            
+                            <!-- Sample 2: MaterialIcon with custom color -->
+                            <Border Classes="sample">
+                                <StackPanel>
+                                    <TextBlock Classes="header" Text="MaterialIcon with custom color"/>
+                                    <avalonia:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
+                                    <TextBox Classes="code" Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Sample 3: MaterialIconExt markup extension -->
+                            <Border Classes="sample">
+                                <StackPanel>
+                                    <TextBlock Classes="header" Text="MaterialIconExt markup extension"/>
+                                    <Button Content="{avalonia:MaterialIconExt Kind=Play}" Width="40" Height="32"/>
+                                    <TextBox Classes="code" Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Sample 4: MaterialIconTextExt markup extension -->
+                            <Border Classes="sample">
+                                <StackPanel>
+                                    <TextBlock Classes="header" Text="MaterialIconTextExt markup extension"/>
+                                    <Button Content="{avalonia:MaterialIconTextExt Kind=Play, Text=Play}" Width="120" Height="32"/>
+                                    <TextBox Classes="code" Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+
+                            <!-- Status text -->
+                            <TextBlock Text="{Binding Kinds.Count, StringFormat=Showing {0} icons}" 
+                                       Margin="4 8 4 4" 
+                                       Opacity="0.7" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
+        </Grid>
     </Grid>
 </Window>

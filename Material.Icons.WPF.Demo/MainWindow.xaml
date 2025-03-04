@@ -8,112 +8,219 @@
         xmlns:controls="clr-namespace:WpfToolkit.Controls;assembly=VirtualizingWrapPanel"
         xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
         mc:Ignorable="d"
-        Title="Material.Icons.WPF.Demo" Height="450" Width="800" d:DataContext="{d:DesignInstance local:MainViewModel}">
+        Title="Material.Icons.WPF.Demo" Height="700" Width="1000" d:DataContext="{d:DesignInstance local:MainViewModel}">
     <Window.Resources>
         <local:StringJoinConverter x:Key="StringJoinConverter" Separator="{x:Static system:Environment.NewLine}" />
         <Style x:Key="SampleBorderStyle" TargetType="Border">
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="Padding" Value="10" />
-            <Setter Property="CornerRadius" Value="5" />
+            <Setter Property="Margin" Value="4" />
+            <Setter Property="Padding" Value="8" />
+            <Setter Property="CornerRadius" Value="4" />
             <Setter Property="BorderThickness" Value="1" />
-            <Setter Property="BorderBrush" Value="Gray" />
+            <Setter Property="BorderBrush" Value="#CCCCCC" />
+            <Setter Property="Background" Value="#F9F9F9" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="BorderBrush" Value="#0078D7" />
+                    <Setter Property="Background" Value="#F0F7FF" />
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="HeaderTextStyle" TargetType="TextBlock">
             <Setter Property="FontWeight" Value="Bold" />
-            <Setter Property="Margin" Value="0 0 0 5" />
+            <Setter Property="Margin" Value="0 0 0 4" />
+            <Setter Property="FontSize" Value="12" />
+        </Style>
+        <Style x:Key="CodeBlockStyle" TargetType="TextBox">
+            <Setter Property="FontFamily" Value="Consolas" />
+            <Setter Property="Background" Value="#F0F0F0" />
+            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderBrush" Value="#DDDDDD" />
+            <Setter Property="Padding" Value="4 2" />
+            <Setter Property="IsReadOnly" Value="True" />
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0 4 0 0" />
         </Style>
     </Window.Resources>
-    <DockPanel>
-        <!-- Samples Section -->
-        <Expander DockPanel.Dock="Top" Header="Icon Usage Examples" IsExpanded="True">
-            <StackPanel Orientation="Vertical">
-                <TextBlock Text="Different ways to use Material Icons in WPF" HorizontalAlignment="Center" 
-                           Margin="0 5 0 10" FontSize="16" FontWeight="Bold"/>
-                <WrapPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                    <!-- Sample 1: Basic MaterialIcon control -->
-                    <Border Style="{StaticResource SampleBorderStyle}">
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Basic MaterialIcon control"/>
-                            <wpf:MaterialIcon Kind="Star" Width="32" Height="32"/>
-                            <TextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" 
-                                       FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 2: MaterialIcon with custom color -->
-                    <Border Style="{StaticResource SampleBorderStyle}">
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIcon with custom color"/>
-                            <wpf:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
-                            <TextBlock Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" 
-                                       FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 3: MaterialIconExt markup extension -->
-                    <Border Style="{StaticResource SampleBorderStyle}">
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconExt markup extension"/>
-                            <Button Content="{wpf:MaterialIconExt Kind=Play}" Width="40" Height="40"/>
-                            <TextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" 
-                                       FontFamily="Consolas" Margin="0 5 0 0"/>
-                        </StackPanel>
-                    </Border>
-                    
-                    <!-- Sample 4: MaterialIconTextExt markup extension -->
-                    <Border Style="{StaticResource SampleBorderStyle}">
-                        <StackPanel>
-                            <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconTextExt markup extension"/>
-                            <Button Content="{wpf:MaterialIconTextExt Kind=Play, Text=Play}" Width="100" Height="40"/>
-                            <TextBlock Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" 
-                                      FontFamily="Consolas" Margin="0 5 0 0" TextWrapping="Wrap"/>
-                        </StackPanel>
-                    </Border>
-                </WrapPanel>
-            </StackPanel>
-        </Expander>
-
-        <!-- Original content -->
-        <Grid DockPanel.Dock="Bottom">
+    
+    <Grid Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        
+        <!-- Main content area -->
+        <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition />
-                <ColumnDefinition />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="320" />
             </Grid.ColumnDefinitions>
-            <TextBox Grid.Column="0" Margin="8" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=500}" />
-            <TextBox Grid.Column="1" Margin="8" IsReadOnly="True" Text="{Binding CopyText}" />
+            
+            <!-- Left Panel with Search and Icons -->
+            <DockPanel Grid.Column="0">
+                <!-- Search box -->
+                <Border DockPanel.Dock="Top" Padding="8 4" Background="#F5F5F5" BorderBrush="#DDDDDD" BorderThickness="0 0 0 1">
+                    <TextBox Padding="6 4" Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged, Delay=300}" 
+                            VerticalAlignment="Center">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="{x:Type TextBox}">
+                                            <Border x:Name="border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True" CornerRadius="4">
+                                                <Grid>
+                                                    <ScrollViewer x:Name="PART_ContentHost" Focusable="false" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                                                    <TextBlock x:Name="WatermarkText" Text="Search icons..." Foreground="Gray" Visibility="Collapsed" Margin="8,0,0,0" VerticalAlignment="Center"/>
+                                                </Grid>
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="Text" Value="">
+                                                    <Setter Property="Visibility" TargetName="WatermarkText" Value="Visible"/>
+                                                </Trigger>
+                                                <Trigger Property="IsEnabled" Value="false">
+                                                    <Setter Property="Opacity" TargetName="border" Value="0.56"/>
+                                                </Trigger>
+                                                <Trigger Property="IsMouseOver" Value="true">
+                                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF7EB4EA"/>
+                                                </Trigger>
+                                                <Trigger Property="IsKeyboardFocused" Value="true">
+                                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF569DE5"/>
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Border>
+            
+                <!-- Icons List -->
+                <ListBox
+                    ItemsSource="{Binding Kinds.View}"
+                    SelectedItem="{Binding Group}"
+                    Background="White"
+                    BorderThickness="0"
+                    Padding="4"
+                    Margin="0"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                    VirtualizingPanel.IsVirtualizing="True"
+                    VirtualizingPanel.ScrollUnit="Pixel"
+                    VirtualizingPanel.VirtualizationMode="Recycling">
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="ListBoxItem">
+                            <Setter Property="Padding" Value="0"/>
+                            <Setter Property="Margin" Value="0"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="ListBoxItem">
+                                        <ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                    <ListBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <controls:VirtualizingWrapPanel />
+                        </ItemsPanelTemplate>
+                    </ListBox.ItemsPanel>
+
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="local:PackIconKindGroup">
+                            <Border CornerRadius="4" Background="#F5F5F5" BorderThickness="0" Width="76" Height="76" Margin="2">
+                                <DockPanel
+                                    ToolTip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
+                                    Background="Transparent">
+                                    <TextBlock
+                                        Text="{Binding Kind}"
+                                        DockPanel.Dock="Bottom"
+                                        TextTrimming="CharacterEllipsis"
+                                        TextAlignment="Center"
+                                        Padding="2"
+                                        Margin="0 2 0 0"
+                                        FontSize="10"
+                                        HorizontalAlignment="Center" />
+
+                                    <wpf:MaterialIcon
+                                        Kind="{Binding Kind}"
+                                        Width="36"
+                                        Height="36" 
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        Margin="0 4 0 0"/>
+                                </DockPanel>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </DockPanel>
+            
+            <!-- Sidebar with example usage -->
+            <Border Grid.Column="1" Background="#F5F5F5" BorderBrush="#DDDDDD" BorderThickness="1 0 0 0">
+                <DockPanel>
+                    <!-- Header -->
+                    <Border DockPanel.Dock="Top" Background="#E0E0E0" Padding="10 6">
+                        <TextBlock Text="Icon Usage Examples" FontWeight="SemiBold" FontSize="14" />
+                    </Border>
+                    
+                    <!-- Selected icon info -->
+                    <Border DockPanel.Dock="Top" BorderBrush="#DDDDDD" BorderThickness="0 0 0 1" Padding="10 6" Background="White">
+                        <StackPanel>
+                            <TextBlock Text="{Binding Group.Kind, StringFormat=Selected: {0}}" FontWeight="SemiBold" FontSize="13" />
+                            <TextBox Text="{Binding CopyText}" Background="#F5F5F5" BorderThickness="1" BorderBrush="#DDDDDD" 
+                                    Margin="0 4 0 0" IsReadOnly="True" Padding="6 4" />
+                        </StackPanel>
+                    </Border>
+                    
+                    <!-- Examples -->
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <StackPanel Margin="6 4">
+                            <!-- Sample 1: Basic MaterialIcon control -->
+                            <Border Style="{StaticResource SampleBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource HeaderTextStyle}" Text="Basic MaterialIcon control"/>
+                                    <wpf:MaterialIcon Kind="Star" Width="32" Height="32"/>
+                                    <TextBox Style="{StaticResource CodeBlockStyle}" 
+                                            Text="&lt;materialIcons:MaterialIcon Kind=&quot;Star&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Sample 2: MaterialIcon with custom color -->
+                            <Border Style="{StaticResource SampleBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIcon with custom color"/>
+                                    <wpf:MaterialIcon Kind="Heart" Width="32" Height="32" Foreground="Red"/>
+                                    <TextBox Style="{StaticResource CodeBlockStyle}"
+                                            Text="&lt;materialIcons:MaterialIcon Kind=&quot;Heart&quot; Foreground=&quot;Red&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Sample 3: MaterialIconExt markup extension -->
+                            <Border Style="{StaticResource SampleBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconExt markup extension"/>
+                                    <Button Content="{wpf:MaterialIconExt Kind=Play}" Width="40" Height="32"/>
+                                    <TextBox Style="{StaticResource CodeBlockStyle}"
+                                            Text="&lt;Button Content=&quot;{materialIcons:MaterialIconExt Kind=Play}&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Sample 4: MaterialIconTextExt markup extension -->
+                            <Border Style="{StaticResource SampleBorderStyle}">
+                                <StackPanel>
+                                    <TextBlock Style="{StaticResource HeaderTextStyle}" Text="MaterialIconTextExt markup extension"/>
+                                    <Button Content="{wpf:MaterialIconTextExt Kind=Play, Text=Play}" Width="120" Height="32"/>
+                                    <TextBox Style="{StaticResource CodeBlockStyle}"
+                                            Text="&lt;Button Content=&quot;{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}&quot; /&gt;" />
+                                </StackPanel>
+                            </Border>
+                            
+                            <!-- Status text -->
+                            <TextBlock Text="{Binding Kinds.View.Count, StringFormat=Showing {0} icons}" Margin="4 8 4 4" Opacity="0.7" />
+                        </StackPanel>
+                    </ScrollViewer>
+                </DockPanel>
+            </Border>
         </Grid>
-        <ListBox
-            ItemsSource="{Binding Kinds.View}"
-            SelectedItem="{Binding Group}"
-            VirtualizingPanel.IsVirtualizing="True"
-            VirtualizingPanel.ScrollUnit="Pixel"
-            VirtualizingPanel.VirtualizationMode="Recycling">
-            <ListBox.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <controls:VirtualizingWrapPanel />
-                </ItemsPanelTemplate>
-            </ListBox.ItemsPanel>
-
-            <ListBox.ItemTemplate>
-                <DataTemplate DataType="local:PackIconKindGroup">
-                    <DockPanel
-                        ToolTip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
-                        Width="64"
-                        Height="64"
-                        Background="Transparent">
-                        <TextBlock
-                            Text="{Binding Kind}"
-                            DockPanel.Dock="Bottom"
-                            TextTrimming="CharacterEllipsis"
-                            HorizontalAlignment="Center" />
-
-                        <wpf:MaterialIcon
-                            Kind="{Binding Kind}"
-                            Width="32"
-                            Height="32" />
-                    </DockPanel>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
-    </DockPanel>
+    </Grid>
 </Window>

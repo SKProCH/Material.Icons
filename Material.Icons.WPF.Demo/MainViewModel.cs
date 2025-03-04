@@ -32,11 +32,13 @@ namespace Material.Icons.WPF.Demo {
 
         public CollectionViewSource Kinds { get; set; } = new CollectionViewSource();
 
-        public PackIconKindGroup Group {
+        public PackIconKindGroup? Group {
             get => _group;
             set {
                 _group = value;
-                CopyText = $"<wpf:MaterialIcon Kind=\"{value.Kind}\" />";
+                if (value?.Kind is not null) {
+                    CopyText = $"<wpf:MaterialIcon Kind=\"{value.Kind}\" />";
+                }
             }
         }
 
