@@ -199,7 +199,7 @@ public static int Main(string[] args)
 - None
 - Spin (Circular spinning)
 - SpinCcw (Circular spinning in CCW)
-- Pulse  (Step circular spinning)
+- Pulse (Step circular spinning)
 - PulseCcw (Step circular spinning in CCW)
 - FadeOutIn (Fade out and in)
 - FadeInOut (Fade in and out)
