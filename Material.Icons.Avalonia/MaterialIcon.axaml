@@ -1,26 +1,173 @@
 ﻿<ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia">
-  <avalonia:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />
+                    xmlns:icon="clr-namespace:Material.Icons.Avalonia"
+                    xmlns:system="clr-namespace:System;assembly=netstandard">
+    <Design.PreviewWith>
+        <Border MaxWidth="600"
+                Margin="20">
+            <Border.Styles>
+                <Style Selector="icon|MaterialIcon">
+                    <Setter Property="Height" Value="24" />
+                    <Setter Property="Width" Value="24" />
+                </Style>
+            </Border.Styles>
+            <WrapPanel Orientation="Horizontal">
+                <icon:MaterialIcon Margin="10"
+                                   Kind="Calendar" />
 
-  <ControlTheme x:Key="{x:Type avalonia:MaterialIcon}"
-                TargetType="avalonia:MaterialIcon">
-    <Setter Property="Height" Value="16" />
-    <Setter Property="Width" Value="16" />
-    <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate>
-          <Border Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox>
-              <Path Width="24" Height="24"
-                    Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
-                    Fill="{TemplateBinding Foreground}" />
-            </Viewbox>
-          </Border>
-        </ControlTemplate>
-      </Setter.Value>
-    </Setter>
-  </ControlTheme>
+                <icon:MaterialIcon Margin="10"
+                                   Animation="Spin"
+                                   Kind="Refresh" />
+                <icon:MaterialIcon Margin="10"
+                                   Animation="SpinCcw"
+                                   Kind="Refresh" />
+
+                <icon:MaterialIcon Margin="10"
+                                   Animation="Pulse"
+                                   Kind="DotsVertical" />
+
+                <icon:MaterialIcon Margin="10"
+                                   Animation="PulseCcw"
+                                   Kind="ProgressHelper" />
+
+                <icon:MaterialIcon Margin="10"
+                                   Animation="FadeOutIn"
+                                   Foreground="DeepPink"
+                                   Kind="Heart" />
+                <icon:MaterialIcon Margin="10"
+                                   Animation="FadeInOut"
+                                   Foreground="DeepPink"
+                                   Kind="Heart" />
+            </WrapPanel>
+        </Border>
+    </Design.PreviewWith>
+    <icon:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />
+    <system:TimeSpan x:Key="DurationTimeSpan">0:0:2</system:TimeSpan>
+
+    <ControlTheme x:Key="{x:Type icon:MaterialIcon}"
+                  TargetType="icon:MaterialIcon">
+        <Setter Property="Height" Value="16" />
+        <Setter Property="Width" Value="16" />
+        <Setter Property="RenderTransform">
+            <TransformGroup>
+                <RotateTransform />
+            </TransformGroup>
+        </Setter>
+
+        <!--  Animations  -->
+        <Style Selector="^[Animation=Spin]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           Duration="{StaticResource DurationTimeSpan}">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=SpinCcw]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           PlaybackDirection="Reverse"
+                           Duration="{StaticResource DurationTimeSpan}">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^[Animation=Pulse]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           Duration="0:0:2">
+                    <Animation.Easing>
+                        <icon:PulseEasing />
+                    </Animation.Easing>
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^[Animation=PulseCcw]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           PlaybackDirection="Reverse"
+                           Duration="0:0:2">
+                    <Animation.Easing>
+                        <icon:PulseEasing />
+                    </Animation.Easing>
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <Style Selector="^[Animation=FadeOutIn]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           Duration="0:0:4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=FadeInOut]">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE"
+                           Duration="0:0:4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+
+        <!--  Template  -->
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Border Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                        <Viewbox>
+                            <Path Width="24"
+                                  Height="24"
+                                  Data="{TemplateBinding Kind,
+                                                         Converter={StaticResource GeometryConverter}}"
+                                  Fill="{TemplateBinding Foreground}" />
+                        </Viewbox>
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </ControlTheme>
 </ResourceDictionary>

@@ -192,6 +192,23 @@ public static int Main(string[] args)
 }
 ```
 
+## Animations
+
+`MaterialIcon` and it extensions supports pre-defined animations:
+
+- None
+- Spin (Circular spinning)
+- SpinCcw (Circular spinning in CCW)
+- Pulse  (Step circular spinning)
+- PulseCcw (Step circular spinning in CCW)
+- FadeOutIn (Fade out and in)
+- FadeInOut (Fade in and out)
+
+```xaml
+<MaterialIcons:MaterialIcon Kind="Refresh" Animation="Spin" />
+<MaterialIcons:MaterialIcon Kind="Heart" Foreground="DeepPink" Animation="FadeInOut" />
+```
+
 ## FAQ
 #### How to change icon color?
 - Change `Foreground` property.

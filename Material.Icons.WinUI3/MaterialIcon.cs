@@ -13,6 +13,10 @@ public partial class MaterialIcon : Control {
         = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
             new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
 
+    public static readonly DependencyProperty AnimationProperty
+        = DependencyProperty.Register(nameof(Animation), typeof(MaterialIconAnimation), typeof(MaterialIcon),
+            new PropertyMetadata(default(MaterialIconAnimation)));
+
     public static readonly DependencyProperty DataProperty
         = DependencyProperty.Register(nameof(Data), typeof(Geometry), typeof(MaterialIcon), new PropertyMetadata(null));
 
@@ -26,6 +30,14 @@ public partial class MaterialIcon : Control {
     public MaterialIconKind Kind {
         get => (MaterialIconKind)GetValue(KindProperty);
         set => SetValue(KindProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the icon animation to play.
+    /// </summary>
+    public MaterialIconAnimation Animation {
+        get => (MaterialIconAnimation)GetValue(AnimationProperty);
+        set => SetValue(AnimationProperty, value);
     }
 
     /// <summary>

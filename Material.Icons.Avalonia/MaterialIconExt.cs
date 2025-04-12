@@ -1,27 +1,35 @@
 ﻿using System;
-using Avalonia;
 using Avalonia.Markup.Xaml;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconExt : MarkupExtension {
         public MaterialIconExt() { }
-        public MaterialIconExt(MaterialIconKind kind) {
+        public MaterialIconExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None) {
             Kind = kind;
+            Animation = animation;
         }
 
-        public MaterialIconExt(MaterialIconKind kind, double? size) {
+        public MaterialIconExt(MaterialIconKind kind, double? size, MaterialIconAnimation animation = MaterialIconAnimation.None) {
             Kind = kind;
             Size = size;
+            Animation = animation;
         }
-        
+
         [ConstructorArgument("kind")]
         public MaterialIconKind Kind { get; set; }
 
         [ConstructorArgument("size")]
         public double? Size { get; set; }
-        
+
+        [ConstructorArgument("animation")]
+        public MaterialIconAnimation Animation { get; set; }
+
         public override object ProvideValue(IServiceProvider serviceProvider) {
-            var result = new MaterialIcon { Kind = Kind };
+            var result = new MaterialIcon
+            {
+                Kind = Kind,
+                Animation = Animation
+            };
 
             if (Size.HasValue)
             {
