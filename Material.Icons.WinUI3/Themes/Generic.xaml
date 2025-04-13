@@ -2,45 +2,45 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="using:Material.Icons.WinUI3">
 
-    <Style TargetType="local:MaterialIcon">
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="FlowDirection" Value="LeftToRight" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:MaterialIcon">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-                            <Canvas Width="24"
-                                    Height="24">
-                                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Fill="{TemplateBinding Foreground}" />
-                            </Canvas>
-                        </Viewbox>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+  <Style TargetType="local:MaterialIcon">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FlowDirection" Value="LeftToRight" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:MaterialIcon">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+            <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
+              <Canvas Width="24"
+                      Height="24">
+                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+                      Fill="{TemplateBinding Foreground}" />
+              </Canvas>
+            </Viewbox>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
 
-    <Style TargetType="local:MaterialIconText">
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="FlowDirection" Value="LeftToRight" />
-        <Setter Property="Spacing" Value="5" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="local:MaterialIconText">
-                    <StackPanel Orientation="{TemplateBinding Orientation}"
-                                Spacing="{TemplateBinding Spacing}">
-                        <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                            Height="{TemplateBinding IconSize}"
-                                            Animation="{TemplateBinding Animation}"
-                                            Kind="{TemplateBinding Kind}" />
-                        <TextBlock Text="{TemplateBinding Text}" />
-                    </StackPanel>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
+  <Style TargetType="local:MaterialIconText">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FlowDirection" Value="LeftToRight" />
+    <Setter Property="Spacing" Value="5" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:MaterialIconText">
+          <StackPanel Orientation="{TemplateBinding Orientation}"
+                      Spacing="{TemplateBinding Spacing}">
+            <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                Height="{TemplateBinding IconSize}"
+                                Animation="{TemplateBinding Animation}"
+                                Kind="{TemplateBinding Kind}" />
+            <TextBlock Text="{TemplateBinding Text}" />
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
 </ResourceDictionary>

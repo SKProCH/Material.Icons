@@ -2,84 +2,84 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:Material.Icons.WPF"
                     xmlns:system="clr-namespace:System;assembly=System.Runtime">
-    <Style TargetType="{x:Type local:MaterialIcon}">
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="FlowDirection" Value="LeftToRight" />
+  <Style TargetType="{x:Type local:MaterialIcon}">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FlowDirection" Value="LeftToRight" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:MaterialIcon}">
+          <Border Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+            <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
+              <Canvas Width="24"
+                      Height="24">
+                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+                      Fill="{TemplateBinding Foreground}" />
+              </Canvas>
+            </Viewbox>
+          </Border>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+  <Style TargetType="{x:Type local:MaterialIconText}">
+    <Setter Property="IsTabStop" Value="False" />
+    <Setter Property="FlowDirection" Value="LeftToRight" />
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
+          <StackPanel Orientation="{TemplateBinding Orientation}">
+            <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                Height="{TemplateBinding IconSize}"
+                                Animation="{TemplateBinding Animation}"
+                                Kind="{TemplateBinding Kind}" />
+            <TextBlock Text="{TemplateBinding Text}">
+              <TextBlock.Margin>
+                <MultiBinding>
+                  <MultiBinding.Converter>
+                    <local:SpacingAsMarginConverter />
+                  </MultiBinding.Converter>
+                  <Binding Path="Spacing"
+                           RelativeSource="{RelativeSource TemplatedParent}" />
+                  <Binding Path="Orientation"
+                           RelativeSource="{RelativeSource TemplatedParent}" />
+                </MultiBinding>
+              </TextBlock.Margin>
+            </TextBlock>
+          </StackPanel>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+    <Style.Triggers>
+      <Trigger Property="TextFirst" Value="True">
+        <Setter Property="Spacing" Value="5" />
         <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MaterialIcon}">
-                    <Border Background="{TemplateBinding Background}"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}">
-                        <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-                            <Canvas Width="24"
-                                    Height="24">
-                                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
-                                      Fill="{TemplateBinding Foreground}" />
-                            </Canvas>
-                        </Viewbox>
-                    </Border>
-                </ControlTemplate>
-            </Setter.Value>
+          <Setter.Value>
+            <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
+              <StackPanel Orientation="{TemplateBinding Orientation}">
+                <TextBlock Text="{TemplateBinding Text}" />
+                <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                    Height="{TemplateBinding IconSize}"
+                                    Animation="{TemplateBinding Animation}"
+                                    Kind="{TemplateBinding Kind}">
+                  <local:MaterialIcon.Margin>
+                    <MultiBinding>
+                      <MultiBinding.Converter>
+                        <local:SpacingAsMarginConverter />
+                      </MultiBinding.Converter>
+                      <Binding Path="Spacing"
+                               RelativeSource="{RelativeSource TemplatedParent}" />
+                      <Binding Path="Orientation"
+                               RelativeSource="{RelativeSource TemplatedParent}" />
+                    </MultiBinding>
+                  </local:MaterialIcon.Margin>
+                </local:MaterialIcon>
+              </StackPanel>
+            </ControlTemplate>
+          </Setter.Value>
         </Setter>
-    </Style>
-    <Style TargetType="{x:Type local:MaterialIconText}">
-        <Setter Property="IsTabStop" Value="False" />
-        <Setter Property="FlowDirection" Value="LeftToRight" />
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
-                    <StackPanel Orientation="{TemplateBinding Orientation}">
-                        <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                            Height="{TemplateBinding IconSize}"
-                                            Animation="{TemplateBinding Animation}"
-                                            Kind="{TemplateBinding Kind}" />
-                        <TextBlock Text="{TemplateBinding Text}">
-                            <TextBlock.Margin>
-                                <MultiBinding>
-                                    <MultiBinding.Converter>
-                                        <local:SpacingAsMarginConverter />
-                                    </MultiBinding.Converter>
-                                    <Binding Path="Spacing"
-                                             RelativeSource="{RelativeSource TemplatedParent}" />
-                                    <Binding Path="Orientation"
-                                             RelativeSource="{RelativeSource TemplatedParent}" />
-                                </MultiBinding>
-                            </TextBlock.Margin>
-                        </TextBlock>
-                    </StackPanel>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-        <Style.Triggers>
-            <Trigger Property="TextFirst" Value="True">
-                <Setter Property="Spacing" Value="5" />
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
-                            <StackPanel Orientation="{TemplateBinding Orientation}">
-                                <TextBlock Text="{TemplateBinding Text}" />
-                                <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                                    Height="{TemplateBinding IconSize}"
-                                                    Animation="{TemplateBinding Animation}"
-                                                    Kind="{TemplateBinding Kind}">
-                                    <local:MaterialIcon.Margin>
-                                        <MultiBinding>
-                                            <MultiBinding.Converter>
-                                                <local:SpacingAsMarginConverter />
-                                            </MultiBinding.Converter>
-                                            <Binding Path="Spacing"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                                            <Binding Path="Orientation"
-                                                     RelativeSource="{RelativeSource TemplatedParent}" />
-                                        </MultiBinding>
-                                    </local:MaterialIcon.Margin>
-                                </local:MaterialIcon>
-                            </StackPanel>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </Style.Triggers>
-    </Style>
+      </Trigger>
+    </Style.Triggers>
+  </Style>
 </ResourceDictionary>
