@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
@@ -25,6 +23,18 @@ namespace Material.Icons.WPF {
         public MaterialIconKind Kind {
             get => (MaterialIconKind) GetValue(KindProperty);
             set => SetValue(KindProperty, value);
+        }
+
+        public static readonly DependencyProperty AnimationProperty
+            = DependencyProperty.Register(nameof(Animation), typeof(MaterialIconAnimation), typeof(MaterialIcon),
+                new PropertyMetadata(default(MaterialIconAnimation)));
+
+        /// <summary>
+        /// Gets or sets the icon animation to play.
+        /// </summary>
+        public MaterialIconAnimation Animation {
+            get => (MaterialIconAnimation)GetValue(AnimationProperty);
+            set => SetValue(AnimationProperty, value);
         }
 
         private static readonly DependencyPropertyKey DataPropertyKey

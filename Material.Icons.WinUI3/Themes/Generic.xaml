@@ -1,7 +1,6 @@
-<ResourceDictionary
-  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-  xmlns:local="using:Material.Icons.WinUI3">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="using:Material.Icons.WinUI3">
 
   <Style TargetType="local:MaterialIcon">
     <Setter Property="IsTabStop" Value="False" />
@@ -9,12 +8,13 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:MaterialIcon">
-          <Border Background="{TemplateBinding Background}" 
+          <Border Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
             <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-              <Canvas Width="24" Height="24">
-                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"                                   
+              <Canvas Width="24"
+                      Height="24">
+                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
                       Fill="{TemplateBinding Foreground}" />
               </Canvas>
             </Viewbox>
@@ -33,10 +33,11 @@
         <ControlTemplate TargetType="local:MaterialIconText">
           <StackPanel Orientation="{TemplateBinding Orientation}"
                       Spacing="{TemplateBinding Spacing}">
-            <local:MaterialIcon Kind="{TemplateBinding Kind}"
-                                Width="{TemplateBinding IconSize}"
-                                Height="{TemplateBinding IconSize}"/>
-            <TextBlock Text="{TemplateBinding Text}"/>
+            <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                Height="{TemplateBinding IconSize}"
+                                Animation="{TemplateBinding Animation}"
+                                Kind="{TemplateBinding Kind}" />
+            <TextBlock Text="{TemplateBinding Text}" />
           </StackPanel>
         </ControlTemplate>
       </Setter.Value>

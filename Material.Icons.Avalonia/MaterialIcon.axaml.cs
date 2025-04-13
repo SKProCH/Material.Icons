@@ -1,4 +1,5 @@
-﻿using Avalonia;
+﻿using System;
+using Avalonia;
 using Avalonia.Controls.Primitives;
 
 namespace Material.Icons.Avalonia {
@@ -12,6 +13,17 @@ namespace Material.Icons.Avalonia {
         public MaterialIconKind Kind {
             get => GetValue(KindProperty);
             set => SetValue(KindProperty, value);
+        }
+
+        public static readonly StyledProperty<MaterialIconAnimation> AnimationProperty
+            = AvaloniaProperty.Register<MaterialIcon, MaterialIconAnimation>(nameof(Animation));
+
+        /// <summary>
+        /// Gets or sets the icon animation to play.
+        /// </summary>
+        public MaterialIconAnimation Animation {
+            get => GetValue(AnimationProperty);
+            set => SetValue(AnimationProperty, value);
         }
     }
 }
