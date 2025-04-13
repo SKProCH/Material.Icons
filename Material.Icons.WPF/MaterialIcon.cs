@@ -13,10 +13,6 @@ namespace Material.Icons.WPF {
             = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
                 new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
 
-        public static readonly DependencyProperty AnimationProperty
-            = DependencyProperty.Register(nameof(Animation), typeof(MaterialIconAnimation), typeof(MaterialIcon),
-                new PropertyMetadata(default(MaterialIconAnimation)));
-
         private static void KindPropertyChangedCallback(DependencyObject dependencyObject,
                                                         DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
             => ((MaterialIcon) dependencyObject).UpdateData();
@@ -28,6 +24,10 @@ namespace Material.Icons.WPF {
             get => (MaterialIconKind) GetValue(KindProperty);
             set => SetValue(KindProperty, value);
         }
+
+        public static readonly DependencyProperty AnimationProperty
+            = DependencyProperty.Register(nameof(Animation), typeof(MaterialIconAnimation), typeof(MaterialIcon),
+                new PropertyMetadata(default(MaterialIconAnimation)));
 
         /// <summary>
         /// Gets or sets the icon animation to play.
