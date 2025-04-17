@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Threading;
@@ -9,8 +8,8 @@ using ReactiveUI;
 
 namespace Material.Icons.Avalonia.Demo.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
-        private readonly Lazy<IEnumerable<PackIconKindGroup>> _packIconKinds;
-        private IEnumerable<PackIconKindGroup>? _kinds;
+        private readonly PackIconKindGroup[] _packIconKinds;
+        private PackIconKindGroup[] _kinds;
         private PackIconKindGroup? _group;
         private string? _searchText;
 
@@ -19,38 +18,37 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
         };
 
         public MainWindowViewModel() {
-            _packIconKinds = new Lazy<IEnumerable<PackIconKindGroup>>(() =>
-                Enum.GetNames(typeof(MaterialIconKind))
+            _packIconKinds = Enum.GetNames(typeof(MaterialIconKind))
                     .GroupBy(k => (MaterialIconKind) Enum.Parse(typeof(MaterialIconKind), k))
                     .Select(g => new PackIconKindGroup(g))
                     .OrderBy(x => x.Kind)
-                    .ToList());
+                    .ToArray();
+
+            _kinds = _packIconKinds;
 
             this.WhenValueChanged(model => model.SearchText).Subscribe(s => {
                 _searchDebounceTimer.Stop();
                 _searchDebounceTimer.Start();
             });
 
-            _searchDebounceTimer.Tick += async (s, e) => {
-                await DoSearch(SearchText);
+            _searchDebounceTimer.Tick += (s, e) => {
+                DoSearch(SearchText);
             };
         }
 
-        private async Task DoSearch(string? text) {
+        private void DoSearch(string? text) {
             _searchDebounceTimer.Stop();
             if (string.IsNullOrWhiteSpace(text))
-                Kinds = _packIconKinds.Value;
+                Kinds = _packIconKinds;
             else {
-                Kinds = new List<PackIconKindGroup>();
-                Kinds = await Task.Run(() =>
-                    _packIconKinds.Value
-                                  .Where(x => x.Aliases.Any(a => a.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0))
-                                  .ToList());
+                Kinds = _packIconKinds.Where(x =>
+                        x.Aliases.Any(a => a.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0))
+                        .ToArray();
             }
         }
 
-        public IEnumerable<PackIconKindGroup> Kinds {
-            get => _kinds ?? _packIconKinds.Value;
+        public PackIconKindGroup[] Kinds {
+            get => _kinds;
             set => this.RaiseAndSetIfChanged(ref _kinds, value);
         }
 

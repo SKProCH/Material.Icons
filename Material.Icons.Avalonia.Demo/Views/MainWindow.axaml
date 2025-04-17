@@ -59,8 +59,9 @@
 
     <TextBox Grid.Row="1"
              Grid.Column="0"
+             Classes="clearButton"
              Text="{Binding SearchText}"
-             Watermark="Search" />
+             Watermark="{Binding Kinds.Length, StringFormat='Search from {0} icons'}" />
     <TextBox Grid.Row="1"
              Grid.Column="1"
              IsReadOnly="True"
