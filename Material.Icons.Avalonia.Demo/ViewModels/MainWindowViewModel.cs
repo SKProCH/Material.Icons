@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using System.Text;
 using System.Threading.Tasks;
-using Avalonia.Controls;
+using Avalonia.Threading;
 using DynamicData.Binding;
 using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;
@@ -17,6 +14,10 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
         private PackIconKindGroup? _group;
         private string? _searchText;
 
+        private readonly DispatcherTimer _searchDebounceTimer = new DispatcherTimer() {
+            Interval = TimeSpan.FromMilliseconds(500)
+        };
+
         public MainWindowViewModel() {
             _packIconKinds = new Lazy<IEnumerable<PackIconKindGroup>>(() =>
                 Enum.GetNames(typeof(MaterialIconKind))
@@ -25,11 +26,18 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
                     .OrderBy(x => x.Kind)
                     .ToList());
 
-            this.WhenValueChanged(model => model.SearchText).Subscribe(DoSearch);
-            CopyText = this.WhenValueChanged(model => model.Group).Where(group => group != null).Select(group => $"<avalonia:PackIcon Kind=\"{group.Kind}\"/>");
+            this.WhenValueChanged(model => model.SearchText).Subscribe(s => {
+                _searchDebounceTimer.Stop();
+                _searchDebounceTimer.Start();
+            });
+
+            _searchDebounceTimer.Tick += async (s, e) => {
+                await DoSearch(SearchText);
+            };
         }
 
-        private async void DoSearch(string text) {
+        private async Task DoSearch(string? text) {
+            _searchDebounceTimer.Stop();
             if (string.IsNullOrWhiteSpace(text))
                 Kinds = _packIconKinds.Value;
             else {
@@ -55,7 +63,5 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
             get => _searchText;
             set => this.RaiseAndSetIfChanged(ref _searchText, value);
         }
-
-        public IObservable<string> CopyText { get; set; }
     }
 }
