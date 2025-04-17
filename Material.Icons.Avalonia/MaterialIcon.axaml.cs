@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Controls.Primitives;
 
 namespace Material.Icons.Avalonia {
@@ -13,6 +12,17 @@ namespace Material.Icons.Avalonia {
         public MaterialIconKind Kind {
             get => GetValue(KindProperty);
             set => SetValue(KindProperty, value);
+        }
+
+        public static readonly StyledProperty<double> IconSizeProperty =
+            AvaloniaProperty.Register<MaterialIconText, double>(nameof(IconSize), defaultValue: double.NaN);
+
+        /// <summary>
+        /// Gets or sets the uniform size of the icon.
+        /// </summary>
+        public double IconSize {
+            get => GetValue(IconSizeProperty);
+            set => SetValue(IconSizeProperty, value);
         }
 
         public static readonly StyledProperty<MaterialIconAnimation> AnimationProperty

@@ -1,8 +1,12 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Controls.Metadata;
+using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 
 namespace Material.Icons.Avalonia {
+    [TemplatePart("PART_LeftIcon", typeof(MaterialIcon))]
+    [TemplatePart("PART_RightIcon", typeof(MaterialIcon))]
     public class MaterialIconText : MaterialIcon {
         public static readonly StyledProperty<double> SpacingProperty =
             StackPanel.SpacingProperty.AddOwner<MaterialIconText>();
@@ -19,10 +23,7 @@ namespace Material.Icons.Avalonia {
         public static readonly StyledProperty<bool> IsTextSelectableProperty =
             AvaloniaProperty.Register<MaterialIconText, bool>(nameof(IsTextSelectable));
 
-        public static readonly StyledProperty<double> IconSizeProperty =
-            AvaloniaProperty.Register<MaterialIconText, double>(nameof(IconSize), defaultValue: double.NaN);
-
-        /// <summary>
+       /// <summary>
         /// Gets or sets the spacing between the icon and the text.
         /// </summary>
         public double Spacing {
@@ -62,12 +63,15 @@ namespace Material.Icons.Avalonia {
             set => SetValue(IsTextSelectableProperty, value);
         }
 
-        /// <summary>
-        /// Gets or sets the width and the height of the icon
-        /// </summary>
-        public double IconSize {
-            get => GetValue(IconSizeProperty);
-            set => SetValue(IconSizeProperty, value);
+        protected override void OnApplyTemplate(TemplateAppliedEventArgs e) {
+            base.OnApplyTemplate(e);
+
+            // Redirect classses to the left and right icons
+            var leftIcon = e.NameScope.Get<MaterialIcon>("PART_LeftIcon");
+            var rightIcon = e.NameScope.Get<MaterialIcon>("PART_RightIcon");
+
+            leftIcon.Classes.AddRange(Classes);
+            rightIcon.Classes.AddRange(Classes);
         }
     }
 }

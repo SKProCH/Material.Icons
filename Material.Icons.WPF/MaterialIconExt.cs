@@ -13,9 +13,9 @@ namespace Material.Icons.WPF {
             Animation = animation;
         }
 
-        public MaterialIconExt(MaterialIconKind kind, double size, MaterialIconAnimation animation = MaterialIconAnimation.None) {
+        public MaterialIconExt(MaterialIconKind kind, double iconSize, MaterialIconAnimation animation = MaterialIconAnimation.None) {
             Kind = kind;
-            Size = size;
+            IconSize = iconSize;
             Animation = animation;
         }
 
@@ -25,8 +25,8 @@ namespace Material.Icons.WPF {
         [ConstructorArgument("animation")]
         public MaterialIconAnimation Animation { get; set; }
 
-        [ConstructorArgument("size")]
-        public double? Size { get; set; }
+        [ConstructorArgument("iconSize")]
+        public double? IconSize { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
@@ -36,10 +36,10 @@ namespace Material.Icons.WPF {
                 Animation = Animation
             };
 
-            if (Size.HasValue)
+            if (IconSize.HasValue)
             {
-                result.Height = Size.Value;
-                result.Width = Size.Value;
+                result.Height = IconSize.Value;
+                result.Width = IconSize.Value;
             }
 
             return result;

@@ -2,10 +2,17 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:avalonia="clr-namespace:Material.Icons.Avalonia">
   <Design.PreviewWith>
-    <StackPanel Margin="10"
+    <StackPanel Width="500"
+                Height="500"
+                Margin="10"
                 Spacing="10">
-      <avalonia:MaterialIconText Kind="Mountain"
-                                 Text="Icon with text!" />
+      <StackPanel.Styles>
+        <Style Selector="Button:pressed">
+          <Setter Property="Opacity" Value="0.5" />
+          <Setter Property="FontSize" Value="28" />
+        </Style>
+      </StackPanel.Styles>
+      <avalonia:MaterialIconText Text="Icon with text!" />
       <avalonia:MaterialIconText Kind="Mountain"
                                  Text="with text first"
                                  TextFirst="True" />
@@ -16,11 +23,23 @@
                                  Kind="Mountain"
                                  Text="or both"
                                  TextFirst="True" />
-      <avalonia:MaterialIconText Animation="Spin"
+      <avalonia:MaterialIconText Padding="5"
+                                 Animation="Spin"
+                                 BorderBrush="Gray"
+                                 BorderThickness="1"
+                                 CornerRadius="10"
+                                 FontSize="28"
+                                 IconSize="16"
                                  Kind="Refresh"
                                  Text="Spinning Icon!" />
-      <Button Content="{avalonia:MaterialIconTextExt Kind=Mountain, Text=and via extension}" />
-      <Button Content="{avalonia:MaterialIconTextExt Kind=Refresh, Animation=Spin, Text=and via extension}" />
+      <Button Content="{avalonia:MaterialIconTextExt Kind=Mountain, Text='and via extension, fixed icon size', IconSize=16}" />
+      <Button Content="{avalonia:MaterialIconTextExt Kind=Refresh, Animation=Spin, Text='and via extension'}" />
+      <Button Height="80"
+              Padding="20"
+              Content="{avalonia:MaterialIconTextExt Kind=AddCircle,
+                                                     Spacing=10,
+                                                     Text='and via extension',
+                                                     Classes='Fill'}" />
     </StackPanel>
   </Design.PreviewWith>
 
@@ -28,30 +47,35 @@
                 TargetType="avalonia:MaterialIconText">
     <Setter Property="Spacing" Value="5" />
     <Setter Property="Orientation" Value="Horizontal" />
-    <Setter Property="IconSize" Value="16" />
     <Setter Property="Template">
       <ControlTemplate>
-        <StackPanel Orientation="{TemplateBinding Orientation}"
-                    Spacing="{TemplateBinding Spacing}">
-          <avalonia:MaterialIcon Name="LeftIcon"
-                                 Width="{TemplateBinding IconSize}"
-                                 Height="{TemplateBinding IconSize}"
-                                 Animation="{TemplateBinding Animation}"
-                                 Kind="{TemplateBinding Kind}" />
-          <TextBlock HorizontalAlignment="Center"
-                     VerticalAlignment="Center"
-                     Text="{TemplateBinding Text}" />
-          <SelectableTextBlock HorizontalAlignment="Center"
-                               VerticalAlignment="Center"
-                               IsVisible="False"
-                               Text="{TemplateBinding Text}" />
-          <avalonia:MaterialIcon Name="RightIcon"
-                                 Width="{TemplateBinding IconSize}"
-                                 Height="{TemplateBinding IconSize}"
-                                 Animation="{TemplateBinding Animation}"
+        <Border Padding="{TemplateBinding Padding}"
+                Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}"
+                CornerRadius="{TemplateBinding CornerRadius}">
+          <StackPanel Orientation="{TemplateBinding Orientation}"
+                      Spacing="{TemplateBinding Spacing}">
+            <avalonia:MaterialIcon Name="PART_LeftIcon"
+                                   Animation="{TemplateBinding Animation}"
+                                   IconSize="{TemplateBinding IconSize}"
+                                   Kind="{TemplateBinding Kind}" />
+            <TextBlock HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       FontSize="{TemplateBinding FontSize}"
+                       Text="{TemplateBinding Text}" />
+            <SelectableTextBlock HorizontalAlignment="Center"
+                                 VerticalAlignment="Center"
+                                 FontSize="{TemplateBinding FontSize}"
                                  IsVisible="False"
-                                 Kind="{TemplateBinding Kind}" />
-        </StackPanel>
+                                 Text="{TemplateBinding Text}" />
+            <avalonia:MaterialIcon Name="PART_RightIcon"
+                                   Animation="{TemplateBinding Animation}"
+                                   IconSize="{TemplateBinding IconSize}"
+                                   IsVisible="False"
+                                   Kind="{TemplateBinding Kind}" />
+          </StackPanel>
+        </Border>
       </ControlTemplate>
     </Setter>
     <Style Selector="^[TextFirst=True]">

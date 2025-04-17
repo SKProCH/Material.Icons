@@ -6,16 +6,16 @@ namespace Material.Icons.Avalonia
 {
     public class MaterialIconTextExt : MaterialIconExt {
         public MaterialIconTextExt() { }
-        public MaterialIconTextExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None) : base(kind, animation) { }
+        public MaterialIconTextExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null) : base(kind, animation, classes) { }
 
-        public MaterialIconTextExt(MaterialIconKind kind, string? text, double? size = null, MaterialIconAnimation animation = MaterialIconAnimation.None)
-            : base(kind, size, animation)
+        public MaterialIconTextExt(MaterialIconKind kind, string? text, double? iconSize = null, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null)
+            : base(kind, iconSize, animation, classes)
         {
             Text = text;
         }
 
-        public MaterialIconTextExt(MaterialIconKind kind, double? size, string? text = null, MaterialIconAnimation animation = MaterialIconAnimation.None)
-            : base(kind, size, animation)
+        public MaterialIconTextExt(MaterialIconKind kind, double? iconSize, string? text = null, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null)
+            : base(kind, iconSize, animation, classes)
         {
             Text = text;
         }
@@ -44,9 +44,11 @@ namespace Material.Icons.Avalonia
             if (Orientation.HasValue) result.Orientation = Orientation.Value;
             if (TextFirst.HasValue) result.TextFirst = TextFirst.Value;
             if (IsTextSelectable.HasValue) result.IsTextSelectable = IsTextSelectable.Value;
-            if (Size.HasValue) {
-                result.IconSize = Size.Value;
-                result.FontSize = Size.Value;
+            if (IconSize.HasValue) {
+                result.IconSize = IconSize.Value;
+            }
+            if (!string.IsNullOrWhiteSpace(Classes)) {
+                result.Classes.AddRange(global::Avalonia.Controls.Classes.Parse(Classes!));
             }
             result.Kind = Kind;
             result.Text = Text;

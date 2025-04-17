@@ -8,15 +8,16 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type local:MaterialIcon}">
-          <Border Background="{TemplateBinding Background}"
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-              <Canvas Width="24"
-                      Height="24">
-                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
-                      Fill="{TemplateBinding Foreground}" />
-              </Canvas>
+            <Viewbox Width="{TemplateBinding Width}"
+                     Height="{TemplateBinding Height}"
+                     FlowDirection="{TemplateBinding FlowDirection}">
+              <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+                    Fill="{TemplateBinding Foreground}"
+                    Stretch="Uniform" />
             </Viewbox>
           </Border>
         </ControlTemplate>
@@ -29,25 +30,30 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
-          <StackPanel Orientation="{TemplateBinding Orientation}">
-            <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                Height="{TemplateBinding IconSize}"
-                                Animation="{TemplateBinding Animation}"
-                                Kind="{TemplateBinding Kind}" />
-            <TextBlock Text="{TemplateBinding Text}">
-              <TextBlock.Margin>
-                <MultiBinding>
-                  <MultiBinding.Converter>
-                    <local:SpacingAsMarginConverter />
-                  </MultiBinding.Converter>
-                  <Binding Path="Spacing"
-                           RelativeSource="{RelativeSource TemplatedParent}" />
-                  <Binding Path="Orientation"
-                           RelativeSource="{RelativeSource TemplatedParent}" />
-                </MultiBinding>
-              </TextBlock.Margin>
-            </TextBlock>
-          </StackPanel>
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+            <StackPanel Orientation="{TemplateBinding Orientation}">
+              <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                  Height="{TemplateBinding IconSize}"
+                                  Animation="{TemplateBinding Animation}"
+                                  Kind="{TemplateBinding Kind}" />
+              <TextBlock Text="{TemplateBinding Text}">
+                <TextBlock.Margin>
+                  <MultiBinding>
+                    <MultiBinding.Converter>
+                      <local:SpacingAsMarginConverter />
+                    </MultiBinding.Converter>
+                    <Binding Path="Spacing"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="Orientation"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                  </MultiBinding>
+                </TextBlock.Margin>
+              </TextBlock>
+            </StackPanel>
+          </Border>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
