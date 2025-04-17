@@ -12,9 +12,9 @@ public partial class MaterialIconExt : MarkupExtension {
         Animation = animation;
     }
 
-    public MaterialIconExt(MaterialIconKind kind, double? size, MaterialIconAnimation animation = MaterialIconAnimation.None) {
+    public MaterialIconExt(MaterialIconKind kind, double? iconSize, MaterialIconAnimation animation = MaterialIconAnimation.None) {
         Kind = kind;
-        Size = size;
+        IconSize = iconSize;
         Animation = animation;
     }
 
@@ -22,7 +22,7 @@ public partial class MaterialIconExt : MarkupExtension {
 
     public MaterialIconAnimation Animation { get; set; }
 
-    public double? Size { get; set; }
+    public double? IconSize { get; set; }
 
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
         var result = new MaterialIcon
@@ -31,9 +31,9 @@ public partial class MaterialIconExt : MarkupExtension {
             Animation = Animation
         };
 
-        if (Size.HasValue) {
-            result.Height = Size.Value;
-            result.Width = Size.Value;
+        if (IconSize.HasValue) {
+            result.Height = IconSize.Value;
+            result.Width = IconSize.Value;
         }
 
         return result;

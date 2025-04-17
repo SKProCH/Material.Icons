@@ -8,15 +8,17 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:MaterialIcon">
-          <Border Background="{TemplateBinding Background}"
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-              <Canvas Width="24"
-                      Height="24">
-                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
-                      Fill="{TemplateBinding Foreground}" />
-              </Canvas>
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{TemplateBinding CornerRadius}">
+            <Viewbox Width="{TemplateBinding Width}"
+                     Height="{TemplateBinding Height}"
+                     FlowDirection="{TemplateBinding FlowDirection}">
+              <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+                    Fill="{TemplateBinding Foreground}"
+                    Stretch="Uniform" />
             </Viewbox>
           </Border>
         </ControlTemplate>
@@ -31,14 +33,20 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:MaterialIconText">
-          <StackPanel Orientation="{TemplateBinding Orientation}"
-                      Spacing="{TemplateBinding Spacing}">
-            <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                Height="{TemplateBinding IconSize}"
-                                Animation="{TemplateBinding Animation}"
-                                Kind="{TemplateBinding Kind}" />
-            <TextBlock Text="{TemplateBinding Text}" />
-          </StackPanel>
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}"
+                  CornerRadius="{TemplateBinding CornerRadius}">
+            <StackPanel Orientation="{TemplateBinding Orientation}"
+                        Spacing="{TemplateBinding Spacing}">
+              <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                  Height="{TemplateBinding IconSize}"
+                                  Animation="{TemplateBinding Animation}"
+                                  Kind="{TemplateBinding Kind}" />
+              <TextBlock Text="{TemplateBinding Text}" />
+            </StackPanel>
+          </Border>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
