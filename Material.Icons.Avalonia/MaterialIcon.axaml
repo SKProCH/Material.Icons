@@ -56,7 +56,7 @@
           <Border Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox>
+            <Viewbox Name="PART_IconViewbox">
               <Path Width="24"
                     Height="24"
                     Data="{TemplateBinding Kind,
@@ -69,7 +69,7 @@
     </Setter>
 
     <!--  Animations  -->
-    <Style Selector="^[Animation=Spin] /template/ Viewbox">
+    <Style Selector="^[Animation=Spin] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="{StaticResource DurationTimeSpan}">
@@ -83,7 +83,7 @@
       </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=SpinCcw] /template/ Viewbox">
+    <Style Selector="^[Animation=SpinCcw] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    PlaybackDirection="Reverse"
@@ -98,7 +98,7 @@
       </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=Pulse] /template/ Viewbox">
+    <Style Selector="^[Animation=Pulse] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:2">
@@ -115,7 +115,7 @@
       </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=PulseCcw] /template/ Viewbox">
+    <Style Selector="^[Animation=PulseCcw] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    PlaybackDirection="Reverse"
@@ -133,7 +133,7 @@
       </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox">
+    <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:4">
@@ -149,7 +149,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-    <Style Selector="^[Animation=FadeInOut] /template/ Viewbox">
+    <Style Selector="^[Animation=FadeInOut] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:4">
