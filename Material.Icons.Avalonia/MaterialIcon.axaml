@@ -211,113 +211,101 @@
     </Style>
 
     <!--  Animations  -->
-    <Style Selector="^[Animation=Spin]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     Duration="{StaticResource DurationTimeSpan}">
-            <KeyFrame Cue="0%">
-              <Setter Property="RotateTransform.Angle" Value="0" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="RotateTransform.Angle" Value="360" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=Spin] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   Duration="{StaticResource DurationTimeSpan}">
+          <KeyFrame Cue="0%">
+            <Setter Property="RotateTransform.Angle" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="RotateTransform.Angle" Value="360" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=SpinCcw]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     PlaybackDirection="Reverse"
-                     Duration="{StaticResource DurationTimeSpan}">
-            <KeyFrame Cue="0%">
-              <Setter Property="RotateTransform.Angle" Value="0" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="RotateTransform.Angle" Value="360" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=SpinCcw] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   PlaybackDirection="Reverse"
+                   Duration="{StaticResource DurationTimeSpan}">
+          <KeyFrame Cue="0%">
+            <Setter Property="RotateTransform.Angle" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="RotateTransform.Angle" Value="360" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=Pulse]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     Duration="0:0:2">
-            <Animation.Easing>
-              <icon:PulseEasing />
-            </Animation.Easing>
-            <KeyFrame Cue="0%">
-              <Setter Property="RotateTransform.Angle" Value="0" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="RotateTransform.Angle" Value="360" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=Pulse] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   Duration="0:0:2">
+          <Animation.Easing>
+            <icon:PulseEasing />
+          </Animation.Easing>
+          <KeyFrame Cue="0%">
+            <Setter Property="RotateTransform.Angle" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="RotateTransform.Angle" Value="360" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=PulseCcw]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     PlaybackDirection="Reverse"
-                     Duration="0:0:2">
-            <Animation.Easing>
-              <icon:PulseEasing />
-            </Animation.Easing>
-            <KeyFrame Cue="0%">
-              <Setter Property="RotateTransform.Angle" Value="0" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="RotateTransform.Angle" Value="360" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=PulseCcw] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   PlaybackDirection="Reverse"
+                   Duration="0:0:2">
+          <Animation.Easing>
+            <icon:PulseEasing />
+          </Animation.Easing>
+          <KeyFrame Cue="0%">
+            <Setter Property="RotateTransform.Angle" Value="0" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="RotateTransform.Angle" Value="360" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
 
-    <Style Selector="^[Animation=FadeOutIn]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     Duration="0:0:4">
-            <KeyFrame Cue="0%">
-              <Setter Property="Opacity" Value="0.5" />
-            </KeyFrame>
-            <KeyFrame Cue="50%">
-              <Setter Property="Opacity" Value="1" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="Opacity" Value="0.5" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   Duration="0:0:4">
+          <KeyFrame Cue="0%">
+            <Setter Property="Opacity" Value="0.5" />
+          </KeyFrame>
+          <KeyFrame Cue="50%">
+            <Setter Property="Opacity" Value="1" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="Opacity" Value="0.5" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
-    <Style Selector="^[Animation=FadeInOut]">
-      <Style Selector="^ /template/ Viewbox">
-        <Style.Animations>
-          <Animation IterationCount="INFINITE"
-                     Duration="0:0:4">
-            <KeyFrame Cue="0%">
-              <Setter Property="Opacity" Value="1" />
-            </KeyFrame>
-            <KeyFrame Cue="50%">
-              <Setter Property="Opacity" Value="0.5" />
-            </KeyFrame>
-            <KeyFrame Cue="100%">
-              <Setter Property="Opacity" Value="1" />
-            </KeyFrame>
-          </Animation>
-        </Style.Animations>
-      </Style>
+    <Style Selector="^[Animation=FadeInOut] /template/ Viewbox">
+      <Style.Animations>
+        <Animation IterationCount="INFINITE"
+                   Duration="0:0:4">
+          <KeyFrame Cue="0%">
+            <Setter Property="Opacity" Value="1" />
+          </KeyFrame>
+          <KeyFrame Cue="50%">
+            <Setter Property="Opacity" Value="0.5" />
+          </KeyFrame>
+          <KeyFrame Cue="100%">
+            <Setter Property="Opacity" Value="1" />
+          </KeyFrame>
+        </Animation>
+      </Style.Animations>
     </Style>
   </ControlTheme>
 </ResourceDictionary>
