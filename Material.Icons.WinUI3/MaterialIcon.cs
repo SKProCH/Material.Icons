@@ -20,6 +20,9 @@ public partial class MaterialIcon : Control {
     public static readonly DependencyProperty DataProperty
         = DependencyProperty.Register(nameof(Data), typeof(Geometry), typeof(MaterialIcon), new PropertyMetadata(null));
 
+    public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register(
+        nameof(IconSize), typeof(double), typeof(MaterialIcon), new PropertyMetadata(default(double)));
+
     public MaterialIcon() {
         DefaultStyleKey = typeof(MaterialIcon);
     }
@@ -46,6 +49,14 @@ public partial class MaterialIcon : Control {
     public Geometry? Data {
         get => (Geometry?)GetValue(DataProperty);
         private set => SetValue(DataProperty, value);
+    }
+    
+    /// <summary>
+    /// Gets or sets the icon size
+    /// </summary>
+    public double IconSize {
+        get { return (double)GetValue(IconSizeProperty); }
+        set { SetValue(IconSizeProperty, value); }
     }
 
     protected override void OnApplyTemplate() {
