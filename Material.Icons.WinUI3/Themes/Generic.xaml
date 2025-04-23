@@ -20,44 +20,44 @@
                     Fill="{TemplateBinding Foreground}"
                     Stretch="Uniform" />
             </Viewbox>
+            <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="SizeStates">
+                <VisualState x:Name="None" />
+                <VisualState x:Name="UseIconSizeState">
+                  <VisualState.StateTriggers>
+                    <local:ComparerDoubleTrigger IsEqual="False"
+                                                 Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <!-- Set Viewbox dimensions to IconSize -->
+                    <Setter Target="PART_IconViewbox.Width"
+                            Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Target="PART_IconViewbox.Height"
+                            Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </VisualState.Setters>
+                </VisualState>
+
+                <!-- State: Use FontSize when IconSize, Width, AND Height are ALL NaN -->
+                <VisualState x:Name="UseFontSizeState">
+                  <VisualState.StateTriggers>
+                    <local:ComparerDoubleTrigger
+                      Value="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:ComparerDoubleTrigger
+                      Value="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:ComparerDoubleTrigger
+                      Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <!-- Set Viewbox dimensions to FontSize -->
+                    <Setter Target="PART_IconViewbox.Width"
+                            Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Target="PART_IconViewbox.Height"
+                            Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+            </VisualStateManager.VisualStateGroups>
           </Border>
-
-          <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup x:Name="SizeStates">
-
-              <VisualState x:Name="UseIconSizeState">
-                <VisualState.StateTriggers>
-                  <local:ComparerDoubleTrigger IsEqual="False"
-                                               Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                  <!-- Set Viewbox dimensions to IconSize -->
-                  <Setter Target="PART_IconViewbox.Width"
-                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                  <Setter Target="PART_IconViewbox.Height"
-                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                </VisualState.Setters>
-              </VisualState>
-
-              <!-- State: Use FontSize when IconSize, Width, AND Height are ALL NaN -->
-              <VisualState x:Name="UseFontSizeState">
-                <VisualState.StateTriggers>
-                  <local:ComparerDoubleTrigger Value="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" />
-                  <local:ComparerDoubleTrigger
-                    Value="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}" />
-                  <local:ComparerDoubleTrigger
-                    Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                </VisualState.StateTriggers>
-                <VisualState.Setters>
-                  <!-- Set Viewbox dimensions to FontSize -->
-                  <Setter Target="PART_IconViewbox.Width"
-                          Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                  <Setter Target="PART_IconViewbox.Height"
-                          Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                </VisualState.Setters>
-              </VisualState>
-            </VisualStateGroup>
-          </VisualStateManager.VisualStateGroups>
         </ControlTemplate>
       </Setter.Value>
     </Setter>

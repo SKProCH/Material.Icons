@@ -21,7 +21,7 @@ public partial class MaterialIcon : Control {
         = DependencyProperty.Register(nameof(Data), typeof(Geometry), typeof(MaterialIcon), new PropertyMetadata(null));
 
     public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register(
-        nameof(IconSize), typeof(double), typeof(MaterialIcon), new PropertyMetadata(default(double)));
+        nameof(IconSize), typeof(double), typeof(MaterialIcon), new PropertyMetadata(double.NaN));
 
     public MaterialIcon() {
         DefaultStyleKey = typeof(MaterialIcon);
