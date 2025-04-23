@@ -169,22 +169,16 @@
 
   <ControlTheme x:Key="{x:Type icon:MaterialIcon}"
                 TargetType="icon:MaterialIcon">
-    <Setter Property="RenderTransform">
-      <TransformGroup>
-        <RotateTransform />
-      </TransformGroup>
-    </Setter>
-
     <!--  Template  -->
     <Setter Property="Template">
-
       <ControlTemplate>
         <Border Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
-          <Viewbox Width="{TemplateBinding Width}"
+          <Viewbox Name="PART_IconViewbox"
+                   Width="{TemplateBinding Width}"
                    Height="{TemplateBinding Height}">
             <Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
                   Fill="{TemplateBinding Foreground}"
@@ -211,7 +205,7 @@
     </Style>
 
     <!--  Animations  -->
-    <Style Selector="^[Animation=Spin] /template/ Viewbox">
+    <Style Selector="^[Animation=Spin] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="{StaticResource DurationTimeSpan}">
@@ -224,8 +218,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-
-    <Style Selector="^[Animation=SpinCcw] /template/ Viewbox">
+    <Style Selector="^[Animation=SpinCcw] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    PlaybackDirection="Reverse"
@@ -239,8 +232,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-
-    <Style Selector="^[Animation=Pulse] /template/ Viewbox">
+    <Style Selector="^[Animation=Pulse] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:2">
@@ -256,8 +248,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-
-    <Style Selector="^[Animation=PulseCcw] /template/ Viewbox">
+    <Style Selector="^[Animation=PulseCcw] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    PlaybackDirection="Reverse"
@@ -274,8 +265,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-
-    <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox">
+    <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:4">
@@ -291,7 +281,7 @@
         </Animation>
       </Style.Animations>
     </Style>
-    <Style Selector="^[Animation=FadeInOut] /template/ Viewbox">
+    <Style Selector="^[Animation=FadeInOut] /template/ Viewbox#PART_IconViewbox">
       <Style.Animations>
         <Animation IterationCount="INFINITE"
                    Duration="0:0:4">
