@@ -19,9 +19,6 @@ namespace Material.Icons.WPF {
         public static readonly DependencyProperty TextFirstProperty = DependencyProperty.Register(
             nameof(TextFirst), typeof(bool), typeof(MaterialIconText), new PropertyMetadata(default(bool)));
 
-        public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register(
-            nameof(IconSize), typeof(double), typeof(MaterialIconText), new PropertyMetadata(double.NaN));
-
         /// <summary>
         /// Gets or sets the spacing between the icon and the text
         /// </summary>
@@ -52,14 +49,6 @@ namespace Material.Icons.WPF {
         public bool TextFirst {
             get => (bool)GetValue(TextFirstProperty);
             set => SetValue(TextFirstProperty, value);
-        }
-
-        /// <summary>
-        /// Gets or sets the width and the height of the icon
-        /// </summary>
-        public double IconSize {
-            get => (double)GetValue(IconSizeProperty);
-            set => SetValue(IconSizeProperty, value);
         }
     }
 }
