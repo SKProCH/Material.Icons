@@ -51,21 +51,19 @@
 
     <!--  Template  -->
     <Setter Property="Template">
-      <Setter.Value>
-        <ControlTemplate>
-          <Border Background="{TemplateBinding Background}"
-                  BorderBrush="{TemplateBinding BorderBrush}"
-                  BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox Name="PART_IconViewbox">
-              <Path Width="24"
-                    Height="24"
-                    Data="{TemplateBinding Kind,
+      <ControlTemplate>
+        <Border Background="{TemplateBinding Background}"
+                BorderBrush="{TemplateBinding BorderBrush}"
+                BorderThickness="{TemplateBinding BorderThickness}">
+          <Viewbox Name="PART_IconViewbox">
+            <Path Width="24"
+                  Height="24"
+                  Data="{TemplateBinding Kind,
                                            Converter={StaticResource GeometryConverter}}"
-                    Fill="{TemplateBinding Foreground}" />
-            </Viewbox>
-          </Border>
-        </ControlTemplate>
-      </Setter.Value>
+                  Fill="{TemplateBinding Foreground}" />
+          </Viewbox>
+        </Border>
+      </ControlTemplate>
     </Setter>
 
     <!--  Animations  -->
