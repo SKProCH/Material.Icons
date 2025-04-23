@@ -177,9 +177,7 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
-          <Viewbox Name="PART_IconViewbox"
-                   Width="{TemplateBinding Width}"
-                   Height="{TemplateBinding Height}">
+          <Viewbox Name="PART_IconViewbox">
             <Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
                   Fill="{TemplateBinding Foreground}"
                   Stretch="Uniform" />
