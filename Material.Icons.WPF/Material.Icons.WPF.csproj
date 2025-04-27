@@ -18,7 +18,7 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>2.4.0</Version>
+    <Version>2.4.1</Version>
     <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Sat, 08 Mar 2025 12:16:04 GMT
 Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
   </PropertyGroup>

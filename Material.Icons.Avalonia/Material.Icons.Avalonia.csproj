@@ -15,8 +15,8 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Added animations</PackageReleaseNotes>
-    <Version>2.4.0</Version>
+    <PackageReleaseNotes>Fixed transform</PackageReleaseNotes>
+    <Version>2.4.1</Version>
   </PropertyGroup>
   
   <ItemGroup>
