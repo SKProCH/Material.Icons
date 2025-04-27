@@ -25,8 +25,7 @@
                 <VisualState x:Name="None" />
                 <VisualState x:Name="UseIconSizeState">
                   <VisualState.StateTriggers>
-                    <local:ComparerDoubleTrigger IsEqual="False"
-                                                 Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:MaterialIconNonNanTrigger IconSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                   </VisualState.StateTriggers>
                   <VisualState.Setters>
                     <!-- Set Viewbox dimensions to IconSize -->
@@ -40,12 +39,10 @@
                 <!-- State: Use FontSize when IconSize, Width, AND Height are ALL NaN -->
                 <VisualState x:Name="UseFontSizeState">
                   <VisualState.StateTriggers>
-                    <local:ComparerDoubleTrigger
-                      Value="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}" />
-                    <local:ComparerDoubleTrigger
-                      Value="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}" />
-                    <local:ComparerDoubleTrigger
-                      Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <local:MaterialIconNanTrigger
+                      IconSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}"
+                      Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
+                      Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"/>
                   </VisualState.StateTriggers>
                   <VisualState.Setters>
                     <!-- Set Viewbox dimensions to FontSize -->
