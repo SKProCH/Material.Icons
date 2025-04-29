@@ -14,7 +14,7 @@ namespace Material.Icons.Avalonia.Demo {
     public class ViewLocator : IDataTemplate {
         public bool SupportsRecycling => false;
 
-        public Control Build(object data) {
+        public Control Build(object? data) {
             var name = data.GetType().FullName.Replace("ViewModel", "View");
             var type = Type.GetType(name);
 
@@ -26,7 +26,7 @@ namespace Material.Icons.Avalonia.Demo {
             }
         }
 
-        public bool Match(object data) {
+        public bool Match(object? data) {
             return data is ViewModelBase;
         }
     }
