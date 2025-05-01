@@ -1,7 +1,4 @@
 using Avalonia.Controls;
-using Avalonia.Diagnostics;
-using Avalonia.Input;
-using Avalonia.Markup.Xaml;
 
 namespace Material.Icons.Avalonia.Demo.Views {
     public partial class MainWindow : Window {
