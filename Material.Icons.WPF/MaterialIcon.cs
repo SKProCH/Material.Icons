@@ -37,6 +37,18 @@ namespace Material.Icons.WPF {
             set => SetValue(AnimationProperty, value);
         }
 
+        public static readonly DependencyProperty IconSizeProperty 
+            = DependencyProperty.Register(nameof(IconSize), typeof(double), typeof(MaterialIcon), 
+                new PropertyMetadata(double.NaN));
+
+        /// <summary>
+        /// Gets or sets the icon size
+        /// </summary>
+        public double IconSize {
+            get { return (double)GetValue(IconSizeProperty); }
+            set { SetValue(IconSizeProperty, value); }
+        }
+
         private static readonly DependencyPropertyKey DataPropertyKey
             = DependencyProperty.RegisterReadOnly(nameof(Data), typeof(string), typeof(MaterialIcon), new PropertyMetadata(""));
 

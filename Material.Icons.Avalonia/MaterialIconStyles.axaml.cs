@@ -8,7 +8,7 @@ namespace Material.Icons.Avalonia {
     /// </summary>
     public sealed class MaterialIconStyles : Styles {
         /// <summary>
-        /// Initializes a new instance of the <see cref="MaterialThemeBase"/> class.
+        /// Initializes a new instance of the <see cref="MaterialIconStyles"/> class.
         /// </summary>
         /// <param name="serviceProvider">The parent's service provider.</param>
         public MaterialIconStyles(IServiceProvider? serviceProvider) {

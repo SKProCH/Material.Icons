@@ -31,7 +31,7 @@ Check out changes at https://pictogrammers.com/library/mdi/history/</PackageRele
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.6.240829007" />
+    <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.7.250401001" />
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.26100.1" />
     <PackageReference Include="Microsoft.Windows.CsWinRT" Version="2.1.1" />
   </ItemGroup>

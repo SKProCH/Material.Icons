@@ -2,47 +2,23 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Reactive.Subjects;
-using System.Text;
 using System.Threading.Tasks;
-using Avalonia.Controls;
 using DynamicData.Binding;
 using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;
 
 namespace Material.Icons.Avalonia.Demo.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
-        private readonly Lazy<IEnumerable<PackIconKindGroup>> _packIconKinds;
-        private IEnumerable<PackIconKindGroup>? _kinds;
+        private readonly PackIconKindGroup[] _packIconKinds;
+        private PackIconKindGroup[] _kinds;
         private PackIconKindGroup? _group;
         private string? _searchText;
+        private MaterialIconAnimation _animation = MaterialIconAnimation.None;
 
-        public MainWindowViewModel() {
-            _packIconKinds = new Lazy<IEnumerable<PackIconKindGroup>>(() =>
-                Enum.GetNames(typeof(MaterialIconKind))
-                    .GroupBy(k => (MaterialIconKind) Enum.Parse(typeof(MaterialIconKind), k))
-                    .Select(g => new PackIconKindGroup(g))
-                    .OrderBy(x => x.Kind)
-                    .ToList());
+        public int IconCount => _packIconKinds.Length;
 
-            this.WhenValueChanged(model => model.SearchText).Subscribe(DoSearch);
-            CopyText = this.WhenValueChanged(model => model.Group).Where(group => group != null).Select(group => $"<avalonia:PackIcon Kind=\"{group.Kind}\"/>");
-        }
-
-        private async void DoSearch(string text) {
-            if (string.IsNullOrWhiteSpace(text))
-                Kinds = _packIconKinds.Value;
-            else {
-                Kinds = new List<PackIconKindGroup>();
-                Kinds = await Task.Run(() =>
-                    _packIconKinds.Value
-                                  .Where(x => x.Aliases.Any(a => a.IndexOf(text, StringComparison.CurrentCultureIgnoreCase) >= 0))
-                                  .ToList());
-            }
-        }
-
-        public IEnumerable<PackIconKindGroup> Kinds {
-            get => _kinds ?? _packIconKinds.Value;
+        public PackIconKindGroup[] Kinds {
+            get => _kinds;
             set => this.RaiseAndSetIfChanged(ref _kinds, value);
         }
 
@@ -56,6 +32,45 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _searchText, value);
         }
 
-        public IObservable<string> CopyText { get; set; }
+        public IEnumerable<MaterialIconAnimation> Animations { get; set; } = Enum.GetValues<MaterialIconAnimation>();
+
+        public MaterialIconAnimation Animation {
+            get => _animation;
+            set => this.RaiseAndSetIfChanged(ref _animation, value);
+        }
+
+        public MainWindowViewModel() {
+            _packIconKinds = Enum.GetNames<MaterialIconKind>()
+                    .GroupBy(Enum.Parse<MaterialIconKind>)
+                    .Select(g => new PackIconKindGroup(g))
+                    .OrderBy(x => x.Kind)
+                    .ToArray();
+
+            _kinds = _packIconKinds;
+
+            this.WhenValueChanged(model => model.SearchText)
+                .Throttle(TimeSpan.FromMilliseconds(500))
+                .Subscribe(DoSearch);
+        }
+
+        private void DoSearch(string? text) {
+            text = text?.Trim();
+            if (string.IsNullOrWhiteSpace(text))
+                Kinds = _packIconKinds;
+            else {
+                Kinds = _packIconKinds.Where(x =>
+                        x.Aliases.Any(a => a.Contains(text, StringComparison.CurrentCultureIgnoreCase)))
+                        .ToArray();
+            }
+        }
+
+        public void Unselect() {
+            Group = null;
+        }
+
+        public async Task CopySelected() {
+            if (Group is null) return;
+            await App.Clipboard.SetTextAsync($"<icon:MaterialIcon Kind=\"{Group.Kind}\" />");
+        }
     }
 }

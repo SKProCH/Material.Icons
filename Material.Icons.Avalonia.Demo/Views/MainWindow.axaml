@@ -1,67 +1,90 @@
-<Window xmlns="https://github.com/avaloniaui"
+<Window x:Class="Material.Icons.Avalonia.Demo.Views.MainWindow"
+        xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:vm="clr-namespace:Material.Icons.Avalonia.Demo.ViewModels;assembly=Material.Icons.Avalonia.Demo"
+        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:controls="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
+        xmlns:models="clr-namespace:Material.Icons.Avalonia.Demo.Models"
         xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
-        xmlns:models="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
-        xmlns:models1="clr-namespace:Material.Icons.Avalonia.Demo.Models"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        Width="800" Height="500"
-        x:Class="Material.Icons.Avalonia.Demo.Views.MainWindow"
+        xmlns:vm="clr-namespace:Material.Icons.Avalonia.Demo.ViewModels;assembly=Material.Icons.Avalonia.Demo"
+        Title="Material.Icons.Avalonia.Demo"
+        Width="800"
+        Height="500"
+        d:DesignHeight="450"
+        d:DesignWidth="800"
         Icon="/Assets/avalonia-logo.ico"
-        Title="Material.Icons.Avalonia.Demo">
+        mc:Ignorable="d">
 
-    <Window.Resources>
-        <models1:StringJoinConverter x:Key="StringJoinConverter" Separator="{x:Static system:Environment.NewLine}" />
-    </Window.Resources>
-    <Window.Styles>
-        <Style Selector="models|SelectionWrapper:selectednow > Border">
-            <Setter Property="Background" Value="Gray" />
-        </Style>
-    </Window.Styles>
-    <Design.DataContext>
-        <vm:MainWindowViewModel />
-    </Design.DataContext>
-    <Grid ColumnDefinitions="*, *, Auto" RowDefinitions="*, Auto">
-        <ScrollViewer Grid.ColumnSpan="3" VerticalScrollBarVisibility="Visible"
-                      HorizontalScrollBarVisibility="Disabled">
-          <ItemsRepeater ItemsSource="{Binding Kinds}"
-                         HorizontalAlignment="Center">
-                <ItemsRepeater.Layout>
-                    <UniformGridLayout />
-                </ItemsRepeater.Layout>
-                <ItemsRepeater.ItemTemplate>
-                    <DataTemplate DataType="models1:PackIconKindGroup">
-                        <models:SelectionWrapper DataSource="{Binding .}"
-                                                 CurrentSelected="{Binding $parent[ItemsRepeater].DataContext.Group, Mode=TwoWay}">
-                            <Border Name="MainBorder">
-                                <DockPanel Margin="2"
-                                           ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}"
-                                           Width="64"
-                                           Height="64"
-                                           Background="Transparent">
-                                    <TextBlock
-                                        Text="{Binding Kind}"
-                                        DockPanel.Dock="Bottom"
-                                        FontSize="10"
-                                        HorizontalAlignment="Center" />
-            
-                                    <avalonia:MaterialIcon
-                                        Kind="{Binding Kind}"
-                                        VerticalAlignment="Center"
-                                        HorizontalAlignment="Center"
-                                        Width="32"
-                                        Height="32" />
-                                </DockPanel>
-                            </Border>
-                        </models:SelectionWrapper>
-                    </DataTemplate>
-                </ItemsRepeater.ItemTemplate>
-            </ItemsRepeater>
-        </ScrollViewer>
-        <TextBox Grid.Row="1" Grid.Column="0" Text="{Binding SearchText}" Watermark="Search" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding CopyText^}" IsReadOnly="True" />
-    </Grid>
+  <Window.Resources>
+    <models:StringJoinConverter x:Key="StringJoinConverter"
+                                Separator="{x:Static system:Environment.NewLine}" />
+  </Window.Resources>
+  <Window.Styles>
+    <Style Selector="controls|SelectionWrapper:selectednow > Border">
+      <Setter Property="Background" Value="Gray" />
+    </Style>
+  </Window.Styles>
+  <Window.KeyBindings>
+    <KeyBinding Command="{Binding Unselect}"
+                Gesture="Escape" />
+    <KeyBinding Command="{Binding CopySelected}"
+                Gesture="Ctrl + C" />
+  </Window.KeyBindings>
+  <Design.DataContext>
+    <vm:MainWindowViewModel />
+  </Design.DataContext>
+  <Grid ColumnDefinitions="*, *, 100"
+        RowDefinitions="*, Auto">
+    <ScrollViewer Grid.ColumnSpan="3"
+                  HorizontalScrollBarVisibility="Disabled"
+                  VerticalScrollBarVisibility="Visible">
+      <ItemsRepeater HorizontalAlignment="Center"
+                     ItemsSource="{Binding Kinds}">
+        <ItemsRepeater.Layout>
+          <UniformGridLayout />
+        </ItemsRepeater.Layout>
+        <ItemsRepeater.ItemTemplate>
+          <DataTemplate DataType="models:PackIconKindGroup">
+            <controls:SelectionWrapper CurrentSelected="{Binding $parent[ItemsRepeater].DataContext.Group, Mode=TwoWay}"
+                                       DataSource="{Binding .}">
+              <Border Name="MainBorder">
+                <DockPanel Width="64"
+                           Height="64"
+                           Margin="2"
+                           Background="Transparent"
+                           ToolTip.Tip="{Binding Aliases, Converter={StaticResource StringJoinConverter}}">
+                  <TextBlock HorizontalAlignment="Center"
+                             DockPanel.Dock="Bottom"
+                             FontSize="10"
+                             Text="{Binding Kind}" />
+
+                  <avalonia:MaterialIcon Width="32"
+                                         Height="32"
+                                         HorizontalAlignment="Center"
+                                         VerticalAlignment="Center"
+                                         Animation="{Binding $parent[Window].DataContext.Animation}"
+                                         Kind="{Binding Kind}" />
+                </DockPanel>
+              </Border>
+            </controls:SelectionWrapper>
+          </DataTemplate>
+        </ItemsRepeater.ItemTemplate>
+      </ItemsRepeater>
+    </ScrollViewer>
+
+    <TextBox Grid.Row="1"
+             Grid.Column="0"
+             Text="{Binding SearchText}"
+             Watermark="{Binding IconCount, StringFormat='Search from {0} icons'}" />
+    <TextBox Grid.Row="1"
+             Grid.Column="1"
+             IsReadOnly="True"
+             Text="{Binding Group.Kind, FallbackValue='', StringFormat='&lt;icon:MaterialIcon Kind=&quot;{0}&quot; /&gt;'}" />
+
+    <ComboBox Grid.Row="1"
+              Grid.Column="2"
+              ItemsSource="{Binding Animations, Mode=OneTime}"
+              SelectedItem="{Binding Animation}"/>
+  </Grid>
 </Window>

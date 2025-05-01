@@ -8,17 +8,45 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type local:MaterialIcon}">
-          <Border Background="{TemplateBinding Background}"
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}">
-            <Viewbox FlowDirection="{TemplateBinding FlowDirection}">
-              <Canvas Width="24"
-                      Height="24">
-                <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
-                      Fill="{TemplateBinding Foreground}" />
-              </Canvas>
+            <Viewbox Name="PART_IconViewbox"
+                     FlowDirection="{TemplateBinding FlowDirection}">
+              <Viewbox.Style>
+                <Style TargetType="Viewbox">
+                  <Setter Property="Width"
+                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  <Setter Property="Height"
+                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                </Style>
+              </Viewbox.Style>
+              <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+                    Fill="{TemplateBinding Foreground}"
+                    Stretch="Uniform" />
             </Viewbox>
           </Border>
+          <ControlTemplate.Triggers>
+            <!-- WPF doesn't support the inverted triggers, and DataTrigger with converter somehow doesn't work here  -->
+            <!-- So we're applying IconSize != NaN style in Viewbox.Style -->
+            <!-- And here is reverting to defaults -->
+            <Trigger Property="IconSize" Value="{x:Static system:Double.NaN}">
+              <Setter TargetName="PART_IconViewbox" Property="Width" Value="NaN" />
+              <Setter TargetName="PART_IconViewbox" Property="Height" Value="NaN" />
+            </Trigger>
+            <MultiTrigger>
+              <MultiTrigger.Conditions>
+                <Condition Property="Width" Value="{x:Static system:Double.NaN}" />
+                <Condition Property="Height" Value="{x:Static system:Double.NaN}" />
+                <Condition Property="IconSize" Value="{x:Static system:Double.NaN}" />
+              </MultiTrigger.Conditions>
+              <Setter TargetName="PART_IconViewbox" Property="Width"
+                      Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Setter TargetName="PART_IconViewbox" Property="Height"
+                      Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            </MultiTrigger>
+          </ControlTemplate.Triggers>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
@@ -29,25 +57,30 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="{x:Type local:MaterialIconText}">
-          <StackPanel Orientation="{TemplateBinding Orientation}">
-            <local:MaterialIcon Width="{TemplateBinding IconSize}"
-                                Height="{TemplateBinding IconSize}"
-                                Animation="{TemplateBinding Animation}"
-                                Kind="{TemplateBinding Kind}" />
-            <TextBlock Text="{TemplateBinding Text}">
-              <TextBlock.Margin>
-                <MultiBinding>
-                  <MultiBinding.Converter>
-                    <local:SpacingAsMarginConverter />
-                  </MultiBinding.Converter>
-                  <Binding Path="Spacing"
-                           RelativeSource="{RelativeSource TemplatedParent}" />
-                  <Binding Path="Orientation"
-                           RelativeSource="{RelativeSource TemplatedParent}" />
-                </MultiBinding>
-              </TextBlock.Margin>
-            </TextBlock>
-          </StackPanel>
+          <Border Padding="{TemplateBinding Padding}"
+                  Background="{TemplateBinding Background}"
+                  BorderBrush="{TemplateBinding BorderBrush}"
+                  BorderThickness="{TemplateBinding BorderThickness}">
+            <StackPanel Orientation="{TemplateBinding Orientation}">
+              <local:MaterialIcon Width="{TemplateBinding IconSize}"
+                                  Height="{TemplateBinding IconSize}"
+                                  Animation="{TemplateBinding Animation}"
+                                  Kind="{TemplateBinding Kind}" />
+              <TextBlock Text="{TemplateBinding Text}">
+                <TextBlock.Margin>
+                  <MultiBinding>
+                    <MultiBinding.Converter>
+                      <local:SpacingAsMarginConverter />
+                    </MultiBinding.Converter>
+                    <Binding Path="Spacing"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                    <Binding Path="Orientation"
+                             RelativeSource="{RelativeSource TemplatedParent}" />
+                  </MultiBinding>
+                </TextBlock.Margin>
+              </TextBlock>
+            </StackPanel>
+          </Border>
         </ControlTemplate>
       </Setter.Value>
     </Setter>
