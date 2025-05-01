@@ -15,8 +15,8 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Fixed transform</PackageReleaseNotes>
-    <Version>2.4.1</Version>
+    <Version>3.0.0-preview1.1</Version>
+    <PackageReleaseNotes>- Implemented IconSize</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
