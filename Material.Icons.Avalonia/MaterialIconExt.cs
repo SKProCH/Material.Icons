@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Markup.Xaml;
+using Avalonia.Media;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconExt : MarkupExtension {
@@ -23,6 +24,9 @@ namespace Material.Icons.Avalonia {
         [ConstructorArgument("iconSize")]
         public double? IconSize { get; set; }
 
+        [ConstructorArgument("iconBrush")]
+        public IBrush? IconBrush { get; set; }
+
         [ConstructorArgument("animation")]
         public MaterialIconAnimation Animation { get; set; }
 
@@ -37,6 +41,10 @@ namespace Material.Icons.Avalonia {
 
             if (IconSize.HasValue) {
                 result.IconSize = IconSize.Value;
+            }
+
+            if (IconBrush is not null) {
+                result.Foreground = IconBrush;
             }
 
             if (!string.IsNullOrWhiteSpace(Classes)) {

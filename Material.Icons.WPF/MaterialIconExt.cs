@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Markup;
+using System.Windows.Media;
 
 namespace Material.Icons.WPF {
     [MarkupExtensionReturnType(typeof(MaterialIcon))]
@@ -28,6 +29,9 @@ namespace Material.Icons.WPF {
         [ConstructorArgument("iconSize")]
         public double? IconSize { get; set; }
 
+        [ConstructorArgument("iconBrush")]
+        public Brush? IconBrush { get; set; }
+
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             var result = new MaterialIcon
@@ -40,6 +44,11 @@ namespace Material.Icons.WPF {
             {
                 result.Height = IconSize.Value;
                 result.Width = IconSize.Value;
+            }
+
+            if (IconBrush is not null)
+            {
+                result.Foreground = IconBrush;
             }
 
             return result;

@@ -39,20 +39,24 @@ namespace Material.Icons.Avalonia
             if (string.IsNullOrWhiteSpace(Text))
                 return base.ProvideValue(serviceProvider);
 
-            var result = new MaterialIconText();
+            var result = new MaterialIconText {
+                Kind = Kind,
+                Text = Text,
+                Animation = Animation
+            };
+
+            if (IconSize.HasValue) result.IconSize = IconSize.Value;
+            if (IconBrush is not null) result.Foreground = IconBrush;
+
             if (Spacing.HasValue) result.Spacing = Spacing.Value;
             if (Orientation.HasValue) result.Orientation = Orientation.Value;
             if (TextFirst.HasValue) result.TextFirst = TextFirst.Value;
             if (IsTextSelectable.HasValue) result.IsTextSelectable = IsTextSelectable.Value;
-            if (IconSize.HasValue) {
-                result.IconSize = IconSize.Value;
-            }
+
             if (!string.IsNullOrWhiteSpace(Classes)) {
                 result.Classes.AddRange(global::Avalonia.Controls.Classes.Parse(Classes!));
             }
-            result.Kind = Kind;
-            result.Text = Text;
-            result.Animation = Animation;
+
             return result;
         }
     }
