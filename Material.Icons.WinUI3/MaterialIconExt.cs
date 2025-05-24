@@ -25,7 +25,7 @@ public partial class MaterialIconExt : MarkupExtension {
 
     public double? IconSize { get; set; }
 
-    public Brush? IconBrush { get; set; }
+    public Brush? IconForeground { get; set; }
 
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
         var result = new MaterialIcon
@@ -39,8 +39,8 @@ public partial class MaterialIconExt : MarkupExtension {
             result.Width = IconSize.Value;
         }
 
-        if (IconBrush is not null) {
-            result.Foreground = IconBrush;
+        if (IconForeground is not null) {
+            result.Foreground = IconForeground;
         }
 
         return result;

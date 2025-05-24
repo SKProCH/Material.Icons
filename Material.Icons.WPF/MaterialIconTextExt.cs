@@ -45,7 +45,7 @@ namespace Material.Icons.WPF
                 result.IconSize = IconSize.Value;
                 result.FontSize = IconSize.Value;
             }
-            if (IconBrush is not null) result.Foreground = IconBrush;
+            if (IconForeground is not null) result.Foreground = IconForeground;
 
             if (Spacing.HasValue) result.Spacing = Spacing.Value;
             if (Orientation.HasValue) result.Orientation = Orientation.Value;

@@ -77,10 +77,10 @@ namespace Material.Icons.Avalonia {
         protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs e) {
             base.OnPropertyChanged(e);
 
-            if (ReferenceEquals(e.Property, KindProperty)) {
+            if (e.Property == KindProperty) {
                 SetGeometry();
             }
-            else if (ReferenceEquals(e.Property, ForegroundProperty)) {
+            else if (e.Property == ForegroundProperty) {
                 Drawing.Brush = Foreground;
             }
         }

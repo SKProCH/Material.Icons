@@ -24,8 +24,8 @@ namespace Material.Icons.Avalonia {
         [ConstructorArgument("iconSize")]
         public double? IconSize { get; set; }
 
-        [ConstructorArgument("iconBrush")]
-        public IBrush? IconBrush { get; set; }
+        [ConstructorArgument("iconForeground")]
+        public IBrush? IconForeground { get; set; }
 
         [ConstructorArgument("animation")]
         public MaterialIconAnimation Animation { get; set; }
@@ -43,8 +43,8 @@ namespace Material.Icons.Avalonia {
                 result.IconSize = IconSize.Value;
             }
 
-            if (IconBrush is not null) {
-                result.Foreground = IconBrush;
+            if (IconForeground is not null) {
+                result.Foreground = IconForeground;
             }
 
             if (!string.IsNullOrWhiteSpace(Classes)) {

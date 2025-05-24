@@ -48,7 +48,7 @@
                              Kind="DotsVertical" />
 
           <icon:MaterialIconExt Animation="PulseCcw"
-                                IconBrush="Gold"
+                                IconForeground="Gold"
                                 Kind="ProgressHelper" />
 
           <icon:MaterialIcon Animation="FadeOutIn"
@@ -79,17 +79,17 @@
           </Border>
 
           <Border>
-            <Image Source="{icon:MaterialIconTextExt Kind=AddAlarm, IconBrush=WhiteSmoke, Text='DEBUG, no effect!', IconSize=512}" />
+            <Image Source="{icon:MaterialIconTextExt Kind=AddAlarm, IconForeground=WhiteSmoke, Text='DEBUG, no effect!', IconSize=512}" />
           </Border>
 
           <Border>
-            <Image Source="{icon:MaterialIconExt Kind=ProgressHelper, IconBrush=Gold, Animation=PulseCcw}" />
+            <Image Source="{icon:MaterialIconExt Kind=ProgressHelper, IconForeground=Gold, Animation=PulseCcw}" />
           </Border>
 
           <Border>
             <Image Width="92"
                    Source="{icon:MaterialIconExt Kind=Heart,
-                                                 IconBrush=DeepPink}"
+                                                 IconForeground=DeepPink}"
                    Stretch="Fill" />
           </Border>
 

@@ -29,8 +29,8 @@ namespace Material.Icons.WPF {
         [ConstructorArgument("iconSize")]
         public double? IconSize { get; set; }
 
-        [ConstructorArgument("iconBrush")]
-        public Brush? IconBrush { get; set; }
+        [ConstructorArgument("iconForeground")]
+        public Brush? IconForeground { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
@@ -46,9 +46,9 @@ namespace Material.Icons.WPF {
                 result.Width = IconSize.Value;
             }
 
-            if (IconBrush is not null)
+            if (IconForeground is not null)
             {
-                result.Foreground = IconBrush;
+                result.Foreground = IconForeground;
             }
 
             return result;

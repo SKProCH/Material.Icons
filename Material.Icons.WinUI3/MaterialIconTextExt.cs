@@ -38,7 +38,7 @@ public partial class MaterialIconTextExt : MaterialIconExt {
         };
 
         if (IconSize.HasValue) result.IconSize = IconSize.Value;
-        if (IconBrush is not null) result.Foreground = IconBrush;
+        if (IconForeground is not null) result.Foreground = IconForeground;
 
         if (Spacing.HasValue) result.Spacing = Spacing.Value;
         if (Orientation.HasValue) result.Orientation = Orientation.Value;
