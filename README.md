@@ -64,11 +64,11 @@ The `MaterialIcon` implements `IImage` interface, to allow to use as an `Image` 
 ```xaml
 <!-- Verbose raw method -->
 <Image>
-    <materialIcons:MaterialIcon Kind="Abacus" />
+    <materialIcons:MaterialIcon Foreground="DeepPink" Kind="Abacus" />
 </Image>
 
 <!-- Short extension method -->
-<Image Source="{materialIcons:MaterialIconExt Kind=Abacus}" />
+<Image Source="{materialIcons:MaterialIconExt Kind=Abacus, IconForeground="DeepPink"}" />
 ```
 
 Note that when using `MaterialIcon` as an `Image` source, the `Width` and `Height` properties must be defined under `<Image>`, 
