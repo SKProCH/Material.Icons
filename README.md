@@ -60,6 +60,21 @@ Or with a text via `MaterialIconTextExt`:
 <Button Content="{materialIcons:MaterialIconTextExt Kind=Play, Text=Play}" />
 ```
 
+The `MaterialIcon` implements `IImage` interface, to allow to use as an `Image` source:
+```xaml
+<!-- Verbose raw method -->
+<Image>
+    <materialIcons:MaterialIcon Foreground="DeepPink" Kind="Abacus" />
+</Image>
+
+<!-- Short extension method -->
+<Image Source="{materialIcons:MaterialIconExt Kind=Abacus, IconForeground="DeepPink"}" />
+```
+
+Note that when using `MaterialIcon` as an `Image` source, the `Width` and `Height` properties must be defined under `<Image>`, 
+any size definition on `MaterialIcon` have no impact. Also, animation are not supported in this use case.  
+
+
 ## Avalonia FuncUI (F#)
 #### Getting started
 1. Install [Material.Icons.Avalonia nuget package](https://www.nuget.org/packages/Material.Icons.Avalonia/):

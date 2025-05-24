@@ -35,20 +35,22 @@ namespace Material.Icons.WPF
             if (string.IsNullOrWhiteSpace(Text))
                 return base.ProvideValue(serviceProvider);
 
-            var result = new MaterialIconText();
-            if (Spacing.HasValue)
-                result.Spacing = Spacing.Value;
-            if (Orientation.HasValue)
-                result.Orientation = Orientation.Value;
-            if (TextFirst.HasValue)
-                result.TextFirst = TextFirst.Value;
+            var result = new MaterialIconText {
+                Kind = Kind,
+                Text = Text,
+                Animation = Animation
+            };
+
             if (IconSize.HasValue) {
                 result.IconSize = IconSize.Value;
                 result.FontSize = IconSize.Value;
             }
-            result.Kind = Kind;
-            result.Text = Text;
-            result.Animation = Animation;
+            if (IconForeground is not null) result.Foreground = IconForeground;
+
+            if (Spacing.HasValue) result.Spacing = Spacing.Value;
+            if (Orientation.HasValue) result.Orientation = Orientation.Value;
+            if (TextFirst.HasValue) result.TextFirst = TextFirst.Value;
+
             return result;
         }
     }

@@ -20,6 +20,17 @@
           <Setter Property="CornerRadius" Value="10" />
           <Setter Property="BorderThickness" Value="2" />
         </Style>
+        <Style Selector=".Images Border">
+          <Setter Property="Margin" Value="10,0,10,10" />
+          <Setter Property="Padding" Value="10" />
+          <Setter Property="BorderBrush" Value="Gray" />
+          <Setter Property="CornerRadius" Value="10" />
+          <Setter Property="BorderThickness" Value="2" />
+        </Style>
+        <Style Selector=".Images Image">
+          <Setter Property="Width" Value="24" />
+          <Setter Property="Height" Value="24" />
+        </Style>
       </Border.Styles>
       <StackPanel Orientation="Vertical"
                   Spacing="10">
@@ -36,8 +47,9 @@
           <icon:MaterialIcon Animation="Pulse"
                              Kind="DotsVertical" />
 
-          <icon:MaterialIcon Animation="PulseCcw"
-                             Kind="ProgressHelper" />
+          <icon:MaterialIconExt Animation="PulseCcw"
+                                IconForeground="Gold"
+                                Kind="ProgressHelper" />
 
           <icon:MaterialIcon Animation="FadeOutIn"
                              Foreground="DeepPink"
@@ -47,31 +59,53 @@
                              Kind="Heart" />
         </WrapPanel>
 
+        <WrapPanel Classes="Images"
+                   Orientation="Horizontal">
+          <Border>
+            <Image>
+              <icon:MaterialIcon Kind="Image" />
+            </Image>
+          </Border>
+
+          <Border>
+            <Image Source="{icon:MaterialIconExt Kind=Image}" />
+          </Border>
+
+          <Border>
+            <Image>
+              <icon:MaterialIcon Foreground="WhiteSmoke"
+                                 Kind="AddAlarm" />
+            </Image>
+          </Border>
+
+          <Border>
+            <Image Source="{icon:MaterialIconTextExt Kind=AddAlarm, IconForeground=WhiteSmoke, Text='DEBUG, no effect!', IconSize=512}" />
+          </Border>
+
+          <Border>
+            <Image Source="{icon:MaterialIconExt Kind=ProgressHelper, IconForeground=Gold, Animation=PulseCcw}" />
+          </Border>
+
+          <Border>
+            <Image Width="92"
+                   Source="{icon:MaterialIconExt Kind=Heart,
+                                                 IconForeground=DeepPink}"
+                   Stretch="Fill" />
+          </Border>
+
+        </WrapPanel>
+
         <StackPanel Orientation="Horizontal"
                     Spacing="20">
-          <TextBlock>
-            <StackPanel Orientation="Horizontal"
-                        Spacing="5">
-              <icon:MaterialIcon Kind="Network" />
-              <TextBlock Text="127.0.0.1" />
-            </StackPanel>
-          </TextBlock>
+          <icon:MaterialIconText Kind="Network"
+                                 Text="127.0.0.1" />
 
-          <TextBlock FontSize="16">
-            <StackPanel Orientation="Horizontal"
-                        Spacing="5">
-              <icon:MaterialIcon Kind="Network" />
-              <TextBlock Text="127.0.0.1 (16px)" />
-            </StackPanel>
-          </TextBlock>
-
-          <TextBlock FontSize="24">
-            <StackPanel Orientation="Horizontal"
-                        Spacing="5">
-              <icon:MaterialIcon Kind="Network" />
-              <TextBlock Text="127.0.0.1 (24px)" />
-            </StackPanel>
-          </TextBlock>
+          <icon:MaterialIconText FontSize="16"
+                                 Kind="Network"
+                                 Text="127.0.0.1 (16px)" />
+          <icon:MaterialIconText FontSize="24"
+                                 Kind="Network"
+                                 Text="127.0.0.1 (24px)" />
         </StackPanel>
 
 
@@ -178,7 +212,7 @@
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
           <Viewbox Name="PART_IconViewbox">
-            <Path Data="{TemplateBinding Kind, Converter={StaticResource GeometryConverter}}"
+            <Path Data="{Binding Drawing.Geometry, RelativeSource={RelativeSource TemplatedParent}}"
                   Fill="{TemplateBinding Foreground}"
                   Stretch="Uniform" />
           </Viewbox>

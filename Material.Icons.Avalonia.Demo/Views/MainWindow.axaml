@@ -1,9 +1,9 @@
 <Window x:Class="Material.Icons.Avalonia.Demo.Views.MainWindow"
         xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:avalonia="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         xmlns:controls="clr-namespace:Material.Icons.Avalonia.Demo.Controls"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:icon="clr-namespace:Material.Icons.Avalonia;assembly=Material.Icons.Avalonia"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:models="clr-namespace:Material.Icons.Avalonia.Demo.Models"
         xmlns:system="clr-namespace:System;assembly=System.Runtime.Extensions"
@@ -34,9 +34,9 @@
   <Design.DataContext>
     <vm:MainWindowViewModel />
   </Design.DataContext>
-  <Grid ColumnDefinitions="*, *, 100"
+  <Grid ColumnDefinitions="*, *, 100,Auto,Auto"
         RowDefinitions="*, Auto">
-    <ScrollViewer Grid.ColumnSpan="3"
+    <ScrollViewer Grid.ColumnSpan="5"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Visible">
       <ItemsRepeater HorizontalAlignment="Center"
@@ -59,12 +59,12 @@
                              FontSize="10"
                              Text="{Binding Kind}" />
 
-                  <avalonia:MaterialIcon Width="32"
-                                         Height="32"
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Animation="{Binding $parent[Window].DataContext.Animation}"
-                                         Kind="{Binding Kind}" />
+                  <icon:MaterialIcon Width="32"
+                                     Height="32"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Animation="{Binding $parent[Window].DataContext.Animation}"
+                                     Kind="{Binding Kind}" />
                 </DockPanel>
               </Border>
             </controls:SelectionWrapper>
@@ -85,6 +85,25 @@
     <ComboBox Grid.Row="1"
               Grid.Column="2"
               ItemsSource="{Binding Animations, Mode=OneTime}"
-              SelectedItem="{Binding Animation}"/>
+              SelectedItem="{Binding Animation}" />
+
+    <icon:MaterialIcon Name="RandomIcon"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       Margin="10,5"
+                       ToolTip.Tip="Random icon" />
+
+    <Image Name="RandomImage"
+           Grid.Row="1"
+           Grid.Column="4"
+           Width="16"
+           Height="16"
+           Margin="0,5,10,5"
+           ToolTip.Tip="Random icon image">
+      <icon:MaterialIcon Name="RandomImageIcon"
+                         Foreground="DeepPink"
+                         Kind="Heart" />
+    </Image>
+
   </Grid>
 </Window>

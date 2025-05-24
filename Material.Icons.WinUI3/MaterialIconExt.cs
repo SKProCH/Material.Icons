@@ -1,5 +1,6 @@
 ﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Markup;
+using Microsoft.UI.Xaml.Media;
 
 namespace Material.Icons.WinUI3;
 
@@ -24,6 +25,8 @@ public partial class MaterialIconExt : MarkupExtension {
 
     public double? IconSize { get; set; }
 
+    public Brush? IconForeground { get; set; }
+
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
         var result = new MaterialIcon
         {
@@ -34,6 +37,10 @@ public partial class MaterialIconExt : MarkupExtension {
         if (IconSize.HasValue) {
             result.Height = IconSize.Value;
             result.Width = IconSize.Value;
+        }
+
+        if (IconForeground is not null) {
+            result.Foreground = IconForeground;
         }
 
         return result;
