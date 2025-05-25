@@ -7,30 +7,85 @@
                 Margin="10"
                 Spacing="10">
       <StackPanel.Styles>
+        <Style Selector="avalonia|MaterialIconText.BoldPink">
+          <Setter Property="Foreground" Value="DeepPink" />
+          <Setter Property="FontSize" Value="18" />
+          <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style Selector="TextBlock.h1, SelectableTextBlock.h1">
+          <Setter Property="Padding" Value="10" />
+          <Setter Property="FontSize" Value="32" />
+          <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+        <Style Selector="avalonia|MaterialIcon.h1">
+          <Setter Property="FontSize" Value="32" />
+        </Style>
+        <Style Selector="StackPanel.iconPlacements avalonia|MaterialIconText">
+          <Setter Property="Kind" Value="Mountain" />
+          <Setter Property="Padding" Value="6" />
+          <Setter Property="BorderBrush" Value="LightGray" />
+          <Setter Property="BorderThickness" Value="1" />
+          <Setter Property="CornerRadius" Value="5" />
+        </Style>
         <Style Selector="Button:pressed">
           <Setter Property="Opacity" Value="0.5" />
           <Setter Property="FontSize" Value="28" />
         </Style>
       </StackPanel.Styles>
-      <avalonia:MaterialIconText Text="Icon with text!" />
-      <avalonia:MaterialIconText Kind="Mountain"
-                                 Text="with text first"
-                                 TextFirst="True" />
-      <avalonia:MaterialIconText IsTextSelectable="True"
-                                 Kind="Mountain"
-                                 Text="or selectable" />
-      <avalonia:MaterialIconText IsTextSelectable="True"
-                                 Kind="Mountain"
-                                 Text="or both"
-                                 TextFirst="True" />
+
+      <DockPanel>
+        <avalonia:MaterialIconText Classes="h1"
+                                   DockPanel.Dock="Left"
+                                   Kind="Information"
+                                   Text="MaterialIconText" />
+        <avalonia:MaterialIconText HorizontalAlignment="Right"
+                                   Classes="BoldPink"
+                                   DockPanel.Dock="Right"
+                                   IconPlacement="Right"
+                                   Kind="Heart"
+                                   Spacing="10"
+                                   Text="Styled text" />
+      </DockPanel>
+
+      <StackPanel Orientation="Horizontal"
+                  Spacing="20">
+        <avalonia:MaterialIconText Text="Icon with text!" />
+        <avalonia:MaterialIconText IsTextSelectable="True"
+                                   Kind="Mountain"
+                                   Text="or selectable" />
+
+        <avalonia:MaterialIconText FontSize="18"
+                                   FontWeight="Bold"
+                                   IconSize="28"
+                                   Kind="FormatBold"
+                                   Text="Bold" />
+      </StackPanel>
+
+
+      <StackPanel Classes="iconPlacements"
+                  Orientation="Horizontal"
+                  Spacing="20">
+        <avalonia:MaterialIconText IconPlacement="Left"
+                                   Text="Left placement" />
+
+        <avalonia:MaterialIconText IconPlacement="Top"
+                                   Text="Top placement" />
+
+        <avalonia:MaterialIconText IconPlacement="Right"
+                                   Text="Right placement" />
+
+        <avalonia:MaterialIconText IconPlacement="Bottom"
+                                   Text="Bottom placement" />
+      </StackPanel>
+
       <avalonia:MaterialIconText Padding="5"
                                  Animation="Spin"
                                  BorderBrush="Gray"
                                  BorderThickness="1"
                                  CornerRadius="10"
                                  FontSize="28"
-                                 IconSize="16"
                                  Kind="Refresh"
+                                 Spacing="10"
                                  Text="Spinning Icon!" />
       <Button Content="{avalonia:MaterialIconTextExt Kind=Mountain, Text='and via extension, fixed icon size', IconSize=16}" />
       <Button Content="{avalonia:MaterialIconTextExt Kind=Refresh, Animation=Spin, Text='and via extension'}" />
@@ -45,47 +100,48 @@
 
   <ControlTheme x:Key="{x:Type avalonia:MaterialIconText}"
                 TargetType="avalonia:MaterialIconText">
+    <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Spacing" Value="5" />
-    <Setter Property="Orientation" Value="Horizontal" />
     <Setter Property="Template">
       <ControlTemplate>
         <Border Padding="{TemplateBinding Padding}"
                 Background="{TemplateBinding Background}"
+                BackgroundSizing="{TemplateBinding BackgroundSizing}"
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
-          <StackPanel Orientation="{TemplateBinding Orientation}"
-                      Spacing="{TemplateBinding Spacing}">
-            <avalonia:MaterialIcon Name="PART_LeftIcon"
-                                   Animation="{TemplateBinding Animation}"
-                                   IconSize="{TemplateBinding IconSize}"
-                                   Kind="{TemplateBinding Kind}" />
-            <TextBlock HorizontalAlignment="Center"
-                       VerticalAlignment="Center"
-                       FontSize="{TemplateBinding FontSize}"
-                       Text="{TemplateBinding Text}" />
-            <SelectableTextBlock HorizontalAlignment="Center"
-                                 VerticalAlignment="Center"
-                                 FontSize="{TemplateBinding FontSize}"
-                                 IsVisible="False"
-                                 Text="{TemplateBinding Text}" />
-            <avalonia:MaterialIcon Name="PART_RightIcon"
-                                   Animation="{TemplateBinding Animation}"
-                                   IconSize="{TemplateBinding IconSize}"
+
+          <Grid HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                ColumnDefinitions="Auto"
+                RowDefinitions="Auto">
+            <DockPanel HorizontalSpacing="{TemplateBinding Spacing}"
+                       LastChildFill="False"
+                       VerticalSpacing="{TemplateBinding Spacing}">
+              <avalonia:MaterialIcon Name="PART_Icon"
+                                     HorizontalAlignment="Center"
+                                     VerticalAlignment="Center"
+                                     Animation="{TemplateBinding Animation}"
+                                     DockPanel.Dock="{TemplateBinding IconPlacement}"
+                                     IconSize="{TemplateBinding IconSize}"
+                                     Kind="{TemplateBinding Kind}" />
+
+              <TextBlock Name="PART_TextBlock"
+                         HorizontalAlignment="Center"
+                         VerticalAlignment="Center"
+                         FontSize="{TemplateBinding FontSize}"
+                         Text="{TemplateBinding Text}" />
+              <SelectableTextBlock Name="PART_SelectableTextBlock"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   FontSize="{TemplateBinding FontSize}"
                                    IsVisible="False"
-                                   Kind="{TemplateBinding Kind}" />
-          </StackPanel>
+                                   Text="{TemplateBinding Text}" />
+            </DockPanel>
+          </Grid>
         </Border>
       </ControlTemplate>
     </Setter>
-    <Style Selector="^[TextFirst=True]">
-      <Style Selector="^ /template/ avalonia|MaterialIcon#LeftIcon">
-        <Setter Property="IsVisible" Value="False" />
-      </Style>
-      <Style Selector="^ /template/ avalonia|MaterialIcon#RightIcon">
-        <Setter Property="IsVisible" Value="True" />
-      </Style>
-    </Style>
     <Style Selector="^[IsTextSelectable=True]">
       <Style Selector="^ /template/ TextBlock">
         <Setter Property="IsVisible" Value="False" />
