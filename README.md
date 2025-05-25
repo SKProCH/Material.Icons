@@ -68,7 +68,7 @@ The `MaterialIcon` implements `IImage` interface, to allow to use as an `Image` 
 </Image>
 
 <!-- Short extension method -->
-<Image Source="{materialIcons:MaterialIconExt Kind=Abacus, IconForeground="DeepPink"}" />
+<Image Source="{materialIcons:MaterialIconExt Kind=Abacus, IconForeground=DeepPink}" />
 ```
 
 Note that when using `MaterialIcon` as an `Image` source, the `Width` and `Height` properties must be defined under `<Image>`, 

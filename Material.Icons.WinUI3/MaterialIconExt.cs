@@ -27,6 +27,10 @@ public partial class MaterialIconExt : MarkupExtension {
 
     public Brush? IconForeground { get; set; }
 
+    public VerticalAlignment? VerticalAlignment { get; set; }
+
+    public HorizontalAlignment? HorizontalAlignment { get; set; }
+
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
         var result = new MaterialIcon
         {
@@ -34,14 +38,15 @@ public partial class MaterialIconExt : MarkupExtension {
             Animation = Animation
         };
 
-        if (IconSize.HasValue) {
+        if (IconSize is not null) {
             result.Height = IconSize.Value;
             result.Width = IconSize.Value;
         }
 
-        if (IconForeground is not null) {
-            result.Foreground = IconForeground;
-        }
+        if (IconForeground is not null) result.Foreground = IconForeground;
+
+        if (VerticalAlignment is not null) result.VerticalAlignment = VerticalAlignment.Value;
+        if (HorizontalAlignment is not null) result.HorizontalAlignment = HorizontalAlignment.Value;
 
         return result;
     }

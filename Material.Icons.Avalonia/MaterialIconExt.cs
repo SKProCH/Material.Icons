@@ -1,4 +1,5 @@
 ﻿using System;
+using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
 
@@ -30,6 +31,12 @@ namespace Material.Icons.Avalonia {
         [ConstructorArgument("animation")]
         public MaterialIconAnimation Animation { get; set; }
 
+        [ConstructorArgument("verticalAlignment")]
+        public VerticalAlignment? VerticalAlignment { get; set; }
+
+        [ConstructorArgument("horizontalAlignment")]
+        public HorizontalAlignment? HorizontalAlignment { get; set; }
+
         [ConstructorArgument("classes")]
         public string? Classes { get; set; }
 
@@ -39,13 +46,11 @@ namespace Material.Icons.Avalonia {
                 Animation = Animation
             };
 
-            if (IconSize.HasValue) {
-                result.IconSize = IconSize.Value;
-            }
+            if (IconSize is not null) result.IconSize = IconSize.Value;
+            if (IconForeground is not null) result.Foreground = IconForeground;
 
-            if (IconForeground is not null) {
-                result.Foreground = IconForeground;
-            }
+            if (VerticalAlignment is not null) result.VerticalAlignment = VerticalAlignment.Value;
+            if (HorizontalAlignment is not null) result.HorizontalAlignment = HorizontalAlignment.Value;
 
             if (!string.IsNullOrWhiteSpace(Classes)) {
                 result.Classes.AddRange(global::Avalonia.Controls.Classes.Parse(Classes!));

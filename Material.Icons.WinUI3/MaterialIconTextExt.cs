@@ -27,6 +27,10 @@ public partial class MaterialIconTextExt : MaterialIconExt {
 
     public bool? TextFirst { get; set; }
 
+    public VerticalAlignment? VerticalContentAlignment { get; set; }
+
+    public HorizontalAlignment? HorizontalContentAlignment { get; set; }
+
     protected override object ProvideValue(IXamlServiceProvider serviceProvider) {
         if (string.IsNullOrWhiteSpace(Text))
             return base.ProvideValue(serviceProvider);
@@ -37,12 +41,17 @@ public partial class MaterialIconTextExt : MaterialIconExt {
             Animation = Animation
         };
 
-        if (IconSize.HasValue) result.IconSize = IconSize.Value;
+        if (IconSize is not null) result.IconSize = IconSize.Value;
         if (IconForeground is not null) result.Foreground = IconForeground;
 
-        if (Spacing.HasValue) result.Spacing = Spacing.Value;
-        if (Orientation.HasValue) result.Orientation = Orientation.Value;
-        if (TextFirst.HasValue) result.TextFirst = TextFirst.Value;
+        if (Spacing is not null) result.Spacing = Spacing.Value;
+        if (Orientation is not null) result.Orientation = Orientation.Value;
+        if (TextFirst is not null) result.TextFirst = TextFirst.Value;
+
+        if (VerticalAlignment is not null) result.VerticalAlignment = VerticalAlignment.Value;
+        if (HorizontalAlignment is not null) result.HorizontalAlignment = HorizontalAlignment.Value;
+        if (VerticalContentAlignment is not null) result.VerticalContentAlignment = VerticalContentAlignment.Value;
+        if (HorizontalContentAlignment is not null) result.HorizontalContentAlignment = HorizontalContentAlignment.Value;
 
         return result;
     }

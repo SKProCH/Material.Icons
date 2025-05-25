@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
 using System.Windows.Markup;
 using System.Windows.Media;
 
@@ -32,6 +33,12 @@ namespace Material.Icons.WPF {
         [ConstructorArgument("iconForeground")]
         public Brush? IconForeground { get; set; }
 
+        [ConstructorArgument("verticalAlignment")]
+        public VerticalAlignment? VerticalAlignment { get; set; }
+
+        [ConstructorArgument("horizontalAlignment")]
+        public HorizontalAlignment? HorizontalAlignment { get; set; }
+
         public override object ProvideValue(IServiceProvider serviceProvider)
         {
             var result = new MaterialIcon
@@ -40,16 +47,16 @@ namespace Material.Icons.WPF {
                 Animation = Animation
             };
 
-            if (IconSize.HasValue)
+            if (IconSize is not null)
             {
                 result.Height = IconSize.Value;
                 result.Width = IconSize.Value;
             }
 
-            if (IconForeground is not null)
-            {
-                result.Foreground = IconForeground;
-            }
+            if (IconForeground is not null) result.Foreground = IconForeground;
+
+            if (VerticalAlignment is not null) result.VerticalAlignment = VerticalAlignment.Value;
+            if (HorizontalAlignment is not null) result.HorizontalAlignment = HorizontalAlignment.Value;
 
             return result;
         }
