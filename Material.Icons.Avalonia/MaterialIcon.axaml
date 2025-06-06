@@ -21,7 +21,7 @@
           <Setter Property="BorderThickness" Value="2" />
         </Style>
         <Style Selector=".Images Border">
-          <Setter Property="Margin" Value="10,0,10,10" />
+          <Setter Property="Margin" Value="10,0" />
           <Setter Property="Padding" Value="10" />
           <Setter Property="BorderBrush" Value="Gray" />
           <Setter Property="CornerRadius" Value="10" />
@@ -92,6 +92,22 @@
                                                  IconForeground=DeepPink}"
                    Stretch="Fill" />
           </Border>
+
+        </WrapPanel>
+
+        <WrapPanel Classes="Animations"
+                   Orientation="Horizontal">
+          <ContentPresenter Content="{icon:MaterialIconExt About}" />
+
+          <ContentPresenter Content="{icon:MaterialIconExt About, FadeOutIn}" />
+
+          <ContentPresenter Content="{icon:MaterialIconExt About, 24}" />
+
+          <ContentPresenter Content="{icon:MaterialIconExt About, 24, FadeInOut}" />
+
+          <ContentPresenter Content="{icon:MaterialIconExt About, IconForeground=CornflowerBlue}" />
+
+          <ContentPresenter Content="{icon:MaterialIconTextExt About, Text='Text Ext'}" />
 
         </WrapPanel>
 

@@ -10,7 +10,11 @@ namespace Material.Icons.WPF {
         public MaterialIconExt()
         { }
 
-        public MaterialIconExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None) {
+        public MaterialIconExt(MaterialIconKind kind) {
+            Kind = kind;
+        }
+
+        public MaterialIconExt(MaterialIconKind kind, MaterialIconAnimation animation) {
             Kind = kind;
             Animation = animation;
         }
