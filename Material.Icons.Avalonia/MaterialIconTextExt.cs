@@ -7,22 +7,33 @@ namespace Material.Icons.Avalonia
 {
     public class MaterialIconTextExt : MaterialIconExt {
         public MaterialIconTextExt() { }
-        public MaterialIconTextExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null) : base(kind, animation, classes) { }
 
-        public MaterialIconTextExt(MaterialIconKind kind, string? text, double? iconSize = null, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null)
-            : base(kind, iconSize, animation, classes)
+        public MaterialIconTextExt(MaterialIconKind kind) : base(kind)
+        {
+        }
+
+        public MaterialIconTextExt(MaterialIconKind kind, MaterialIconAnimation animation) : base(kind, animation)
+        {
+        }
+
+        public MaterialIconTextExt(MaterialIconKind kind, double iconSize, MaterialIconAnimation animation = MaterialIconAnimation.None) : base(kind, iconSize, animation)
+        {
+        }
+
+        public MaterialIconTextExt(MaterialIconKind kind, string text, MaterialIconAnimation animation = MaterialIconAnimation.None)
+            : base(kind, animation)
         {
             Text = text;
         }
 
-        public MaterialIconTextExt(MaterialIconKind kind, double? iconSize, string? text = null, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null)
-            : base(kind, iconSize, animation, classes)
+        public MaterialIconTextExt(MaterialIconKind kind, double iconSize, string text, MaterialIconAnimation animation = MaterialIconAnimation.None)
+            : base(kind, iconSize, animation)
         {
             Text = text;
         }
 
-        public MaterialIconTextExt(MaterialIconKind kind, double? iconSize, Dock? iconPlacement, string? text = null, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null)
-            : base(kind, iconSize, animation, classes) {
+        public MaterialIconTextExt(MaterialIconKind kind, double iconSize, Dock iconPlacement, string text, MaterialIconAnimation animation = MaterialIconAnimation.None)
+            : base(kind, iconSize, animation) {
             IconPlacement = iconPlacement;
             Text = text;
         }

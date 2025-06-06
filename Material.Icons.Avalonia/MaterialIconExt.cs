@@ -6,18 +6,21 @@ using Avalonia.Media;
 namespace Material.Icons.Avalonia {
     public class MaterialIconExt : MarkupExtension {
         public MaterialIconExt() { }
-        public MaterialIconExt(MaterialIconKind kind, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null) {
+        public MaterialIconExt(MaterialIconKind kind) {
             Kind = kind;
-            Animation = animation;
-            Classes = classes;
         }
 
-        public MaterialIconExt(MaterialIconKind kind, double? iconSize, MaterialIconAnimation animation = MaterialIconAnimation.None, string? classes = null) {
+        public MaterialIconExt(MaterialIconKind kind, MaterialIconAnimation animation) {
+            Kind = kind;
+            Animation = animation;
+        }
+
+        public MaterialIconExt(MaterialIconKind kind, double iconSize, MaterialIconAnimation animation = MaterialIconAnimation.None) {
             Kind = kind;
             IconSize = iconSize;
             Animation = animation;
-            Classes = classes;
         }
+
 
         [ConstructorArgument("kind")]
         public MaterialIconKind Kind { get; set; }
