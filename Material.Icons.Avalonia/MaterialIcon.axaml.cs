@@ -58,6 +58,10 @@ namespace Material.Icons.Avalonia {
 
         #region Constructor
 
+        static MaterialIcon() {
+            MaterialIconsUtils.InitializeGeometryParser();
+        }
+
         public MaterialIcon() {
             Drawing.Brush = Foreground;
         }
@@ -96,8 +100,7 @@ namespace Material.Icons.Avalonia {
         /// geometry data associated with the current <see cref="Kind"/> value.
         /// </remarks>
         private void SetGeometry() {
-            // TODO: Implement future cache here
-            Drawing.Geometry = Geometry.Parse(MaterialIconDataProvider.GetData(Kind));
+            Drawing.Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
         }
 
         #endregion

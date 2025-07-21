@@ -22,7 +22,7 @@
                           Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Style>
               </Viewbox.Style>
-              <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
+              <Path Data="{Binding Geometry, RelativeSource={RelativeSource TemplatedParent}}"
                     Fill="{TemplateBinding Foreground}"
                     Stretch="Uniform" />
             </Viewbox>
