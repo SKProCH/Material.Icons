@@ -17,6 +17,7 @@
     <RootNamespace>Material.Icons</RootNamespace>
     <Version>3.0.0-preview1.1</Version>
     <PackageReleaseNotes>- Implemented IconSize</PackageReleaseNotes>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
