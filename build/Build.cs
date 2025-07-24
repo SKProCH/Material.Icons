@@ -72,7 +72,6 @@ partial class Build : NukeBuild {
             Log.Information("Writing icons meta information to {DestinationPath}", destinationPath);
 
             MaterialIconKindEnumGenerator.Write(destinationPath, iconInfos);
-            MaterialIconDataDeclarationGenerator.Write(destinationPath);
             SwitchRegularStringGenerator.Write(destinationPath, iconInfos);
         })
         .Triggers(Compile);

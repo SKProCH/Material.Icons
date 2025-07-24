@@ -55,8 +55,11 @@ public partial class MaterialIconDataProvider {
             throw new InvalidOperationException("Geometry parser not initialized. Call InitializeGeometryParser first.");
         }
         
-        return _parser(GetData(kind)) as T ?? throw new InvalidOperationException("" +
+        var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException("" +
             "Parser returns a wrong type. Check that you are requesting the correct geometry type.");
+        Cache[kind] = result;
+        
+        return result;
     }
 
     /// <summary>
