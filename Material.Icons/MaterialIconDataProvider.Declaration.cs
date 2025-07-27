@@ -3,11 +3,8 @@ using System.Collections.Generic;
 
 namespace Material.Icons;
 
-/// ******************************************
-/// This code is auto generated. Do not amend.
-/// ******************************************
 /// <summary>
-/// Allows retrieving data for icons
+/// Provides access to the Material Design icons data and its geometry.
 /// </summary>
 public partial class MaterialIconDataProvider {
     private static MaterialIconDataProvider _instance = new();
@@ -41,6 +38,13 @@ public partial class MaterialIconDataProvider {
         _cache.Clear();
     }
 
+    /// <summary>
+    /// Initializes the geometry parser with the specified parsing function.
+    /// </summary>
+    /// <remarks>This method sets the parser function to be used for geometry parsing operations. If the
+    /// parser has already been initialized, subsequent calls to this method will have no effect.</remarks>
+    /// <param name="parser">A function that takes a string input and returns an object representing the parsed geometry. This parameter
+    /// cannot be null.</param>
     public static void InitializeGeometryParser(Func<string, object> parser) => _parser ??= parser;
 
     /// <summary>
@@ -49,9 +53,11 @@ public partial class MaterialIconDataProvider {
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
     public static T Get<T>(MaterialIconKind kind) where T : class {
-        if (Cache.TryGetValue(kind, out var value))
+        if (Cache.TryGetValue(kind, out var value)) {
             return value as T ?? throw new InvalidOperationException(
                 "Invalid type for icon kind. Check that you are requesting the correct geometry type.");
+        }
+
         if (_parser is null) {
             throw new InvalidOperationException(
                 "Geometry parser not initialized. Call InitializeGeometryParser first.");
@@ -59,6 +65,7 @@ public partial class MaterialIconDataProvider {
 
         var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException(
             "Parser returns a wrong type. Check that you are requesting the correct geometry type.");
+
         _cache[kind] = result;
 
         return result;
