@@ -12,16 +12,16 @@ namespace Material.Icons;
 public partial class MaterialIconDataProvider {
     private static MaterialIconDataProvider _instance = new();
     private static Func<string, object>? _parser;
-    
+
     /// <summary>
     /// Gets the cache singleton for the icons. The cache is used to store the parsed icons to avoid parsing them multiple times.
     /// </summary>
-    private static readonly Lazy<Dictionary<MaterialIconKind, object>> _cacheLazy = new(() => new Dictionary<MaterialIconKind, object>());
+    private static readonly Dictionary<MaterialIconKind, object> _cache = new();
 
     /// <summary>
     /// Gets the cache for the icons. The cache is used to store the parsed icons to avoid parsing them multiple times.
     /// </summary>
-    public static Dictionary<MaterialIconKind, object> Cache => _cacheLazy.Value;
+    public static IReadOnlyDictionary<MaterialIconKind, object> Cache => _cache;
 
     /// <summary>
     /// Gets or sets the singleton instance of this provider
@@ -30,16 +30,17 @@ public partial class MaterialIconDataProvider {
         get => _instance;
         set {
             _instance = value ?? throw new ArgumentNullException(nameof(value));
+            ClearCache();
         }
     }
-    
+
     /// <summary>
     /// Clears the cache for the icons.
     /// </summary>
     public static void ClearCache() {
-        if (_cacheLazy.IsValueCreated) Cache.Clear();
+        _cache.Clear();
     }
-    
+
     public static void InitializeGeometryParser(Func<string, object> parser) => _parser ??= parser;
 
     /// <summary>
@@ -52,13 +53,14 @@ public partial class MaterialIconDataProvider {
             return value as T ?? throw new InvalidOperationException(
                 "Invalid type for icon kind. Check that you are requesting the correct geometry type.");
         if (_parser is null) {
-            throw new InvalidOperationException("Geometry parser not initialized. Call InitializeGeometryParser first.");
+            throw new InvalidOperationException(
+                "Geometry parser not initialized. Call InitializeGeometryParser first.");
         }
-        
-        var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException("" +
+
+        var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException(
             "Parser returns a wrong type. Check that you are requesting the correct geometry type.");
-        Cache[kind] = result;
-        
+        _cache[kind] = result;
+
         return result;
     }
 
