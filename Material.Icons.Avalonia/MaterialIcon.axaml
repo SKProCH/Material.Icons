@@ -214,7 +214,6 @@
       </StackPanel>
     </Border>
   </Design.PreviewWith>
-  <icon:MaterialIconKindToGeometryConverter x:Key="GeometryConverter" />
   <system:TimeSpan x:Key="DurationTimeSpan">0:0:2</system:TimeSpan>
 
   <ControlTheme x:Key="{x:Type icon:MaterialIcon}"

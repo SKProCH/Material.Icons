@@ -1,8 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using Avalonia.Media;
+using Avalonia.Threading;
 using DynamicData.Binding;
 using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;
@@ -56,8 +61,10 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
         private void DoSearch(string? text) {
             text = text?.Trim();
             if (string.IsNullOrWhiteSpace(text))
+                // Reset to all icons
                 Kinds = _packIconKinds;
             else {
+                // Search for given icon
                 Kinds = _packIconKinds.Where(x =>
                         x.Aliases.Any(a => a.Contains(text, StringComparison.CurrentCultureIgnoreCase)))
                         .ToArray();

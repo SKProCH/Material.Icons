@@ -12,6 +12,7 @@ namespace Material.Icons.Avalonia {
         /// </summary>
         /// <param name="serviceProvider">The parent's service provider.</param>
         public MaterialIconStyles(IServiceProvider? serviceProvider) {
+            MaterialIconsUtils.InitializeGeometryParser();
             AvaloniaXamlLoader.Load(serviceProvider, this);
         }
     }

@@ -23,6 +23,10 @@ public partial class MaterialIcon : Control {
     public static readonly DependencyProperty IconSizeProperty = DependencyProperty.Register(
         nameof(IconSize), typeof(double), typeof(MaterialIcon), new PropertyMetadata(double.NaN));
 
+    static MaterialIcon() {
+        MaterialIconsUtils.InitializeGeometryParser();
+    }
+
     public MaterialIcon() {
         DefaultStyleKey = typeof(MaterialIcon);
     }
@@ -68,14 +72,7 @@ public partial class MaterialIcon : Control {
         DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
         => ((MaterialIcon)dependencyObject).UpdateData();
 
-    private static Geometry ParseFromString(string source) {
-        return (Geometry)XamlReader.Load(
-            $"""
-             <Geometry xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">{source}</Geometry>
-             """);
-    }
-
     private void UpdateData() {
-        Data = ParseFromString(MaterialIconDataProvider.GetData(Kind));
+        Data = MaterialIconDataProvider.Get<Geometry>(Kind);
     }
 }

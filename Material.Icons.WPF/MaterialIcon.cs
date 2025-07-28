@@ -6,6 +6,7 @@ using System.Windows.Media;
 namespace Material.Icons.WPF {
     public class MaterialIcon : Control {
         static MaterialIcon() {
+            MaterialIconsUtils.InitializeGeometryParser();
             DefaultStyleKeyProperty.OverrideMetadata(typeof(MaterialIcon), new FrameworkPropertyMetadata(typeof(MaterialIcon)));
         }
 
@@ -49,19 +50,16 @@ namespace Material.Icons.WPF {
             set { SetValue(IconSizeProperty, value); }
         }
 
-        private static readonly DependencyPropertyKey DataPropertyKey
-            = DependencyProperty.RegisterReadOnly(nameof(Data), typeof(string), typeof(MaterialIcon), new PropertyMetadata(""));
-
-        // ReSharper disable once StaticMemberInGenericType
-        public static readonly DependencyProperty DataProperty = DataPropertyKey.DependencyProperty;
+        internal static readonly DependencyPropertyKey GeometryProperty = 
+            DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(Geometry), typeof(MaterialIcon), 
+                new PropertyMetadata(default(Geometry)));
 
         /// <summary>
-        /// Gets the icon path data for the current <see cref="Kind"/>.
+        /// Gets the geometry for the icon
         /// </summary>
-        [TypeConverter(typeof(GeometryConverter))]
-        public string? Data {
-            get => (string?) GetValue(DataProperty);
-            private set => SetValue(DataPropertyKey, value);
+        public Geometry Geometry {
+            get { return (Geometry)GetValue(GeometryProperty.DependencyProperty); }
+            private set { SetValue(GeometryProperty, value); }
         }
 
         public override void OnApplyTemplate() {
@@ -70,7 +68,7 @@ namespace Material.Icons.WPF {
         }
 
         private void UpdateData() {
-            Data = MaterialIconDataProvider.GetData(Kind);
+            Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
         }
     }
 }
