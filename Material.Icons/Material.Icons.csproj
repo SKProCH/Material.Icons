@@ -15,8 +15,8 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageTags>material icons material-design google-material</PackageTags>
     <RootNamespace>Material.Icons</RootNamespace>
-    <Version>3.0.0-preview1.1</Version>
-    <PackageReleaseNotes>- Implemented IconSize</PackageReleaseNotes>
+    <Version>3.0.0-preview3.1</Version>
+    <PackageReleaseNotes>- Add cache for icons geometry</PackageReleaseNotes>
     <Nullable>enable</Nullable>
   </PropertyGroup>
 

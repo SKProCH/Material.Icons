@@ -18,8 +18,8 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>3.0.0-preview1.1</Version>
-    <PackageReleaseNotes>- Implemented IconSize</PackageReleaseNotes>
+    <Version>3.0.0-preview3.1</Version>
+    <PackageReleaseNotes>- Add cache for icons geometry</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
