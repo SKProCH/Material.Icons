@@ -34,9 +34,9 @@
   <Design.DataContext>
     <vm:MainWindowViewModel />
   </Design.DataContext>
-  <Grid ColumnDefinitions="*, *, 100,Auto,Auto"
+  <Grid ColumnDefinitions="*, *, 100,Auto,Auto,Auto"
         RowDefinitions="*, Auto">
-    <ScrollViewer Grid.ColumnSpan="5"
+    <ScrollViewer Grid.ColumnSpan="6"
                   HorizontalScrollBarVisibility="Disabled"
                   VerticalScrollBarVisibility="Visible">
       <ItemsRepeater HorizontalAlignment="Center"
@@ -87,15 +87,20 @@
               ItemsSource="{Binding Animations, Mode=OneTime}"
               SelectedItem="{Binding Animation}" />
 
+    <Button Grid.Row="1"
+            Grid.Column="3"
+            IsEnabled="False"
+            Content="{icon:MaterialIconTextExt Kind=SyncDisabled, Text='Disabled'}"/>
+
     <icon:MaterialIcon Name="RandomIcon"
                        Grid.Row="1"
-                       Grid.Column="3"
+                       Grid.Column="4"
                        Margin="10,5"
                        ToolTip.Tip="Random icon" />
 
     <Image Name="RandomImage"
            Grid.Row="1"
-           Grid.Column="4"
+           Grid.Column="5"
            Width="16"
            Height="16"
            Margin="0,5,10,5"
