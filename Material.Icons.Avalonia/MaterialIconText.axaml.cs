@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -97,18 +98,21 @@ namespace Material.Icons.Avalonia {
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e) {
             base.OnApplyTemplate(e);
 
-            // Ignore pseudo-classes replication, otherwise crash with: The pseudoclass ':xxx' may only be added by the control itself.
-            var classes = Classes.Where(s => s.Length > 0 && s[0] != ':');
-            var filteredClasses = classes as string[] ?? classes.ToArray();
-            if (filteredClasses.Length > 0) {
-                // Redirect classes to the template parts
-                var icon = e.NameScope.Get<MaterialIcon>("PART_Icon");
-                var textBlock = e.NameScope.Get<TextBlock>("PART_TextBlock");
-                var selectableTextBlock = e.NameScope.Get<SelectableTextBlock>("PART_SelectableTextBlock");
 
-                icon.Classes.AddRange(filteredClasses);
-                textBlock.Classes.AddRange(filteredClasses);
-                selectableTextBlock.Classes.AddRange(filteredClasses);
+            if (Classes.Count > 0) {
+                // Ignore pseudo-classes replication, otherwise crash with: The pseudoclass ':xxx' may only be added by the control itself.
+                var filteredClasses = Classes.Where(c => c.Length > 0 && c[0] != ':').ToArray();
+
+                if (filteredClasses.Length > 0) {
+                    // Redirect classes to the template parts
+                    var icon = e.NameScope.Get<MaterialIcon>("PART_Icon");
+                    var textBlock = e.NameScope.Get<TextBlock>("PART_TextBlock");
+                    var selectableTextBlock = e.NameScope.Get<SelectableTextBlock>("PART_SelectableTextBlock");
+
+                    icon.Classes.AddRange(filteredClasses);
+                    textBlock.Classes.AddRange(filteredClasses);
+                    selectableTextBlock.Classes.AddRange(filteredClasses);
+                }
             }
         }
     }
