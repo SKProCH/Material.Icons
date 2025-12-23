@@ -1,3 +1,6 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.Metadata;
@@ -95,17 +98,21 @@ namespace Material.Icons.Avalonia {
         protected override void OnApplyTemplate(TemplateAppliedEventArgs e) {
             base.OnApplyTemplate(e);
 
-            var classes = Classes;
-            if (classes.Count > 0) {
 
-                // Redirect classses to the template parts
-                var icon = e.NameScope.Get<MaterialIcon>("PART_Icon");
-                var textBlock = e.NameScope.Get<TextBlock>("PART_TextBlock");
-                var selectableTextBlock = e.NameScope.Get<SelectableTextBlock>("PART_SelectableTextBlock");
+            if (Classes.Count > 0) {
+                // Ignore pseudo-classes replication, otherwise crash with: The pseudoclass ':xxx' may only be added by the control itself.
+                var filteredClasses = Classes.Where(c => c.Length > 0 && c[0] != ':').ToArray();
 
-                icon.Classes.AddRange(classes);
-                textBlock.Classes.AddRange(classes);
-                selectableTextBlock.Classes.AddRange(classes);
+                if (filteredClasses.Length > 0) {
+                    // Redirect classes to the template parts
+                    var icon = e.NameScope.Get<MaterialIcon>("PART_Icon");
+                    var textBlock = e.NameScope.Get<TextBlock>("PART_TextBlock");
+                    var selectableTextBlock = e.NameScope.Get<SelectableTextBlock>("PART_SelectableTextBlock");
+
+                    icon.Classes.AddRange(filteredClasses);
+                    textBlock.Classes.AddRange(filteredClasses);
+                    selectableTextBlock.Classes.AddRange(filteredClasses);
+                }
             }
         }
     }
