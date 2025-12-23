@@ -99,16 +99,16 @@ namespace Material.Icons.Avalonia {
 
             // Ignore pseudo-classes replication, otherwise crash with: The pseudoclass ':xxx' may only be added by the control itself.
             var classes = Classes.Where(s => s.Length > 0 && s[0] != ':');
-            var enumerable = classes as string[] ?? classes.ToArray();
-            if (enumerable.Length > 0) {
+            var filteredClasses = classes as string[] ?? classes.ToArray();
+            if (filteredClasses.Length > 0) {
                 // Redirect classses to the template parts
                 var icon = e.NameScope.Get<MaterialIcon>("PART_Icon");
                 var textBlock = e.NameScope.Get<TextBlock>("PART_TextBlock");
                 var selectableTextBlock = e.NameScope.Get<SelectableTextBlock>("PART_SelectableTextBlock");
 
-                icon.Classes.AddRange(enumerable);
-                textBlock.Classes.AddRange(enumerable);
-                selectableTextBlock.Classes.AddRange(enumerable);
+                icon.Classes.AddRange(filteredClasses);
+                textBlock.Classes.AddRange(filteredClasses);
+                selectableTextBlock.Classes.AddRange(filteredClasses);
             }
         }
     }
