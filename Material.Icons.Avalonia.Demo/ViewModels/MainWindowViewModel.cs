@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Globalization;
 using System.Linq;
 using System.Reactive.Linq;
-using System.Runtime.InteropServices;
 using System.Threading.Tasks;
-using Avalonia.Media;
-using Avalonia.Threading;
 using DynamicData.Binding;
 using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;
@@ -18,6 +13,7 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
         private PackIconKindGroup[] _kinds;
         private PackIconKindGroup? _group;
         private string? _searchText;
+        private MaterialIconKind _randomIconKind;
         private MaterialIconAnimation _animation = MaterialIconAnimation.None;
 
         public int IconCount => _packIconKinds.Length;
@@ -39,12 +35,16 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
 
         public IEnumerable<MaterialIconAnimation> Animations { get; set; } = Enum.GetValues<MaterialIconAnimation>();
 
+        public MaterialIconKind RandomIconKind {
+            get => _randomIconKind;
+            set => this.RaiseAndSetIfChanged(ref _randomIconKind, value);
+        }
+
         public MaterialIconAnimation Animation {
             get => _animation;
             set => this.RaiseAndSetIfChanged(ref _animation, value);
         }
 
-        public MaterialIconKind DisabledIconKind => MaterialIconKind.SyncDisabled;
         public string DisabledIconText => "Disabled";
 
         public MainWindowViewModel() {
