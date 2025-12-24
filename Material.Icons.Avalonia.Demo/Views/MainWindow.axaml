@@ -90,12 +90,13 @@
     <Button Grid.Row="1"
             Grid.Column="3"
             IsEnabled="False"
-            Content="{icon:MaterialIconTextExt Kind=SyncDisabled, Text='Disabled'}"/>
+            Content="{icon:MaterialIconTextExt KindBinding={Binding DisabledIconKind}, Text={Binding DisabledIconText}, AnimationBinding={Binding Animation}}"/>
 
     <icon:MaterialIcon Name="RandomIcon"
                        Grid.Row="1"
                        Grid.Column="4"
                        Margin="10,5"
+                       Animation="{Binding Animation}"
                        ToolTip.Tip="Random icon" />
 
     <Image Name="RandomImage"
@@ -107,6 +108,7 @@
            ToolTip.Tip="Random icon image">
       <icon:MaterialIcon Name="RandomImageIcon"
                          Foreground="DeepPink"
+                         Animation="{Binding Animation}"
                          Kind="Heart" />
     </Image>
 

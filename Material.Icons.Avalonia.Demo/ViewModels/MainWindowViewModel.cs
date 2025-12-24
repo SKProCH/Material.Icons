@@ -44,6 +44,9 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
             set => this.RaiseAndSetIfChanged(ref _animation, value);
         }
 
+        public MaterialIconKind DisabledIconKind => MaterialIconKind.SyncDisabled;
+        public string DisabledIconText => "Disabled";
+
         public MainWindowViewModel() {
             _packIconKinds = Enum.GetNames<MaterialIconKind>()
                     .GroupBy(Enum.Parse<MaterialIconKind>)

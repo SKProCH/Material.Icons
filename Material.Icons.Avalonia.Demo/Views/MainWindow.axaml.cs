@@ -13,10 +13,8 @@ namespace Material.Icons.Avalonia.Demo.Views {
 
                 RandomIcon.Kind = values[Random.Shared.Next(0, values.Length)];
                 RandomImageIcon.Kind = values[Random.Shared.Next(0, values.Length)];
-#if RELEASE
                 // Without this line, image will not be updated with the new icon
                 RandomImage.InvalidateVisual();
-#endif
                 return true;
             }, TimeSpan.FromSeconds(1));
         }
