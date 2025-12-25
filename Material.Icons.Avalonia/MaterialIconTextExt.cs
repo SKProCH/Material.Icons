@@ -60,7 +60,7 @@ namespace Material.Icons.Avalonia
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
             // If no text is provided and it's not a binding, fall back to base
-            if (Text is not IBinding && (Text is null || (Text is string textString && string.IsNullOrWhiteSpace(textString))))
+            if (Text is null || (Text is not IBinding && Text is string textString && string.IsNullOrWhiteSpace(textString)))
                 return base.ProvideValue(serviceProvider);
 
             var result = new MaterialIconText();
@@ -85,6 +85,8 @@ namespace Material.Icons.Avalonia
                     case IConvertible conv:
                         result.IconSize = conv.ToDouble(System.Globalization.CultureInfo.InvariantCulture);
                         break;
+                    default:
+                        throw new InvalidOperationException($"IconSize must be of type IBinding or IConvertible. Actual type: {IconSize.GetType().FullName}");
                 }
             }
 

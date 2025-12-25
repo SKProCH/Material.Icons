@@ -36,7 +36,8 @@ namespace Material.Icons.Avalonia {
         public IBinding? KindBinding { get; set; }
 
         /// <summary>
-        /// Gets or sets the size of the icon to display.
+        /// Gets or sets the size of the icon to display.<br/>
+        /// Can be a double or a IBinding.
         /// </summary>
         [ConstructorArgument("iconSize")]
         public object? IconSize { get; set; }
@@ -102,6 +103,8 @@ namespace Material.Icons.Avalonia {
                     case IConvertible conv:
                         result.IconSize = conv.ToDouble(System.Globalization.CultureInfo.InvariantCulture);
                         break;
+                    default:
+                        throw new InvalidOperationException($"IconSize must be of type IBinding or IConvertible. Actual type: {IconSize.GetType().FullName}");
                 }
             }
 
