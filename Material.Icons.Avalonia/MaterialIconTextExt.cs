@@ -1,5 +1,7 @@
 ﻿using System;
 using Avalonia.Controls;
+using Avalonia.Controls.Primitives;
+using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 
@@ -45,7 +47,7 @@ namespace Material.Icons.Avalonia
         public double? Spacing { get; set; }
 
         [ConstructorArgument("text")]
-        public string? Text { get; set; }
+        public object? Text { get; set; }
 
         [ConstructorArgument("isTextSelectable")]
         public bool? IsTextSelectable { get; set; }
@@ -57,17 +59,41 @@ namespace Material.Icons.Avalonia
         public HorizontalAlignment? HorizontalContentAlignment { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
-            if (string.IsNullOrWhiteSpace(Text))
+            // If no text is provided and it's not a binding, fall back to base
+            if (Text is null || (Text is not IBinding && Text is string textString && string.IsNullOrWhiteSpace(textString)))
                 return base.ProvideValue(serviceProvider);
 
-            var result = new MaterialIconText {
-                Kind = Kind,
-                Text = Text,
-                Animation = Animation
-            };
+            var result = new MaterialIconText();
 
-            if (IconSize is not null) result.IconSize = IconSize.Value;
-            if (IconForeground is not null) result.Foreground = IconForeground;
+            // Kind: binding takes precedence
+            if (KindBinding is not null) result.Bind(MaterialIcon.KindProperty, KindBinding);
+            else result.Kind = Kind;
+
+            // Animation: binding takes precedence
+            if (AnimationBinding is not null) result.Bind(MaterialIcon.AnimationProperty, AnimationBinding);
+            else result.Animation = Animation;
+
+            // Apply Text (supports binding or direct value)
+            if (Text is IBinding textBinding) result.Bind(MaterialIconText.TextProperty, textBinding);
+            else if (Text is string textValue) result.Text = textValue;
+
+            if (IconSize is not null) {
+                switch (IconSize) {
+                    case IBinding binding:
+                        result.Bind(MaterialIcon.IconSizeProperty, binding);
+                        break;
+                    case IConvertible conv:
+                        result.IconSize = conv.ToDouble(System.Globalization.CultureInfo.InvariantCulture);
+                        break;
+                    default:
+                        throw new InvalidOperationException($"IconSize must be of type IBinding or IConvertible. Actual type: {IconSize.GetType().FullName}");
+                }
+            }
+
+            // IconForeground: binding takes precedence
+            if (IconForegroundBinding is not null) result.Bind(TemplatedControl.ForegroundProperty, IconForegroundBinding);
+            else if (IconForeground is not null) result.Foreground = IconForeground;
+
             if (IconPlacement is not null) result.IconPlacement = IconPlacement.Value;
 
             if (Spacing is not null) result.Spacing = Spacing.Value;
