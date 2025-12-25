@@ -18,8 +18,8 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>3.0.0-preview4</Version>
-    <PackageReleaseNotes>- Fix crash by MaterialIconTextExt pseudo-classes replication</PackageReleaseNotes>
+    <Version>3.0.0-preview5</Version>
+    <PackageReleaseNotes>- Allow Bindings under MaterialIconExt</PackageReleaseNotes>
     <EnableMsixTooling>true</EnableMsixTooling>
 
     <WindowsSdkPackageVersion>10.0.22621.38</WindowsSdkPackageVersion>

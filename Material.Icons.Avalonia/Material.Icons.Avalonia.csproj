@@ -15,8 +15,8 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>3.0.0-preview4</Version>
-    <PackageReleaseNotes>- Fix crash by MaterialIconTextExt pseudo-classes replication</PackageReleaseNotes>
+    <Version>3.0.0-preview5</Version>
+    <PackageReleaseNotes>- Allow Bindings under MaterialIconExt</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
