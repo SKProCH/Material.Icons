@@ -37,7 +37,7 @@ namespace Material.Icons.Avalonia {
 
         /// <summary>
         /// Gets or sets the size of the icon to display.<br/>
-        /// Can be a double or a IBinding.
+        /// Can be a double or a binding.
         /// </summary>
         [ConstructorArgument("iconSize")]
         public object? IconSize { get; set; }
