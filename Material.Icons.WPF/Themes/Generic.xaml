@@ -16,10 +16,8 @@
                      FlowDirection="{TemplateBinding FlowDirection}">
               <Viewbox.Style>
                 <Style TargetType="Viewbox">
-                  <Setter Property="Width"
-                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                  <Setter Property="Height"
-                          Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                  <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                 </Style>
               </Viewbox.Style>
               <Path Data="{Binding Geometry, RelativeSource={RelativeSource TemplatedParent}}"
@@ -28,9 +26,12 @@
             </Viewbox>
           </Border>
           <ControlTemplate.Triggers>
-            <!-- WPF doesn't support the inverted triggers, and DataTrigger with converter somehow doesn't work here  -->
-            <!-- So we're applying IconSize != NaN style in Viewbox.Style -->
-            <!-- And here is reverting to defaults -->
+            <!--  WPF doesn't support the inverted triggers, and DataTrigger with converter somehow doesn't work here  -->
+            <!--  So we're applying IconSize != NaN style in Viewbox.Style  -->
+            <!--  And here is reverting to defaults  -->
+            <Trigger Property="Kind" Value="Invisible">
+              <Setter Property="Visibility" Value="Collapsed" />
+            </Trigger>
             <Trigger Property="IconSize" Value="{x:Static system:Double.NaN}">
               <Setter TargetName="PART_IconViewbox" Property="Width" Value="NaN" />
               <Setter TargetName="PART_IconViewbox" Property="Height" Value="NaN" />
@@ -41,10 +42,8 @@
                 <Condition Property="Height" Value="{x:Static system:Double.NaN}" />
                 <Condition Property="IconSize" Value="{x:Static system:Double.NaN}" />
               </MultiTrigger.Conditions>
-              <Setter TargetName="PART_IconViewbox" Property="Width"
-                      Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-              <Setter TargetName="PART_IconViewbox" Property="Height"
-                      Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Setter TargetName="PART_IconViewbox" Property="Width" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+              <Setter TargetName="PART_IconViewbox" Property="Height" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
             </MultiTrigger>
           </ControlTemplate.Triggers>
         </ControlTemplate>

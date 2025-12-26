@@ -207,17 +207,24 @@ public static int Main(string[] args)
 }
 ```
 
+## Special icons
+
+Some token icons have special behavior:
+
+- **Invisible**: Do not display the icon, and do not reserve space for it in layout.
+- **Transparent**: Do not display the icon, but reserve space for the element in layout. (Default icon)
+
 ## Animations
 
 `MaterialIcon` and it extensions supports pre-defined animations:
 
-- None
-- Spin (Circular spinning)
-- SpinCcw (Circular spinning in CCW)
-- Pulse (Step circular spinning)
-- PulseCcw (Step circular spinning in CCW)
-- FadeOutIn (Fade out and in)
-- FadeInOut (Fade in and out)
+- **None**
+- **Spin** (Circular spinning)
+- **SpinCcw** (Circular spinning in CCW)
+- **Pulse** (Step circular spinning)
+- **PulseCcw** (Step circular spinning in CCW)
+- **FadeOutIn** (Fade out and in)
+- **FadeInOut** (Fade in and out)
 
 ```xaml
 <MaterialIcons:MaterialIcon Kind="Refresh" Animation="Spin" />
