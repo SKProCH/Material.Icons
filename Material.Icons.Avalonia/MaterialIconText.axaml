@@ -1,13 +1,13 @@
 <ResourceDictionary xmlns="https://github.com/avaloniaui"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:avalonia="clr-namespace:Material.Icons.Avalonia">
+                    xmlns:icon="clr-namespace:Material.Icons.Avalonia">
   <Design.PreviewWith>
     <StackPanel Width="500"
                 Height="500"
                 Margin="10"
                 Spacing="10">
       <StackPanel.Styles>
-        <Style Selector="avalonia|MaterialIconText.BoldPink">
+        <Style Selector="icon|MaterialIconText.BoldPink">
           <Setter Property="Foreground" Value="DeepPink" />
           <Setter Property="FontSize" Value="18" />
           <Setter Property="FontWeight" Value="Bold" />
@@ -17,10 +17,10 @@
           <Setter Property="FontSize" Value="32" />
           <Setter Property="FontWeight" Value="Bold" />
         </Style>
-        <Style Selector="avalonia|MaterialIcon.h1">
+        <Style Selector="icon|MaterialIcon.h1">
           <Setter Property="FontSize" Value="32" />
         </Style>
-        <Style Selector="StackPanel.iconPlacements avalonia|MaterialIconText">
+        <Style Selector="StackPanel.iconPlacements icon|MaterialIconText">
           <Setter Property="Kind" Value="Mountain" />
           <Setter Property="Padding" Value="6" />
           <Setter Property="BorderBrush" Value="LightGray" />
@@ -34,11 +34,11 @@
       </StackPanel.Styles>
 
       <DockPanel>
-        <avalonia:MaterialIconText Classes="h1"
+        <icon:MaterialIconText Classes="h1"
                                    DockPanel.Dock="Left"
                                    Kind="Information"
                                    Text="MaterialIconText" />
-        <avalonia:MaterialIconText HorizontalAlignment="Right"
+        <icon:MaterialIconText HorizontalAlignment="Right"
                                    Classes="BoldPink"
                                    DockPanel.Dock="Right"
                                    IconPlacement="Right"
@@ -49,12 +49,12 @@
 
       <StackPanel Orientation="Horizontal"
                   Spacing="20">
-        <avalonia:MaterialIconText Text="Icon with text!" />
-        <avalonia:MaterialIconText IsTextSelectable="True"
+        <icon:MaterialIconText Text="Icon with text!" />
+        <icon:MaterialIconText IsTextSelectable="True"
                                    Kind="Mountain"
                                    Text="or selectable" />
 
-        <avalonia:MaterialIconText FontSize="18"
+        <icon:MaterialIconText FontSize="18"
                                    FontWeight="Bold"
                                    IconSize="28"
                                    Kind="FormatBold"
@@ -65,20 +65,32 @@
       <StackPanel Classes="iconPlacements"
                   Orientation="Horizontal"
                   Spacing="20">
-        <avalonia:MaterialIconText IconPlacement="Left"
+        <icon:MaterialIconText IconPlacement="Left"
                                    Text="Left placement" />
 
-        <avalonia:MaterialIconText IconPlacement="Top"
+        <icon:MaterialIconText IconPlacement="Top"
                                    Text="Top placement" />
 
-        <avalonia:MaterialIconText IconPlacement="Right"
+        <icon:MaterialIconText IconPlacement="Right"
                                    Text="Right placement" />
 
-        <avalonia:MaterialIconText IconPlacement="Bottom"
+        <icon:MaterialIconText IconPlacement="Bottom"
                                    Text="Bottom placement" />
       </StackPanel>
 
-      <avalonia:MaterialIconText Padding="5"
+      <StackPanel Orientation="Horizontal"
+                  Classes="iconPlacements"
+                  Spacing="20">
+        <icon:MaterialIconText IconPlacement="Left"
+                               Kind="Transparent"
+                               Text="Transparent icon" />
+
+        <icon:MaterialIconText IconPlacement="Left"
+                               Kind="Invisible"
+                               Text="Invisible icon" />
+      </StackPanel>
+
+      <icon:MaterialIconText Padding="5"
                                  Animation="Spin"
                                  BorderBrush="Gray"
                                  BorderThickness="1"
@@ -87,19 +99,20 @@
                                  Kind="Refresh"
                                  Spacing="10"
                                  Text="Spinning Icon!" />
-      <Button Content="{avalonia:MaterialIconTextExt Kind=Mountain, Text='and via extension, fixed icon size', IconSize=16}" />
-      <Button Content="{avalonia:MaterialIconTextExt Kind=Refresh, Animation=Spin, Text='and via extension'}" />
+      <Button Content="{icon:MaterialIconTextExt Kind=Mountain, Text='and via extension, fixed icon size', IconSize=16}" />
+      <Button Content="{icon:MaterialIconTextExt Kind=Refresh, Animation=Spin, Text='and via extension'}" />
       <Button Height="80"
               Padding="20"
-              Content="{avalonia:MaterialIconTextExt Kind=AddCircle,
+              Content="{icon:MaterialIconTextExt Kind=AddCircle,
                                                      Spacing=10,
                                                      Text='and via extension',
                                                      Classes='Fill'}" />
-    </StackPanel>
+
+      </StackPanel>
   </Design.PreviewWith>
 
-  <ControlTheme x:Key="{x:Type avalonia:MaterialIconText}"
-                TargetType="avalonia:MaterialIconText">
+  <ControlTheme x:Key="{x:Type icon:MaterialIconText}"
+                TargetType="icon:MaterialIconText">
     <Setter Property="VerticalContentAlignment" Value="Center" />
     <Setter Property="Spacing" Value="5" />
     <Setter Property="Template">
@@ -118,7 +131,7 @@
             <DockPanel HorizontalSpacing="{TemplateBinding Spacing}"
                        LastChildFill="False"
                        VerticalSpacing="{TemplateBinding Spacing}">
-              <avalonia:MaterialIcon Name="PART_Icon"
+              <icon:MaterialIcon Name="PART_Icon"
                                      HorizontalAlignment="Center"
                                      VerticalAlignment="Center"
                                      Animation="{TemplateBinding Animation}"

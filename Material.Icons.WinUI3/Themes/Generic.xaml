@@ -1,7 +1,6 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="using:Material.Icons.WinUI3"
-                    xmlns:system="using:System">
+                    xmlns:local="using:Material.Icons.WinUI3">
 
   <Style TargetType="local:MaterialIcon">
     <Setter Property="IsTabStop" Value="False" />
@@ -9,18 +8,31 @@
     <Setter Property="Template">
       <Setter.Value>
         <ControlTemplate TargetType="local:MaterialIcon">
-          <Border Padding="{TemplateBinding Padding}"
+          <Border x:Name="PART_RootBorder"
+                  Padding="{TemplateBinding Padding}"
                   Background="{TemplateBinding Background}"
                   BorderBrush="{TemplateBinding BorderBrush}"
                   BorderThickness="{TemplateBinding BorderThickness}"
                   CornerRadius="{TemplateBinding CornerRadius}">
-            <Viewbox Name="PART_IconViewbox"
+            <Viewbox x:Name="PART_IconViewbox"
                      FlowDirection="{TemplateBinding FlowDirection}">
               <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
                     Fill="{TemplateBinding Foreground}"
                     Stretch="Uniform" />
             </Viewbox>
             <VisualStateManager.VisualStateGroups>
+              <VisualStateGroup x:Name="VisibilityStates">
+                <VisualState x:Name="Visible" />
+                <VisualState x:Name="InvisibleState">
+                  <VisualState.StateTriggers>
+                    <local:MaterialIconInvisibleTrigger Kind="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}}" />
+                  </VisualState.StateTriggers>
+                  <VisualState.Setters>
+                    <Setter Target="PART_RootBorder.Visibility" Value="Collapsed" />
+                  </VisualState.Setters>
+                </VisualState>
+              </VisualStateGroup>
+
               <VisualStateGroup x:Name="SizeStates">
                 <VisualState x:Name="None" />
                 <VisualState x:Name="UseIconSizeState">
@@ -28,28 +40,24 @@
                     <local:MaterialIconNonNanTrigger IconSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                   </VisualState.StateTriggers>
                   <VisualState.Setters>
-                    <!-- Set Viewbox dimensions to IconSize -->
-                    <Setter Target="PART_IconViewbox.Width"
-                            Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                    <Setter Target="PART_IconViewbox.Height"
-                            Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <!--  Set Viewbox dimensions to IconSize  -->
+                    <Setter Target="PART_IconViewbox.Width" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Target="PART_IconViewbox.Height" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                   </VisualState.Setters>
                 </VisualState>
 
-                <!-- State: Use FontSize when IconSize, Width, AND Height are ALL NaN -->
+
+                <!--  State: Use FontSize when IconSize, Width, AND Height are ALL NaN  -->
                 <VisualState x:Name="UseFontSizeState">
                   <VisualState.StateTriggers>
-                    <local:MaterialIconNanTrigger
-                      IconSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}"
-                      Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
-                      Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"/>
+                    <local:MaterialIconNanTrigger Width="{Binding Width, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  Height="{Binding Height, RelativeSource={RelativeSource TemplatedParent}}"
+                                                  IconSize="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
                   </VisualState.StateTriggers>
                   <VisualState.Setters>
-                    <!-- Set Viewbox dimensions to FontSize -->
-                    <Setter Target="PART_IconViewbox.Width"
-                            Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-                    <Setter Target="PART_IconViewbox.Height"
-                            Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <!--  Set Viewbox dimensions to FontSize  -->
+                    <Setter Target="PART_IconViewbox.Width" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+                    <Setter Target="PART_IconViewbox.Height" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
                   </VisualState.Setters>
                 </VisualState>
               </VisualStateGroup>

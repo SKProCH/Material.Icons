@@ -47,8 +47,8 @@
           <icon:MaterialIcon Animation="Pulse"
                              Kind="DotsVertical" />
 
-          <icon:MaterialIconExt Animation="PulseCcw"
-                                IconForeground="Gold"
+          <icon:MaterialIcon Animation="PulseCcw"
+                                Foreground="Gold"
                                 Kind="ProgressHelper" />
 
           <icon:MaterialIcon Animation="FadeOutIn"
@@ -89,7 +89,7 @@
           <Border>
             <Image Width="92"
                    Source="{icon:MaterialIconExt Kind=Heart,
-                                                 IconForeground=DeepPink}"
+                   IconForeground=DeepPink}"
                    Stretch="Fill" />
           </Border>
 
@@ -101,7 +101,7 @@
 
           <ContentPresenter Content="{icon:MaterialIconExt About, FadeOutIn}" />
 
-          <ContentPresenter Content="{icon:MaterialIconExt About, 24}" />
+          <ContentPresenter Content="{icon:MaterialIconExt About, IconSize=24}" />
 
           <ContentPresenter Content="{icon:MaterialIconExt About, 24, FadeInOut}" />
 
@@ -139,6 +139,26 @@
                        Text="127.0.0.1 (with padding)" />
           </StackPanel>
         </TextBlock>
+
+        <Grid ColumnDefinitions="Auto,Auto,Auto,Auto" ColumnSpacing="5">
+          <TextBlock Grid.Column="0"
+                     VerticalAlignment="Center"
+                     Text="Transparent (Default):" />
+          <icon:MaterialIcon Grid.Column="1"
+                             BorderThickness="2"
+                             FontSize="18"
+                             BorderBrush="BlanchedAlmond" />
+
+          <TextBlock Grid.Column="2"
+                     VerticalAlignment="Center"
+                     Text="Invisible:" />
+          <icon:MaterialIcon Grid.Column="3"
+                             BorderThickness="2"
+                             BorderBrush="BlanchedAlmond"
+                             Padding="50"
+                             FontSize="512"
+                             Kind="Invisible"/>
+        </Grid>
 
         <Button FontSize="12">
           <StackPanel Orientation="Horizontal"
@@ -249,6 +269,11 @@
     <Style Selector="^.Fill /template/ Viewbox">
       <Setter Property="Width" Value="{x:Static system:Double.NaN}" />
       <Setter Property="Height" Value="{x:Static system:Double.NaN}" />
+    </Style>
+
+    <!--  Special Icons  -->
+    <Style Selector="^[Kind=Invisible]">
+      <Setter Property="IsVisible" Value="False"/>
     </Style>
 
     <!--  Animations  -->

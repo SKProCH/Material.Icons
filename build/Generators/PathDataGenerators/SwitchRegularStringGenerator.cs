@@ -5,7 +5,7 @@ using Meta;
 using Nuke.Common.IO;
 using Serilog;
 
-namespace Generators.PathDataGenerators; 
+namespace Generators.PathDataGenerators;
 
 public class SwitchRegularStringGenerator {
     public static void Write(AbsolutePath destinationPath, IEnumerable<IconInfo> iconInfos) {
@@ -31,6 +31,10 @@ public class SwitchRegularStringGenerator {
         stringBuilder.AppendLine("    [MethodImpl(MethodImplOptions.AggressiveInlining)]");
         stringBuilder.AppendLine("    public virtual partial string ProvideData(MaterialIconKind kind) {");
         stringBuilder.AppendLine("        return kind switch {");
+
+        // Handle special cases
+        stringBuilder.AppendLine("        MaterialIconKind.Invisible => string.Empty,");
+        stringBuilder.AppendLine("        MaterialIconKind.Transparent => string.Empty,");
 
         foreach (var materialIcon in materialIconInfos) {
             stringBuilder.AppendLine($"        {GetSwitchLine(materialIcon)},");

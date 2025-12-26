@@ -5,7 +5,7 @@ using Meta;
 using Nuke.Common.IO;
 using Serilog;
 
-namespace Generators.PathDataGenerators; 
+namespace Generators.PathDataGenerators;
 
 public class DictionaryStringGenerator {
     public static void Write(AbsolutePath destinationPath, IEnumerable<MaterialIconInfo> iconInfos) {
@@ -13,7 +13,7 @@ public class DictionaryStringGenerator {
         Log.Information("Writing enum data to {Path}", path);
         File.WriteAllText(path, GenerateIconKinds(iconInfos));
     }
-    
+
     private static string GenerateIconKinds(IEnumerable<MaterialIconInfo> materialIconInfos) {
         var stringBuilder = new StringBuilder();
 
@@ -35,6 +35,10 @@ public class DictionaryStringGenerator {
         stringBuilder.AppendLine("");
         stringBuilder.AppendLine("    [Obsolete($\"Use {nameof(IconPaths)} instead. This left only for backward compability.\")]");
         stringBuilder.AppendLine("    public static IDictionary<MaterialIconKind, string> DataSetCreate() => new Dictionary<MaterialIconKind, string> {");
+
+        // Handle special cases
+        stringBuilder.AppendLine("        {{MaterialIconKind.Invisible, string.Empty}},");
+        stringBuilder.AppendLine("        {{MaterialIconKind.Transparent, string.Empty}},");
 
         foreach (var info in materialIconInfos) {
             stringBuilder.AppendLine($"        {{MaterialIconKind.{info.Name}, \"{info.Data}\"}},");

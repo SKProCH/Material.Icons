@@ -6,10 +6,15 @@ namespace Material.Icons;
 /// List of available icon kinds
 /// </summary>
 /// <remarks>
-/// All icons sourced from Material Design Icons Font - https://materialdesignicons.com/ - in accordance of 
+/// All icons sourced from Material Design Icons Font - https://materialdesignicons.com/ - in accordance of
 /// https://github.com/Templarian/MaterialDesign/blob/master/LICENSE.
 /// </remarks>
 public enum MaterialIconKind {
+    // Special icons (Tokens)
+    Invisible = -1,
+    Transparent,
+
+    // Material icons
     Abacus,
     AbjadArabic,
     WritingSystemArabic=AbjadArabic,

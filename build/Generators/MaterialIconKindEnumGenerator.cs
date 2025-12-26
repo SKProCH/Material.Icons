@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.IO;
 using System.Text;
 using Meta;
 using Nuke.Common.IO;
 using Serilog;
 
-namespace Generators; 
+namespace Generators;
 
 public static class MaterialIconKindEnumGenerator {
     public static void Write(AbsolutePath destinationPath, IEnumerable<IconInfo> iconInfos) {
@@ -14,7 +13,7 @@ public static class MaterialIconKindEnumGenerator {
         Log.Information("Writing kinds enum to {Path}", path);
         File.WriteAllText(path, GenerateIconKinds(iconInfos));
     }
-    
+
     private static string GenerateIconKinds(IEnumerable<IconInfo> materialIconInfos) {
         var stringBuilder = new StringBuilder();
 
@@ -31,6 +30,13 @@ public static class MaterialIconKindEnumGenerator {
         stringBuilder.AppendLine("/// </remarks>");
         stringBuilder.AppendLine("public enum MaterialIconKind {");
 
+        // Add special icons (Tokens)
+        stringBuilder.AppendLine("    // Special icons (Tokens)");
+        stringBuilder.AppendLine("    Invisible = -1,");
+        stringBuilder.AppendLine("    Transparent,");
+        stringBuilder.AppendLine();
+
+        stringBuilder.AppendLine("    // Material icons");
         foreach (var materialIcon in materialIconInfos) {
             stringBuilder.AppendLine($"    {materialIcon.Name},");
             foreach (var iconAlias in materialIcon.Aliases) {
