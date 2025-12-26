@@ -32,10 +32,12 @@ public static class MaterialIconKindEnumGenerator {
 
         // Add special icons (Tokens)
         stringBuilder.AppendLine("    // Special icons (Tokens)");
-        stringBuilder.AppendLine("    Invisible = -1,");
-        stringBuilder.AppendLine("    Transparent,");
+        foreach (var token in MaterialIconToken.Tokens) {
+            stringBuilder.AppendLine($"    {token.EnumDefinition}");
+        }
         stringBuilder.AppendLine();
 
+        // Add material icons
         stringBuilder.AppendLine("    // Material icons");
         foreach (var materialIcon in materialIconInfos) {
             stringBuilder.AppendLine($"    {materialIcon.Name},");

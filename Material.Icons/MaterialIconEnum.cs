@@ -12,7 +12,7 @@ namespace Material.Icons;
 public enum MaterialIconKind {
     // Special icons (Tokens)
     Invisible = -1,
-    Transparent,
+    Transparent = 0,
 
     // Material icons
     Abacus,

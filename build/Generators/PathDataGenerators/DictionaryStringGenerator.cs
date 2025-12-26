@@ -37,8 +37,9 @@ public class DictionaryStringGenerator {
         stringBuilder.AppendLine("    public static IDictionary<MaterialIconKind, string> DataSetCreate() => new Dictionary<MaterialIconKind, string> {");
 
         // Handle special cases
-        stringBuilder.AppendLine("        {{MaterialIconKind.Invisible, string.Empty}},");
-        stringBuilder.AppendLine("        {{MaterialIconKind.Transparent, string.Empty}},");
+        foreach (var token in MaterialIconToken.Tokens) {
+            stringBuilder.AppendLine($"        {token.DataPathDictionaryDefinition}");
+        }
 
         foreach (var info in materialIconInfos) {
             stringBuilder.AppendLine($"        {{MaterialIconKind.{info.Name}, \"{info.Data}\"}},");
