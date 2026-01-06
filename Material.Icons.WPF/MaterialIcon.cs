@@ -11,8 +11,8 @@ namespace Material.Icons.WPF {
         }
 
         public static readonly DependencyProperty KindProperty
-            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
-                new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
+            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind?), typeof(MaterialIcon),
+                new PropertyMetadata(null, KindPropertyChangedCallback));
 
         private static void KindPropertyChangedCallback(DependencyObject dependencyObject,
                                                         DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -21,8 +21,8 @@ namespace Material.Icons.WPF {
         /// <summary>
         /// Gets or sets the icon to display.
         /// </summary>
-        public MaterialIconKind Kind {
-            get => (MaterialIconKind) GetValue(KindProperty);
+        public MaterialIconKind? Kind {
+            get => (MaterialIconKind?) GetValue(KindProperty);
             set => SetValue(KindProperty, value);
         }
 
