@@ -38,8 +38,8 @@ namespace Material.Icons.WPF {
             set => SetValue(AnimationProperty, value);
         }
 
-        public static readonly DependencyProperty IconSizeProperty 
-            = DependencyProperty.Register(nameof(IconSize), typeof(double), typeof(MaterialIcon), 
+        public static readonly DependencyProperty IconSizeProperty
+            = DependencyProperty.Register(nameof(IconSize), typeof(double), typeof(MaterialIcon),
                 new PropertyMetadata(double.NaN));
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace Material.Icons.WPF {
             set { SetValue(IconSizeProperty, value); }
         }
 
-        internal static readonly DependencyPropertyKey GeometryProperty = 
-            DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(Geometry), typeof(MaterialIcon), 
+        internal static readonly DependencyPropertyKey GeometryProperty =
+            DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(Geometry), typeof(MaterialIcon),
                 new PropertyMetadata(default(Geometry)));
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Material.Icons.WPF {
         }
 
         private void UpdateData() {
-            Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
+            Geometry = MaterialIconDataProvider.Get<Geometry>(Kind) ?? Geometry.Empty;
         }
     }
 }
