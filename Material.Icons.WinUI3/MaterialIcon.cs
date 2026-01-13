@@ -73,6 +73,6 @@ public partial class MaterialIcon : Control {
         => ((MaterialIcon)dependencyObject).UpdateData();
 
     private void UpdateData() {
-        Data = MaterialIconDataProvider.Get<Geometry>(Kind);
+        Data = MaterialIconParser.Parse(MaterialIconDataProvider.GetData(Kind));
     }
 }
