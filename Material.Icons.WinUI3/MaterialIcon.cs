@@ -54,7 +54,7 @@ public partial class MaterialIcon : Control {
         get => (Geometry?)GetValue(DataProperty);
         private set => SetValue(DataProperty, value);
     }
-    
+
     /// <summary>
     /// Gets or sets the icon size
     /// </summary>
