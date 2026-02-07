@@ -13,12 +13,12 @@ public partial class MaterialIconDataProvider {
     /// <summary>
     /// Gets the cache singleton for the icons. The cache is used to store the parsed icons to avoid parsing them multiple times.
     /// </summary>
-    private static readonly Dictionary<MaterialIconKind, object> _cache = new();
+    private static Dictionary<MaterialIconKind, object>? _cache = new();
 
     /// <summary>
     /// Gets the cache for the icons. The cache is used to store the parsed icons to avoid parsing them multiple times.
     /// </summary>
-    public static IReadOnlyDictionary<MaterialIconKind, object> Cache => _cache;
+    public static IReadOnlyDictionary<MaterialIconKind, object>? Cache => _cache;
 
     /// <summary>
     /// Gets or sets the singleton instance of this provider
@@ -32,10 +32,17 @@ public partial class MaterialIconDataProvider {
     }
 
     /// <summary>
+    /// Disables the cache for the icons.
+    /// </summary>
+    public static void DisableCache() {
+        _cache = null;
+    }
+
+    /// <summary>
     /// Clears the cache for the icons.
     /// </summary>
     public static void ClearCache() {
-        _cache.Clear();
+        _cache?.Clear();
     }
 
     /// <summary>
@@ -53,7 +60,7 @@ public partial class MaterialIconDataProvider {
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
     public static T Get<T>(MaterialIconKind kind) where T : class {
-        if (Cache.TryGetValue(kind, out var value)) {
+        if (_cache?.TryGetValue(kind, out var value) is true) {
             return value as T ?? throw new InvalidOperationException(
                 "Invalid type for icon kind. Check that you are requesting the correct geometry type.");
         }
@@ -66,7 +73,7 @@ public partial class MaterialIconDataProvider {
         var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException(
             "Parser returns a wrong type. Check that you are requesting the correct geometry type.");
 
-        _cache[kind] = result;
+        if (_cache != null) _cache[kind] = result;
 
         return result;
     }
