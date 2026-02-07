@@ -17,9 +17,6 @@ public class MainViewModel : INotifyPropertyChanged {
     private readonly SourceList<PackIconKindGroup> _kindsSource = new();
     private readonly ObservableCollectionExtended<PackIconKindGroup> _kinds = new();
     private readonly Subject<Func<PackIconKindGroup, bool>> _kindsFilterSubject = new();
-    private string? _searchText;
-    private string? _copyText;
-    private PackIconKindGroup? _group;
 
     public MainViewModel() {
         var scheduler = new DispatcherScheduler(Dispatcher.CurrentDispatcher);
@@ -51,31 +48,32 @@ public class MainViewModel : INotifyPropertyChanged {
     public CollectionViewSource Kinds { get; set; } = new();
 
     public PackIconKindGroup? Group {
-        get => _group;
+        get;
         set {
-            _group = value;
+            field = value;
             CopyText = value is null ? null : $"<wpf:MaterialIcon Kind=\"{value.Kind}\" />";
         }
     }
 
     public string? SearchText {
-        get => _searchText;
+        get;
         set {
-            _searchText = value;
+            field = value;
             if (string.IsNullOrWhiteSpace(value)) {
                 _kindsFilterSubject.OnNext(_ => true);
             }
             else {
-                _kindsFilterSubject.OnNext(kindGroup => kindGroup.Names.Any(a => a.Contains(value, StringComparison.CurrentCultureIgnoreCase)));
+                _kindsFilterSubject.OnNext(kindGroup =>
+                    kindGroup.Names.Any(a => a.Contains(value, StringComparison.CurrentCultureIgnoreCase)));
             }
         }
     }
 
     public string? CopyText {
-        get => _copyText;
+        get;
         set {
-            if (value == _copyText) return;
-            _copyText = value;
+            if (value == field) return;
+            field = value;
             OnPropertyChanged();
         }
     }

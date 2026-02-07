@@ -14,7 +14,6 @@ namespace Material.Icons.Avalonia.Demo.Controls {
             nameof(SelectedNow),
             wrapper => wrapper.CurrentSelected == wrapper.DataSource);
 
-        private bool _selectedNow;
         static SelectionWrapper() {
             PointerPressedEvent.Raised.Subscribe(tuple => {
                 if (tuple.Item1 is SelectionWrapper selectionWrapper) {
@@ -55,8 +54,8 @@ namespace Material.Icons.Avalonia.Demo.Controls {
         }
 
         public bool SelectedNow {
-            get => _selectedNow;
-            private set => SetAndRaise(SelectedNowProperty, ref _selectedNow, value);
+            get;
+            private set => SetAndRaise(SelectedNowProperty, ref field, value);
         }
 
         public void UpdateSelectedNow() {

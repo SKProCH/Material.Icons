@@ -11,10 +11,6 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
     public class MainWindowViewModel : ViewModelBase {
         private readonly PackIconKindGroup[] _packIconKinds;
         private PackIconKindGroup[] _kinds;
-        private PackIconKindGroup? _group;
-        private string? _searchText;
-        private MaterialIconKind _randomIconKind;
-        private MaterialIconAnimation _animation = MaterialIconAnimation.None;
 
         public int IconCount => _packIconKinds.Length;
 
@@ -24,26 +20,26 @@ namespace Material.Icons.Avalonia.Demo.ViewModels {
         }
 
         public PackIconKindGroup? Group {
-            get => _group;
-            set => this.RaiseAndSetIfChanged(ref _group, value);
+            get;
+            set => this.RaiseAndSetIfChanged(ref field, value);
         }
 
         public string? SearchText {
-            get => _searchText;
-            set => this.RaiseAndSetIfChanged(ref _searchText, value);
+            get;
+            set => this.RaiseAndSetIfChanged(ref field, value);
         }
 
         public IEnumerable<MaterialIconAnimation> Animations { get; set; } = Enum.GetValues<MaterialIconAnimation>();
 
         public MaterialIconKind RandomIconKind {
-            get => _randomIconKind;
-            set => this.RaiseAndSetIfChanged(ref _randomIconKind, value);
+            get;
+            set => this.RaiseAndSetIfChanged(ref field, value);
         }
 
         public MaterialIconAnimation Animation {
-            get => _animation;
-            set => this.RaiseAndSetIfChanged(ref _animation, value);
-        }
+            get;
+            set => this.RaiseAndSetIfChanged(ref field, value);
+        } = MaterialIconAnimation.None;
 
         public string DisabledIconText => "Disabled";
 

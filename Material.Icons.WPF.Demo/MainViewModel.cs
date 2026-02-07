@@ -8,9 +8,6 @@ using System.Windows.Data;
 namespace Material.Icons.WPF.Demo {
     public class MainViewModel : INotifyPropertyChanged {
         private Lazy<IEnumerable<PackIconKindGroup>> _packIconKinds;
-        private string _searchText;
-        private string _copyText;
-        private PackIconKindGroup _group;
 
         public MainViewModel() {
             Kinds.Filter += OnFilter;
@@ -33,33 +30,32 @@ namespace Material.Icons.WPF.Demo {
         public CollectionViewSource Kinds { get; set; } = new CollectionViewSource();
 
         public PackIconKindGroup Group {
-            get => _group;
+            get;
             set {
-                _group = value;
+                field = value;
                 CopyText = $"<wpf:MaterialIcon Kind=\"{value.Kind}\" />";
             }
         }
 
         public string SearchText {
-            get => _searchText;
+            get;
             set {
-                _searchText = value;
+                field = value;
                 Kinds.View.Refresh();
             }
         }
 
         public string CopyText {
-            get => _copyText;
+            get;
             set {
-                if (value == _copyText) return;
-                _copyText = value;
+                if (value == field) return;
+                field = value;
                 OnPropertyChanged();
             }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }

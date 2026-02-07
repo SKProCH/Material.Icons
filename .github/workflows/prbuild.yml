@@ -12,9 +12,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 8.0.401
+        dotnet-version: 10
     - name: Setup Windows SDK 10.0.18362.0
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
       with:
