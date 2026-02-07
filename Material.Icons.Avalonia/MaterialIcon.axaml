@@ -260,7 +260,7 @@
       <Setter Property="Width" Value="{x:Static system:Double.NaN}" />
       <Setter Property="Height" Value="{x:Static system:Double.NaN}" />
     </Style>
-    <Style Selector="^.NullAsInvisible">
+    <Style Selector="^.collapse-null">
       <Setter Property="IsVisible" Value="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
     </Style>
 
