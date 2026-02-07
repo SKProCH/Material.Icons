@@ -15,8 +15,8 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>3.0.0-preview6</Version>
-    <PackageReleaseNotes>- Fix Geometry Reuse Exception in Material Icons for WinUI3</PackageReleaseNotes>
+    <Version>3.0.0-preview7</Version>
+    <PackageReleaseNotes>- Allow Kind to be null</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
