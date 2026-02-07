@@ -74,6 +74,11 @@ The `MaterialIcon` implements `IImage` interface, to allow to use as an `Image` 
 Note that when using `MaterialIcon` as an `Image` source, the `Width` and `Height` properties must be defined under `<Image>`, 
 any size definition on `MaterialIcon` have no impact. Also, animation are not supported in this use case.  
 
+#### Classes
+
+- **Fill:** Fits to size within the parent control
+- **NullAsInvisible:** `{x:Null}`(Default) icons will not reserve space for it in layout.
+
 
 ## Avalonia FuncUI (F#)
 #### Getting started
@@ -211,13 +216,13 @@ public static int Main(string[] args)
 
 `MaterialIcon` and it extensions supports pre-defined animations:
 
-- None
-- Spin (Circular spinning)
-- SpinCcw (Circular spinning in CCW)
-- Pulse (Step circular spinning)
-- PulseCcw (Step circular spinning in CCW)
-- FadeOutIn (Fade out and in)
-- FadeInOut (Fade in and out)
+- **None**
+- **Spin** (Circular spinning)
+- **SpinCcw** (Circular spinning in CCW)
+- **Pulse** (Step circular spinning)
+- **PulseCcw** (Step circular spinning in CCW)
+- **FadeOutIn** (Fade out and in)
+- **FadeInOut** (Fade in and out)
 
 ```xaml
 <MaterialIcons:MaterialIcon Kind="Refresh" Animation="Spin" />

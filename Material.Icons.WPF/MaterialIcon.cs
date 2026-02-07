@@ -11,8 +11,8 @@ namespace Material.Icons.WPF {
         }
 
         public static readonly DependencyProperty KindProperty
-            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
-                new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
+            = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind?), typeof(MaterialIcon),
+                new PropertyMetadata(null, KindPropertyChangedCallback));
 
         private static void KindPropertyChangedCallback(DependencyObject dependencyObject,
                                                         DependencyPropertyChangedEventArgs dependencyPropertyChangedEventArgs)
@@ -21,8 +21,8 @@ namespace Material.Icons.WPF {
         /// <summary>
         /// Gets or sets the icon to display.
         /// </summary>
-        public MaterialIconKind Kind {
-            get => (MaterialIconKind) GetValue(KindProperty);
+        public MaterialIconKind? Kind {
+            get => (MaterialIconKind?) GetValue(KindProperty);
             set => SetValue(KindProperty, value);
         }
 
@@ -38,8 +38,8 @@ namespace Material.Icons.WPF {
             set => SetValue(AnimationProperty, value);
         }
 
-        public static readonly DependencyProperty IconSizeProperty 
-            = DependencyProperty.Register(nameof(IconSize), typeof(double), typeof(MaterialIcon), 
+        public static readonly DependencyProperty IconSizeProperty
+            = DependencyProperty.Register(nameof(IconSize), typeof(double), typeof(MaterialIcon),
                 new PropertyMetadata(double.NaN));
 
         /// <summary>
@@ -50,8 +50,8 @@ namespace Material.Icons.WPF {
             set { SetValue(IconSizeProperty, value); }
         }
 
-        internal static readonly DependencyPropertyKey GeometryProperty = 
-            DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(Geometry), typeof(MaterialIcon), 
+        internal static readonly DependencyPropertyKey GeometryProperty =
+            DependencyProperty.RegisterReadOnly(nameof(Geometry), typeof(Geometry), typeof(MaterialIcon),
                 new PropertyMetadata(default(Geometry)));
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Material.Icons.WPF {
         }
 
         private void UpdateData() {
-            Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
+            Geometry = Kind is null ? Geometry.Empty : MaterialIconDataProvider.Get<Geometry>(Kind.Value);
         }
     }
 }

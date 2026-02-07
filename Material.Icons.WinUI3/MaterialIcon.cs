@@ -10,8 +10,8 @@ namespace Material.Icons.WinUI3;
 
 public partial class MaterialIcon : Control {
     public static readonly DependencyProperty KindProperty
-        = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind), typeof(MaterialIcon),
-            new PropertyMetadata(default(MaterialIconKind), KindPropertyChangedCallback));
+        = DependencyProperty.Register(nameof(Kind), typeof(MaterialIconKind?), typeof(MaterialIcon),
+            new PropertyMetadata(null, KindPropertyChangedCallback));
 
     public static readonly DependencyProperty AnimationProperty
         = DependencyProperty.Register(nameof(Animation), typeof(MaterialIconAnimation), typeof(MaterialIcon),
@@ -34,8 +34,8 @@ public partial class MaterialIcon : Control {
     /// <summary>
     /// Gets or sets the icon to display.
     /// </summary>
-    public MaterialIconKind Kind {
-        get => (MaterialIconKind)GetValue(KindProperty);
+    public MaterialIconKind? Kind {
+        get => (MaterialIconKind?)GetValue(KindProperty);
         set => SetValue(KindProperty, value);
     }
 
@@ -54,7 +54,7 @@ public partial class MaterialIcon : Control {
         get => (Geometry?)GetValue(DataProperty);
         private set => SetValue(DataProperty, value);
     }
-    
+
     /// <summary>
     /// Gets or sets the icon size
     /// </summary>
@@ -73,6 +73,6 @@ public partial class MaterialIcon : Control {
         => ((MaterialIcon)dependencyObject).UpdateData();
 
     private void UpdateData() {
-        Data = MaterialIconDataProvider.Get<Geometry>(Kind);
+        Data = Kind is null ? null : MaterialIconDataProvider.Get<Geometry>(Kind.Value);
     }
 }

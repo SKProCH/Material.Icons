@@ -8,13 +8,13 @@ namespace Material.Icons.Avalonia {
     public class MaterialIcon : TemplatedControl, IImage {
         #region Properties
 
-        public static readonly StyledProperty<MaterialIconKind> KindProperty
-            = AvaloniaProperty.Register<MaterialIcon, MaterialIconKind>(nameof(Kind));
+        public static readonly StyledProperty<MaterialIconKind?> KindProperty
+            = AvaloniaProperty.Register<MaterialIcon, MaterialIconKind?>(nameof(Kind));
 
         /// <summary>
         /// Gets or sets the icon to display.
         /// </summary>
-        public MaterialIconKind Kind {
+        public MaterialIconKind? Kind {
             get => GetValue(KindProperty);
             set => SetValue(KindProperty, value);
         }
@@ -100,7 +100,7 @@ namespace Material.Icons.Avalonia {
         /// geometry data associated with the current <see cref="Kind"/> value.
         /// </remarks>
         private void SetGeometry() {
-            Drawing.Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
+            Drawing.Geometry = Kind is null ? null : MaterialIconDataProvider.Get<Geometry>(Kind.Value);
         }
 
         #endregion
