@@ -52,10 +52,8 @@ public partial class MaterialIconDataProvider {
     /// </summary>
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
-    public static T? Get<T>(MaterialIconKind? kind) where T : class {
-        if (!kind.HasValue) return null;
-
-        if (Cache.TryGetValue(kind.Value, out var value)) {
+    public static T Get<T>(MaterialIconKind kind) where T : class {
+        if (Cache.TryGetValue(kind, out var value)) {
             return value as T ?? throw new InvalidOperationException(
                 "Invalid type for icon kind. Check that you are requesting the correct geometry type.");
         }
@@ -65,10 +63,10 @@ public partial class MaterialIconDataProvider {
                 "Geometry parser not initialized. Call InitializeGeometryParser first.");
         }
 
-        var result = _parser(GetData(kind.Value)) as T ?? throw new InvalidOperationException(
+        var result = _parser(GetData(kind)) as T ?? throw new InvalidOperationException(
             "Parser returns a wrong type. Check that you are requesting the correct geometry type.");
 
-        _cache[kind.Value] = result;
+        _cache[kind] = result;
 
         return result;
     }

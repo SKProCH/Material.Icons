@@ -68,7 +68,7 @@ namespace Material.Icons.WPF {
         }
 
         private void UpdateData() {
-            Geometry = MaterialIconDataProvider.Get<Geometry>(Kind) ?? Geometry.Empty;
+            Geometry = Kind is null ? Geometry.Empty : MaterialIconDataProvider.Get<Geometry>(Kind.Value);
         }
     }
 }

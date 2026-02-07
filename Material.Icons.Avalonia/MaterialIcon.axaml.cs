@@ -100,7 +100,7 @@ namespace Material.Icons.Avalonia {
         /// geometry data associated with the current <see cref="Kind"/> value.
         /// </remarks>
         private void SetGeometry() {
-            Drawing.Geometry = MaterialIconDataProvider.Get<Geometry>(Kind);
+            Drawing.Geometry = Kind is null ? null : MaterialIconDataProvider.Get<Geometry>(Kind.Value);
         }
 
         #endregion
