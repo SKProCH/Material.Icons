@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <LangVersion>11</LangVersion>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>FontAwesome.Icons</Title>
+    <Authors>TemuWolverine</Authors>
+    <Description>Parsed icons set from FontAwesome</Description>
+    <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageTags>fontawesome icons</PackageTags>
+    <RootNamespace>FontAwesome.Icons</RootNamespace>
+    <Version>3.0.0-preview7</Version>
+    <PackageReleaseNotes>- Allow Kind to be null</PackageReleaseNotes>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+</Project>

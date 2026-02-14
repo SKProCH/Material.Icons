@@ -73,6 +73,10 @@ partial class Build : NukeBuild {
 
             MaterialIconKindEnumGenerator.Write(destinationPath, iconInfos);
             SwitchRegularStringGenerator.Write(destinationPath, iconInfos);
+            
+            var faIcons = await IconDownloader.DownloadAndParseIconsAsync();
+            var fadestinationPath = Solution.Directory / "FontAwesome.Icons";
+            FontAwesomeIconGenerator.Generate(faIcons, fadestinationPath);
         })
         .Triggers(Compile);
 

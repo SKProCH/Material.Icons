@@ -7,6 +7,7 @@ partial class Build {
         if (!includeWpf) {
             Log.Information("Due to running on non Windows or SkipWpfCompilation=True, we will skip WPF projects");
             return new List<string> {
+                "FontAwesome.Icons",
                 "Material.Icons",
                 "Material.Icons.Avalonia",
                 "Material.Icons.Avalonia.Demo"

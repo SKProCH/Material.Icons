@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>9</LangVersion>
+    <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Title>FontAwesome.Icons.Avalonia</Title>
+    <Authors>TemuWolverine</Authors>
+    <Description>Avalonia control for display FontAwesome icons from FontAwesome.Icons</Description>
+    <PackageProjectUrl>https://github.com/AvaloniaUtils/FontAwesome.Icons.Avalonia/</PackageProjectUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <RepositoryUrl>https://github.com/AvaloniaUtils/FontAwesome.Icons.Avalonia.git</RepositoryUrl>
+    <RepositoryType>Git</RepositoryType>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
+    <PackageTags>FontAwesome icons FontAwesome-design google-FontAwesome avalonia</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <Version>3.0.0-preview7</Version>
+    <PackageReleaseNotes>- Allow Kind to be null</PackageReleaseNotes>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Include="../README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Avalonia" Version="11.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FontAwesome.Icons\FontAwesome.Icons.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="FontAwesomeIcon.axaml.cs">
+      <DependentUpon>FontAwesomeIcon.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="FontAwesomeIconStyles.axaml.cs">
+      <DependentUpon>FontAwesomeIconStyles.axaml</DependentUpon>
+    </Compile>
+    <Compile Update="FontAwesomeIconText.axaml.cs">
+      <DependentUpon>FontAwesomeIconText.axaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
