@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<!-- Nuget stuff-->
+	<PropertyGroup>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<Version>1.0.0</Version>
+		<Authors>your_name</Authors>
+		<Company>your_company</Company>
+		<!--
+		<Title>Music Assistant Client Library</Title>-->
+		<PackageProjectUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<!--<Company>WateryTart</Company>
+		<Authors>WateryTart Contributors</Authors>
+		<Description>Music Assistant Client Library, providing both a websocket and RPC interface</Description>
+		<PackageIcon>logo.png</PackageIcon>-->
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<!--<PackageLicenseFile>LICENSE</PackageLicenseFile>-->
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.11" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Include="Avalonia.Diagnostics" Version="11.3.11">
+			<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<Reference Include="Lucide.Icons">
+			<HintPath>..\Lucide.Icons\bin\$(Configuration)\net10.0\Lucide.Icons.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\Lucide.Icons\bin\$(Configuration)\net10.0\Lucide.Icons.dll" Pack="true" PackagePath="lib\net10.0\" />
+		<None Include="..\Lucide.Icons\bin\$(Configuration)\net10.0\Lucide.Icons.pdb" Pack="true" PackagePath="lib\net10.0\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Include="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+
+</Project>

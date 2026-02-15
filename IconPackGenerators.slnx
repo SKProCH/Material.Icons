@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/Generated/">
+    <Project Path="out/Feather.Icons.Avalonia/Feather.Icons.Avalonia.csproj" />
+    <Project Path="out/Feather.Icons/Feather.Icons.csproj" />
+    <Project Path="out/FontAwesome.Icons.Avalonia/FontAwesome.Icons.Avalonia.csproj" />
+    <Project Path="out/FontAwesome.Icons/FontAwesome.Icons.csproj" />
+    <Project Path="out/LineIcon.Icons.Avalonia/LineIcon.Icons.Avalonia.csproj" />
+    <Project Path="out/LineIcon.Icons/LineIcon.Icons.csproj" />
+    <Project Path="out/Lucide.Icons.Avalonia/Lucide.Icons.Avalonia.csproj" />
+    <Project Path="out/Lucide.Icons/Lucide.Icons.csproj" />
+    <Project Path="out/Material.Icons.Avalonia/Material.Icons.Avalonia.csproj" />
+    <Project Path="out/Material.Icons/Material.Icons.csproj" />
+  </Folder>
+  <Folder Name="/Templates/">
+    <Project Path="IconGeneratorTemplate.Avalonia/IconGeneratorTemplate.Avalonia.csproj" />
+  </Folder>
+  <Project Path="AvaloniaApplication1/AvaloniaDemo.csproj" />
+  <Project Path="build/_build.csproj" />
+  <Project Path="IconGenerators/IconGenerators.csproj" />
+</Solution>
