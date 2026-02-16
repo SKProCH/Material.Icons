@@ -16,7 +16,7 @@ public class MaterialDownloader : IIconPackGenerator
 
     public string Name => "Material";
 
-    public async Task<IEnumerable<IconInfo>> Fetch()
+    public async Task<IEnumerable<IconInfo>> FetchIconData()
     {
         var dataStream = await HttpClient.GetStreamAsync(MaterialIconsFetchApi);
         var dataNode = await JsonSerializer.DeserializeAsync<MetaMaterialIcons>(dataStream, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });

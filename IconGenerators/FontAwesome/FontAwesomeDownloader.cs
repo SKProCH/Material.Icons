@@ -11,7 +11,7 @@ namespace IconGenerators.FontAwesome;
 public  class FontAwesomeDownloader : IIconPackGenerator
 {
     public string Name => "FontAwesome";
-    public async Task<IEnumerable<IconInfo>> Fetch()
+    public async Task<IEnumerable<IconInfo>> FetchIconData()
     {
         var url = "https://raw.githubusercontent.com/FortAwesome/Font-Awesome/refs/heads/master/metadata/icons.json";
         using var httpClient = new HttpClient();

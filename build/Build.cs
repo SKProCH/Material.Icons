@@ -78,7 +78,6 @@ partial class Build : NukeBuild
                     DotNetPack(s => s
                         .EnableNoRestore()
                         .SetProject(projectFile)
-                        //.SetProperty("OutDir", RootDirectory / "out")
                         .SetConfiguration(Configuration)
                         .SetVersion("1.2.3")
                         .SetOutputDirectory(RootDirectory / "out")
@@ -104,17 +103,19 @@ partial class Build : NukeBuild
        // return;
         AbsolutePath path = RootDirectory;
 
-        List<IIconPackGenerator> generators = new List<IIconPackGenerator>();
-        generators.Add(new IconGenerators.Material.MaterialDownloader());
-        generators.Add(new IconGenerators.FontAwesome.FontAwesomeDownloader());
-        generators.Add(new IconGenerators.LineIcons.LineIconsDownloader());
-        generators.Add(new IconGenerators.Lucide.LucideDownloader());
-        generators.Add(new IconGenerators.Feather.FeatherDownloader());
+        List<IIconPackGenerator> generators =
+        [
+            new IconGenerators.Material.MaterialDownloader(),
+           // new IconGenerators.FontAwesome.FontAwesomeDownloader(),
+           // new IconGenerators.LineIcons.LineIconsDownloader(),
+          //  new IconGenerators.Lucide.LucideDownloader(),
+          //  new IconGenerators.Feather.FeatherDownloader(),
+        ];
 
         var tasks = generators.Select(async generator =>
         {
             Console.WriteLine($"Gathering icons for {generator.Name}...");
-            var icons = await generator.Fetch();
+            var icons = await generator.FetchIconData();
 
             Console.WriteLine($"Generating classes for {generator.Name}...");
             IconPackGenerator.Generate(icons, path, generator.Name);
@@ -124,7 +125,7 @@ partial class Build : NukeBuild
     })
     .Triggers(Compile);
 
-
+    // Look at adding more?
     //https://github.com/tailwindlabs/heroicons/
     //https://github.com/tabler/tabler-icons
     //https://github.com/Remix-Design/RemixIcon

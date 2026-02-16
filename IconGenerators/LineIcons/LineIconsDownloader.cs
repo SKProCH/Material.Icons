@@ -12,7 +12,7 @@ namespace IconGenerators.LineIcons
     {
         public string Name => "LineIcon";
 
-        public async Task<IEnumerable<IconInfo>> Fetch()
+        public async Task<IEnumerable<IconInfo>> FetchIconData()
         {
             var icons = new List<IconInfo>();
             try

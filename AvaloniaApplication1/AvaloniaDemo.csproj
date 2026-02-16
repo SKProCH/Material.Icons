@@ -20,11 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="FontAwesome.Avalonia">
-      <HintPath>..\out\FontAwesome.Avalonia.dll</HintPath>
-    </Reference>
-    <Reference Include="FontAwesome.Icons">
-      <HintPath>..\out\FontAwesome.Icons.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\out\FontAwesome.Icons.Avalonia\FontAwesome.Icons.Avalonia.csproj" />
+    <ProjectReference Include="..\out\FontAwesome.Icons\FontAwesome.Icons.csproj" />
   </ItemGroup>
 </Project>

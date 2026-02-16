@@ -14,7 +14,7 @@ namespace IconGenerators.Lucide
     {
         public string Name => "Lucide";
 
-        public async Task<IEnumerable<IconInfo>> Fetch()
+        public async Task<IEnumerable<IconInfo>> FetchIconData()
         {
             var icons = new List<IconInfo>();
             var apiUrl = "https://api.github.com/repos/lucide-icons/lucide/contents/icons";

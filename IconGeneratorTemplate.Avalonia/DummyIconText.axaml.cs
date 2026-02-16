@@ -8,6 +8,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 
 namespace Dummy.Icons.Avalonia; 
+
 [TemplatePart("PART_Icon", typeof(DummyIcon))]
 [TemplatePart("PART_TextBlock", typeof(TextBlock))]
 [TemplatePart("PART_SelectableTextBlock", typeof(SelectableTextBlock))]

@@ -39,13 +39,6 @@ public static class IconPackGenerator
                     fileContent,
                     @"<ProjectReference Include=""\.\.\\IconGenerators\\IconGenerators\.csproj""\s*/>",
                     $"<ProjectReference Include=\"..\\{iconPackName}.Icons\\{iconPackName}.Icons.csproj\" />");
-              //  /*
-                // Replace the <None Include="..\\Dummy.Icons\\bin\\$(Configuration)\\net10.0\\Dummy.Icons.dll" ... /> line
-            //    fileContent = Regex.Replace(
-            //        fileContent,
-            //        @"<None\s+Include=""\.\.\\\\Dummy\.Icons\\\\bin\\\\\$\(Configuration\)\\\\net10\.0\\\\Dummy\.Icons\.dll""\s+Pack=""true""\s+PackagePath=""lib\\\\net10\.0\\\\""(\s*/>|>)",
-                 //   $"<None Include=\"..\\{iconPackName}.Icons\\bin\\$(Configuration)\\net10.0\\{iconPackName}.Icons.dll\" Pack=\"true\" PackagePath=\"lib\\net10.0\\\"$1");
-               // */
                 // Ensure all remaining 'Dummy' are replaced
                 fileContent = fileContent.Replace("Dummy", iconPackName);
             }

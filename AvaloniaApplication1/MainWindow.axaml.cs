@@ -31,7 +31,7 @@ namespace AvaloniaApplication1
                 // Ensure UI update happens on the UI thread
                 await Dispatcher.UIThread.InvokeAsync(() =>
                 {
-                    foo.Data = Geometry.Parse(FontAwesomeIconDataProvider.GetData(icon));
+                    faIcon.Kind = icon;
                 });
 
                 // Wait for 1 second

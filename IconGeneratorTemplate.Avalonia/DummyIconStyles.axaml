@@ -1,0 +1,13 @@
+<icons:DummyIconStyles x:Class="Dummy.Icons.Avalonia.DummyIconStyles"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:icons="clr-namespace:Dummy.Icons.Avalonia">
+  <icons:DummyIconStyles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Dummy.Icons.Avalonia/DummyIcon.axaml" />
+        <ResourceInclude Source="avares://Dummy.Icons.Avalonia/DummyIconText.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </icons:DummyIconStyles.Resources>
+</icons:DummyIconStyles>

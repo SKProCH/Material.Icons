@@ -13,7 +13,7 @@ namespace IconGenerators.Feather
     public class FeatherDownloader : IIconPackGenerator
     {
         public string Name => "Feather";
-        public async Task<IEnumerable<IconInfo>> Fetch()
+        public async Task<IEnumerable<IconInfo>> FetchIconData()
         { 
             var tagsUrl = "https://raw.githubusercontent.com/feathericons/feather/refs/heads/main/src/tags.json";
             using var http = new HttpClient();
