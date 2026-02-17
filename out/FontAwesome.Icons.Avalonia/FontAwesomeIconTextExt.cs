@@ -4,6 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
+using FontAwesome;
 
 namespace FontAwesome.Icons.Avalonia;
 

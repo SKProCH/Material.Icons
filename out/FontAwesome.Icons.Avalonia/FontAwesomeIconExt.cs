@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using FontAwesome;
 
 namespace FontAwesome.Icons.Avalonia; 
 public class FontAwesomeIconExt : MarkupExtension {

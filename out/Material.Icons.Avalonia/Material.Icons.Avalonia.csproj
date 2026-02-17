@@ -12,17 +12,10 @@
 		<Version>1.0.0</Version>
 		<Authors>your_name</Authors>
 		<Company>your_company</Company>
-		<!--
-		<Title>Music Assistant Client Library</Title>-->
-		<PackageProjectUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/TemuWolverine/Material.Icons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/TemuWolverine/Material.Icons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<!--<Company>WateryTart</Company>
-		<Authors>WateryTart Contributors</Authors>
-		<Description>Music Assistant Client Library, providing both a websocket and RPC interface</Description>
-		<PackageIcon>logo.png</PackageIcon>-->
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
-		<!--<PackageLicenseFile>LICENSE</PackageLicenseFile>-->
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -31,6 +24,14 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="MaterialIconDataProvider.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="MaterialIconDataProvider.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
@@ -47,13 +48,6 @@
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
-
-
-	<ItemGroup>
-		<Reference Include="Material.Icons">
-			<HintPath>..\Material.Icons\bin\$(Configuration)\net10.0\Material.Icons.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\Material.Icons\bin\$(Configuration)\net10.0\Material.Icons.dll" Pack="true" PackagePath="lib\net10.0\" />
 		<None Include="..\Material.Icons\bin\$(Configuration)\net10.0\Material.Icons.pdb" Pack="true" PackagePath="lib\net10.0\" />
@@ -65,6 +59,12 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+	  <ProjectReference Include="..\Material.Icons\Material.Icons.csproj" />
 	</ItemGroup>
 
 

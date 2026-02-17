@@ -1,8 +1,6 @@
 using Avalonia.Controls;
 using Avalonia.Media;
 using Avalonia.Threading;
-using FontAwesome.Icons.Avalonia;
-using FontAwesome.Icons;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,18 +23,18 @@ namespace AvaloniaApplication1
         private async Task LoadIconsAsync()
         {
 
-            var allIcons = Enum.GetValues(typeof(FontAwesome.Icons.FontAwesomeIconKind)).Cast<FontAwesomeIconKind>();
-            foreach (var icon in allIcons)
-            {
-                // Ensure UI update happens on the UI thread
-                await Dispatcher.UIThread.InvokeAsync(() =>
-                {
-                    faIcon.Kind = icon;
-                });
+            //var allIcons = Enum.GetValues(typeof(FontAwesome.Icons.FontAwesomeIconKind)).Cast<FontAwesomeIconKind>();
+            //foreach (var icon in allIcons)
+            //{
+            //    // Ensure UI update happens on the UI thread
+            //    await Dispatcher.UIThread.InvokeAsync(() =>
+            //    {
+            //        faIcon.Kind = icon;
+            //    });
 
-                // Wait for 1 second
-                await Task.Delay(200);
-            }
+            //    // Wait for 1 second
+            //    await Task.Delay(200);
+            //}
         }
     }
 }

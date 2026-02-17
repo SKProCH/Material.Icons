@@ -17,7 +17,7 @@ public static class IconPackGenerator
 
         // Copy and adapt IconGeneratorTemplate.Avalonia project
         var templateDir = dir / "IconGeneratorTemplate.Avalonia";
-        var targetProjectDir = dir / "out" /  (iconPackName + ".Icons.Avalonia");
+        var targetProjectDir = dir / "out" / (iconPackName + ".Icons.Avalonia");
         if (!Directory.Exists(targetProjectDir))
             Directory.CreateDirectory(targetProjectDir);
 
@@ -35,10 +35,20 @@ public static class IconPackGenerator
             // If this is the .csproj file, update the project reference
             if (fileName.EndsWith(".csproj"))
             {
+                // Update IconGenerators.Avalonia reference to go up two directories
+                fileContent = Regex.Replace(
+                    fileContent,
+                    @"<ProjectReference Include=""\.\.\\IconGenerators\.Avalonia\\IconGenerators\.Avalonia\.csproj""\s*/>",
+                    "<ProjectReference Include=\"..\\..\\IconGenerators.Avalonia\\IconGenerators.Avalonia.csproj\" />");
+
+
+                // Update IconGenerators reference as before
                 fileContent = Regex.Replace(
                     fileContent,
                     @"<ProjectReference Include=""\.\.\\IconGenerators\\IconGenerators\.csproj""\s*/>",
                     $"<ProjectReference Include=\"..\\{iconPackName}.Icons\\{iconPackName}.Icons.csproj\" />");
+
+
                 // Ensure all remaining 'Dummy' are replaced
                 fileContent = fileContent.Replace("Dummy", iconPackName);
             }
@@ -47,10 +57,10 @@ public static class IconPackGenerator
             var newFilePath = Path.Combine(targetProjectDir, newFileName);
             File.WriteAllText(newFilePath, fileContent);
         }
-    
+
         var enumTypeName = $"{iconPackName}IconKind";
         var dataProviderTypeName = $"{iconPackName}IconDataProvider";
-       
+
         if (!Directory.Exists(targetDir))
             Directory.CreateDirectory(targetDir);
         // Copy and adapt DummyIconDataProvider
@@ -124,7 +134,15 @@ public static class IconPackGenerator
         csprojSb.AppendLine("    <Nullable>enable</Nullable>");
         csprojSb.AppendLine("    <LangVersion>latest</LangVersion>");
         csprojSb.AppendLine("  </PropertyGroup>");
+        csprojSb.AppendLine("<ItemGroup >");
+        csprojSb.AppendLine($"<ProjectReference Include=\"..\\..\\IconGenerators.Avalonia\\IconGenerators.Avalonia.csproj\" />");
+        csprojSb.AppendLine("</ItemGroup >");
         csprojSb.AppendLine("</Project>");
+        
+
+
+
+
         File.WriteAllText(csprojFile, csprojSb.ToString());
     }
 

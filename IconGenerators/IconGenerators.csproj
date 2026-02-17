@@ -23,4 +23,8 @@
 	  <PackageReference Include="Nuke.ProjectModel" Version="10.1.0" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <ProjectReference Include="..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+	</ItemGroup>
+
 </Project>

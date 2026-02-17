@@ -1,0 +1,63 @@
+<ResourceDictionary
+          xmlns="https://github.com/avaloniaui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:icon="clr-namespace:Lucide.Icons.Avalonia">
+    <ControlTheme x:Key="{x:Type icon:LucideIconText}" TargetType="icon:LucideIconText">
+        <Setter Property="VerticalContentAlignment" Value="Center" />
+        <Setter Property="Spacing" Value="5" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                          Padding="{TemplateBinding Padding}"
+                          Background="{TemplateBinding Background}"
+                          BackgroundSizing="{TemplateBinding BackgroundSizing}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="{TemplateBinding CornerRadius}">
+
+                    <Grid
+                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                              ColumnDefinitions="Auto"
+                              RowDefinitions="Auto">
+                        <DockPanel
+                                  HorizontalSpacing="{TemplateBinding Spacing}"
+                                  LastChildFill="False"
+                                  VerticalSpacing="{TemplateBinding Spacing}">
+                            <icon:LucideIcon
+                                      Name="PART_Icon"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      Animation="{TemplateBinding Animation}"
+                                      DockPanel.Dock="{TemplateBinding IconPlacement}"
+                                      IconSize="{TemplateBinding IconSize}"
+                                      Kind="{TemplateBinding Kind}" />
+
+                            <TextBlock
+                                      Name="PART_TextBlock"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      Text="{TemplateBinding Text}" />
+                            <SelectableTextBlock
+                                      Name="PART_SelectableTextBlock"
+                                      HorizontalAlignment="Center"
+                                      VerticalAlignment="Center"
+                                      FontSize="{TemplateBinding FontSize}"
+                                      IsVisible="False"
+                                      Text="{TemplateBinding Text}" />
+                        </DockPanel>
+                    </Grid>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+        <Style Selector="^[IsTextSelectable=True]">
+            <Style Selector="^ /template/ TextBlock">
+                <Setter Property="IsVisible" Value="False" />
+            </Style>
+            <Style Selector="^ /template/ SelectableTextBlock">
+                <Setter Property="IsVisible" Value="True" />
+            </Style>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

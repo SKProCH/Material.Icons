@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using LineIcon;
 
 namespace LineIcon.Icons.Avalonia; 
 public class LineIconIconExt : MarkupExtension {

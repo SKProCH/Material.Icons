@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Lucide;
 
 namespace Lucide.Icons.Avalonia; 
 public class LucideIconExt : MarkupExtension {

@@ -4,4 +4,7 @@
     <Nullable>enable</Nullable>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
+<ItemGroup >
+<ProjectReference Include="..\..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+</ItemGroup >
 </Project>

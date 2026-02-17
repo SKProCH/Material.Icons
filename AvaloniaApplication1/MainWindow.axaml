@@ -4,21 +4,44 @@
           xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
           xmlns:avalonia="using:FontAwesome.Icons.Avalonia"
           xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:fontawesome="using:FontAwesome.Icons"
+          xmlns:material="using:Material.Icons"
           xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:universal="using:IconGenerators.Avalonia"
           Title="AvaloniaApplication1"
           Width="800"
           Height="450"
           Background="White"
           mc:Ignorable="d">
-
+    <Window.Resources>
+        <material:MaterialIconDataProvider x:Key="MyProvider" />
+         <fontawesome:FontAwesomeIconDataProvider x:Key="MyProvider2" />
+    </Window.Resources>
     <StackPanel>
-        <Button>
+        <!--        <Button>
             <avalonia:FontAwesomeIcon
                       Name="faIcon"
                       Width="200"
                       Height="200"
                       Foreground="Black"
                       Kind="AddressBook" />
+        </Button>-->
+
+        <Button>
+            <universal:UniversalIcon
+                      Width="200"
+                      Height="200"
+                      Foreground="Black"
+                      Icon="Abacus"
+                      Provider="{StaticResource MyProvider}" />
+        </Button>
+                <Button>
+            <universal:UniversalIcon
+                      Width="200"
+                      Height="200"
+                      Foreground="Black"
+                      Icon="Accusoft"
+                      Provider="{StaticResource MyProvider2}" />
         </Button>
     </StackPanel>
 </Window>

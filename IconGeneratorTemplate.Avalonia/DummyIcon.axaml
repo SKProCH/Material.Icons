@@ -40,9 +40,9 @@
             <Setter Property="Width" Value="{x:Static system:Double.NaN}" />
             <Setter Property="Height" Value="{x:Static system:Double.NaN}" />
         </Style>
-        <Style Selector="^.collapse-null">
+        <!--        <Style Selector="^.collapse-null">
             <Setter Property="IsVisible" Value="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
-        </Style>
+        </Style>-->
 
         <!--  Animations  -->
         <Style Selector="^[Animation=Spin] /template/ Viewbox#PART_IconViewbox">

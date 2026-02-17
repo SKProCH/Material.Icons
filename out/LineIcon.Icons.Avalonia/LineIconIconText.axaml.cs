@@ -8,6 +8,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Layout;
 
 namespace LineIcon.Icons.Avalonia; 
+
 [TemplatePart("PART_Icon", typeof(LineIconIcon))]
 [TemplatePart("PART_TextBlock", typeof(TextBlock))]
 [TemplatePart("PART_SelectableTextBlock", typeof(SelectableTextBlock))]

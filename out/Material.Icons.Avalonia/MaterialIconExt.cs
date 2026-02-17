@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Material;
 
 namespace Material.Icons.Avalonia; 
 public class MaterialIconExt : MarkupExtension {

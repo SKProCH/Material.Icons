@@ -12,8 +12,8 @@
 		<Version>1.0.0</Version>
 		<Authors>your_name</Authors>
 		<Company>your_company</Company>
-		<PackageProjectUrl>https://github.com/TemuWolverine/Dummy.Icons</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/TemuWolverine/Dummy.Icons</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/TemuWolverine/Material.Icons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/TemuWolverine/Material.Icons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<IncludeSymbols>True</IncludeSymbols>
@@ -24,6 +24,14 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="DummyIconDataProvider.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="DummyIconDataProvider.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
@@ -55,14 +63,8 @@
 
 
 	<ItemGroup>
+	  <ProjectReference Include="..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
 	  <ProjectReference Include="..\IconGenerators\IconGenerators.csproj" />
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <Compile Update="DummyIconDataProvider.cs">
-	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-	  </Compile>
 	</ItemGroup>
 
 

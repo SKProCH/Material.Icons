@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Feather;
 
 namespace Feather.Icons.Avalonia; 
 public class FeatherIconExt : MarkupExtension {

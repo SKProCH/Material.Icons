@@ -20,7 +20,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
     <ProjectReference Include="..\out\FontAwesome.Icons.Avalonia\FontAwesome.Icons.Avalonia.csproj" />
     <ProjectReference Include="..\out\FontAwesome.Icons\FontAwesome.Icons.csproj" />
+    <ProjectReference Include="..\out\Material.Icons.Avalonia\Material.Icons.Avalonia.csproj" />
+    <ProjectReference Include="..\out\Material.Icons\Material.Icons.csproj" />
   </ItemGroup>
 </Project>

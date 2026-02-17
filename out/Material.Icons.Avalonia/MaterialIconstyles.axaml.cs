@@ -6,12 +6,12 @@ namespace Material.Icons.Avalonia;
 /// <summary>
 /// Styles for Material.Icons.Avalonia library
 /// </summary>
-public sealed class MaterialIconstyles : Styles {
+public sealed class MaterialIconStyles : Styles {
     /// <summary>
-    /// Initializes a new instance of the <see cref="MaterialIconstyles"/> class.
+    /// Initializes a new instance of the <see cref="MaterialIconStyles"/> class.
     /// </summary>
     /// <param name="serviceProvider">The parent's service provider.</param>
-    public MaterialIconstyles(IServiceProvider? serviceProvider) {
+    public MaterialIconStyles(IServiceProvider? serviceProvider) {
         MaterialIconsUtils.InitializeGeometryParser();
         AvaloniaXamlLoader.Load(serviceProvider, this);
     }

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using IconGenerators.Avalonia;
 
 namespace Feather.Icons;
 
@@ -8,7 +9,7 @@ namespace Feather.Icons;
 /// <summary>
 /// Provides access to the Material Design icons data and its geometry.
 /// </summary>
-public partial class FeatherIconDataProvider
+public partial class FeatherIconDataProvider  : IIconProvider
 {
     private static FeatherIconDataProvider _instance = new();
     private static Func<string, object>? _parser;
@@ -102,4 +103,11 @@ public partial class FeatherIconDataProvider
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
     public virtual partial string ProvideData(FeatherIconKind kind);
+
+    public string ProvideData(string kindstring)
+    {
+        // Using Enum.Parse (throws if invalid)
+        FeatherIconKind kind = (FeatherIconKind)Enum.Parse(typeof(FeatherIconKind), kindstring);
+        return ProvideData(kind);
+    }
 }

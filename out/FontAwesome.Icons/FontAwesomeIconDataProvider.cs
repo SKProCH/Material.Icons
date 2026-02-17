@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using IconGenerators.Avalonia;
 
 namespace FontAwesome.Icons;
 
@@ -8,7 +9,7 @@ namespace FontAwesome.Icons;
 /// <summary>
 /// Provides access to the Material Design icons data and its geometry.
 /// </summary>
-public partial class FontAwesomeIconDataProvider
+public partial class FontAwesomeIconDataProvider  : IIconProvider
 {
     private static FontAwesomeIconDataProvider _instance = new();
     private static Func<string, object>? _parser;
@@ -102,4 +103,11 @@ public partial class FontAwesomeIconDataProvider
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
     public virtual partial string ProvideData(FontAwesomeIconKind kind);
+
+    public string ProvideData(string kindstring)
+    {
+        // Using Enum.Parse (throws if invalid)
+        FontAwesomeIconKind kind = (FontAwesomeIconKind)Enum.Parse(typeof(FontAwesomeIconKind), kindstring);
+        return ProvideData(kind);
+    }
 }

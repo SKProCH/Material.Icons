@@ -12,17 +12,10 @@
 		<Version>1.0.0</Version>
 		<Authors>your_name</Authors>
 		<Company>your_company</Company>
-		<!--
-		<Title>Music Assistant Client Library</Title>-->
-		<PackageProjectUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/thewoodknight/WateryTart.MusicAssistant</RepositoryUrl>
+		<PackageProjectUrl>https://github.com/TemuWolverine/FontAwesome.Icons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/TemuWolverine/FontAwesome.Icons</RepositoryUrl>
 		<RepositoryType>git</RepositoryType>
-		<!--<Company>WateryTart</Company>
-		<Authors>WateryTart Contributors</Authors>
-		<Description>Music Assistant Client Library, providing both a websocket and RPC interface</Description>
-		<PackageIcon>logo.png</PackageIcon>-->
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
-		<!--<PackageLicenseFile>LICENSE</PackageLicenseFile>-->
 		<IncludeSymbols>True</IncludeSymbols>
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<PublishRepositoryUrl>true</PublishRepositoryUrl>
@@ -31,6 +24,14 @@
 		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 		<AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
 	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="FontAwesomeIconDataProvider.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="FontAwesomeIconDataProvider.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
 	
 	<ItemGroup>
 		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
@@ -47,13 +48,6 @@
 			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
 		</PackageReference>
 	</ItemGroup>
-
-
-	<ItemGroup>
-		<Reference Include="FontAwesome.Icons">
-			<HintPath>..\FontAwesome.Icons\bin\$(Configuration)\net10.0\FontAwesome.Icons.dll</HintPath>
-		</Reference>
-	</ItemGroup>
 	<ItemGroup>
 		<None Include="..\FontAwesome.Icons\bin\$(Configuration)\net10.0\FontAwesome.Icons.dll" Pack="true" PackagePath="lib\net10.0\" />
 		<None Include="..\FontAwesome.Icons\bin\$(Configuration)\net10.0\FontAwesome.Icons.pdb" Pack="true" PackagePath="lib\net10.0\" />
@@ -65,6 +59,12 @@
 			<Pack>True</Pack>
 			<PackagePath>\</PackagePath>
 		</None>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+	  <ProjectReference Include="..\FontAwesome.Icons\FontAwesome.Icons.csproj" />
 	</ItemGroup>
 
 

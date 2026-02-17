@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using IconGenerators.Avalonia;
 
 namespace Lucide.Icons;
 
@@ -8,7 +9,7 @@ namespace Lucide.Icons;
 /// <summary>
 /// Provides access to the Material Design icons data and its geometry.
 /// </summary>
-public partial class LucideIconDataProvider
+public partial class LucideIconDataProvider  : IIconProvider
 {
     private static LucideIconDataProvider _instance = new();
     private static Func<string, object>? _parser;
@@ -102,4 +103,11 @@ public partial class LucideIconDataProvider
     /// <param name="kind">The icon kind</param>
     /// <returns>SVG path for target icon kind</returns>
     public virtual partial string ProvideData(LucideIconKind kind);
+
+    public string ProvideData(string kindstring)
+    {
+        // Using Enum.Parse (throws if invalid)
+        LucideIconKind kind = (LucideIconKind)Enum.Parse(typeof(LucideIconKind), kindstring);
+        return ProvideData(kind);
+    }
 }

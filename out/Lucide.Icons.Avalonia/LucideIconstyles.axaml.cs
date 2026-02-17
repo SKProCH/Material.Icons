@@ -6,12 +6,12 @@ namespace Lucide.Icons.Avalonia;
 /// <summary>
 /// Styles for Lucide.Icons.Avalonia library
 /// </summary>
-public sealed class LucideIconstyles : Styles {
+public sealed class LucideIconStyles : Styles {
     /// <summary>
-    /// Initializes a new instance of the <see cref="LucideIconstyles"/> class.
+    /// Initializes a new instance of the <see cref="LucideIconStyles"/> class.
     /// </summary>
     /// <param name="serviceProvider">The parent's service provider.</param>
-    public LucideIconstyles(IServiceProvider? serviceProvider) {
+    public LucideIconStyles(IServiceProvider? serviceProvider) {
         LucideIconsUtils.InitializeGeometryParser();
         AvaloniaXamlLoader.Load(serviceProvider, this);
     }

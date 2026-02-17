@@ -6,12 +6,12 @@ namespace FontAwesome.Icons.Avalonia;
 /// <summary>
 /// Styles for FontAwesome.Icons.Avalonia library
 /// </summary>
-public sealed class FontAwesomeIconstyles : Styles {
+public sealed class FontAwesomeIconStyles : Styles {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FontAwesomeIconstyles"/> class.
+    /// Initializes a new instance of the <see cref="FontAwesomeIconStyles"/> class.
     /// </summary>
     /// <param name="serviceProvider">The parent's service provider.</param>
-    public FontAwesomeIconstyles(IServiceProvider? serviceProvider) {
+    public FontAwesomeIconStyles(IServiceProvider? serviceProvider) {
         FontAwesomeIconsUtils.InitializeGeometryParser();
         AvaloniaXamlLoader.Load(serviceProvider, this);
     }

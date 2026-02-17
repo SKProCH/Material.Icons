@@ -14,8 +14,8 @@
   <Folder Name="/Templates/">
     <Project Path="IconGeneratorTemplate.Avalonia/IconGeneratorTemplate.Avalonia.csproj" />
   </Folder>
-  <Project Path="../IconPackGenerator/IconGenerators.Avalonia/IconGenerators.Avalonia.csproj" />
   <Project Path="AvaloniaApplication1/AvaloniaDemo.csproj" />
   <Project Path="build/_build.csproj" />
+  <Project Path="IconGenerators.Avalonia/IconGenerators.Avalonia.csproj" Id="01b678ad-77cc-430c-87cf-d458914b75c0" />
   <Project Path="IconGenerators/IconGenerators.csproj" />
 </Solution>

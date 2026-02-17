@@ -106,10 +106,10 @@ partial class Build : NukeBuild
         List<IIconPackGenerator> generators =
         [
             new IconGenerators.Material.MaterialDownloader(),
-           // new IconGenerators.FontAwesome.FontAwesomeDownloader(),
-           // new IconGenerators.LineIcons.LineIconsDownloader(),
-          //  new IconGenerators.Lucide.LucideDownloader(),
-          //  new IconGenerators.Feather.FeatherDownloader(),
+            new IconGenerators.FontAwesome.FontAwesomeDownloader(),
+            new IconGenerators.LineIcons.LineIconsDownloader(),
+            new IconGenerators.Lucide.LucideDownloader(),
+            new IconGenerators.Feather.FeatherDownloader(),
         ];
 
         var tasks = generators.Select(async generator =>

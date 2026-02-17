@@ -6,12 +6,12 @@ namespace Feather.Icons.Avalonia;
 /// <summary>
 /// Styles for Feather.Icons.Avalonia library
 /// </summary>
-public sealed class FeatherIconstyles : Styles {
+public sealed class FeatherIconStyles : Styles {
     /// <summary>
-    /// Initializes a new instance of the <see cref="FeatherIconstyles"/> class.
+    /// Initializes a new instance of the <see cref="FeatherIconStyles"/> class.
     /// </summary>
     /// <param name="serviceProvider">The parent's service provider.</param>
-    public FeatherIconstyles(IServiceProvider? serviceProvider) {
+    public FeatherIconStyles(IServiceProvider? serviceProvider) {
         FeatherIconsUtils.InitializeGeometryParser();
         AvaloniaXamlLoader.Load(serviceProvider, this);
     }
