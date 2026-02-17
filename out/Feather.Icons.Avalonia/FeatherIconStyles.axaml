@@ -1,0 +1,13 @@
+<icons:FeatherIconStyles x:Class="Feather.Icons.Avalonia.FeatherIconStyles"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:icons="clr-namespace:Feather.Icons.Avalonia">
+  <icons:FeatherIconStyles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Feather.Icons.Avalonia/FeatherIcon.axaml" />
+        <ResourceInclude Source="avares://Feather.Icons.Avalonia/FeatherIconText.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </icons:FeatherIconStyles.Resources>
+</icons:FeatherIconStyles>

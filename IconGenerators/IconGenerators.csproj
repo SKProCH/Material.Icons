@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>NET10.0</TargetFramework>
+		<LangVersion>12</LangVersion>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="DummyIconDataProvider.cs" />
+	  <Compile Remove="Material\DictionaryStringGenerator.cs" />
+	  <Compile Remove="Material\MaterialIconKindEnumGenerator.cs" />
+	  <Compile Remove="Material\SwitchRegularStringGenerator.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="DummyIconDataProvider.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <PackageReference Include="Nuke.Common" Version="10.1.0" />
+	  <PackageReference Include="Nuke.ProjectModel" Version="10.1.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+	</ItemGroup>
+
+</Project>

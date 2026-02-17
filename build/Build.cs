@@ -1,112 +1,132 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using System.Globalization;
-using System.IO;
-using System.Linq;
-using System.Text;
-using Generators;
-using Generators.PathDataGenerators;
-using Meta;
-using Microsoft.Build.Evaluation;
-using NuGet.Versioning;
+using IconGenerators;
 using Nuke.Common;
-using Nuke.Common.CI;
-using Nuke.Common.Execution;
-using Nuke.Common.Git;
+using Nuke.Common.IO;
 using Nuke.Common.ProjectModel;
 using Nuke.Common.Tools.DotNet;
-using Nuke.Common.Tools.Git;
 using Nuke.Common.Utilities.Collections;
 using Serilog;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
-// ReSharper disable InconsistentNaming
 
-[ShutdownDotNetAfterServerBuild]
-[SuppressMessage("ReSharper", "UnusedMember.Local")]
-partial class Build : NukeBuild {
-    /// Support plugins are available for:
-    ///   - JetBrains ReSharper        https://nuke.build/resharper
-    ///   - JetBrains Rider            https://nuke.build/rider
-    ///   - Microsoft VisualStudio     https://nuke.build/visualstudio
-    ///   - Microsoft VSCode           https://nuke.build/vscode
+partial class Build
+{
+    IEnumerable<string> GetBuildTargets()
+    {
+        return new List<string> {
+
+            RootDirectory / "out" / "Feather.Icons",
+            RootDirectory / "out" / "Feather.Icons.Avalonia",
+
+            RootDirectory / "out" / "FontAwesome.Icons",
+            RootDirectory / "out" / "FontAwesome.Icons.Avalonia",
+
+            RootDirectory / "out" / "Material.Icons",
+            RootDirectory / "out" / "Material.Icons.Avalonia",
+
+            RootDirectory / "out" / "Lucide.Icons",
+            RootDirectory / "out" / "Lucide.Icons.Avalonia",
+
+            RootDirectory / "out" / "LineIcon.Icons",
+            RootDirectory / "out" / "LineIcon.Icons.Avalonia",
+
+        }.Select(x => x.ToString());
+    }
+}
+
+
+
+partial class Build : NukeBuild
+{
     public static int Main() => Execute<Build>(x => x.Compile);
+
+    [Solution] readonly Solution Solution;
 
     [Parameter("Configuration to build - Default is 'Debug' (local) or 'Release' (server)")]
     readonly Configuration Configuration = IsLocalBuild ? Configuration.Debug : Configuration.Release;
 
-    [Parameter("Should we skip compilation of WPF projects. In non windows systems this is enabled by default")]
-    readonly bool SkipWpfCompilation = false;
+    Target Clean => _ => _
+        .Before(Restore)
+        .Executes(() =>
+        {
 
-    [Solution] readonly Solution Solution;
-    [GitRepository] readonly GitRepository GitRepository;
-
-    Target Restore => _ => _
-        .Executes(() => {
             GetBuildTargets().ForEach(ExecuteRestoreFor);
-            void ExecuteRestoreFor(string projectFile) {
+            void ExecuteRestoreFor(string projectFile)
+            {
                 DotNetRestore(s => s
                     .SetProjectFile(projectFile));
             }
         });
 
+    Target Restore => _ => _
+        .Executes(() =>
+        {
+        });
+
     Target Compile => _ => _
         .DependsOn(Restore)
-        .Executes(() => {
+        .DependsOn(UpdateIcons)
+        .Executes(() =>
+        {
+
             GetBuildTargets().ForEach(ExecuteBuildFor);
-            void ExecuteBuildFor(string projectFile) {
-                DotNetBuild(s => s
-                    .SetProjectFile(projectFile)
-                    .SetConfiguration(Configuration)
-                    .EnableNoRestore());
+            void ExecuteBuildFor(string projectFile)
+            {
+                if (projectFile.EndsWith("Avalonia"))
+                {
+                    DotNetPack(s => s
+                        .EnableNoRestore()
+                        .SetProject(projectFile)
+                        .SetConfiguration(Configuration)
+                        .SetVersion("1.2.3")
+                        .SetOutputDirectory(RootDirectory / "out")
+                        .EnableNoRestore()
+                        .EnableIncludeSymbols()
+                        .SetSymbolPackageFormat(DotNetSymbolPackageFormat.snupkg));
+
+                }
+                else
+                {
+
+                    DotNetBuild(s => s
+                        .SetProjectFile(projectFile)
+                        .SetConfiguration(Configuration)
+                        .EnableNoRestore());
+                }
             }
         });
 
     Target UpdateIcons => _ => _
-        .Executes(async () => {
-            Log.Information("Downloading icons meta information");
-            var iconsEnumerable = await MaterialIconsMetaTools.GetIcons();
-            var iconInfos = iconsEnumerable.ToList();
+    .Executes(async () =>
+    {
+       // return;
+        AbsolutePath path = RootDirectory;
 
-            var destinationPath = Solution.Directory / "Material.Icons";
-            Log.Information("Writing icons meta information to {DestinationPath}", destinationPath);
+        List<IIconPackGenerator> generators =
+        [
+            new IconGenerators.Material.MaterialDownloader(),
+            new IconGenerators.FontAwesome.FontAwesomeDownloader(),
+            new IconGenerators.LineIcons.LineIconsDownloader(),
+            new IconGenerators.Lucide.LucideDownloader(),
+            new IconGenerators.Feather.FeatherDownloader(),
+        ];
 
-            MaterialIconKindEnumGenerator.Write(destinationPath, iconInfos);
-            SwitchRegularStringGenerator.Write(destinationPath, iconInfos);
-        })
-        .Triggers(Compile);
+        var tasks = generators.Select(async generator =>
+        {
+            Console.WriteLine($"Gathering icons for {generator.Name}...");
+            var icons = await generator.FetchIconData();
 
-    Target GhUpdateIconsWorkflow => _ => _
-        .DependsOn(UpdateIcons, GhBumpVersionIfNeeded);
-
-    Target GhBumpVersionIfNeeded => _ => _
-        .OnlyWhenDynamic(() => !GitTasks.GitHasCleanWorkingCopy())
-        .DependsOn(Compile)
-        .Executes(() => {
-            var mainProject = Solution.GetProject("Material.Icons").GetMSBuildProject();
-            var projects = new List<Microsoft.Build.Evaluation.Project>
-            {
-                mainProject,
-                Solution.GetProject("Material.Icons.Avalonia").GetMSBuildProject(),
-                Solution.GetProject("Material.Icons.WPF").GetMSBuildProject(),
-                Solution.GetProject("Material.Icons.WinUI3").GetMSBuildProject()
-            };
-
-            var versionString = mainProject.GetProperty("Version").EvaluatedValue;
-            var newVersion = NuGetVersion.Parse(versionString).BumpLastVersion();
-
-            foreach(var project in projects)
-            {
-                project.SetProperty("Version", newVersion.ToString());
-               
-                var currentTime = DateTime.UtcNow.ToString("R", CultureInfo.InvariantCulture);
-                var newReleaseNotes = $"- Icons set updated according to materialdesignicons.com at {currentTime}{Environment.NewLine}"
-                                    + "Check out changes at https://pictogrammers.com/library/mdi/history/";
-                project.SetProperty("PackageReleaseNotes", newReleaseNotes);
-               
-                project.Save();
-            }
-
-            Log.Information("Bumped Material.Icon property to {NewVersion}", newVersion);
+            Console.WriteLine($"Generating classes for {generator.Name}...");
+            IconPackGenerator.Generate(icons, path, generator.Name);
         });
+
+        await System.Threading.Tasks.Task.WhenAll(tasks);
+    })
+    .Triggers(Compile);
+
+    // Look at adding more?
+    //https://github.com/tailwindlabs/heroicons/
+    //https://github.com/tabler/tabler-icons
+    //https://github.com/Remix-Design/RemixIcon
 }

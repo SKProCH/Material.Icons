@@ -1,0 +1,139 @@
+<ResourceDictionary
+          xmlns="https://github.com/avaloniaui"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:icon="clr-namespace:LineIcon.Icons.Avalonia"
+          xmlns:system="clr-namespace:System;assembly=netstandard">
+    <system:TimeSpan x:Key="DurationTimeSpan">0:0:2</system:TimeSpan>
+
+    <ControlTheme x:Key="{x:Type icon:LineIconIcon}" TargetType="icon:LineIconIcon">
+        <!--  Template  -->
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Border
+                          Padding="{TemplateBinding Padding}"
+                          Background="{TemplateBinding Background}"
+                          BorderBrush="{TemplateBinding BorderBrush}"
+                          BorderThickness="{TemplateBinding BorderThickness}"
+                          CornerRadius="{TemplateBinding CornerRadius}">
+                    <Viewbox Name="PART_IconViewbox">
+                        <Path
+                                  Data="{Binding Drawing.Geometry, RelativeSource={RelativeSource TemplatedParent}}"
+                                  Fill="{TemplateBinding Foreground}"
+                                  Stretch="Uniform" />
+                    </Viewbox>
+                </Border>
+            </ControlTemplate>
+        </Setter>
+
+        <!--  Setters  -->
+        <Style Selector="^:not(^[IconSize=NaN]) /template/ Viewbox">
+            <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+        <Style Selector="^[Width=NaN][Height=NaN][IconSize=NaN] /template/ Viewbox">
+            <Setter Property="Width" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+            <Setter Property="Height" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
+        </Style>
+
+        <!--  Classes  -->
+        <Style Selector="^.Fill /template/ Viewbox">
+            <Setter Property="Width" Value="{x:Static system:Double.NaN}" />
+            <Setter Property="Height" Value="{x:Static system:Double.NaN}" />
+        </Style>
+        <!--        <Style Selector="^.collapse-null">
+            <Setter Property="IsVisible" Value="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+        </Style>-->
+
+        <!--  Animations  -->
+        <Style Selector="^[Animation=Spin] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE" Duration="{StaticResource DurationTimeSpan}">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=SpinCcw] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation
+                          IterationCount="INFINITE"
+                          PlaybackDirection="Reverse"
+                          Duration="{StaticResource DurationTimeSpan}">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=Pulse] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE" Duration="0:0:2">
+                    <Animation.Easing>
+                        <icon:PulseEasing />
+                    </Animation.Easing>
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=PulseCcw] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation
+                          IterationCount="INFINITE"
+                          PlaybackDirection="Reverse"
+                          Duration="0:0:2">
+                    <Animation.Easing>
+                        <icon:PulseEasing />
+                    </Animation.Easing>
+                    <KeyFrame Cue="0%">
+                        <Setter Property="RotateTransform.Angle" Value="0" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="RotateTransform.Angle" Value="360" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=FadeOutIn] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE" Duration="0:0:4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+        <Style Selector="^[Animation=FadeInOut] /template/ Viewbox#PART_IconViewbox">
+            <Style.Animations>
+                <Animation IterationCount="INFINITE" Duration="0:0:4">
+                    <KeyFrame Cue="0%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                    <KeyFrame Cue="50%">
+                        <Setter Property="Opacity" Value="0.5" />
+                    </KeyFrame>
+                    <KeyFrame Cue="100%">
+                        <Setter Property="Opacity" Value="1" />
+                    </KeyFrame>
+                </Animation>
+            </Style.Animations>
+        </Style>
+    </ControlTheme>
+</ResourceDictionary>

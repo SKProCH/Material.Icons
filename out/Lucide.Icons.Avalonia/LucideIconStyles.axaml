@@ -1,0 +1,13 @@
+<icons:LucideIconStyles x:Class="Lucide.Icons.Avalonia.LucideIconStyles"
+                          xmlns="https://github.com/avaloniaui"
+                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                          xmlns:icons="clr-namespace:Lucide.Icons.Avalonia">
+  <icons:LucideIconStyles.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.MergedDictionaries>
+        <ResourceInclude Source="avares://Lucide.Icons.Avalonia/LucideIcon.axaml" />
+        <ResourceInclude Source="avares://Lucide.Icons.Avalonia/LucideIconText.axaml" />
+      </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+  </icons:LucideIconStyles.Resources>
+</icons:LucideIconStyles>

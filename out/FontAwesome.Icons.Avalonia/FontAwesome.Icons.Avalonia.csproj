@@ -1,0 +1,71 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<OutputType>Library</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+		<AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
+	</PropertyGroup>
+
+	<!-- Nuget stuff-->
+	<PropertyGroup>
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<Version>1.0.0</Version>
+		<Authors>your_name</Authors>
+		<Company>your_company</Company>
+		<PackageProjectUrl>https://github.com/TemuWolverine/FontAwesome.Icons</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/TemuWolverine/FontAwesome.Icons</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<IncludeSymbols>True</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+		<AllowedOutputExtensionsInPackageBuildOutputFolder>.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="FontAwesomeIconDataProvider.cs" />
+	</ItemGroup>
+	<ItemGroup>
+	  <EmbeddedResource Include="FontAwesomeIconDataProvider.cs">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Avalonia" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Desktop" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.11" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.11" />
+		<!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
+		<PackageReference Include="Avalonia.Diagnostics" Version="11.3.11">
+			<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+		</PackageReference>
+	</ItemGroup>
+	<ItemGroup>
+		<None Include="..\FontAwesome.Icons\bin\$(Configuration)\net10.0\FontAwesome.Icons.dll" Pack="true" PackagePath="lib\net10.0\" />
+		<None Include="..\FontAwesome.Icons\bin\$(Configuration)\net10.0\FontAwesome.Icons.pdb" Pack="true" PackagePath="lib\net10.0\" />
+	</ItemGroup>
+
+
+	<ItemGroup>
+		<None Include="readme.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
+
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\IconGenerators.Avalonia\IconGenerators.Avalonia.csproj" />
+	  <ProjectReference Include="..\FontAwesome.Icons\FontAwesome.Icons.csproj" />
+	</ItemGroup>
+
+
+</Project>
