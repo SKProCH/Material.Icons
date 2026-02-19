@@ -19,15 +19,8 @@ jobs:
       uses: GuillaumeFalourd/setup-windows10-sdk-action@v2
       with:
         sdk-version: 18362
-    - name: Build and Pack
-      run: |
-        dotnet build Material.Icons -c Release /p:Platform="Any CPU"
-        dotnet build Material.Icons.WPF -c Release /p:Platform="Any CPU"
-        dotnet build Material.Icons.Avalonia -c Release /p:Platform="Any CPU"
-        dotnet build Material.Icons.WinUI3 -c Release /p:Platform="Any CPU"
-    - name: Publish to Nuget
-      run: |
-        dotnet nuget push **/*.nupkg --api-key ${{secrets.NUGET_KEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
-    - name: Publish to GitHub Packages
-      run: |
-        dotnet nuget push **/*.nupkg --api-key ${{secrets.GITHUB_TOKEN}} --source https://nuget.pkg.github.com/SKProCH/index.json --skip-duplicate
+    - name: Build and Publish
+      uses: SKProCH/CommonWorkflows/actions/build-publish@main
+      with:
+          publish-nightly: true
+          nuget-key: ${{ secrets.NUGET_KEY }}
