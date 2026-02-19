@@ -1,5 +1,5 @@
 ﻿using Avalonia;
-using Avalonia.ReactiveUI;
+using ReactiveUI.Avalonia;
 
 namespace Material.Icons.Avalonia.Demo {
     class Program {
@@ -14,6 +14,7 @@ namespace Material.Icons.Avalonia.Demo {
             => AppBuilder.Configure<App>()
                          .UsePlatformDetect()
                          .LogToTrace()
-                         .UseReactiveUI();
+                         .UseReactiveUI()
+                         .WithDeveloperTools();
     }
 }

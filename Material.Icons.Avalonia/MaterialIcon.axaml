@@ -261,7 +261,7 @@
       <Setter Property="Height" Value="{x:Static system:Double.NaN}" />
     </Style>
     <Style Selector="^.collapse-null">
-      <Setter Property="IsVisible" Value="{Binding Kind, RelativeSource={RelativeSource TemplatedParent}, Converter={x:Static ObjectConverters.IsNotNull}}" />
+      <Setter Property="IsVisible" Value="{Binding $parent[icon:MaterialIcon].Kind, Converter={x:Static ObjectConverters.IsNotNull}}" />
     </Style>
 
     <!--  Animations  -->

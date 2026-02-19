@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reactive.Linq;
 using System.Threading.Tasks;
+using Avalonia.Input.Platform;
 using DynamicData.Binding;
 using Material.Icons.Avalonia.Demo.Models;
 using ReactiveUI;

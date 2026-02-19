@@ -4,6 +4,7 @@ using Avalonia.Controls.Primitives;
 using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 
 namespace Material.Icons.Avalonia
 {
@@ -60,7 +61,7 @@ namespace Material.Icons.Avalonia
 
         public override object ProvideValue(IServiceProvider serviceProvider) {
             // If no text is provided and it's not a binding, fall back to base
-            if (Text is null || (Text is not IBinding && Text is string textString && string.IsNullOrWhiteSpace(textString)))
+            if (Text is null || (Text is not BindingBase && Text is string textString && string.IsNullOrWhiteSpace(textString)))
                 return base.ProvideValue(serviceProvider);
 
             var result = new MaterialIconText();
@@ -74,12 +75,12 @@ namespace Material.Icons.Avalonia
             else result.Animation = Animation;
 
             // Apply Text (supports binding or direct value)
-            if (Text is IBinding textBinding) result.Bind(MaterialIconText.TextProperty, textBinding);
+            if (Text is BindingBase textBinding) result.Bind(MaterialIconText.TextProperty, textBinding);
             else if (Text is string textValue) result.Text = textValue;
 
             if (IconSize is not null) {
                 switch (IconSize) {
-                    case IBinding binding:
+                    case BindingBase binding:
                         result.Bind(MaterialIcon.IconSizeProperty, binding);
                         break;
                     case IConvertible conv:
