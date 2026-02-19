@@ -2,7 +2,6 @@
   <PropertyGroup>
     <LangVersion>11</LangVersion>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Material.Icons</Title>
     <Authors>SKProCH</Authors>
     <Description>Parsed icons set from materialdesignicons.com</Description>

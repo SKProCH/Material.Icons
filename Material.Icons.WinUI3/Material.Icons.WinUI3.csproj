@@ -7,7 +7,6 @@
     <RuntimeIdentifiers Condition="$([MSBuild]::GetTargetFrameworkVersion('$(TargetFramework)')) &lt; 8">win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Authors>SKProCH</Authors>
     <Description>WinUI control for display material icons from Material.Icons</Description>
     <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>

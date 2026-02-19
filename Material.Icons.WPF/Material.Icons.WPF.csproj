@@ -6,7 +6,6 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Material.Icons.WPF</Title>
     <Authors>SKProCH</Authors>
     <Description>WPF control for display material icons from Material.Icons</Description>
