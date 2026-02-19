@@ -1,8 +1,13 @@
 name: .NET Publish
 
 on:
-  push:
-    branches: [ master ]
+    push:
+        branches:
+            - master
+            - main
+            - release/**
+        tags:
+            - v**
 
 jobs:
   build:
