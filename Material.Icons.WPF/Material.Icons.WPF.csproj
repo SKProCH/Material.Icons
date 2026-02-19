@@ -17,8 +17,6 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>3.0.0-preview7</Version>
-    <PackageReleaseNotes>- Allow Kind to be null</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
