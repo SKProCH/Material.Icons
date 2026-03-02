@@ -9,6 +9,10 @@ on:
         tags:
             - v**
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   build:
 
@@ -28,4 +32,4 @@ jobs:
       uses: SKProCH/CommonWorkflows/actions/build-publish@main
       with:
           publish-nightly: true
-          nuget-key: ${{ secrets.NUGET_KEY }}
+          nuget-user: ${{ secrets.NUGET_USER }}
