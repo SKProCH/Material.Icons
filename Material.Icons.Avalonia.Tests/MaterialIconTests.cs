@@ -1,16 +1,14 @@
-using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Headless.NUnit;
+using Avalonia.Headless.XUnit;
 using Avalonia.Layout;
 using Avalonia.Media;
 using FluentAssertions;
-using NUnit.Framework;
 
 namespace Material.Icons.Avalonia.Tests;
 
 public class MaterialIconTests
 {
-    [AvaloniaTest]
+    [AvaloniaFact]
     public void MaterialIcon_Respects_FixedSize()
     {
         var sut = new MaterialIcon
@@ -27,7 +25,7 @@ public class MaterialIconTests
         sut.Bounds.Height.Should().Be(100);
     }
 
-    [AvaloniaTest]
+    [AvaloniaFact]
     public void MaterialIcon_Respects_IconSize()
     {
         var sut = new MaterialIcon
@@ -45,7 +43,7 @@ public class MaterialIconTests
         sut.Bounds.Height.Should().Be(48);
     }
 
-    [AvaloniaTest]
+    [AvaloniaFact]
     public void MaterialIcon_Respects_FontSize_Fallback()
     {
         var sut = new MaterialIcon
@@ -63,7 +61,7 @@ public class MaterialIconTests
         sut.Bounds.Height.Should().Be(32);
     }
 
-    [AvaloniaTest]
+    [AvaloniaFact]
     public void MaterialIcon_Fill_Class_Stretches_To_Container()
     {
         var sut = new MaterialIcon
@@ -86,7 +84,7 @@ public class MaterialIconTests
         sut.Bounds.Height.Should().Be(200);
     }
 
-    [Test]
+    [AvaloniaFact]
     public void MaterialIcon_Implements_IImage_With_Default_Size()
     {
         IImage sut = new MaterialIcon();
@@ -94,7 +92,7 @@ public class MaterialIconTests
         sut.Size.Height.Should().Be(24);
     }
 
-    [Test]
+    [AvaloniaFact]
     public void MaterialIcon_Populates_Geometry_On_Kind_Change()
     {
         var sut = new MaterialIcon();
