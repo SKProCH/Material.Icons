@@ -77,7 +77,7 @@ any size definition on `MaterialIcon` have no impact. Also, animation are not su
 #### Classes
 
 - **Fill:** Fits to size within the parent control
-- **NullAsInvisible:** `{x:Null}`(Default) icons will not reserve space for it in layout.
+- **collapse-null:** `{x:Null}`(Default) icons will not reserve space for it in layout.
 
 
 ## Avalonia FuncUI (F#)

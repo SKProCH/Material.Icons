@@ -12,7 +12,7 @@
         <Style Selector="Button">
           <Setter Property="Padding" Value="20,10" />
         </Style>
-        <Style Selector=".Animations icon|MaterialIcon">
+        <Style Selector=".Bordered icon|MaterialIcon">
           <Setter Property="Margin" Value="10" />
           <Setter Property="FontSize" Value="24" />
           <Setter Property="Padding" Value="10" />
@@ -34,7 +34,8 @@
       </Border.Styles>
       <StackPanel Orientation="Vertical"
                   Spacing="10">
-        <WrapPanel Classes="Animations"
+        <!-- Animations -->
+        <WrapPanel Classes="Bordered"
                    Orientation="Horizontal">
           <icon:MaterialIcon Kind="Calendar" />
 
@@ -43,14 +44,12 @@
           <icon:MaterialIcon Margin="10"
                              Animation="SpinCcw"
                              Kind="Refresh" />
-
           <icon:MaterialIcon Animation="Pulse"
                              Kind="DotsVertical" />
 
           <icon:MaterialIcon Animation="PulseCcw"
-                                Foreground="Gold"
-                                Kind="ProgressHelper" />
-
+                             Foreground="Gold"
+                             Kind="ProgressHelper" />
           <icon:MaterialIcon Animation="FadeOutIn"
                              Foreground="DeepPink"
                              Kind="Heart" />
@@ -59,6 +58,7 @@
                              Kind="Heart" />
         </WrapPanel>
 
+        <!-- Images -->
         <WrapPanel Classes="Images"
                    Orientation="Horizontal">
           <Border>
@@ -66,22 +66,18 @@
               <icon:MaterialIcon Kind="Image" />
             </Image>
           </Border>
-
           <Border>
             <Image Source="{icon:MaterialIconExt Kind=Image}" />
           </Border>
-
           <Border>
             <Image>
               <icon:MaterialIcon Foreground="WhiteSmoke"
                                  Kind="AddAlarm" />
             </Image>
           </Border>
-
           <Border>
             <Image Source="{icon:MaterialIconTextExt Kind=AddAlarm, IconForeground=WhiteSmoke, Text='DEBUG, no effect!', IconSize=512}" />
           </Border>
-
           <Border>
             <Image Source="{icon:MaterialIconExt Kind=ProgressHelper, IconForeground=Gold, Animation=PulseCcw}" />
           </Border>
@@ -92,30 +88,25 @@
                                                  IconForeground=DeepPink}"
                    Stretch="Fill" />
           </Border>
-
         </WrapPanel>
 
         <WrapPanel Classes="Animations"
+        <!-- Extensions -->
+        <WrapPanel Classes="Bordered"
                    Orientation="Horizontal">
           <ContentPresenter Content="{icon:MaterialIconExt About}" />
-
           <ContentPresenter Content="{icon:MaterialIconExt About, FadeOutIn}" />
-
           <ContentPresenter Content="{icon:MaterialIconExt About, IconSize=24}" />
-
           <ContentPresenter Content="{icon:MaterialIconExt About, 24, FadeInOut}" />
-
           <ContentPresenter Content="{icon:MaterialIconExt About, IconForeground=CornflowerBlue}" />
-
           <ContentPresenter Content="{icon:MaterialIconTextExt About, Text='Text Ext'}" />
-
         </WrapPanel>
 
+        <!-- MaterialIconText -->
         <StackPanel Orientation="Horizontal"
                     Spacing="20">
           <icon:MaterialIconText Kind="Network"
                                  Text="127.0.0.1" />
-
           <icon:MaterialIconText FontSize="16"
                                  Kind="Network"
                                  Text="127.0.0.1 (16px)" />
@@ -124,17 +115,17 @@
                                  Text="127.0.0.1 (24px)" />
         </StackPanel>
 
+        <!-- MaterialIconText with null icon -->
         <StackPanel Orientation="Horizontal"
                     Spacing="20">
           <icon:MaterialIconText BorderBrush="Aqua" BorderThickness="1"
                                  Text="Default icon / {x:Null}" />
-
           <icon:MaterialIconText BorderBrush="Aqua" BorderThickness="1"
-                                 Text="Default icon / {x:Null} / Class=NullAsInvisible"
-                                 Classes="NullAsInvisible"/>
+                                 Text="Default icon / {x:Null} / Class=collapse-null"
+                                 Classes="collapse-null" />
         </StackPanel>
 
-
+        <!-- Padding -->
         <TextBlock FontSize="32"
                    FontWeight="Bold">
           <StackPanel Orientation="Horizontal"
@@ -150,6 +141,7 @@
           </StackPanel>
         </TextBlock>
 
+        <!-- Buttons, icons driven by FontSize -->
         <Button FontSize="12">
           <StackPanel Orientation="Horizontal"
                       Spacing="10">
@@ -158,8 +150,6 @@
                        Text="Apply small" />
           </StackPanel>
         </Button>
-
-
         <Button FontSize="15">
           <StackPanel Orientation="Horizontal"
                       Spacing="10">
@@ -168,9 +158,7 @@
                        Text="Apply default" />
           </StackPanel>
         </Button>
-
         <Button FontSize="28">
-
           <StackPanel Orientation="Horizontal"
                       Spacing="10">
             <icon:MaterialIcon Classes="Fill"
