@@ -86,9 +86,9 @@
                                Text="Default icon / {x:Null}" />
 
         <icon:MaterialIconText Kind="{x:Null}"
-                               Classes="NullAsInvisible"
+                               Classes="collapse-null"
                                IconPlacement="Left"
-                               Text="Default icon / Class=NullAsInvisible" />
+                               Text="Default icon / Class=collapse-null" />
       </StackPanel>
 
       <icon:MaterialIconText Padding="5"
