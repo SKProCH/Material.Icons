@@ -3,7 +3,7 @@
                     xmlns:icon="clr-namespace:Material.Icons.Avalonia"
                     xmlns:system="clr-namespace:System;assembly=netstandard">
   <Design.PreviewWith>
-    <Border MaxWidth="600"
+    <Border MaxWidth="800"
             Margin="20">
       <Border.Styles>
         <Style Selector="TextBlock">
@@ -81,7 +81,6 @@
           <Border>
             <Image Source="{icon:MaterialIconExt Kind=ProgressHelper, IconForeground=Gold, Animation=PulseCcw}" />
           </Border>
-
           <Border>
             <Image Width="92"
                    Source="{icon:MaterialIconExt Kind=Heart,
@@ -90,7 +89,6 @@
           </Border>
         </WrapPanel>
 
-        <WrapPanel Classes="Animations"
         <!-- Extensions -->
         <WrapPanel Classes="Bordered"
                    Orientation="Horizontal">
@@ -209,6 +207,323 @@
 
         </Border>
 
+        <!-- BASE STYLES-->
+        <Border>
+          <Border.Styles>
+
+            <Style Selector="Grid.TestDeck > Border">
+              <Setter Property="BorderBrush" Value="DimGray" />
+              <Setter Property="BorderThickness" Value="1" />
+              <Setter Property="Background" Value="#1A000000" /> <!-- Gray slot background -->
+              <Setter Property="Margin" Value="5" />
+              <Setter Property="HorizontalAlignment" Value="Center" />
+              <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+
+            <!-- MaterialIcon: Red background shows the Control Bounds (Hitbox) -->
+            <Style Selector="Grid.TestDeck > Border > icon|MaterialIcon">
+              <Setter Property="Kind" Value="Star" />
+              <Setter Property="Background" Value="#40FF0000" />
+              <Setter Property="Foreground" Value="Black" />
+              <Setter Property="FontSize" Value="24" />
+            </Style>
+
+            <!-- COLUMN STYLES (Container sizes) -->
+            <!-- Col 0: Smaller than intrinsic (16x16) -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(5n+1)">
+              <Setter Property="Width" Value="16" />
+              <Setter Property="Height" Value="16" />
+            </Style>
+
+            <!-- Col 1: Exact match (24x24) -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(5n+2)">
+              <Setter Property="Width" Value="24" />
+              <Setter Property="Height" Value="24" />
+            </Style>
+
+            <!-- Col 2: Large square (80x80) -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(5n+3)">
+              <Setter Property="Width" Value="80" />
+              <Setter Property="Height" Value="80" />
+            </Style>
+
+            <!-- Col 3: Rectangle (100x50) -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(5n+4)">
+              <Setter Property="Width" Value="100" />
+              <Setter Property="Height" Value="50" />
+            </Style>
+
+            <!-- Col 4: Infinite (Auto) -->
+            <!-- No properties required, will expand to fit content -->
+
+            <!-- ======================================================= -->
+            <!-- ROW RULES (Icon properties)                             -->
+            <!-- ======================================================= -->
+
+            <!-- Row 0 (1-5): Default -->
+            <!-- No overrides -->
+
+            <!-- Row 1 (6-10): Alignment = Center -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+6):nth-child(-n+10) > icon|MaterialIcon">
+              <Setter Property="HorizontalAlignment" Value="Center" />
+              <Setter Property="VerticalAlignment" Value="Center" />
+            </Style>
+
+            <!-- Row 2 (11-15): Direction = Both -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+11):nth-child(-n+15) > icon|MaterialIcon">
+              <Setter Property="StretchDirection" Value="Both" />
+            </Style>
+
+            <!-- Row 3 (16-20): Direction = UpOnly -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+16):nth-child(-n+20) > icon|MaterialIcon">
+              <Setter Property="StretchDirection" Value="UpOnly" />
+            </Style>
+
+            <!-- Row 4 (21-25): Stretch = Fill -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+21):nth-child(-n+25) > icon|MaterialIcon">
+              <Setter Property="Stretch" Value="Fill" />
+              <Setter Property="StretchDirection" Value="Both" />
+            </Style>
+
+            <!-- Row 5 (26-30): Stretch = UniformToFill -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+26):nth-child(-n+30) > icon|MaterialIcon">
+              <Setter Property="Stretch" Value="UniformToFill" />
+              <Setter Property="StretchDirection" Value="Both" />
+            </Style>
+
+            <!-- Row 6 (31-35): IconSize = 48 -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+31):nth-child(-n+35) > icon|MaterialIcon">
+              <Setter Property="IconSize" Value="48" />
+            </Style>
+
+            <!-- Row 7 (36-40): Explicit W=32 / H=32 -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+36):nth-child(-n+40) > icon|MaterialIcon">
+              <Setter Property="Width" Value="32" />
+              <Setter Property="Height" Value="32" />
+            </Style>
+
+            <!-- Row 8 (41-45): Margin = 10 -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+41):nth-child(-n+45) > icon|MaterialIcon">
+              <Setter Property="Margin" Value="10" />
+              <Setter Property="StretchDirection" Value="Both" /> <!-- Enable growth to better see margins -->
+              <Setter Property="Background" Value="#400000FF" /> <!-- Blue hitbox for visual margin difference -->
+            </Style>
+
+            <!-- Row 9 (46-50): Padding = 10 -->
+            <Style Selector="Grid.TestDeck > Border:nth-child(n+46):nth-child(-n+50) > icon|MaterialIcon">
+              <Setter Property="Padding" Value="10" />
+              <Setter Property="StretchDirection" Value="Both" /> <!-- Enable growth to better see padding -->
+              <Setter Property="Background" Value="#4000FF00" /> <!-- Green hitbox for visual padding difference -->
+            </Style>
+          </Border.Styles>
+
+          <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid ColumnDefinitions="160,*" Margin="20">
+
+              <!-- Row Headers -->
+              <StackPanel Grid.Column="0" Margin="0,35,10,0" Spacing="0">
+                <TextBlock Height="90" Text="0: Default Behavior" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="1: Align = Center" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="2: Direction = Both" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="3: Direction = UpOnly" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="4: Stretch = Fill" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="5: Stretch = Unif.ToFill" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="6: IconSize = 48" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="7: Explicit W=32/H=32" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="8: Margin = 10" VerticalAlignment="Center" FontWeight="Bold" />
+                <TextBlock Height="90" Text="9: Padding = 10" VerticalAlignment="Center" FontWeight="Bold" />
+              </StackPanel>
+
+              <Grid Grid.Column="1" RowDefinitions="Auto,Auto">
+                <!-- Column Headers -->
+                <Grid Grid.Row="0" ColumnDefinitions="90,90,110,130,110" Margin="0,0,0,10">
+                  <TextBlock Grid.Column="0" Text="Small (16x16)" TextAlignment="Center" FontWeight="Bold" />
+                  <TextBlock Grid.Column="1" Text="Exact (24x24)" TextAlignment="Center" FontWeight="Bold" />
+                  <TextBlock Grid.Column="2" Text="Large Sq (80x80)" TextAlignment="Center" FontWeight="Bold" />
+                  <TextBlock Grid.Column="3" Text="Rect (100x50)" TextAlignment="Center" FontWeight="Bold" />
+                  <TextBlock Grid.Column="4" Text="Infinite (Auto)" TextAlignment="Center" FontWeight="Bold" />
+                </Grid>
+
+                <!-- Main Test Grid -->
+                <Grid Grid.Row="1" Classes="TestDeck" ShowGridLines="True"
+                      RowDefinitions="90,90,90,90,90,90,90,90,90,90"
+                      ColumnDefinitions="90,90,110,130,110">
+
+                  <!-- Row 0: Default -->
+                  <Border Grid.Row="0" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="0" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="0" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="0" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="0" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 1: Align = Center -->
+                  <Border Grid.Row="1" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="1" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="1" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="1" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="1" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 2: Direction = Both -->
+                  <Border Grid.Row="2" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="2" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="2" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="2" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="2" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 3: Direction = UpOnly -->
+                  <Border Grid.Row="3" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="3" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="3" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="3" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="3" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 4: Stretch = Fill -->
+                  <Border Grid.Row="4" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="4" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="4" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="4" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="4" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 5: Stretch = UniformToFill -->
+                  <Border Grid.Row="5" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="5" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="5" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="5" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="5" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 6: IconSize = 48 -->
+                  <Border Grid.Row="6" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="6" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="6" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="6" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="6" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 7: Explicit W=32 / H=32 -->
+                  <Border Grid.Row="7" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="7" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="7" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="7" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="7" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 8: Margin = 10 -->
+                  <Border Grid.Row="8" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="8" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="8" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="8" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="8" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+
+                  <!-- Row 9: Padding = 10 -->
+                  <Border Grid.Row="9" Grid.Column="0">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="9" Grid.Column="1">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="9" Grid.Column="2">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="9" Grid.Column="3">
+                    <icon:MaterialIcon />
+                  </Border>
+                  <Border Grid.Row="9" Grid.Column="4">
+                    <icon:MaterialIcon />
+                  </Border>
+                </Grid>
+              </Grid>
+            </Grid>
+          </ScrollViewer>
+        </Border>
+
       </StackPanel>
     </Border>
   </Design.PreviewWith>
@@ -224,24 +539,26 @@
                 BorderBrush="{TemplateBinding BorderBrush}"
                 BorderThickness="{TemplateBinding BorderThickness}"
                 CornerRadius="{TemplateBinding CornerRadius}">
-          <Viewbox Name="PART_IconViewbox">
+          <Viewbox Name="PART_IconViewbox"
+                   Stretch="{TemplateBinding Stretch}"
+                   StretchDirection="{TemplateBinding StretchDirection}">
             <Path Data="{Binding Drawing.Geometry, RelativeSource={RelativeSource TemplatedParent}}"
                   Fill="{TemplateBinding Foreground}"
-                  Stretch="Uniform" />
+                  Width="24" Height="24" />
           </Viewbox>
         </Border>
       </ControlTemplate>
     </Setter>
 
     <!--  Setters  -->
-    <Style Selector="^:not(^[IconSize=NaN]) /template/ Viewbox">
-      <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-      <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" />
-    </Style>
-    <Style Selector="^[Width=NaN][Height=NaN][IconSize=NaN] /template/ Viewbox">
-      <Setter Property="Width" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-      <Setter Property="Height" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" />
-    </Style>
+    <!-- <Style Selector="^:not(^[IconSize=NaN]) /template/ Viewbox"> -->
+    <!--   <Setter Property="Width" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" /> -->
+    <!--   <Setter Property="Height" Value="{Binding IconSize, RelativeSource={RelativeSource TemplatedParent}}" /> -->
+    <!-- </Style> -->
+    <!-- <Style Selector="^[Width=NaN][Height=NaN][IconSize=NaN] /template/ Viewbox"> -->
+    <!--   <Setter Property="Width" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" /> -->
+    <!--   <Setter Property="Height" Value="{Binding FontSize, RelativeSource={RelativeSource TemplatedParent}}" /> -->
+    <!-- </Style> -->
 
     <!--  Classes  -->
     <Style Selector="^.Fill /template/ Viewbox">
