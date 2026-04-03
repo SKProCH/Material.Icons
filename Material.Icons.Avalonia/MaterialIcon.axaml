@@ -90,7 +90,6 @@
           </Border>
         </WrapPanel>
 
-        <WrapPanel Classes="Animations"
         <!-- Extensions -->
         <WrapPanel Classes="Bordered"
                    Orientation="Horizontal">
