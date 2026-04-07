@@ -4,6 +4,7 @@ using Avalonia.Data;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
 using Avalonia.Media;
+using Avalonia.Metadata;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconExt : MarkupExtension {
@@ -33,7 +34,7 @@ namespace Material.Icons.Avalonia {
         /// Gets or sets a binding for the icon kind. Use this when data binding is required.
         /// </summary>
         [ConstructorArgument("kindBinding")]
-        public IBinding? KindBinding { get; set; }
+        public BindingBase? KindBinding { get; set; }
 
         /// <summary>
         /// Gets or sets the size of the icon to display.<br/>
@@ -52,7 +53,7 @@ namespace Material.Icons.Avalonia {
         /// Gets or sets a binding for the icon foreground. Use this when data binding is required.
         /// </summary>
         [ConstructorArgument("iconForegroundBinding")]
-        public IBinding? IconForegroundBinding { get; set; }
+        public BindingBase? IconForegroundBinding { get; set; }
 
         /// <summary>
         /// Gets or sets the animation to play. Provides IntelliSense autocomplete.
@@ -64,7 +65,7 @@ namespace Material.Icons.Avalonia {
         /// Gets or sets a binding for the animation. Use this when data binding is required.
         /// </summary>
         [ConstructorArgument("animationBinding")]
-        public IBinding? AnimationBinding { get; set; }
+        public BindingBase? AnimationBinding { get; set; }
 
         /// <summary>
         /// Gets or sets the vertical alignment of the content.
@@ -97,7 +98,7 @@ namespace Material.Icons.Avalonia {
 
             if (IconSize is not null) {
                 switch (IconSize) {
-                    case IBinding binding:
+                    case BindingBase binding:
                         result.Bind(MaterialIcon.IconSizeProperty, binding);
                         break;
                     case IConvertible conv:
