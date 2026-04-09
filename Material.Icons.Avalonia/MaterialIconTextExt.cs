@@ -1,6 +1,7 @@
 ﻿using System;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 
 namespace Material.Icons.Avalonia
 {

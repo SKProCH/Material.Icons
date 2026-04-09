@@ -7,6 +7,7 @@ using Material.Icons.Avalonia.Demo.Views;
 namespace Material.Icons.Avalonia.Demo {
     public class App : Application {
         public override void Initialize() {
+            this.AttachDeveloperTools();
             AvaloniaXamlLoader.Load(this);
         }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Markup.Xaml;
+using Avalonia.Metadata;
 
 namespace Material.Icons.Avalonia {
     public class MaterialIconExt : MarkupExtension {
