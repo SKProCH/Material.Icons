@@ -3,7 +3,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Material.Icons.Avalonia</Title>
     <Authors>SKProCH</Authors>
     <Description>Avalonia control for display material icons from Material.Icons</Description>
@@ -15,8 +14,6 @@
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
     <PackageTags>material icons material-design google-material avalonia</PackageTags>
     <PackageReadmeFile>README.md</PackageReadmeFile>
-    <PackageReleaseNotes>Fixed transform</PackageReleaseNotes>
-    <Version>2.4.1</Version>
   </PropertyGroup>
   
   <ItemGroup>

@@ -6,7 +6,6 @@
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
     <LangVersion>9</LangVersion>
     <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <Title>Material.Icons.WPF</Title>
     <Authors>SKProCH</Authors>
     <Description>WPF control for display material icons from Material.Icons</Description>
@@ -18,9 +17,6 @@
     <PackageTags>material icons material-design google-material wpf</PackageTags>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
-    <Version>2.4.1</Version>
-    <PackageReleaseNotes>- Icons set updated according to materialdesignicons.com at Sat, 08 Mar 2025 12:16:04 GMT
-Check out changes at https://pictogrammers.com/library/mdi/history/</PackageReleaseNotes>
   </PropertyGroup>
   
   <ItemGroup>
