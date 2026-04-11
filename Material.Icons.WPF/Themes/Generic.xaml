@@ -24,7 +24,7 @@
               </Viewbox.Style>
               <Path Data="{Binding Geometry, RelativeSource={RelativeSource TemplatedParent}}"
                     Fill="{TemplateBinding Foreground}"
-                    Stretch="Uniform" />
+                    Width="24" Height="24" />
             </Viewbox>
           </Border>
           <ControlTemplate.Triggers>
