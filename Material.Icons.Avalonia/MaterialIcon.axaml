@@ -226,7 +226,7 @@
           <Viewbox Name="PART_IconViewbox">
             <Path Data="{Binding Drawing.Geometry, RelativeSource={RelativeSource TemplatedParent}}"
                   Fill="{TemplateBinding Foreground}"
-                  Stretch="Uniform" />
+                  Width="24" Height="24" />
           </Viewbox>
         </Border>
       </ControlTemplate>

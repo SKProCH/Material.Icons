@@ -18,7 +18,7 @@
                      FlowDirection="{TemplateBinding FlowDirection}">
               <Path Data="{Binding Data, RelativeSource={RelativeSource TemplatedParent}}"
                     Fill="{TemplateBinding Foreground}"
-                    Stretch="Uniform" />
+                    Width="24" Height="24" />
             </Viewbox>
             <VisualStateManager.VisualStateGroups>
               <VisualStateGroup x:Name="SizeStates">
