@@ -20,7 +20,7 @@ namespace Material.Icons.Avalonia {
         }
 
         public static readonly StyledProperty<double> IconSizeProperty =
-            AvaloniaProperty.Register<MaterialIconText, double>(nameof(IconSize), defaultValue: double.NaN);
+            AvaloniaProperty.Register<MaterialIcon, double>(nameof(IconSize), defaultValue: double.NaN);
 
         /// <summary>
         /// Gets or sets the uniform size of the icon.
