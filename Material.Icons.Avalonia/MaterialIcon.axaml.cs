@@ -1,10 +1,10 @@
-﻿using Avalonia;
+﻿using System;
+using Avalonia;
 using Avalonia.Controls.Primitives;
 using Avalonia.Interactivity;
 using Avalonia.Media;
 
 namespace Material.Icons.Avalonia {
-
     public class MaterialIcon : TemplatedControl, IImage {
         #region Properties
 
@@ -20,7 +20,7 @@ namespace Material.Icons.Avalonia {
         }
 
         public static readonly StyledProperty<double> IconSizeProperty =
-            AvaloniaProperty.Register<MaterialIconText, double>(nameof(IconSize), defaultValue: double.NaN);
+            AvaloniaProperty.Register<MaterialIcon, double>(nameof(IconSize), defaultValue: double.NaN);
 
         /// <summary>
         /// Gets or sets the uniform size of the icon.
@@ -28,6 +28,23 @@ namespace Material.Icons.Avalonia {
         public double IconSize {
             get => GetValue(IconSizeProperty);
             set => SetValue(IconSizeProperty, value);
+        }
+
+        public static readonly StyledProperty<Stretch> StretchProperty =
+            AvaloniaProperty.Register<MaterialIcon, Stretch>(nameof(Stretch), defaultValue: Stretch.Uniform);
+
+        public Stretch Stretch {
+            get => GetValue(StretchProperty);
+            set => SetValue(StretchProperty, value);
+        }
+
+        public static readonly StyledProperty<StretchDirection> StretchDirectionProperty =
+            AvaloniaProperty.Register<MaterialIcon, StretchDirection>(nameof(StretchDirection),
+                defaultValue: StretchDirection.DownOnly);
+
+        public StretchDirection StretchDirection {
+            get => GetValue(StretchDirectionProperty);
+            set => SetValue(StretchDirectionProperty, value);
         }
 
         public static readonly StyledProperty<MaterialIconAnimation> AnimationProperty
@@ -60,6 +77,7 @@ namespace Material.Icons.Avalonia {
 
         static MaterialIcon() {
             MaterialIconsUtils.InitializeGeometryParser();
+            AffectsMeasure<MaterialIcon>(FontSizeProperty);
         }
 
         public MaterialIcon() {
@@ -87,6 +105,18 @@ namespace Material.Icons.Avalonia {
             else if (e.Property == ForegroundProperty) {
                 Drawing.Brush = Foreground;
             }
+        }
+
+        protected override Size MeasureOverride(Size availableSize) {
+            if (!double.IsNaN(IconSize)) {
+                availableSize = new Size(IconSize, IconSize);
+            }
+            var baseSize = double.IsNaN(IconSize) ? FontSize : IconSize;
+            var intrinsicSize = new Size(baseSize + Padding.Left + Padding.Right,
+                baseSize + Padding.Top + Padding.Bottom);
+            var size = Stretch.CalculateSize(availableSize, intrinsicSize, StretchDirection);
+            base.MeasureOverride(size);
+            return size;
         }
 
         #endregion
@@ -132,6 +162,5 @@ namespace Material.Icons.Avalonia {
         }
 
         #endregion
-
     }
 }
