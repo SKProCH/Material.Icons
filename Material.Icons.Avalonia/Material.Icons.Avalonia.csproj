@@ -6,9 +6,9 @@
     <Title>Material.Icons.Avalonia</Title>
     <Authors>SKProCH</Authors>
     <Description>Avalonia control for display material icons from Material.Icons</Description>
-    <PackageProjectUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia/</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/SKProCH/Material.Icons/</PackageProjectUrl>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <RepositoryUrl>https://github.com/AvaloniaUtils/Material.Icons.Avalonia.git</RepositoryUrl>
+    <RepositoryUrl>https://github.com/SKProCH/Material.Icons.git</RepositoryUrl>
     <RepositoryType>Git</RepositoryType>
     <SignAssembly>True</SignAssembly>
     <AssemblyOriginatorKeyFile>..\key.snk</AssemblyOriginatorKeyFile>
